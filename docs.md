@@ -100,6 +100,25 @@ import Group from './common/Group';
 <Group group={group} />;
 ```
 
+### Post
+
+[source](src/common/Post.tsx)
+
+#### Props
+
+| Props       | Type     | Default | Description               |
+| ----------- | -------- | ------- | ------------------------- |
+| `post`      | `Post`   | `null`  | pass Post info            |
+| `className` | `String` | `''`    | add class to Post wrapper |
+
+#### Usage
+
+```jsx
+import Post from './common/Post';
+
+<Post post={post} />;
+```
+
 ## Context
 
 ### Post Reacts
