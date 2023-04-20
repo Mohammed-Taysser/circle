@@ -141,3 +141,10 @@ interface BannerProps {
   className?: string;
   icon: IconType;
 }
+
+// Comment
+
+interface CommentProps {
+  comments: PostComment[];
+  className?: string;
+}
