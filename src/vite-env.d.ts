@@ -48,6 +48,7 @@ interface AvatarProps {
 interface GroupProps {
   colView?: boolean;
   group: Group;
+  className?: string;
 }
 
 // Avatar returned by API
