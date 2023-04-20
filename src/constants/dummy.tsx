@@ -1,29 +1,29 @@
 import audio from '../assets/music/skyline.mp3';
 import video from '../assets/videos/video.mp4';
 
-import avatar1 from '../assets/images/avatar/avatar-1.png';
-import avatar2 from '../assets/images/avatar/avatar-2.png';
-import avatar3 from '../assets/images/avatar/avatar-3.png';
-import avatar4 from '../assets/images/avatar/avatar-4.png';
-import avatar5 from '../assets/images/avatar/avatar-5.png';
+import avatar1 from '../assets/images/dummy/avatar/avatar-1.png';
+import avatar2 from '../assets/images/dummy/avatar/avatar-2.png';
+import avatar3 from '../assets/images/dummy/avatar/avatar-3.png';
+import avatar4 from '../assets/images/dummy/avatar/avatar-4.png';
+import avatar5 from '../assets/images/dummy/avatar/avatar-5.png';
 
-import gallery1 from '../assets/images/gallery/gallery-1.jpg';
-import gallery10 from '../assets/images/gallery/gallery-10.jpg';
-import gallery2 from '../assets/images/gallery/gallery-2.jpg';
-import gallery3 from '../assets/images/gallery/gallery-3.jpg';
-import gallery4 from '../assets/images/gallery/gallery-4.jpg';
-import gallery5 from '../assets/images/gallery/gallery-5.jpg';
-import gallery6 from '../assets/images/gallery/gallery-6.jpg';
-import gallery7 from '../assets/images/gallery/gallery-7.jpg';
-import gallery8 from '../assets/images/gallery/gallery-8.jpg';
-import gallery9 from '../assets/images/gallery/gallery-9.jpg';
+import gallery1 from '../assets/images/dummy/gallery/gallery-1.jpg';
+import gallery10 from '../assets/images/dummy/gallery/gallery-10.jpg';
+import gallery2 from '../assets/images/dummy/gallery/gallery-2.jpg';
+import gallery3 from '../assets/images/dummy/gallery/gallery-3.jpg';
+import gallery4 from '../assets/images/dummy/gallery/gallery-4.jpg';
+import gallery5 from '../assets/images/dummy/gallery/gallery-5.jpg';
+import gallery6 from '../assets/images/dummy/gallery/gallery-6.jpg';
+import gallery7 from '../assets/images/dummy/gallery/gallery-7.jpg';
+import gallery8 from '../assets/images/dummy/gallery/gallery-8.jpg';
+import gallery9 from '../assets/images/dummy/gallery/gallery-9.jpg';
 
-import featured from '../assets/images/badges/featured.svg';
-import happy from '../assets/images/badges/happy.svg';
-import spring from '../assets/images/badges/spring.svg';
-import target from '../assets/images/badges/target.svg';
-import contentCreator from '../assets/images/badges/content-creator.svg';
-import rocket from '../assets/images/badges/rocket.svg';
+import featured from '../assets/images/dummy/badges/featured.svg';
+import happy from '../assets/images/dummy/badges/happy.svg';
+import spring from '../assets/images/dummy/badges/spring.svg';
+import target from '../assets/images/dummy/badges/target.svg';
+import contentCreator from '../assets/images/dummy/badges/content-creator.svg';
+import rocket from '../assets/images/dummy/badges/rocket.svg';
 
 const POSTS: { [key in 'audio' | 'video' | 'gallery' | 'timeline']: Post[] } = {
   audio: [
