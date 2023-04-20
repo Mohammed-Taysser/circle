@@ -61,6 +61,25 @@ import Avatar from './common/Avatar';
 <Avatar src={avatar.png} />;
 ```
 
+### Friend
+
+[source](src/common/Friend.tsx)
+
+#### Props
+
+| Props       | Type     | Default | Description                 |
+| ----------- | -------- | ------- | --------------------------- |
+| `user`      | `Friend` | `null`  | pass friend info            |
+| `className` | `String` | `''`    | add class to Avatar wrapper |
+
+#### Usage
+
+```jsx
+import Friend from './common/Friend';
+
+<Friend user={user} />;
+```
+
 ## Packages
 
 ## Resources
