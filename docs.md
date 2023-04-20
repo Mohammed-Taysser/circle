@@ -100,7 +100,28 @@ import Group from './common/Group';
 <Group group={group} />;
 ```
 
+## Context
+
+### Post Reacts
+
+[source](src/context/Reacts.tsx)
+
+- Create modal for reacts with taps for each post react type like wow, like and so on.
+- Store trigger post react as context with modal option to open or close.
+
 ## Packages
+
+## Helpers
+
+### timeToX
+
+[timeToX](src/helpers/dayjs.ts)
+
+Using `day.js` package to create `timeToX` helper function that return a value of readable format between passed date and now.
+
+```ts
+timeToX('1990-01-01'); //> "31 years ago"
+```
 
 ## Resources
 
