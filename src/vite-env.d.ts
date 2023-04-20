@@ -1,3 +1,4 @@
+/// <reference types="react" />
 /// <reference types="vite/client" />
 /// <reference types="react-icons" />
 
@@ -143,8 +144,17 @@ interface BannerProps {
 }
 
 // Comment
-
 interface CommentProps {
   comments: PostComment[];
   className?: string;
+}
+
+// UserBanner
+interface infoBannerProp {
+  cover: string;
+  avatar: string;
+  name: string;
+  username: string;
+  extraInfo: ReactElement;
+  verified: boolean;
 }
