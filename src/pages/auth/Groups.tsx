@@ -5,13 +5,19 @@ import { BsColumnsGap, BsMegaphoneFill } from 'react-icons/bs';
 import Group from '../../common/Group';
 import { GROUPS } from '../../constants/dummy';
 import Banner from '../../common/Banner';
+import { useDocumentTitle } from '@mantine/hooks';
 
 function Groups() {
+  useDocumentTitle('Mantine | Groups');
   const [view, setView] = useState('list');
 
   return (
     <>
-    <Banner title='All Groups' subtitle='All Groups 24' icon={BsMegaphoneFill} />
+      <Banner
+        title='All Groups'
+        subtitle='All Groups 24'
+        icon={BsMegaphoneFill}
+      />
       <div className='nice-shadow flex justify-end p-4'>
         <SegmentedControl
           color='teal'
@@ -50,4 +56,4 @@ function Groups() {
   );
 }
 
-export default Groups
+export default Groups;
