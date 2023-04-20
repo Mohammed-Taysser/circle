@@ -137,6 +137,6 @@ interface Friend {
 interface BannerProps {
   title: string;
   subtitle: string;
-  className: string;
+  className?: string;
   icon: IconType;
 }
