@@ -1,0 +1,25 @@
+.friend {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 15px rgba(22, 41, 124, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+
+  img.cover {
+    top: 5px;
+    transform: rotate(-90deg) translateY(-50%);
+    position: absolute;
+    border-radius: 8px 8px 0 0;
+    max-width: 100%;
+    object-fit: cover;
+    left: 82px;
+    height: 180px;
+    width: 190px;
+    bottom: 0;
+  }
+}
