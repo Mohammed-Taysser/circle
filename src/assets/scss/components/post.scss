@@ -1,0 +1,129 @@
+.post-card {
+  position: relative;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #fff;
+
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 30px 18px;
+
+    .media {
+      display: flex;
+      align-items: flex-start;
+
+      .activity-avatar {
+        display: flex;
+
+
+        .status-info {
+          .activity-title {
+            font-size: 14px;
+
+            a {
+              font-size: 16px;
+              font-weight: 500;
+              color: #111;
+              margin-right: 5px;
+              text-decoration: none;
+              text-transform: capitalize;
+              transition: 0.4s;
+
+              &:hover{
+                color: $aurora-color;
+              }
+            }
+
+            span {
+              color: #9e9faf;
+            }
+          }
+
+          .activity-time {
+            color: #9e9faf;
+            font-size: 13px;
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }
+
+  .post-body {
+    .activity-inner {
+      padding: 0 30px 10px;
+
+      p.widget-box-status-text {
+        white-space: pre-wrap;
+
+        font-size: 15px;
+        color: #71728c;
+        line-height: 24px;
+        margin-bottom: 20px;
+      }
+
+      .post-thumbs {
+        margin-bottom: 6px;
+
+        .gallery-wrapper {
+          gap: 15px;
+
+          a {
+            position: relative;
+            border-radius: 10px;
+
+            &:hover:before {
+              opacity: 1;
+            }
+
+            &::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #0000003d;
+              opacity: 0;
+              border-radius: 10px;
+              transition: 0.4s;
+            }
+
+            img {
+              max-width: 100%;
+              height: 240px;
+              width: 100%;
+              object-fit: cover;
+              border-radius: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .post-meta-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 30px 18px;
+
+      .activity-meta {
+        color: #9e9faf;
+
+        .meta-text {
+          font-size: 14px;
+          color: #9e9faf;
+          margin-left: 20px;
+          margin-right: 5px;
+        }
+
+        .meta-text:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
