@@ -1,7 +1,7 @@
+import { Divider } from '@mantine/core';
+import React from 'react';
 import { BiConfused } from 'react-icons/bi';
 import overlay from '../assets/images/background/banner-overlay.png';
-import people from '../assets/images/background/people.png';
-import React from 'react';
 
 /**
  * Banner component
@@ -15,33 +15,31 @@ import React from 'react';
  */
 function Banner(props: BannerProps): React.ReactElement {
   return (
-    <div className={`banner ${props.className}`}>
-      <div className='media'>
-        <div className='icon'>
-          <props.icon />
+    <div
+      className={`banner rounded-xl py-20 px-12 overflow-hidden relative mb-8 z-10 leading-4 ${props.className}`}
+      style={{
+        backgroundImage: `url('${overlay}'), linear-gradient(to right, #20c997, #00c78bfa) `,
+      }}
+    >
+      <div className='flex items-center text-white'>
+        <div className='text-6xl relative '>
+          <props.icon className='inline-block' />
         </div>
-        <div className='media-body'>
-          <h3 className='item-title'>{props.title}</h3>
-          <div className='item-list-tabs'>
-            <ul>
-              <li>{props.subtitle}</li>
-            </ul>
-          </div>
+        <Divider
+          className='mx-8 border-white'
+          size='md'
+          orientation='vertical'
+        />
+        <div className='flex-1'>
+          <h3 className='text-3xl font-bold mb-2 mt-0'>{props.title}</h3>
+          <span className='inline-block'>{props.subtitle}</span>
         </div>
       </div>
-      <ul className='animation-img'>
-        <li>
-          <img src={overlay} alt='overlay-shape' className='w-full' />
-        </li>
-        <li>
-          <img src={people} alt='people' className='hidden lg:block' />
-        </li>
-      </ul>
     </div>
   );
 }
 
-Banner.defaultProp = {
+Banner.defaultProps = {
   title: 'Title',
   subtitle: 'Subtitle',
   className: '',
