@@ -1,0 +1,33 @@
+@import 'lightgallery/css/lightgallery-bundle.min.css';
+@import 'lightgallery/css/lg-transitions.css';
+@import 'plyr/src/sass/plyr.scss';
+
+// @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$aurora-color: #20c997;
+
+* {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
+body {
+  background-color: #eff4fb !important;
+  --plyr-color-main: #{$aurora-color};
+}
+
+.arabic-font {
+  font-family: 'Tajawal', sans-serif;
+}
+
+.nice-shadow {
+  box-shadow: 0 3px 15px rgba(22, 41, 124, 0.1);
+}
+
+// components
+@import './components/avatar';
+@import './components/post';
+@import './components/group';
+@import './components/friend';
+@import './components/banner';
