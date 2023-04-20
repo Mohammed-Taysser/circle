@@ -70,7 +70,7 @@ import Avatar from './common/Avatar';
 | Props       | Type     | Default | Description                 |
 | ----------- | -------- | ------- | --------------------------- |
 | `user`      | `Friend` | `null`  | pass friend info            |
-| `className` | `String` | `''`    | add class to Avatar wrapper |
+| `className` | `String` | `''`    | add class to Friend wrapper |
 
 #### Usage
 
@@ -78,6 +78,26 @@ import Avatar from './common/Avatar';
 import Friend from './common/Friend';
 
 <Friend user={user} />;
+```
+
+### Group
+
+[source](src/common/Group.tsx)
+
+#### Props
+
+| Props       | Type      | Default | Description                     |
+| ----------- | --------- | ------- | ------------------------------- |
+| `group`     | `Group`   | `null`  | pass Group info                 |
+| `className` | `String`  | `''`    | add class to Group wrapper      |
+| `colView`   | `Boolean` | `false` | specify if column layout or not |
+
+#### Usage
+
+```jsx
+import Group from './common/Group';
+
+<Group group={group} />;
 ```
 
 ## Packages
