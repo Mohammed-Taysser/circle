@@ -33,7 +33,7 @@
 
 #### Usage
 
-```jsx
+```tsx
 import Banner from './common/Banner';
 
 <Banner title='Profile' subtitle='Welcome to your account dashboard!' />;
@@ -54,7 +54,7 @@ import Banner from './common/Banner';
 
 #### Usage
 
-```jsx
+```tsx
 import Avatar from './common/Avatar';
 
 <Avatar sm />;
@@ -74,7 +74,7 @@ import Avatar from './common/Avatar';
 
 #### Usage
 
-```jsx
+```tsx
 import Friend from './common/Friend';
 
 <Friend user={user} />;
@@ -94,7 +94,7 @@ import Friend from './common/Friend';
 
 #### Usage
 
-```jsx
+```tsx
 import Group from './common/Group';
 
 <Group group={group} />;
@@ -113,10 +113,29 @@ import Group from './common/Group';
 
 #### Usage
 
-```jsx
+```tsx
 import Post from './common/Post';
 
 <Post post={post} />;
+```
+
+### Comments
+
+[source](src/common/Comment.tsx)
+
+#### Props
+
+| Props       | Type            | Default | Description                   |
+| ----------- | --------------- | ------- | ----------------------------- |
+| `Comments`  | `PostComment[]` | `[]`    | pass comments                 |
+| `className` | `String`        | `''`    | add class to Comments wrapper |
+
+#### Usage
+
+```tsx
+import Comments from './common/Comment';
+
+<Comments comments={comments} />;
 ```
 
 ## Context
