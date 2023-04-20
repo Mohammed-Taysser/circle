@@ -161,6 +161,177 @@ Using `day.js` package to create `timeToX` helper function that return a value o
 timeToX('1990-01-01'); //> "31 years ago"
 ```
 
+## Project Structure
+
+### RoadMap
+
+```txt
+.
+├── src
+│ ├── core — Core modules, React hooks, customized theme, etc.
+│ │ ├── config.ts — Application configuration
+│ │ ├── ErrorBoundary.tsx — ErrorBoundary Component
+│ │ ├── lazyLoading.tsx — Lazy loading routes
+│ │ ├── routes.tsx — Application routes
+│ │ └── App.tsx
+│ ├── layout — Layout related components
+│ │ ├── components
+│ │ │ ├── Navbar.tsx
+│ │ │ ├── NotificationsMenu.tsx
+│ │ │ ├── ThemeButton.tsx
+│ │ │ └── Footer.tsx
+│ │ ├── Base.tsx
+│ │ └── Minimal.tsx
+│ ├── pages — Application page (screen) components
+│ │ ├── public — Public page (no auth required) components
+│ │ │ ├── Homepage.tsx
+│ │ │ └── 404.tsx
+│ │ ├── auth — Auth page (auth required) components
+│ │ │ ├── Profile.tsx
+│ │ │ └── Cart.tsx
+│ │ └── dashboard
+│ │ │ ├── Reports.tsx
+│ │ │ └── Users.tsx
+│ ├── assets — Static assets such as css, images
+│ ├── dialogs — React components implementing modal dialogs
+│ ├── common — Common (shared) React components
+│ ├── global.d.ts — Global TypeScript declarations
+│ ├── index.tsx — Single-page application (SPA) entry point
+│ └── hooks
+├── package.json — Workspace settings and NPM dependencies
+└── tsconfig.json — TypeScript configuration
+```
+
+### Tree
+
+```txt
+.
+├── CHANGELOG
+├── docs.md
+├── index.html
+├── LICENSE
+├── package.json
+├── postcss.config.js
+├── README.md
+├── src
+│   ├── assets
+│   │   ├── images
+│   │   │   ├── background
+│   │   │   │   ├── 404.svg
+│   │   │   │   ├── banner-overlay.png
+│   │   │   │   └── people.png
+│   │   │   ├── default
+│   │   │   │   └── avatar.png
+│   │   │   ├── dummy
+│   │   │   │   ├── avatar
+│   │   │   │   │   ├── avatar-1.png
+│   │   │   │   │   ├── avatar-2.png
+│   │   │   │   │   ├── avatar-3.png
+│   │   │   │   │   ├── avatar-4.png
+│   │   │   │   │   └── avatar-5.png
+│   │   │   │   ├── badges
+│   │   │   │   │   ├── content-creator.svg
+│   │   │   │   │   ├── featured.svg
+│   │   │   │   │   ├── happy.svg
+│   │   │   │   │   ├── rocket.svg
+│   │   │   │   │   ├── spring.svg
+│   │   │   │   │   └── target.svg
+│   │   │   │   └── gallery
+│   │   │   │       ├── gallery-10.jpg
+│   │   │   │       ├── gallery-1.jpg
+│   │   │   │       ├── gallery-2.jpg
+│   │   │   │       ├── gallery-3.jpg
+│   │   │   │       ├── gallery-4.jpg
+│   │   │   │       ├── gallery-5.jpg
+│   │   │   │       ├── gallery-6.jpg
+│   │   │   │       ├── gallery-7.jpg
+│   │   │   │       ├── gallery-8.jpg
+│   │   │   │       └── gallery-9.jpg
+│   │   │   └── icons
+│   │   │       ├── avatar-circle.png
+│   │   │       └── avatar-sm-circle.png
+│   │   ├── music
+│   │   │   └── skyline.mp3
+│   │   ├── scss
+│   │   │   ├── app.scss
+│   │   │   ├── components
+│   │   │   │   ├── avatar.scss
+│   │   │   │   ├── banner.scss
+│   │   │   │   ├── friend.scss
+│   │   │   │   ├── group.scss
+│   │   │   │   └── post.scss
+│   │   │   ├── helpers
+│   │   │   ├── layouts
+│   │   │   └── pages
+│   │   │       └── profile.scss
+│   │   └── videos
+│   │       └── video.mp4
+│   ├── common
+│   │   ├── Avatar.tsx
+│   │   ├── Banner.tsx
+│   │   ├── Comment.tsx
+│   │   ├── Friend.tsx
+│   │   ├── Group.tsx
+│   │   └── Post.tsx
+│   ├── components
+│   │   ├── profile
+│   │   │   ├── Banner.profile.tsx
+│   │   │   ├── taps
+│   │   │   │   ├── About.profile.tsx
+│   │   │   │   ├── Audios.profile.tsx
+│   │   │   │   ├── Badges.profile.tsx
+│   │   │   │   ├── Friends.profile.tsx
+│   │   │   │   ├── Groups.profile.tsx
+│   │   │   │   ├── Photos.profile.tsx
+│   │   │   │   ├── Timeline.profile.tsx
+│   │   │   │   └── Videos.profile.tsx
+│   │   │   └── Taps.profile.tsx
+│   │   └── ReactsModal.tsx
+│   ├── constants
+│   │   └── dummy.tsx
+│   ├── context
+│   │   └── Reacts.tsx
+│   ├── core
+│   │   ├── App.tsx
+│   │   ├── ErrorBoundary.tsx
+│   │   └── Routes.tsx
+│   ├── helpers
+│   │   ├── dayjs.ts
+│   │   ├── index.ts
+│   │   ├── lightGallery.tsx
+│   │   ├── post.tsx
+│   │   ├── profile.ts
+│   │   ├── reacts.tsx
+│   │   └── url.ts
+│   ├── layouts
+│   │   ├── Aside.tsx
+│   │   ├── Base.tsx
+│   │   ├── _brand.tsx
+│   │   ├── Header.tsx
+│   │   ├── _logo.tsx
+│   │   ├── _mainLinks.tsx
+│   │   ├── Minimal.tsx
+│   │   ├── Navbar.tsx
+│   │   └── _user.tsx
+│   ├── main.tsx
+│   ├── pages
+│   │   ├── auth
+│   │   │   ├── Groups.tsx
+│   │   │   ├── Homepage.tsx
+│   │   │   ├── Profile.tsx
+│   │   │   └── SingleGroup.tsx
+│   │   └── public
+│   │       ├── 404.tsx
+│   │       └── Login.tsx
+│   └── vite-env.d.ts
+├── tailwind.config.js
+├── tree.md
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+└── yarn.lock
+```
+
 ## Resources
 
 - <https://preview.themeforest.net/item/cirkle-social-networking-wordpress-theme/full_screen_preview/35127441>
