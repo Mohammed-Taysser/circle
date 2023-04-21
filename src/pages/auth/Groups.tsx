@@ -39,7 +39,7 @@ function Groups() {
         subtitle={`All Groups: ${GROUPS.length}`}
         icon={BsMegaphoneFill}
       />
-      <div className='nice-shadow flex justify-between p-5'>
+      <div className='nice-shadow flex justify-between p-5 bg-white'>
         <form
           className='flex items-center flex-1'
           onSubmit={searchForm.onSubmit(onFSearchFormSubmit)}
@@ -103,7 +103,7 @@ function Groups() {
         {GROUPS.map((group) => (
           <Group colView={view === 'col'} group={group} key={group.id} />
         ))}
-        <div className='nice-shadow p-5 flex justify-center my-10'>
+        <div className='nice-shadow p-5 flex justify-center my-10 bg-white'>
           <Pagination value={activePage} onChange={setPage} total={10} />
         </div>
       </div>
