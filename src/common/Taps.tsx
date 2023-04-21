@@ -1,8 +1,11 @@
-import { NavLink, Outlet } from 'react-router-dom';
-import { TAPS } from '../../helpers';
 import { Suspense } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
-function TapsProfile() {
+function Taps(props: TapsProps) {
+  if (!props.taps.length) {
+    return <></>;
+  }
+
   const cls = (props: { isActive: boolean }) =>
     `text-lg no-underline transition p-2 inline-block border-0 border-b-2 border-solid mx-2 ${
       props.isActive
@@ -12,25 +15,25 @@ function TapsProfile() {
 
   return (
     <>
-      <div className='bg-white p-2 nice-shadow rounded mb-6'>
+      <div className='bg-white p-2 nice-shadow rounded mb-10'>
         <div className=' grid grid-cols-3 md:flex md:flex-wrap'>
-          {TAPS.map((tap) => (
-            <NavLink
-              to={`/profile/10/${tap.path}`}
-              key={tap.path}
-              className={cls}
-            >
+          {props.taps.map((tap) => (
+            <NavLink to={`${tap.path}`} key={tap.path} className={cls} end>
               <tap.icon /> {tap.label}
             </NavLink>
           ))}
         </div>
       </div>
 
-      <Suspense fallback={'profile-loading'}>
+      <Suspense fallback={'tap-loading'}>
         <Outlet />
       </Suspense>
     </>
   );
 }
 
-export default TapsProfile;
+Taps.defaultProps = {
+  taps: [],
+};
+
+export default Taps;
