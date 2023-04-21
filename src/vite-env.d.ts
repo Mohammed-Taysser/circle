@@ -120,8 +120,8 @@ interface Badge {
   users: AvatarDB[];
 }
 
-// Friend
-interface Friend {
+// Member
+interface Member {
   avatar: string;
   cover: string;
   name: string;
@@ -169,4 +169,13 @@ interface SingleTap {
 interface TapsProps {
   taps: SingleTap[];
   className?: string;
+}
+
+// Async
+interface AsyncProps {
+  loading: boolean;
+  fulfilled: boolean;
+  error: any;
+  skeleton: ReactElement;
+  children: ReactElement;
 }
