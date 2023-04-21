@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import Skeleton from './Skeleton';
 
 function Taps(props: TapsProps) {
   if (!props.taps.length) {
@@ -25,7 +26,7 @@ function Taps(props: TapsProps) {
         </div>
       </div>
 
-      <Suspense fallback={'tap-loading'}>
+      <Suspense fallback={<Skeleton.post repeat={6} />}>
         <Outlet />
       </Suspense>
     </>
