@@ -1,32 +1,20 @@
 import { Skeleton as SkeletonM } from '@mantine/core';
 import { uuidv4 } from '../helpers';
 
+/**
+ * Skeleton component
+ * @usage
+
+support 3 type:
+
+- post
+- badge
+- friend
+
+ * @returns {React.ReactElement}
+ */
 const Skeleton = {
   friend: function (props: { repeat?: number }) {
-    return (
-      <div className='lg:grid grid-cols-2 gap-4'>
-        {Array(props.repeat || 1)
-          .fill(0)
-          .map(() => (
-            <div className='nice-shadow rounded-lg p-6 flex' key={uuidv4()}>
-              <SkeletonM height={125} circle />
-              <div className='flex-1 mx-6'>
-                <SkeletonM height={20} mt={6} w={200} />
-                <SkeletonM height={15} mt={6} w={100} />
-                <SkeletonM height={10} mt={6} w={250} />
-                <div className='flex mt-3'>
-                  <SkeletonM height={30} circle />
-                  <SkeletonM height={30} circle />
-                  <SkeletonM height={30} circle />
-                  <SkeletonM height={30} circle />
-                </div>
-              </div>
-            </div>
-          ))}
-      </div>
-    );
-  },
-  group: function (props: { repeat?: number }) {
     return (
       <div className='lg:grid grid-cols-2 gap-4'>
         {Array(props.repeat || 1)

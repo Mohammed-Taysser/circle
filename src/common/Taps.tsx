@@ -1,8 +1,16 @@
-import { Suspense } from 'react';
+import { ReactElement, Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import Skeleton from './Skeleton';
 
-function Taps(props: TapsProps) {
+/**
+ * Taps component
+ * @usage
+
+- use `taps` to set taps value
+
+ * @returns {React.ReactElement}
+ */
+function Taps(props: TapsProps): ReactElement {
   if (!props.taps.length) {
     return <></>;
   }

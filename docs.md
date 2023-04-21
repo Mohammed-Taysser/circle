@@ -19,26 +19,6 @@
 
 ## Components
 
-### Banner
-
-[source](src/common/Banner.tsx)
-
-#### Props
-
-| Props       | Type     | Default    | Description                 |
-| ----------- | -------- | ---------- | --------------------------- |
-| `title`     | `String` | `title`    | add Banner title            |
-| `subtitle`  | `String` | `subtitle` | add Banner subtitle         |
-| `className` | `String` | `''`       | add class to Banner wrapper |
-
-#### Usage
-
-```tsx
-import Banner from './common/Banner';
-
-<Banner title='Profile' subtitle='Welcome to your account dashboard!' />;
-```
-
 ### Avatar
 
 [source](src/common/Avatar.tsx)
@@ -61,23 +41,43 @@ import Avatar from './common/Avatar';
 <Avatar src={avatar.png} />;
 ```
 
-### Friend
+### Banner
 
-[source](src/common/Friend.tsx)
+[source](src/common/Banner.tsx)
 
 #### Props
 
-| Props       | Type     | Default | Description                 |
-| ----------- | -------- | ------- | --------------------------- |
-| `user`      | `Friend` | `null`  | pass friend info            |
-| `className` | `String` | `''`    | add class to Friend wrapper |
+| Props       | Type     | Default    | Description                 |
+| ----------- | -------- | ---------- | --------------------------- |
+| `title`     | `String` | `title`    | add Banner title            |
+| `subtitle`  | `String` | `subtitle` | add Banner subtitle         |
+| `className` | `String` | `''`       | add class to Banner wrapper |
 
 #### Usage
 
 ```tsx
-import Friend from './common/Friend';
+import Banner from './common/Banner';
 
-<Friend user={user} />;
+<Banner title='Profile' subtitle='Welcome to your account dashboard!' />;
+```
+
+### Comments
+
+[source](src/common/Comments.tsx)
+
+#### Props
+
+| Props       | Type            | Default | Description                   |
+| ----------- | --------------- | ------- | ----------------------------- |
+| `comments`  | `PostComment[]` | `null`  | pass Comments info            |
+| `className` | `String`        | `''`    | add class to Comments wrapper |
+
+#### Usage
+
+```tsx
+import Member from './common/Member';
+
+<Member user={user} />;
 ```
 
 ### Group
@@ -100,6 +100,48 @@ import Group from './common/Group';
 <Group group={group} />;
 ```
 
+### InfoBanner
+
+[source](src/common/InfoBanner.tsx)
+
+#### Props
+
+| Props       | Type           | Default | Description                |
+| ----------- | -------------- | ------- | -------------------------- |
+| `cover`     | `string`       | `''`    | pass banner cover          |
+| `avatar`    | `string`       | `''`    | pass banner avatar         |
+| `name`      | `string`       | `''`    | pass banner name           |
+| `username`  | `string`       | `''`    | pass banner username       |
+| `verified`  | `boolean`      | `''`    | pass banner verified value |
+| `extraInfo` | `ReactElement` | `''`    | pass banner extraInfo line |
+
+#### Usage
+
+```tsx
+import InfoBanner from './common/InfoBanner';
+
+<InfoBanner user={user} />;
+```
+
+### Member
+
+[source](src/common/Member.tsx)
+
+#### Props
+
+| Props       | Type     | Default | Description                 |
+| ----------- | -------- | ------- | --------------------------- |
+| `user`      | `Member` | `null`  | pass member info            |
+| `className` | `String` | `''`    | add class to Member wrapper |
+
+#### Usage
+
+```tsx
+import Member from './common/Member';
+
+<Member user={user} />;
+```
+
 ### Post
 
 [source](src/common/Post.tsx)
@@ -119,23 +161,49 @@ import Post from './common/Post';
 <Post post={post} />;
 ```
 
-### Comments
+### Skeleton
 
-[source](src/common/Comment.tsx)
+[source](src/common/Skeleton.tsx)
+
+Dot notation support 3 types
+
+- **post**
+- **friend**
+- **badge**
 
 #### Props
 
-| Props       | Type            | Default | Description                   |
-| ----------- | --------------- | ------- | ----------------------------- |
-| `Comments`  | `PostComment[]` | `[]`    | pass comments                 |
-| `className` | `String`        | `''`    | add class to Comments wrapper |
+| Props    | Type     | Default | Description                   |
+| -------- | -------- | ------- | ----------------------------- |
+| `repeat` | `number` | `1`     | number of Skeleton repetition |
 
 #### Usage
 
 ```tsx
-import Comments from './common/Comment';
+import Skeleton from './common/Skeleton';
 
-<Comments comments={comments} />;
+<Skeleton.post repeat={6} />;
+<Skeleton.friend repeat={6} />;
+<Skeleton.badge repeat={6} />;
+```
+
+### Taps
+
+[source](src/common/Skeleton.tsx)
+
+#### Props
+
+| Props       | Type          | Default | Description               |
+| ----------- | ------------- | ------- | ------------------------- |
+| `taps`      | `SingleTap[]` | `[]`    | array of taps             |
+| `className` | `String`      | `''`    | add class to Taps wrapper |
+
+#### Usage
+
+```tsx
+import Taps from './common/Taps';
+
+<Taps taps={TAPS} />;
 ```
 
 ## Context

@@ -5,15 +5,15 @@ import { timeToX } from '../helpers';
 import AvatarA from './Avatar';
 
 /**
- * Friend component
+ * Member component
  * @usage
 
-- use `className` to add classes to Friend wrapper
-- use `user` to pass friend info
+- use `className` to add classes to Member wrapper
+- use `user` to pass Member info
 
  * @returns {React.ReactElement}
  */
-function Friend(props: { user: Friend; className: string }): ReactElement {
+function Friend(props: { user: Member; className: string }): ReactElement {
   if (!props.user) {
     return <></>;
   }

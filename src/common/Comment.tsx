@@ -60,7 +60,7 @@ function Comments(props: CommentProps): ReactElement {
 
  * @returns {ReactElement}
  */
-function WriteComment(props: { className?: string }) {
+function WriteComment(props: { className?: string }): ReactElement {
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
     initialValues: {
