@@ -1,43 +1,36 @@
-import { Center, SegmentedControl } from '@mantine/core';
-import { useState } from 'react';
-import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { BsColumnsGap } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
 import Post from '../../../common/Post';
+import Skeleton from '../../../common/Skeleton';
 import { POSTS } from '../../../constants/dummy';
 import { Gallery, uuidv4 } from '../../../helpers';
+import Async from '../../../layouts/Async';
+import Photos from '../../taps/Photos';
 
 function PhotosProfile() {
-  const [view, setView] = useState('post');
+  const [state, setState] = useState({
+    loading: true,
+    fulfilled: false,
+    error: null,
+  });
+
+  useEffect(() => {
+    const TimerId = setTimeout(() => {
+      setState({
+        loading: false,
+        fulfilled: true,
+        error: null,
+      });
+    }, 2000);
+
+    return () => {
+      clearTimeout(TimerId);
+    };
+  }, []);
 
   return (
-    <>
-      <div className='nice-shadow flex justify-end p-4 mb-10'>
-        <SegmentedControl
-          color='teal'
-          value={view}
-          onChange={setView}
-          data={[
-            {
-              value: 'gallery',
-              label: (
-                <Center>
-                  <AiOutlineUnorderedList />
-                </Center>
-              ),
-            },
-            {
-              value: 'post',
-              label: (
-                <Center>
-                  <BsColumnsGap />
-                </Center>
-              ),
-            },
-          ]}
-        />
-      </div>
-      <View view={view} gallery={POSTS.gallery} />
-    </>
+    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
+      <Photos posts={POSTS.gallery} />
+    </Async>
   );
 }
 

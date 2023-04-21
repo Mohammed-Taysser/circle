@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fi';
 import { HiOutlineAcademicCap } from 'react-icons/hi';
 import {
+  MdDriveFileRenameOutline,
   MdOutlineCake,
   MdOutlineHomeWork,
   MdOutlineMovie,
@@ -34,7 +35,14 @@ function AboutProfile() {
         <Table fontSize='md'>
           <tbody>
             <tr>
-              <td>Name</td>
+              <td>
+                <div className='flex items-center'>
+                  <ThemeIcon variant='light' size='lg' color='blue'>
+                    <MdDriveFileRenameOutline />
+                  </ThemeIcon>
+                  <span className='mx-2'>Name</span>
+                </div>
+              </td>
               <td>
                 <p>Rebeca Powel</p>
               </td>
@@ -42,7 +50,7 @@ function AboutProfile() {
             <tr>
               <td>
                 <div className='flex items-center'>
-                  <ThemeIcon variant='light' size='lg' color='blue'>
+                  <ThemeIcon variant='light' size='lg' color='grape'>
                     <TfiEmail />
                   </ThemeIcon>
                   <span className='mx-2'>Email</span>
@@ -59,7 +67,7 @@ function AboutProfile() {
             <tr>
               <td>
                 <div className='flex items-center'>
-                  <ThemeIcon variant='light' size='lg' color='grape'>
+                  <ThemeIcon variant='light' size='lg' color='green'>
                     <BsPhone />
                   </ThemeIcon>
                   <span className='mx-2'>Phone</span>
@@ -80,7 +88,7 @@ function AboutProfile() {
             <tr>
               <td>
                 <div className='flex items-center'>
-                  <ThemeIcon variant='light' size='lg' color='green'>
+                  <ThemeIcon variant='light' size='lg' color='orange'>
                     <MdOutlineHomeWork />
                   </ThemeIcon>
                   <span className='mx-2'>Address</span>
@@ -93,7 +101,7 @@ function AboutProfile() {
             <tr>
               <td>
                 <div className='flex items-center'>
-                  <ThemeIcon variant='light' size='lg' color='orange'>
+                  <ThemeIcon variant='light' size='lg' color='pink'>
                     <FiExternalLink />
                   </ThemeIcon>
                   <span className='mx-2'>Website</span>
