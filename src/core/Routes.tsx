@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import BaseLayout from '../layouts/Base';
-import MinimalLayout from '../layouts/Minimal';
 
 function RequireAuth({ children }: { children: JSX.Element }) {
   let location = useLocation();
@@ -25,7 +24,7 @@ const Profile = lazy(() => import('../pages/auth/Profile'));
 const Groups = lazy(() => import('../pages/auth/Groups'));
 const SingleGroup = lazy(() => import('../pages/auth/SingleGroup'));
 
-// profile taps
+// Profile Taps
 const AboutProfile = lazy(
   () => import('../components/profile/taps/About.profile')
 );
@@ -51,6 +50,19 @@ const AudiosProfile = lazy(
   () => import('../components/profile/taps/Audios.profile')
 );
 
+// Group Taps
+const AboutGroup = lazy(() => import('../components/group/taps/About.group'));
+const BadgesGroup = lazy(() => import('../components/group/taps/Badges.group'));
+const PhotosGroup = lazy(() => import('../components/group/taps/Photos.group'));
+const TimelineGroup = lazy(
+  () => import('../components/group/taps/Timeline.group')
+);
+const VideosGroup = lazy(() => import('../components/group/taps/Videos.group'));
+const AudiosGroup = lazy(() => import('../components/group/taps/Audios.group'));
+const MembersGroup = lazy(
+  () => import('../components/group/taps/Members.group')
+);
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -73,19 +85,43 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/group/groupId',
+        path: '/group/:groupId',
         element: (
           <RequireAuth>
             <SingleGroup />
           </RequireAuth>
         ),
+        children: [
+          {
+            index: true,
+            element: <TimelineGroup />,
+          },
+          {
+            path: 'about',
+            element: <AboutGroup />,
+          },
+          {
+            path: 'badges',
+            element: <BadgesGroup />,
+          },
+          {
+            path: 'members',
+            element: <MembersGroup />,
+          },
+          {
+            path: 'photos',
+            element: <PhotosGroup />,
+          },
+          {
+            path: 'videos',
+            element: <VideosGroup />,
+          },
+          {
+            path: 'audio',
+            element: <AudiosGroup />,
+          },
+        ],
       },
-    ],
-  },
-  {
-    path: '/',
-    element: <BaseLayout />,
-    children: [
       {
         path: '/profile/:profileId',
         element: (
@@ -96,10 +132,6 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <TimelineProfile />,
-          },
-          {
-            path: 'timeline',
             element: <TimelineProfile />,
           },
           {
@@ -135,12 +167,12 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '*',
-    element: <NotFound />,
-  },
-  {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '*',
+    element: <NotFound />,
   },
 ]);
 
