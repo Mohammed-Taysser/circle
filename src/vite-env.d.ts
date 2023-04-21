@@ -149,12 +149,24 @@ interface CommentProps {
   className?: string;
 }
 
-// UserBanner
-interface infoBannerProp {
+// InfoBanner
+interface InfoBannerProp {
   cover: string;
   avatar: string;
   name: string;
   username: string;
   extraInfo: ReactElement;
   verified: boolean;
+}
+
+// Taps Props
+interface SingleTap {
+  label: string;
+  path: string;
+  icon: IconType;
+}
+
+interface TapsProps {
+  taps: SingleTap[];
+  className?: string;
 }
