@@ -1,8 +1,8 @@
 import { AspectRatio } from '@mantine/core';
 import plyr from 'plyr';
 import { useEffect } from 'react';
-import Friend from '../common/Friend';
 import Group from '../common/Group';
+import Friend from '../common/Member';
 import {
   Gallery as LightGallery,
   vimeoUrlParser,
