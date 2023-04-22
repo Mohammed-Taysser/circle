@@ -1,5 +1,6 @@
 import {
   Accordion,
+  Alert,
   Avatar,
   Indicator,
   Menu,
@@ -9,6 +10,7 @@ import {
 import { useClipboard } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { ReactElement } from 'react';
+import { BsInfoCircle } from 'react-icons/bs';
 import { CgOptions } from 'react-icons/cg';
 import { FiExternalLink } from 'react-icons/fi';
 import { IoSaveOutline } from 'react-icons/io5';
@@ -33,6 +35,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
   const { post } = props;
   const { setReacts } = useReactsContext();
   const clipboard = useClipboard();
+  const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux
 
   if (!post) {
     return <></>;
@@ -111,8 +114,17 @@ function Post(props: { post: Post; className?: string }): ReactElement {
               </Menu.Item>
 
               {/* TODO: add save post API */}
-              <Menu.Item icon={<IoSaveOutline className='text-lg' />}>
-                Save post
+              <Menu.Item
+                icon={<IoSaveOutline className='text-lg' />}
+                disabled={!isLoggedIn}
+              >
+                {isLoggedIn ? (
+                  <div>Save post</div>
+                ) : (
+                  <Tooltip label='You need to login!'>
+                    <div>Save post</div>
+                  </Tooltip>
+                )}
               </Menu.Item>
             </Menu.Dropdown>
           </Menu>
@@ -154,7 +166,13 @@ function Post(props: { post: Post; className?: string }): ReactElement {
             </div>
             <Accordion.Panel>
               <Comments comments={post.comments} />
-              <WriteComment />
+              {isLoggedIn ? (
+                <WriteComment />
+              ) : (
+                <Alert icon={<BsInfoCircle />} title='Hi there!' color='teal'>
+                  To level a comment you must be login first!
+                </Alert>
+              )}
             </Accordion.Panel>
           </Accordion.Item>
         </Accordion>
