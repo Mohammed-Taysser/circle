@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import Post from '../../../common/Post';
 import Skeleton from '../../../common/Skeleton';
 import { POSTS } from '../../../constants/dummy';
+import Async from '../../../containers/Async';
 import { Gallery, uuidv4 } from '../../../helpers';
-import Async from '../../../layouts/Async';
 import Photos from '../../taps/Photos';
 
 function PhotosGroup() {

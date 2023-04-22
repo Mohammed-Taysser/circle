@@ -1,7 +1,19 @@
 import { Alert, Center, Loader } from '@mantine/core';
+import { ReactElement } from 'react';
 import { MdErrorOutline } from 'react-icons/md';
 
-function Async(props: AsyncProps) {
+/**
+ * Async container
+ * @usage
+
+- use `loading` show skeleton loading
+- use `fulfilled` to show children instead of loading skeleton
+- use `error` to show error alert
+- use `skeleton` to change skeleton loading
+
+ * @returns {React.ReactElement}
+ */
+function Async(props: AsyncProps): ReactElement {
   if (props.loading) {
     return props.skeleton;
   } else if (props.error) {

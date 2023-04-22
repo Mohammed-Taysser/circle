@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Skeleton from '../../../common/Skeleton';
 import { BADGES } from '../../../constants/dummy';
-import Async from '../../../layouts/Async';
+import Async from '../../../containers/Async';
 import Badges from '../../taps/Badges';
 
 function BadgesGroup() {

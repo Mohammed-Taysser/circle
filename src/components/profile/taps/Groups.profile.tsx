@@ -5,7 +5,7 @@ import { BsColumnsGap } from 'react-icons/bs';
 import Group from '../../../common/Group';
 import Skeleton from '../../../common/Skeleton';
 import { GROUPS } from '../../../constants/dummy';
-import Async from '../../../layouts/Async';
+import Async from '../../../containers/Async';
 
 function GroupsProfile() {
   const [view, setView] = useState('list');
