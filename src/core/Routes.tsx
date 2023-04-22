@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import BaseLayout from '../layouts/Base';
+import MinimalLayout from '../layouts/Minimal';
 
 function RequireAuth({ children }: { children: JSX.Element }) {
   let location = useLocation();
@@ -84,6 +85,12 @@ const router = createBrowserRouter([
           </RequireAuth>
         ),
       },
+    ],
+  },
+  {
+    path: '/',
+    element: <MinimalLayout />,
+    children: [
       {
         path: '/group/:groupId',
         element: (
