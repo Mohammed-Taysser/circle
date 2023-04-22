@@ -1,6 +1,7 @@
 import {
   Accordion,
   Alert,
+  Anchor,
   Avatar,
   Indicator,
   Menu,
@@ -170,7 +171,11 @@ function Post(props: { post: Post; className?: string }): ReactElement {
                 <WriteComment />
               ) : (
                 <Alert icon={<BsInfoCircle />} title='Hi there!' color='teal'>
-                  To level a comment you must be login first!
+                  To level a comment you must be
+                  <Anchor component={Link} to='/login' className='mx-1'>
+                    login
+                  </Anchor>
+                  first!
                 </Alert>
               )}
             </Accordion.Panel>
