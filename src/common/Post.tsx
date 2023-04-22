@@ -1,5 +1,18 @@
-import { Accordion, Avatar, Tooltip } from '@mantine/core';
+import {
+  Accordion,
+  Avatar,
+  Indicator,
+  Menu,
+  Tooltip,
+  UnstyledButton
+} from '@mantine/core';
+import { useClipboard } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
 import { ReactElement } from 'react';
+import { CgOptions } from 'react-icons/cg';
+import { FiExternalLink } from 'react-icons/fi';
+import { IoSaveOutline } from 'react-icons/io5';
+import { TbTextRecognition } from 'react-icons/tb';
 import { VscCommentDiscussion } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import { useReactsContext } from '../context/Reacts';
@@ -19,6 +32,7 @@ import Comments, { WriteComment } from './Comment';
 function Post(props: { post: Post; className?: string }): ReactElement {
   const { post } = props;
   const { setReacts } = useReactsContext();
+  const clipboard = useClipboard();
 
   if (!post) {
     return <></>;
@@ -30,13 +44,35 @@ function Post(props: { post: Post; className?: string }): ReactElement {
     setReacts(post.reacts.reacts);
   };
 
+  const onCopyBtnClick = (value: string) => {
+    clipboard.copy(value);
+
+    notifications.show({
+      title: 'Successfully copied',
+      message: 'Hey there, your text has successfully copied!',
+      loading: false,
+      withCloseButton: true,
+      color: '',
+      autoClose: true,
+    });
+  };
+
   return (
     <div className={`post-card ${props.className}`}>
       <div className='post-header'>
         <div className='media'>
           <div className='activity-avatar'>
             <Link to={`/profile/${post.user.id}`}>
-              <RoundedAvatar sm alt='avatar' src={post.user.avatar} />
+              <Indicator
+                inline
+                size={12}
+                offset={7}
+                position='bottom-end'
+                color=''
+                withBorder
+              >
+                <RoundedAvatar sm alt='avatar' src={post.user.avatar} />
+              </Indicator>
             </Link>
             <div className='status-info ml-4'>
               <div className='activity-title'>
@@ -48,6 +84,36 @@ function Post(props: { post: Post; className?: string }): ReactElement {
               <div className='activity-time'>{timeToX(post.publishAt)}</div>
             </div>
           </div>
+        </div>
+        <div className=''>
+          <Menu shadow='md' width={180}>
+            <Menu.Target>
+              <UnstyledButton>
+                <CgOptions />
+              </UnstyledButton>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              <Menu.Item
+                onClick={() => onCopyBtnClick(`/post/${post.id}`)}
+                icon={<FiExternalLink className='text-lg' />}
+              >
+                Copy post URL
+              </Menu.Item>
+              {post.body && (
+                <Menu.Item
+                  onClick={() => onCopyBtnClick(post.body)}
+                  icon={<TbTextRecognition className='text-lg' />}
+                >
+                  Copy post content
+                </Menu.Item>
+              )}
+              {/* TODO: add save post API */}
+              <Menu.Item icon={<IoSaveOutline className='text-lg' />}>
+                Save post
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
         </div>
       </div>
       <div className='post-body'>
