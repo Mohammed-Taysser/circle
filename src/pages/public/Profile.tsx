@@ -11,10 +11,13 @@ import avatar from '../../assets/images/default/avatar.png';
 import cover from '../../assets/images/default/cover.jpg';
 import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
+import { useParams } from 'react-router-dom';
 
 function Profile() {
   useDocumentTitle('Mantine | Profile');
-  const userId = 10;
+  const { profileId = '' } = useParams();
+
+  const userId = profileId;
 
   const TAPS = [
     {
