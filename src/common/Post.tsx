@@ -4,7 +4,7 @@ import {
   Indicator,
   Menu,
   Tooltip,
-  UnstyledButton
+  UnstyledButton,
 } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
@@ -95,19 +95,21 @@ function Post(props: { post: Post; className?: string }): ReactElement {
 
             <Menu.Dropdown>
               <Menu.Item
-                onClick={() => onCopyBtnClick(`/post/${post.id}`)}
+                onClick={() =>
+                  onCopyBtnClick(`${window.location.host}/post/${post.id}`)
+                }
                 icon={<FiExternalLink className='text-lg' />}
               >
                 Copy post URL
               </Menu.Item>
-              {post.body && (
-                <Menu.Item
-                  onClick={() => onCopyBtnClick(post.body)}
-                  icon={<TbTextRecognition className='text-lg' />}
-                >
-                  Copy post content
-                </Menu.Item>
-              )}
+              <Menu.Item
+                onClick={() => onCopyBtnClick(post.body)}
+                icon={<TbTextRecognition className='text-lg' />}
+                disabled={!post.body}
+              >
+                Copy post content
+              </Menu.Item>
+
               {/* TODO: add save post API */}
               <Menu.Item icon={<IoSaveOutline className='text-lg' />}>
                 Save post
