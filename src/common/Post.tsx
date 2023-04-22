@@ -10,6 +10,7 @@ import {
 } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
+import parse from 'html-react-parser';
 import { ReactElement } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
 import { CgOptions } from 'react-icons/cg';
@@ -133,7 +134,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
       </div>
       <div className='post-body'>
         <div className='activity-inner'>
-          <p className='widget-box-status-text'>{post.body}</p>
+          <p className='widget-box-status-text'>{parse(post.body)}</p>
           <Body post={post} />
         </div>
         <Accordion>
