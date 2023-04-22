@@ -1,7 +1,6 @@
 import { lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import BaseLayout from '../layouts/Base';
-import MinimalLayout from '../layouts/Minimal';
 
 function RequireAuth({ children }: { children: JSX.Element }) {
   let location = useLocation();
@@ -17,13 +16,16 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   return children;
 }
 
+// Auth
+const Setting = lazy(() => import('../pages/auth/Setting'));
+
+// Public
 const NotFound = lazy(() => import('../pages/public/404'));
 const Login = lazy(() => import('../pages/public/Login'));
-
-const Homepage = lazy(() => import('../pages/auth/Homepage'));
-const Profile = lazy(() => import('../pages/auth/Profile'));
-const Groups = lazy(() => import('../pages/auth/Groups'));
-const SingleGroup = lazy(() => import('../pages/auth/SingleGroup'));
+const Homepage = lazy(() => import('../pages/public/Homepage'));
+const Profile = lazy(() => import('../pages/public/Profile'));
+const Groups = lazy(() => import('../pages/public/Groups'));
+const SingleGroup = lazy(() => import('../pages/public/SingleGroup'));
 
 // Profile Taps
 const AboutProfile = lazy(
@@ -71,17 +73,17 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: (
-          <RequireAuth>
-            <Homepage />
-          </RequireAuth>
-        ),
+        element: <Homepage />,
       },
       {
         path: '/groups',
+        element: <Groups />,
+      },
+      {
+        path: '/setting',
         element: (
           <RequireAuth>
-            <Groups />
+            <Setting />
           </RequireAuth>
         ),
       },
@@ -89,15 +91,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <MinimalLayout />,
+    element: <BaseLayout minimal />,
     children: [
       {
         path: '/group/:groupId',
-        element: (
-          <RequireAuth>
-            <SingleGroup />
-          </RequireAuth>
-        ),
+        element: <SingleGroup />,
         children: [
           {
             index: true,
@@ -131,11 +129,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/profile/:profileId',
-        element: (
-          <RequireAuth>
-            <Profile />
-          </RequireAuth>
-        ),
+        element: <Profile />,
         children: [
           {
             index: true,
