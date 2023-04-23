@@ -3,7 +3,6 @@ import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { ReactElement, useState } from 'react';
 import { BiSend } from 'react-icons/bi';
-import { BsCheck2 } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { timeToX, uuidv4 } from '../helpers';
 import Avatar from './Avatar';
@@ -93,7 +92,6 @@ function WriteComment(props: { className?: string }): ReactElement {
         loading: false,
         withCloseButton: true,
         autoClose: true,
-        icon: <BsCheck2 />,
       });
     }, 2000);
   };
