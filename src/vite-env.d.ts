@@ -1,6 +1,9 @@
 /// <reference types="react" />
 /// <reference types="vite/client" />
 /// <reference types="react-icons" />
+/// <reference types="@tiptap" />
+/// <reference types="@tiptap/react" />
+/// <reference types="@tiptap/dropzone" />
 
 // ErrorBoundary
 interface ErrorBoundaryProps {
@@ -179,3 +182,35 @@ interface AsyncProps {
   skeleton: ReactElement;
   children: ReactElement;
 }
+
+// Editor
+interface EditorProps {
+  editor?: Editor;
+  dev?: boolean;
+  className?: string;
+}
+
+// Dropzone
+interface DropzoneProps {
+  onDrop: (files: FileWithPath[]) => void;
+  files: FileWithPath[];
+  onError?: ReactEventHandler<HTMLDivElement> | undefined;
+  accept?: string[] | Accept;
+  icon?: IconType;
+  title?: string;
+  subtitle?: string;
+  className?: string;
+  preview?: boolean;
+  maxFiles?: number;
+  maxSize?: number;
+  multiple?: boolean;
+}
+
+// PlyrViewer
+interface PlyrViewerProps {
+  src: string;
+  MediaType: 'video' | 'audio';
+  title?: string;
+}
+
+type PlyrViewerProvider = 'youtube' | 'vimeo' | undefined;
