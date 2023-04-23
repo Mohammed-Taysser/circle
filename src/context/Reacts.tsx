@@ -1,22 +1,27 @@
-import { useDisclosure } from '@mantine/hooks';
+import { ScrollArea } from '@mantine/core';
+import { modals } from '@mantine/modals';
 import React, { useContext, useMemo, useState } from 'react';
-import ReactsModal from '../components/ReactsModal';
 
 const defaultValue: ReactContextDefaultProps = {
   reacts: {},
   setReacts: (_reacts: Reacts) => {},
-  modal: { opened: false, open: () => {}, close: () => {} },
 };
 
 const ReactsContext = React.createContext(defaultValue);
 
 function ReactsProvider(props: { children: React.ReactElement }) {
   const [reacts, setReacts] = useState<Reacts>({});
-  const [opened, { open, close }] = useDisclosure(false);
 
   const setRealReacts = (rct: Reacts) => {
     setReacts(rct);
-    open();
+    modals.openContextModal({
+      modal: 'reacts',
+      title: 'Reacts',
+      innerProps: {},
+      size: 'lg',
+      centered: true,
+      scrollAreaComponent: ScrollArea.Autosize,
+    });
   };
 
   return (
@@ -25,12 +30,10 @@ function ReactsProvider(props: { children: React.ReactElement }) {
         () => ({
           reacts,
           setReacts: setRealReacts,
-          modal: { opened, open, close },
         }),
-        [reacts, opened]
+        [reacts]
       )}
     >
-      <ReactsModal />
       {props.children}
     </ReactsContext.Provider>
   );

@@ -1,12 +1,4 @@
-import {
-  Avatar,
-  Center,
-  Modal,
-  ScrollArea,
-  Table,
-  Tabs,
-  useMantineTheme,
-} from '@mantine/core';
+import { Avatar, Center, Table, Tabs } from '@mantine/core';
 import { VscReactions } from 'react-icons/vsc';
 import { useReactsContext } from '../context/Reacts';
 import { getReactIcon, uuidv4 } from '../helpers';
@@ -53,55 +45,37 @@ const AllReactsRows = (props: { reacts: Reacts }) => {
 };
 
 function ReactsModal() {
-  const theme = useMantineTheme();
-  const { reacts, modal } = useReactsContext();
+  const { reacts } = useReactsContext();
 
   return (
-    <Modal
-      opened={modal.opened}
-      size='lg'
-      centered
-      onClose={modal.close}
-      title='Reacts'
-      scrollAreaComponent={ScrollArea.Autosize}
-      overlayProps={{
-        color:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[9]
-            : theme.colors.gray[2],
-        opacity: 0.55,
-        blur: 3,
-      }}
-    >
-      <Tabs color='teal' defaultValue='all'>
-        <Tabs.List>
-          <Tabs.Tab value='all'>All</Tabs.Tab>
-          {Object.keys(reacts).map((key) => (
-            <Tabs.Tab value={key} key={key}>
-              {getReactIcon(key as ReactsLabel)}
-            </Tabs.Tab>
-          ))}
-        </Tabs.List>
+    <Tabs color='teal' defaultValue='all'>
+      <Tabs.List>
+        <Tabs.Tab value='all'>All</Tabs.Tab>
+        {Object.keys(reacts).map((key) => (
+          <Tabs.Tab value={key} key={key}>
+            {getReactIcon(key as ReactsLabel)}
+          </Tabs.Tab>
+        ))}
+      </Tabs.List>
 
-        <Tabs.Panel value='all' pt='xs'>
+      <Tabs.Panel value='all' pt='xs'>
+        <Table>
+          <tbody>
+            <AllReactsRows reacts={reacts} />
+          </tbody>
+        </Table>
+      </Tabs.Panel>
+
+      {Object.entries(reacts).map(([key, value]) => (
+        <Tabs.Panel value={key} key={key} pt='xs'>
           <Table>
             <tbody>
-              <AllReactsRows reacts={reacts} />
+              <ReactRows type={key} reacts={value} />
             </tbody>
           </Table>
         </Tabs.Panel>
-
-        {Object.entries(reacts).map(([key, value]) => (
-          <Tabs.Panel value={key} key={key} pt='xs'>
-            <Table>
-              <tbody>
-                <ReactRows type={key} reacts={value} />
-              </tbody>
-            </Table>
-          </Tabs.Panel>
-        ))}
-      </Tabs>
-    </Modal>
+      ))}
+    </Tabs>
   );
 }
 

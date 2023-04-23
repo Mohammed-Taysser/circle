@@ -91,49 +91,47 @@ function Post(props: { post: Post; className?: string }): ReactElement {
             </div>
           </div>
         </div>
-        <div className=''>
-          <Menu shadow='md' width={180}>
-            <Menu.Target>
-              <UnstyledButton>
-                <ThemeIcon variant='light' size='lg' color=''>
-                  <CgOptions />
-                </ThemeIcon>
-              </UnstyledButton>
-            </Menu.Target>
+        <Menu shadow='md' width={180}>
+          <Menu.Target>
+            <UnstyledButton>
+              <ThemeIcon variant='light' size='lg' color=''>
+                <CgOptions />
+              </ThemeIcon>
+            </UnstyledButton>
+          </Menu.Target>
 
-            <Menu.Dropdown>
-              <Menu.Item
-                onClick={() =>
-                  onCopyBtnClick(`${window.location.host}/post/${post.id}`)
-                }
-                icon={<FiExternalLink className='text-lg' />}
-              >
-                Copy post URL
-              </Menu.Item>
-              <Menu.Item
-                onClick={() => onCopyBtnClick(post.body)}
-                icon={<TbTextRecognition className='text-lg' />}
-                disabled={!post.body}
-              >
-                Copy post content
-              </Menu.Item>
+          <Menu.Dropdown>
+            <Menu.Item
+              onClick={() =>
+                onCopyBtnClick(`${window.location.host}/post/${post.id}`)
+              }
+              icon={<FiExternalLink className='text-lg' />}
+            >
+              Copy post URL
+            </Menu.Item>
+            <Menu.Item
+              onClick={() => onCopyBtnClick(post.body)}
+              icon={<TbTextRecognition className='text-lg' />}
+              disabled={!post.body}
+            >
+              Copy post content
+            </Menu.Item>
 
-              {/* TODO: add save post API */}
-              <Menu.Item
-                icon={<IoSaveOutline className='text-lg' />}
-                disabled={!isLoggedIn}
-              >
-                {isLoggedIn ? (
+            {/* TODO: add save post API */}
+            <Menu.Item
+              icon={<IoSaveOutline className='text-lg' />}
+              disabled={!isLoggedIn}
+            >
+              {isLoggedIn ? (
+                <div>Save post</div>
+              ) : (
+                <Tooltip label='You need to login!'>
                   <div>Save post</div>
-                ) : (
-                  <Tooltip label='You need to login!'>
-                    <div>Save post</div>
-                  </Tooltip>
-                )}
-              </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
-        </div>
+                </Tooltip>
+              )}
+            </Menu.Item>
+          </Menu.Dropdown>
+        </Menu>
       </div>
       <div className='post-body'>
         <div className='activity-inner'>

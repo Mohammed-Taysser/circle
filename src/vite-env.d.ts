@@ -33,11 +33,6 @@ interface Reacts {
 interface ReactContextDefaultProps {
   reacts: Reacts;
   setReacts: (reacts: Reacts) => void;
-  modal: {
-    opened: boolean;
-    open: () => void;
-    close: () => void;
-  };
 }
 
 // Avatar component
