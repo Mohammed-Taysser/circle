@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import CreatePost from '../../../common/CreatePost';
 import Skeleton from '../../../common/Skeleton';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
@@ -27,6 +28,7 @@ function TimelineGroup() {
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
+      <CreatePost />
       <Timeline posts={POSTS.timeline} />
     </Async>
   );
