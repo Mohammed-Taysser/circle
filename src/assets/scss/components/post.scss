@@ -3,6 +3,7 @@
   border-radius: 8px;
   margin-bottom: 20px;
   background-color: #fff;
+  box-shadow: 0 3px 15px rgba(22, 41, 124, 0.1);
 
   .post-header {
     display: flex;
@@ -15,7 +16,6 @@
 
       .activity-avatar {
         display: flex;
-
 
         .status-info {
           .activity-title {
@@ -30,7 +30,7 @@
               text-transform: capitalize;
               transition: 0.4s;
 
-              &:hover{
+              &:hover {
                 color: $aurora-color;
               }
             }
