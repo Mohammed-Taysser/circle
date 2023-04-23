@@ -214,3 +214,13 @@ interface PlyrViewerProps {
 }
 
 type PlyrViewerProvider = 'youtube' | 'vimeo' | undefined;
+
+// Create post
+interface CreatePostTaps {
+  activeStep: number;
+  postVariant: string;
+  setPostVariant: Dispatch<SetStateAction<string>>;
+  editor: Editor | null;
+  files: FileWithPath[];
+  setFiles: React.Dispatch<React.SetStateAction<FileWithPath[]>>;
+}
