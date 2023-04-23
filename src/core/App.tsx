@@ -3,6 +3,7 @@ import {
   ColorSchemeProvider,
   MantineProvider,
 } from '@mantine/core';
+import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import { Suspense, useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
@@ -34,7 +35,9 @@ function App() {
           <ReactsProvider>
             <Suspense fallback={'loading'}>
               <Notifications position='top-right' zIndex={2077} />
-              <RouterProvider router={router} fallbackElement={'loading'} />
+              <ModalsProvider>
+                <RouterProvider router={router} fallbackElement={'loading'} />
+              </ModalsProvider>
             </Suspense>
           </ReactsProvider>
         </MantineProvider>
