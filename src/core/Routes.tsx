@@ -21,6 +21,7 @@ const Setting = lazy(() => import('../pages/auth/Setting'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
+const EditorHelp = lazy(() => import('../pages/public/help/Editor'));
 const Login = lazy(() => import('../pages/public/Login'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
 const Profile = lazy(() => import('../pages/public/Profile'));
@@ -164,6 +165,10 @@ const router = createBrowserRouter([
             element: <AudiosProfile />,
           },
         ],
+      },
+      {
+        path: '/help/editor',
+        element: <EditorHelp />,
       },
     ],
   },
