@@ -1,71 +1,15 @@
 import { AspectRatio } from '@mantine/core';
-import plyr from 'plyr';
-import { useEffect } from 'react';
 import Group from '../common/Group';
 import Friend from '../common/Member';
-import {
-  Gallery as LightGallery,
-  vimeoUrlParser,
-  youtubeUrlParser,
-} from '../helpers';
+import PlyrViewer from '../common/plyr';
+import { Gallery as LightGallery } from '../helpers';
 
 const PlyrVideo = (props: { post: Post }) => {
-  useEffect(() => {
-    const player = new plyr('.js-plyr');
-    let provider: 'youtube' | 'vimeo' | undefined = undefined;
-    let src = props.post.plyrUrl;
-
-    if (props.post.plyrUrl.includes('youtube')) {
-      provider = 'youtube';
-      src = youtubeUrlParser(props.post.plyrUrl);
-    } else if (props.post.plyrUrl.includes('vimeo')) {
-      provider = 'vimeo';
-      src = vimeoUrlParser(props.post.plyrUrl);
-    }
-
-    player.source = {
-      type: 'video',
-      title: 'Audio',
-      sources: [
-        {
-          src,
-          provider,
-        },
-      ],
-    };
-
-    return () => {
-      player.destroy();
-    };
-  }, []);
-
-  return (
-    <AspectRatio ratio={16 / 9}>
-      <video className='js-plyr plyr'></video>
-    </AspectRatio>
-  );
+  return <PlyrViewer src={props.post.plyrUrl} MediaType='video' />;
 };
 
 const PlyrAudio = (props: { post: Post }) => {
-  useEffect(() => {
-    const player = new plyr('.js-plyr');
-
-    player.source = {
-      type: 'audio',
-      title: 'Audio',
-      sources: [
-        {
-          src: props.post.plyrUrl,
-        },
-      ],
-    };
-
-    return () => {
-      player.destroy();
-    };
-  }, []);
-
-  return <audio className='js-plyr plyr'></audio>;
+  return <PlyrViewer src={props.post.plyrUrl} MediaType='audio' />;
 };
 
 const MapViewer = (props: { post: Post }) => {
@@ -151,6 +95,7 @@ const POST_TYPES = {
     msg: 'Posted an audio',
     component: PlyrAudio,
   },
+  // TODO: is there post layout for it
   POST_MAP: {
     msg: 'Posted an map',
     component: MapViewer,
@@ -165,4 +110,4 @@ const POST_TYPES = {
   },
 };
 
-export { POST_TYPES, PlyrAudio, PlyrVideo };
+export { POST_TYPES };

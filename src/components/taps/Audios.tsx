@@ -5,7 +5,7 @@ import { BsColumnsGap } from 'react-icons/bs';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import Post from '../../common/Post';
-import { PlyrAudio } from '../../helpers';
+import PlyrViewer from '../../common/plyr';
 
 function Audios(props: { audios: Post[] }) {
   const [view, setView] = useState('post');
@@ -49,7 +49,7 @@ const View = (props: { audios: Post[]; view: string }) => {
         {props.audios.map((post) => (
           <div key={post.id} className='flex items-center my-3 md:my-0'>
             <div className='flex-1'>
-              <PlyrAudio post={post} />
+              <PlyrViewer src={post.plyrUrl} MediaType='audio' />
             </div>
             <Anchor
               component={Link}

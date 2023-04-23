@@ -5,7 +5,7 @@ import { BsColumnsGap } from 'react-icons/bs';
 import { RiExternalLinkLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import Post from '../../common/Post';
-import { PlyrVideo } from '../../helpers';
+import PlyrViewer from '../../common/plyr';
 
 function Videos(props: { posts: Post[] }) {
   const [view, setView] = useState('post');
@@ -49,7 +49,7 @@ const View = (props: { videos: Post[]; view: string }) => {
         {props.videos.map((post) => (
           <div key={post.id} className='flex items-center my-3 md:my-0'>
             <div className='flex-1'>
-              <PlyrVideo post={post} />
+              <PlyrViewer src={post.plyrUrl} MediaType='video' />
             </div>
             <Anchor
               component={Link}
