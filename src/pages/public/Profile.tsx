@@ -18,47 +18,45 @@ function Profile() {
   useDocumentTitle('Mantine | Profile');
   const { profileId = '' } = useParams();
 
-  const userId = profileId;
-
   const TAPS = [
     {
       label: 'Timeline',
-      path: `/profile/${userId}`,
+      path: `/profile/${profileId}`,
       icon: TbTimelineEventText,
     },
     {
       label: 'About',
-      path: `/profile/${userId}/about`,
+      path: `/profile/${profileId}/about`,
       icon: RiQuillPenLine,
     },
     {
       label: 'Friends',
-      path: `/profile/${userId}/friends`,
+      path: `/profile/${profileId}/friends`,
       icon: FiUsers,
     },
     {
       label: 'Photos',
-      path: `/profile/${userId}/photos`,
+      path: `/profile/${profileId}/photos`,
       icon: IoImagesOutline,
     },
     {
       label: 'Audio',
-      path: `/profile/${userId}/audio`,
+      path: `/profile/${profileId}/audio`,
       icon: MdOutlineAudiotrack,
     },
     {
       label: 'Videos',
-      path: `/profile/${userId}/videos`,
+      path: `/profile/${profileId}/videos`,
       icon: BsPersonVideo3,
     },
     {
       label: 'Groups',
-      path: `/profile/${userId}/groups`,
+      path: `/profile/${profileId}/groups`,
       icon: MdGroups2,
     },
     {
       label: 'Badges',
-      path: `/profile/${userId}/badges`,
+      path: `/profile/${profileId}/badges`,
       icon: BsPersonBadge,
     },
   ];

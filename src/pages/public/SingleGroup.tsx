@@ -7,6 +7,7 @@ import { MdOutlineAudiotrack } from 'react-icons/md';
 import { RiQuillPenLine } from 'react-icons/ri';
 import { TbEyeglass, TbTimelineEventText } from 'react-icons/tb';
 import { VscFeedback } from 'react-icons/vsc';
+import { useParams } from 'react-router-dom';
 import cover from '../../assets/images/default/cover.jpg';
 import avatar from '../../assets/images/default/group.jpg';
 import InfoBanner from '../../common/InfoBanner';
@@ -14,8 +15,7 @@ import Taps from '../../common/Taps';
 
 function SingleGroup() {
   useDocumentTitle('Mantine | Developer Geeks');
-
-  const groupId = 10;
+  const { groupId = '' } = useParams();
 
   const TAPS = [
     {
