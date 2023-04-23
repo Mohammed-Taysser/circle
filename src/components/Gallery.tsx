@@ -4,9 +4,9 @@ import lgRotate from 'lightgallery/plugins/rotate';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import lgVideo from 'lightgallery/plugins/video';
 import LightGallery from 'lightgallery/react';
-import { uuidv4 } from '.';
+import { uuidv4 } from '../helpers';
 
-const Gallery = (props: { galleryId: string; gallery: string[] }) => {
+function Gallery(props: { galleryId: string; gallery: string[] }) {
   return (
     <LightGallery
       elementClassNames='grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4'
@@ -25,6 +25,6 @@ const Gallery = (props: { galleryId: string; gallery: string[] }) => {
       ))}
     </LightGallery>
   );
-};
+}
 
-export { Gallery };
+export default Gallery;
