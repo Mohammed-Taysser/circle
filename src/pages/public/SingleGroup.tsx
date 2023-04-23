@@ -1,7 +1,8 @@
 import { Tooltip } from '@mantine/core';
 import { useDocumentTitle } from '@mantine/hooks';
-import { BsCardImage, BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
+import { BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
+import { IoImagesOutline } from 'react-icons/io5';
 import { MdOutlineAudiotrack } from 'react-icons/md';
 import { RiQuillPenLine } from 'react-icons/ri';
 import { TbEyeglass, TbTimelineEventText } from 'react-icons/tb';
@@ -35,7 +36,7 @@ function SingleGroup() {
     {
       label: 'Photos',
       path: `/group/${groupId}/photos`,
-      icon: BsCardImage,
+      icon: IoImagesOutline,
     },
     {
       label: 'Audio',
