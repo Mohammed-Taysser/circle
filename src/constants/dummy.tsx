@@ -18,12 +18,12 @@ import gallery7 from '../assets/images/dummy/gallery/gallery-7.jpg';
 import gallery8 from '../assets/images/dummy/gallery/gallery-8.jpg';
 import gallery9 from '../assets/images/dummy/gallery/gallery-9.jpg';
 
+import contentCreator from '../assets/images/dummy/badges/content-creator.svg';
 import featured from '../assets/images/dummy/badges/featured.svg';
 import happy from '../assets/images/dummy/badges/happy.svg';
+import rocket from '../assets/images/dummy/badges/rocket.svg';
 import spring from '../assets/images/dummy/badges/spring.svg';
 import target from '../assets/images/dummy/badges/target.svg';
-import contentCreator from '../assets/images/dummy/badges/content-creator.svg';
-import rocket from '../assets/images/dummy/badges/rocket.svg';
 
 const POSTS: { [key in 'audio' | 'video' | 'gallery' | 'timeline']: Post[] } = {
   audio: [
@@ -1581,7 +1581,7 @@ const BADGES: Badge[] = [
   },
 ];
 
-const FRIENDS: Friend[] = [
+const FRIENDS: Member[] = [
   {
     avatar: avatar1,
     cover: gallery5,
