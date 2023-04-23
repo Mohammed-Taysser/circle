@@ -5,6 +5,7 @@ import {
   Avatar,
   Indicator,
   Menu,
+  ThemeIcon,
   Tooltip,
   UnstyledButton,
 } from '@mantine/core';
@@ -94,7 +95,9 @@ function Post(props: { post: Post; className?: string }): ReactElement {
           <Menu shadow='md' width={180}>
             <Menu.Target>
               <UnstyledButton>
-                <CgOptions />
+                <ThemeIcon variant='light' size='lg' color=''>
+                  <CgOptions />
+                </ThemeIcon>
               </UnstyledButton>
             </Menu.Target>
 
