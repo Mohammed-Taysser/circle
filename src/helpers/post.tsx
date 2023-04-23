@@ -2,7 +2,7 @@ import { AspectRatio } from '@mantine/core';
 import Group from '../common/Group';
 import Friend from '../common/Member';
 import PlyrViewer from '../common/plyr';
-import { Gallery as LightGallery } from '../helpers';
+import LightGallery from '../components/Gallery';
 
 const PlyrVideo = (props: { post: Post }) => {
   return <PlyrViewer src={props.post.plyrUrl} MediaType='video' />;
