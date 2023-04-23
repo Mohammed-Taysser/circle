@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
 import { BsColumnsGap } from 'react-icons/bs';
 import Post from '../../common/Post';
-import { Gallery, uuidv4 } from '../../helpers';
+import { uuidv4 } from '../../helpers';
+import Gallery from '../Gallery';
 
 function Photos(props: { posts: Post[] }) {
   const [view, setView] = useState('post');
