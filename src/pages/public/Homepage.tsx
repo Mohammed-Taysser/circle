@@ -1,5 +1,6 @@
 import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
+import CreatePost from '../../common/CreatePost';
 import Skeleton from '../../common/Skeleton';
 import Timeline from '../../components/taps/Timeline';
 import { POSTS } from '../../constants/dummy';
@@ -30,6 +31,7 @@ function Homepage() {
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
+      <CreatePost />
       <Timeline posts={POSTS.timeline} />
     </Async>
   );
