@@ -24,6 +24,10 @@ import happy from '../assets/images/dummy/badges/happy.svg';
 import rocket from '../assets/images/dummy/badges/rocket.svg';
 import spring from '../assets/images/dummy/badges/spring.svg';
 import target from '../assets/images/dummy/badges/target.svg';
+import trending from '../assets/images/dummy/badges/trending.svg';
+import hotHunter from '../assets/images/dummy/badges/hot-hunter.svg';
+import universe from '../assets/images/dummy/badges/universe.svg';
+import king from '../assets/images/dummy/badges/king.svg';
 
 const POSTS: { [key in 'audio' | 'video' | 'gallery' | 'timeline']: Post[] } = {
   audio: [
@@ -1463,7 +1467,7 @@ const BADGES: Badge[] = [
     earnedAt: new Date('2010'),
   },
   {
-    id: '3',
+    id: '4',
     label: 'Spring',
     picture: spring,
     msg: 'If user earned 140 points credit then unlocked this badge.',
@@ -1502,7 +1506,7 @@ const BADGES: Badge[] = [
     earnedAt: new Date('2013'),
   },
   {
-    id: '4',
+    id: '5',
     label: 'Rocket',
     picture: rocket,
     msg: 'If user earned 100 points credit then unlocked this badge.',
@@ -1541,10 +1545,166 @@ const BADGES: Badge[] = [
     earnedAt: new Date('2013'),
   },
   {
-    id: '4',
+    id: '6',
     label: 'Content Creator',
     picture: contentCreator,
     msg: 'If user earned 50 points credit then unlocked this badge.',
+    users: [
+      {
+        avatar: gallery5,
+        name: 'Mohammed',
+        id: '101',
+      },
+      {
+        avatar: gallery8,
+        name: 'Aurora',
+        id: '1001',
+      },
+      {
+        avatar: avatar3,
+        name: 'Dr strange',
+        id: '1h01',
+      },
+      {
+        avatar: avatar4,
+        name: 'Dr stone',
+        id: '10h01',
+      },
+      {
+        avatar: avatar5,
+        name: 'Dr home',
+        id: '10ggg1',
+      },
+      {
+        avatar: gallery5,
+        name: 'Dr dev',
+        id: '100gggg1',
+      },
+    ],
+    earnedAt: new Date('2013'),
+  },
+  {
+    id: '7',
+    label: 'Trending',
+    picture: trending,
+    msg: 'If user earned 150 points credit then unlocked this badge.',
+    users: [
+      {
+        avatar: gallery5,
+        name: 'Mohammed',
+        id: '101',
+      },
+      {
+        avatar: gallery8,
+        name: 'Aurora',
+        id: '1001',
+      },
+      {
+        avatar: avatar3,
+        name: 'Dr strange',
+        id: '1h01',
+      },
+      {
+        avatar: avatar4,
+        name: 'Dr stone',
+        id: '10h01',
+      },
+      {
+        avatar: avatar5,
+        name: 'Dr home',
+        id: '10ggg1',
+      },
+      {
+        avatar: gallery5,
+        name: 'Dr dev',
+        id: '100gggg1',
+      },
+    ],
+    earnedAt: new Date('2013'),
+  },
+  {
+    id: '8',
+    label: 'Hot Hunter',
+    picture: hotHunter,
+    msg: 'If user earned 160 points credit then unlocked this badge.',
+    users: [
+      {
+        avatar: gallery5,
+        name: 'Mohammed',
+        id: '101',
+      },
+      {
+        avatar: gallery8,
+        name: 'Aurora',
+        id: '1001',
+      },
+      {
+        avatar: avatar3,
+        name: 'Dr strange',
+        id: '1h01',
+      },
+      {
+        avatar: avatar4,
+        name: 'Dr stone',
+        id: '10h01',
+      },
+      {
+        avatar: avatar5,
+        name: 'Dr home',
+        id: '10ggg1',
+      },
+      {
+        avatar: gallery5,
+        name: 'Dr dev',
+        id: '100gggg1',
+      },
+    ],
+    earnedAt: new Date('2013'),
+  },
+  {
+    id: '9',
+    label: 'Universe',
+    picture: universe,
+    msg: 'If user earned 180 points credit then unlocked this badge.',
+    users: [
+      {
+        avatar: gallery5,
+        name: 'Mohammed',
+        id: '101',
+      },
+      {
+        avatar: gallery8,
+        name: 'Aurora',
+        id: '1001',
+      },
+      {
+        avatar: avatar3,
+        name: 'Dr strange',
+        id: '1h01',
+      },
+      {
+        avatar: avatar4,
+        name: 'Dr stone',
+        id: '10h01',
+      },
+      {
+        avatar: avatar5,
+        name: 'Dr home',
+        id: '10ggg1',
+      },
+      {
+        avatar: gallery5,
+        name: 'Dr dev',
+        id: '100gggg1',
+      },
+    ],
+    earnedAt: new Date('2013'),
+  },
+  {
+    id: '10',
+    label: 'King',
+    picture: king,
+    msg: 'If user earned 250 points credit then unlocked this badge.',
     users: [
       {
         avatar: gallery5,
