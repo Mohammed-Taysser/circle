@@ -1,26 +1,15 @@
-import {
-  Affix,
-  AppShell,
-  Aside,
-  Button,
-  MediaQuery,
-  Text,
-  Transition,
-  rem,
-  useMantineTheme,
-} from '@mantine/core';
+import { AppShell, useMantineTheme } from '@mantine/core';
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useWindowScroll } from '@mantine/hooks';
-import { TfiAngleDoubleUp } from 'react-icons/tfi';
-import Head from './Header';
-import Nav from './Navbar';
-import Side from './Aside';
+import Skeleton from '../common/Skeleton';
+import Aside from './Aside';
+import BackToTop from './BackToTop';
+import Header from './Header';
+import Navbar from './Navbar';
 
-export default function AppShellDemo() {
+function Base(props: { minimal?: boolean }) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  const [scroll, scrollTo] = useWindowScroll();
 
   return (
     <AppShell
@@ -32,26 +21,18 @@ export default function AppShellDemo() {
               : theme.colors.gray[0],
         },
       }}
-      navbarOffsetBreakpoint='sm'
-      asideOffsetBreakpoint='sm'
-      navbar={<Nav opened={opened} />}
-      aside={<Side />}
-      header={<Head opened={opened} setOpened={setOpened} />}
+      navbarOffsetBreakpoint='md'
+      asideOffsetBreakpoint='lg'
+      navbar={<Header opened={opened} />} // Props conflict names from mantine itself
+      aside={props.minimal ? undefined : <Aside />}
+      header={<Navbar opened={opened} setOpened={setOpened} />} // Props conflict names from mantine itself
     >
-      <Suspense fallback={`layout-loading`}>
-      <Outlet />
+      <Suspense fallback={<Skeleton.post repeat={10} />}>
+        <Outlet />
+        <BackToTop />
       </Suspense>
-      <Affix position={{ bottom: rem(20), right: rem(20) }}>
-        <Transition transition='slide-up' mounted={scroll.y > 0}>
-          {(transitionStyles) => (
-            <Button
-              leftIcon={<TfiAngleDoubleUp />}
-              style={transitionStyles}
-              onClick={() => scrollTo({ y: 0 })}
-            ></Button>
-          )}
-        </Transition>
-      </Affix>
     </AppShell>
   );
 }
+
+export default Base;
