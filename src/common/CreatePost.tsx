@@ -20,64 +20,65 @@ function CreatePost() {
     setFiles([]);
   }, [postVariant]);
 
-  const openModal = () =>
-    modals.openConfirmModal({
-      title: 'Are you sure to publish ?',
-      centered: true,
-      children: (
-        <Text size='sm'>
-          This action is so important that you are required to confirm it with a
-          modal. Please click one of these buttons to proceed.
-        </Text>
-      ),
-      labels: { confirm: 'Confirm', cancel: 'Cancel' },
-      onCancel: () => {
-        notifications.show({
-          title: 'Canceled',
-          message: 'Confirm modal was canceled',
-          loading: false,
-          withCloseButton: true,
-          color: '',
-          autoClose: true,
-        });
-      },
-      onConfirm: () => {
-        onUserFinish();
-      },
+  const onPublishConfirm = () => {
+    setVisible(true);
+
+    const notificationId = uuidv4();
+
+    notifications.show({
+      id: notificationId,
+      title: 'Publishing post...',
+      message: 'Hey there, your post is being publish!',
+      loading: true,
+      withCloseButton: false,
+      color: '',
+      autoClose: false,
     });
 
-  const onUserFinish = () => {
-    console.log(editor?.getHTML());
-    console.log(postVariant);
-    console.log(files);
+    setTimeout(() => {
+      setVisible(false);
+
+      notifications.update({
+        id: notificationId,
+        title: 'Successfully publish',
+        message: 'Hey there, your post is successfully publish!',
+        loading: false,
+        withCloseButton: true,
+        autoClose: true,
+      });
+    }, 2000);
+  };
+
+  const onPublishBtnClick = () => {
+    console.log({
+      type: postVariant,
+      gallery: files,
+      body: editor?.getHTML(),
+    });
 
     if ((editor?.getText() && editor?.getText() !== '\n') || files.length) {
-      setVisible(true);
-
-      const notificationId = uuidv4();
-
-      notifications.show({
-        id: notificationId,
-        title: 'Publishing post...',
-        message: 'Hey there, your post is being publish!',
-        loading: true,
-        withCloseButton: false,
-        color: '',
-        autoClose: false,
+      modals.openConfirmModal({
+        title: 'Are you sure to publish ?',
+        centered: true,
+        children: (
+          <Text size='sm'>
+            This action is so important that you are required to confirm it with
+            a modal. Please click one of these buttons to proceed.
+          </Text>
+        ),
+        labels: { confirm: 'Confirm', cancel: 'Cancel' },
+        onCancel: () => {
+          notifications.show({
+            title: 'Canceled',
+            message: 'Confirm modal was canceled',
+            loading: false,
+            withCloseButton: true,
+            color: '',
+            autoClose: true,
+          });
+        },
+        onConfirm: onPublishConfirm,
       });
-
-      setTimeout(() => {
-        setVisible(false);
-
-        notifications.update({
-          id: notificationId,
-          title: 'Successfully publish',
-          message: 'Hey there, your post is successfully publish!',
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
-        });
-      }, 2000);
     } else {
       notifications.show({
         title: 'No info provide!',
@@ -116,7 +117,7 @@ function CreatePost() {
         <Button
           onClick={
             activeStep === 2
-              ? openModal
+              ? onPublishBtnClick
               : () => setActiveStep((prev) => prev + 1)
           }
         >
