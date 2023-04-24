@@ -1,4 +1,4 @@
-import { Button, Textarea } from '@mantine/core';
+import { Button, Textarea, Timeline } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { ReactElement, useState } from 'react';
@@ -22,31 +22,38 @@ function Comments(props: CommentProps): ReactElement {
   }
 
   return (
-    <div
-      className={`px-7 pb-5 border-0 border-t border-solid border-t-gray-100 pt-3 ${props.className}`}
+    <Timeline
+      color='teal'
+      className='px-10 pb-5 border-0 border-t border-solid border-t-gray-100 pt-10'
+      lineWidth={3}
+      bulletSize={12}
     >
       {props.comments.map((comment) => (
-        <div className='flex mb-5' key={comment.id}>
-          <Link to={`/profile/${comment.user.id}`}>
-            <Avatar sm alt='avatar' src={comment.user.avatar} />
-          </Link>
-          <div className=' ml-4'>
-            <div>
-              <Link
-                to={`/profile/${comment.user.id}`}
-                className='text-black transition hover:text-aurora no-underline'
-              >
-                {comment.user.name}
-              </Link>
-              <div className=' text-gray-400 text-sm'>
-                {timeToX(comment.publishAt)}
-              </div>
-              <div className='mt-4 text-gray-600'>{comment.body}</div>
+        <Timeline.Item
+          bullet={
+            <Link to={`/profile/${comment.user.id}`}>
+              <Avatar sm alt='avatar' src={comment.user.avatar} />
+            </Link>
+          }
+          className='mb-10'
+          lineVariant='dashed'
+          key={comment.id}
+        >
+          <div className='mx-5 relative -top-4'>
+            <Link
+              to={`/profile/${comment.user.id}`}
+              className='text-black transition hover:text-aurora no-underline'
+            >
+              {comment.user.name}
+            </Link>
+            <div className=' text-gray-400 text-sm'>
+              {timeToX(comment.publishAt)}
             </div>
+            <div className='mt-4 text-gray-600'>{comment.body} </div>
           </div>
-        </div>
+        </Timeline.Item>
       ))}
-    </div>
+    </Timeline>
   );
 }
 
