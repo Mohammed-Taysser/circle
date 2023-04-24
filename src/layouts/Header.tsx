@@ -1,51 +1,37 @@
-import {
-  ActionIcon,
-  Burger,
-  Header,
-  MediaQuery,
-  Text,
-  useMantineColorScheme,
-  useMantineTheme
-} from '@mantine/core';
-import { MantineLogo } from '@mantine/ds';
-import { IconMoonStars, IconSun } from '@tabler/icons-react';
+import { Group, Navbar, ScrollArea, ThemeIcon } from '@mantine/core';
+import { NavLink } from 'react-router-dom';
+import { HEADER_LINKS } from '../constants/layout';
 
-function Head(props: {
-  opened: boolean;
-  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
-}) {
-  const theme = useMantineTheme();
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+function Header(props: { opened: boolean }) {
+  const cls = (props: { isActive: boolean }) =>
+    `my-1 block text-gray-500 no-underline text-base py-2 px-4 mx-2 border-r-4 border-0 border-solid transition ${
+      props.isActive
+        ? 'border-r-aurora'
+        : 'border-r-transparent hover:border-r-aurora'
+    }`;
 
   return (
-    <Header height={{ base: 50, md: 70 }} p='md'>
-      <div className='h-full items-center flex'>
-        <MantineLogo width='100' />
-        <ActionIcon
-          variant='default'
-          onClick={() => toggleColorScheme()}
-          size={30}
-        >
-          {colorScheme === 'dark' ? (
-            <IconSun size='1rem' />
-          ) : (
-            <IconMoonStars size='1rem' />
-          )}
-        </ActionIcon>
-        <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-          <Burger
-            opened={props.opened}
-            onClick={() => props.setOpened((o) => !o)}
-            size='sm'
-            color={theme.colors.gray[6]}
-            mr='xl'
-          />
-        </MediaQuery>
-
-        <Text>Application header</Text>
-      </div>
-    </Header>
+    <Navbar
+      p='md'
+      hiddenBreakpoint='sm'
+      hidden={!props.opened}
+      width={{ sm: 200, lg: 300 }}
+      zIndex={101}
+    >
+      <Navbar.Section grow component={ScrollArea} mx='-xs'>
+        {HEADER_LINKS.map((link) => (
+          <NavLink to={link.path} key={link.path} className={cls}>
+            <Group>
+              <ThemeIcon color={link.color} variant='light'>
+                <link.icon />
+              </ThemeIcon>
+              <p className='m-0'>{link.label}</p>
+            </Group>
+          </NavLink>
+        ))}
+      </Navbar.Section>
+    </Navbar>
   );
 }
 
-export default Head;
+export default Header;
