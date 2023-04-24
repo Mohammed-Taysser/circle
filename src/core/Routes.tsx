@@ -18,6 +18,9 @@ function RequireAuth({ children }: { children: JSX.Element }) {
 
 // Auth
 const Setting = lazy(() => import('../pages/auth/Setting'));
+const YourGroups = lazy(() => import('../pages/auth/YourGroups'));
+const FriendsGroups = lazy(() => import('../pages/auth/FriendsGroups'));
+const SavedPosts = lazy(() => import('../pages/auth/SavedPosts'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
@@ -37,9 +40,6 @@ const BadgesProfile = lazy(
 );
 const FriendsProfile = lazy(
   () => import('../components/profile/taps/Friends.profile')
-);
-const GroupsProfile = lazy(
-  () => import('../components/profile/taps/Groups.profile')
 );
 const PhotosProfile = lazy(
   () => import('../components/profile/taps/Photos.profile')
@@ -79,6 +79,30 @@ const router = createBrowserRouter([
       {
         path: '/groups',
         element: <Groups />,
+      },
+      {
+        path: '/friends-groups',
+        element: (
+          <RequireAuth>
+            <FriendsGroups />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/your-groups',
+        element: (
+          <RequireAuth>
+            <YourGroups />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/saved-posts',
+        element: (
+          <RequireAuth>
+            <SavedPosts />
+          </RequireAuth>
+        ),
       },
       {
         path: '/setting',
@@ -147,10 +171,6 @@ const router = createBrowserRouter([
           {
             path: 'friends',
             element: <FriendsProfile />,
-          },
-          {
-            path: 'groups',
-            element: <GroupsProfile />,
           },
           {
             path: 'photos',
