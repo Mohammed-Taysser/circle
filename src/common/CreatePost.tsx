@@ -80,13 +80,26 @@ function CreatePost() {
         onConfirm: onPublishConfirm,
       });
     } else {
-      notifications.show({
+      modals.open({
         title: 'No info provide!',
-        message:
-          'Hey there, there is no either body or post variant selected, you provide, you must provide one of them.',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
+        centered: true,
+        children: (
+          <>
+            <Text size='sm'>
+              Hey there, there is no either body or post variant selected, you
+              provide, you must provide one of them.
+            </Text>
+            <div className='flex justify-end'>
+              <Button
+                variant='default'
+                onClick={() => modals.closeAll()}
+                mt='md'
+              >
+                Ok, I will fill it
+              </Button>
+            </div>
+          </>
+        ),
       });
     }
   };
