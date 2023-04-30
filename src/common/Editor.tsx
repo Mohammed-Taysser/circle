@@ -115,7 +115,7 @@ function Editor(props: EditorProps): ReactElement {
           </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
 
-        <RichTextEditor.Content className='min-h-[150px]' />
+        <RichTextEditor.Content />
       </RichTextEditor>
       <div className='text-gray-400 text-sm flex justify-between mt-1'>
         <div className='flex gap-2 '>

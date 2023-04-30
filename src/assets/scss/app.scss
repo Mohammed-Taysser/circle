@@ -26,6 +26,10 @@ body {
 }
 
 .post-editor {
+  .ProseMirror {
+    min-height: 150px;
+  }
+
   code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
       Liberation Mono, Courier New, monospace;
