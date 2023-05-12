@@ -219,3 +219,9 @@ interface CreatePostTaps {
   files: FileWithPath[];
   setFiles: React.Dispatch<React.SetStateAction<FileWithPath[]>>;
 }
+
+// Navbar
+interface NavbarProps {
+  opened: boolean;
+  setOpened: React.Dispatch<React.SetStateAction<boolean>>;
+}
