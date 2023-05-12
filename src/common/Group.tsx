@@ -72,11 +72,11 @@ function Group(props: GroupProps): ReactElement {
       <ul className='statistics'>
         <li>
           <span className='statistics-number'>{props.group.posts}</span>
-          <span className='statistics-text'>Group Posts</span>
+          <span className='statistics-text'>Posts</span>
         </li>
         <li>
           <span className='statistics-number'>{props.group.users.length}</span>
-          <span className='statistics-text'>All Member</span>
+          <span className='statistics-text'>Member</span>
         </li>
       </ul>
     </div>
