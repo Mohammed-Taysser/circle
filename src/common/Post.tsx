@@ -76,6 +76,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
                 position='bottom-end'
                 color=''
                 withBorder
+                zIndex={10}
               >
                 <RoundedAvatar sm alt='avatar' src={post.user.avatar} />
               </Indicator>
@@ -91,7 +92,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
             </div>
           </div>
         </div>
-        <Menu shadow='md' width={180}>
+        <Menu shadow='md' width={180} position='bottom-end'>
           <Menu.Target>
             <UnstyledButton>
               <ThemeIcon variant='light' size='lg' color=''>
@@ -100,7 +101,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
             </UnstyledButton>
           </Menu.Target>
 
-          <Menu.Dropdown>
+          <Menu.Dropdown className='border-0 shadow-nice'>
             <Menu.Item
               onClick={() =>
                 onCopyBtnClick(`${window.location.host}/post/${post.id}`)
