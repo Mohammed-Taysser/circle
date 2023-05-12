@@ -1,5 +1,6 @@
 import { FiUsers } from 'react-icons/fi';
 import { HiOutlineUserGroup } from 'react-icons/hi';
+import { MdEventNote } from 'react-icons/md';
 import { TfiSave } from 'react-icons/tfi';
 import { VscFeedback } from 'react-icons/vsc';
 
@@ -27,6 +28,12 @@ const HEADER_LINKS = [
     color: 'violet',
     label: 'Friend Groups',
     path: '/friends-groups',
+  },
+  {
+    icon: MdEventNote,
+    color: 'grape',
+    label: 'Events',
+    path: '/events',
   },
 ];
 
