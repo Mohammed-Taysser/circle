@@ -1,6 +1,6 @@
 import { Avatar, Center, Table, Tabs } from '@mantine/core';
 import { VscReactions } from 'react-icons/vsc';
-import { getReactIcon, uuidv4 } from '../helpers';
+import { REACT_ICONS, uuidv4 } from '../helpers';
 
 function ReactsModal({ innerProps }: ReactModalProps) {
   const { reacts } = innerProps;
@@ -36,6 +36,20 @@ function ReactsModal({ innerProps }: ReactModalProps) {
     </Tabs>
   );
 }
+
+const getReactIcon = (type: PostReactsLabel) => {
+  let info = REACT_ICONS[type];
+
+  if (!info) {
+    return <>No Icon</>;
+  }
+
+  return (
+    <Avatar color={info.color} radius='sm'>
+      <info.icon className='text-lg' />
+    </Avatar>
+  );
+};
 
 const ReactRows = (props: { reacts: SinglePostReact[]; type: string }) => {
   return (
