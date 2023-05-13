@@ -9,17 +9,21 @@ import PlyrViewer from '../common/plyr';
 import LightGallery from '../components/Gallery';
 
 const PlyrVideo = (props: { post: Post }) => {
-  return <PlyrViewer src={props.post.plyrUrl} MediaType='video' />;
+  return <PlyrViewer src={props.post.utilsUrl} MediaType='video' />;
 };
 
 const PlyrAudio = (props: { post: Post }) => {
-  return <PlyrViewer src={props.post.plyrUrl} MediaType='audio' />;
+  return <PlyrViewer src={props.post.utilsUrl} MediaType='audio' />;
 };
 
 const MapViewer = (props: { post: Post }) => {
   return (
     <AspectRatio ratio={16 / 9}>
-      <iframe src={props.post.mapUrl} title='Map' />
+      <iframe
+        src={props.post.utilsUrl}
+        title='Map'
+        className='border-0'
+      />
     </AspectRatio>
   );
 };
@@ -36,7 +40,7 @@ const SoloPicture = (props: { post: Post }) => {
   return (
     <div className='post-thumbs'>
       <img
-        src={props.post.picture}
+        src={props.post.gallery[0]}
         alt='post-cover'
         className='w-full h-96 rounded-lg object-cover'
       />
@@ -48,7 +52,7 @@ const AvatarViewer = (props: { post: Post }) => {
   return (
     <div className='post-thumbs'>
       <img
-        src={props.post.picture}
+        src={props.post.gallery[0]}
         alt='user-cover'
         className='h-[200px] w-[200px] md:h-[300px] md:w-[300px] mx-auto block object-cover rounded-full'
       />
@@ -57,19 +61,19 @@ const AvatarViewer = (props: { post: Post }) => {
 };
 
 const JoinGroup = (props: { post: Post }) => {
-  if (!props.post.group) {
+  if (!props.post.utils) {
     return <></>;
   }
-  return <Group group={props.post.group} />;
+  return <Group group={props.post.utils} />;
 };
 
 const NewFriend = (props: { post: Post }) => {
-  if (!props.post.friend) {
+  if (!props.post.utils) {
     return <></>;
   }
   return (
     <div className='flex justify-center'>
-      <Friend user={props.post.friend} />
+      <Friend user={props.post.utils} />
     </div>
   );
 };
@@ -99,9 +103,8 @@ const POST_TYPES = {
     msg: 'Posted an audio',
     component: PlyrAudio,
   },
-  // TODO: is there post layout for it
   POST_MAP: {
-    msg: 'Posted an map',
+    msg: 'Posted an Location',
     component: MapViewer,
   },
   JOIN_GROUP: {
