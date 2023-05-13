@@ -4,6 +4,7 @@
 /// <reference types="@tiptap" />
 /// <reference types="@tiptap/react" />
 /// <reference types="@tiptap/dropzone" />
+/// <reference types="@mantine/modals" />
 
 // ErrorBoundary
 interface ErrorBoundaryProps {
@@ -16,9 +17,9 @@ interface ErrorBoundaryState {
 }
 
 // Post Reacts
-type ReactsLabel = 'like' | 'love' | 'star' | 'wow';
+type PostReactsLabel = 'like' | 'love' | 'star' | 'wow';
 
-interface SingleReact {
+interface SinglePostReact {
   id: string;
   avatar: string;
   username: string;
@@ -26,13 +27,8 @@ interface SingleReact {
   date: string;
 }
 
-interface Reacts {
-  [key in ReactsLabel]: SingleReact[];
-}
-
-interface ReactContextDefaultProps {
-  reacts: Reacts;
-  setReacts: (reacts: Reacts) => void;
+interface PostReacts {
+  [key in PostReactsLabel]: SinglePostReact[];
 }
 
 // Avatar component
@@ -83,16 +79,13 @@ interface Post {
   user: AvatarDB;
   publishAt: Date;
   body: string;
-  picture: string;
-  plyrUrl: string;
-  mapUrl: string;
-  comments: PostComment[];
+  utilsUrl?: string;
+  comments: number;
   reacts: {
     count: number;
-    reacts: Reacts;
+    reacts: PostReacts; // TODO: remove reacts as it get by API
   };
-  group: Group | null;
-  friend: Friend | null;
+  utils?: Group | Friend;
 }
 
 // Group
@@ -139,12 +132,6 @@ interface BannerProps {
   subtitle: string;
   className?: string;
   icon: IconType;
-}
-
-// Comment
-interface CommentProps {
-  comments: PostComment[];
-  className?: string;
 }
 
 // InfoBanner
@@ -225,3 +212,6 @@ interface NavbarProps {
   opened: boolean;
   setOpened: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+// React Modal Props
+type ReactModalProps = ContextModalProps<{ reacts: PostReacts }>;

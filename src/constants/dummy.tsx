@@ -21,1229 +21,733 @@ import gallery9 from '../assets/images/dummy/gallery/gallery-9.jpg';
 import contentCreator from '../assets/images/dummy/badges/content-creator.svg';
 import featured from '../assets/images/dummy/badges/featured.svg';
 import happy from '../assets/images/dummy/badges/happy.svg';
+import hotHunter from '../assets/images/dummy/badges/hot-hunter.svg';
+import king from '../assets/images/dummy/badges/king.svg';
 import rocket from '../assets/images/dummy/badges/rocket.svg';
 import spring from '../assets/images/dummy/badges/spring.svg';
 import target from '../assets/images/dummy/badges/target.svg';
 import trending from '../assets/images/dummy/badges/trending.svg';
-import hotHunter from '../assets/images/dummy/badges/hot-hunter.svg';
 import universe from '../assets/images/dummy/badges/universe.svg';
-import king from '../assets/images/dummy/badges/king.svg';
 
-const POSTS: { [key in 'audio' | 'video' | 'gallery' | 'timeline']: Post[] } = {
-  audio: [
-    {
-      id: '123gf4dd5gggggg645dfdf45fffffggg6',
-      type: 'POST_AUDIO',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: audio,
-      comments: [],
-      reacts: {
-        count: 0,
-        reacts: {},
-      },
+const POSTS: Post[] = [
+  {
+    id: '12vcvc3gf123df45fffffgdfgg6',
+    type: 'POST_MAP',
+    gallery: [],
+    user: {
+      avatar: avatar2,
+      name: 'Aurora Light',
+      id: '101',
     },
-    {
-      id: '123gf4dd564gfgfgfgfg545ggg6',
-      type: 'POST_AUDIO',
-      gallery: [],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: audio,
-      comments: [],
+    publishAt: new Date(),
+    body: '',
+    utils: {},
+    utilsUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7292334.132660276!2d25.58667530725082!3d26.817360276029994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14368976c35c36e9%3A0x2c45a00925c4c444!2sEgypt!5e0!3m2!1sen!2seg!4v1683980138121!5m2!1sen!2seg',
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar3,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar4,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd56',
-      type: 'POST_AUDIO',
-      gallery: [],
-      user: {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: audio,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar1,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar2,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-  ],
-  video: [
-    {
-      id: '123gf4dd5gggggg645dfdf45fffffggg6',
-      type: 'POST_VIDEO',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd564gfgfgfgfg545ggg6',
-      type: 'POST_VIDEO',
-      gallery: [],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar3,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar4,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd56',
-      type: 'POST_VIDEO',
-      gallery: [],
-      user: {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar1,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar2,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-  ],
-  gallery: [
-    {
-      id: '123gf4dd5gdfdfdfggggg645dfdf45ffffbghfgdfgg6',
-      type: 'UPDATE_AVATAR',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: avatar3,
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd5gggggg645dfdf45fffffgdfgg6',
-      type: 'UPDATE_COVER',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: gallery1,
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd5gggggg645dfdf45fffffggg6',
-      type: 'POST_GALLERY',
-      gallery: [gallery1, gallery2, gallery3, gallery4, gallery5],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd564gfgfgfgfg545ggg6',
-      type: 'POST_GALLERY',
-      gallery: [gallery6, gallery7, gallery8],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar3,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar4,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '123gf4dd56',
-      type: 'POST_GALLERY',
-      gallery: [gallery3, gallery4, gallery5, gallery9, gallery10],
-      user: {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar1,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar2,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-  ],
-  timeline: [
-    {
-      id: '12vcvc3gf123df45fffffgdfgg6',
-      type: 'NEW_FRIEND',
-      gallery: [],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      body: '',
-      friend: {
-        avatar: avatar3,
-        username: 'Horsefighter',
-        name: 'Horsefighter',
-        id: '10j1',
-        cover: gallery3,
-        joinAt: new Date(),
-        badges: [],
-      },
-      picture: avatar3,
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [
-        {
-          id: '123gf4dd5gdfdfdfggggg645dfdf45ffgghfffgdfgg6',
-          user: {
+        star: [
+          {
+            id: '1',
             avatar: avatar2,
-            name: 'Mohammed',
-            id: '10v1',
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
           },
-          body: 'Amazing avatar 😁',
-          publishAt: new Date(),
-        },
-        {
-          id: '123gf4dd5ghipgdfdfdfggggg645dfdf45fffffgdfgg6',
-          user: {
+          {
+            id: '10',
             avatar: avatar3,
-            name: 'Amy Horsefighter',
-            id: '10vv1',
-          },
-          body: 'kiss me la la lal',
-          publishAt: new Date(),
-        },
-      ],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
-    },
-    {
-      id: '12vcvc3gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
-      type: 'JOIN_GROUP',
-      gallery: [],
-      user: {
-        avatar: avatar4,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: {
-        id: '10f',
-        visibility: 'public',
-        title: 'Developer Geeks',
-        users: [
-          {
-            avatar: gallery5,
-            name: 'Mohammed',
-            id: '101',
-          },
-          {
-            avatar: gallery8,
-            name: 'Aurora',
-            id: '1001',
-          },
-          {
-            avatar: avatar3,
-            name: 'Dr strange',
-            id: '1h01',
-          },
-          {
-            avatar: avatar4,
-            name: 'Dr stone',
-            id: '10h01',
-          },
-          {
-            avatar: avatar5,
-            name: 'Dr home',
-            id: '10ggg1',
-          },
-          {
-            avatar: gallery5,
-            name: 'Dr dev',
-            id: '100gggg1',
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
           },
         ],
-        picture: gallery7,
-        cover: gallery3,
-        posts: 1092,
-      },
-      body: '',
-      friend: null,
-      picture: avatar3,
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [
-        {
-          id: '123gf4dd5gdfdfdfggggg645dfdf45ffgghfffgdfgg6',
-          user: {
-            avatar: avatar2,
-            name: 'Mohammed',
-            id: '10v1',
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
           },
-          body: 'Amazing avatar 😁',
-          publishAt: new Date(),
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: '12vcvc3gf123df45fffffgdfgg6',
+    type: 'NEW_FRIEND',
+    gallery: [avatar3],
+    user: {
+      avatar: avatar2,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+
+    body: '',
+    utils: {
+      avatar: avatar3,
+      username: 'Horsefighter',
+      name: 'Horsefighter',
+      id: '10j1',
+      cover: gallery3,
+      joinAt: new Date(),
+      badges: [],
+    },
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
+      reacts: {
+        star: [
+          {
+            id: '1',
+            avatar: avatar2,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar3,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+      },
+    },
+  },
+  {
+    id: '12vcvc3gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
+    type: 'JOIN_GROUP',
+    gallery: [avatar3],
+    user: {
+      avatar: avatar4,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+    utils: {
+      id: '10f',
+      visibility: 'public',
+      title: 'Developer Geeks',
+      users: [
+        {
+          avatar: gallery5,
+          name: 'Mohammed',
+          id: '101',
         },
         {
-          id: '123gf4dd5ghipgdfdfdfggggg645dfdf45fffffgdfgg6',
-          user: {
-            avatar: avatar3,
-            name: 'Amy Horsefighter',
-            id: '10vv1',
-          },
-          body: 'kiss me la la lal',
-          publishAt: new Date(),
+          avatar: gallery8,
+          name: 'Aurora',
+          id: '1001',
+        },
+        {
+          avatar: avatar3,
+          name: 'Dr strange',
+          id: '1h01',
+        },
+        {
+          avatar: avatar4,
+          name: 'Dr stone',
+          id: '10h01',
+        },
+        {
+          avatar: avatar5,
+          name: 'Dr home',
+          id: '10ggg1',
+        },
+        {
+          avatar: gallery5,
+          name: 'Dr dev',
+          id: '100gggg1',
         },
       ],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
-      },
+      picture: gallery7,
+      cover: gallery3,
+      posts: 1092,
     },
-    {
-      id: '123gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
-      type: 'UPDATE_AVATAR',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: avatar3,
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [
-        {
-          id: '123gf4dd5gdfdfdfggggg645dfdf45fvffffgdfgg6',
-          user: {
+    body: '',
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
+      reacts: {
+        star: [
+          {
+            id: '1',
             avatar: avatar2,
-            name: 'Mohammed',
-            id: '10v1',
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
           },
-          body: 'Amazing avatar 😁',
-          publishAt: new Date(),
-        },
-        {
-          id: '123gf4dd5gdfdfdfggggg645dfdf45fffffghdfgg6',
-          user: {
+          {
+            id: '10',
             avatar: avatar3,
-            name: 'Amy Horsefighter',
-            id: '10vv1',
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
           },
-          body: 'kiss me la la lal',
-          publishAt: new Date(),
-        },
-      ],
-      reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd5gggggg645dfdf45fffffgdfgg6',
-      type: 'UPDATE_COVER',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: gallery1,
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
+    type: 'UPDATE_AVATAR',
+    gallery: [avatar3],
+    user: {
+      avatar: avatar1,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 5,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar2,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar3,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd5gggggg645dfdf45fffffggg6',
-      type: 'POST_GALLERY',
-      gallery: [gallery1, gallery2, gallery3, gallery4, gallery5],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123gf4dd5gggggg645dfdf45fffffgdfgg6',
+    type: 'UPDATE_COVER',
+    gallery: [gallery1],
+    user: {
+      avatar: avatar1,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar2,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar3,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd564gfgfgfgfg545ggg6',
-      type: 'POST_GALLERY',
-      gallery: [gallery6, gallery7, gallery8],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123gf4dd5gggggg645dfdf45fffffggg6',
+    type: 'POST_GALLERY',
+    gallery: [gallery1, gallery2, gallery3, gallery4, gallery5],
+    user: {
+      avatar: avatar1,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar3,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar4,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar2,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar3,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd56',
-      type: 'POST_GALLERY',
-      gallery: [gallery3, gallery4, gallery5, gallery9, gallery10],
-      user: {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123gf4dd564gfgfgfgfg545ggg6',
+    type: 'POST_GALLERY',
+    gallery: [gallery6, gallery7, gallery8],
+    user: {
+      avatar: avatar2,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date('2022'),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar1,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar2,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar3,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar4,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd5gggggg645dfdf45ffffmofggg6',
-      type: 'POST_AUDIO',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: audio,
-      comments: [],
+  },
+  {
+    id: '123gf4dd56',
+    type: 'POST_GALLERY',
+    gallery: [gallery3, gallery4, gallery5, gallery9, gallery10],
+    user: {
+      avatar: avatar3,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date('2022'),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar1,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar2,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd56mo4gfgfgfgfg545ggg6',
-      type: 'POST_AUDIO',
-      gallery: [],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: audio,
-      comments: [],
+  },
+  {
+    id: '123gf4dd5gggggg645dfdf45ffffmofggg6',
+    type: 'POST_AUDIO',
+    gallery: [],
+    user: {
+      avatar: avatar1,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: audio,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar3,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar4,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar2,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar3,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123mogf4dd56',
-      type: 'POST_AUDIO',
-      gallery: [],
-      user: {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: audio,
-      comments: [],
+  },
+  {
+    id: '123gf4dd56mo4gfgfgfgfg545ggg6',
+    type: 'POST_AUDIO',
+    gallery: [],
+    user: {
+      avatar: avatar2,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date('2022'),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: audio,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar1,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar2,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar3,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar4,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd5ggggggggggggg645dfdf45fffffggg6',
-      type: 'POST_VIDEO',
-      gallery: [],
-      user: {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date(),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123mogf4dd56',
+    type: 'POST_AUDIO',
+    gallery: [],
+    user: {
+      avatar: avatar3,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date('2022'),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: audio,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar2,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar3,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-          wow: [
-            {
-              id: '1',
-              avatar: avatar4,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar5,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar1,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar2,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd564ghghhggfgfgfgfg545ggg6',
-      type: 'POST_VIDEO',
-      gallery: [],
-      user: {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123gf4dd5ggggggggggggg645dfdf45fffffggg6',
+    type: 'POST_VIDEO',
+    gallery: [],
+    user: {
+      avatar: avatar1,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date(),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar3,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar4,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar2,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar3,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+        wow: [
+          {
+            id: '1',
+            avatar: avatar4,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar5,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-    {
-      id: '123gf4dd5hj6',
-      type: 'POST_VIDEO',
-      gallery: [],
-      user: {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      publishAt: new Date('2022'),
-      group: null,
-      friend: null,
-      body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-      picture: '',
-      mapUrl: '',
-      plyrUrl: video,
-      comments: [],
+  },
+  {
+    id: '123gf4dd564ghghhggfgfgfgfg545ggg6',
+    type: 'POST_VIDEO',
+    gallery: [],
+    user: {
+      avatar: avatar2,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date('2022'),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
       reacts: {
-        count: 101,
-        reacts: {
-          star: [
-            {
-              id: '1',
-              avatar: avatar1,
-              username: 'mohammed-taysser',
-              fullName: 'Mohammed Taysser',
-              date: '2 yearn ago',
-            },
-            {
-              id: '10',
-              avatar: avatar2,
-              username: 'mohammed',
-              fullName: 'Mohammed',
-              date: '2 yearn ago',
-            },
-          ],
-        },
+        star: [
+          {
+            id: '1',
+            avatar: avatar3,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar4,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
       },
     },
-  ],
-};
+  },
+  {
+    id: '123gf4dd5hj6',
+    type: 'POST_VIDEO',
+    gallery: [],
+    user: {
+      avatar: avatar3,
+      name: 'Amy Horsefighter',
+      id: '101',
+    },
+    publishAt: new Date('2022'),
+
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+
+    utilsUrl: video,
+    comments: 10,
+    reacts: {
+      count: 101,
+      reacts: {
+        star: [
+          {
+            id: '1',
+            avatar: avatar1,
+            username: 'mohammed-taysser',
+            fullName: 'Mohammed Taysser',
+            date: '2 yearn ago',
+          },
+          {
+            id: '10',
+            avatar: avatar2,
+            username: 'mohammed',
+            fullName: 'Mohammed',
+            date: '2 yearn ago',
+          },
+        ],
+      },
+    },
+  },
+];
+
+const COMMENTS: PostComment[] = [
+  {
+    id: '123gf4dd5gdfdfdfggggg645dfdf45ffgghfffgdfgg6',
+    user: {
+      avatar: avatar2,
+      name: 'Mohammed',
+      id: '10v1',
+    },
+    body: 'Amazing avatar 😁',
+    publishAt: new Date(),
+  },
+  {
+    id: '123gf4dd5ghipgdfdfdfggggg645dfdf45fffffgdfgg6',
+    user: {
+      avatar: avatar3,
+      name: 'Amy Horsefighter',
+      id: '10vv1',
+    },
+    body: 'kiss me la la lal',
+    publishAt: new Date(),
+  },
+];
 
 const GROUPS: Group[] = [
   {
@@ -1773,4 +1277,25 @@ const FRIENDS: Member[] = [
   },
 ];
 
-export { POSTS, GROUPS, BADGES, FRIENDS };
+const EVENTS = [
+  {
+    id: '1',
+    title: 'Breakfast at the Agency',
+    date: new Date(),
+    info: 'Hi Guys! I propose to go a little earlier at the agency to have breakfast and talk a little more about the new design project we have been working on. Cheers!',
+  },
+  {
+    id: '2',
+    title: "Let's hack the world",
+    date: new Date(),
+    info: 'Hi Guys!',
+  },
+  {
+    id: '3',
+    title: 'love aurora',
+    date: new Date(),
+    info: 'Hi Guys!',
+  },
+];
+
+export { POSTS, COMMENTS, GROUPS, BADGES, FRIENDS, EVENTS };

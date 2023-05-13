@@ -27,7 +27,7 @@ function AudiosProfile() {
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <Audios audios={POSTS.audio} />
+      <Audios audios={POSTS.filter((post) => post.type === 'POST_AUDIO')} />
     </Async>
   );
 }

@@ -49,7 +49,7 @@ const View = (props: { videos: Post[]; view: string }) => {
         {props.videos.map((post) => (
           <div key={post.id} className='flex items-center my-3 md:my-0'>
             <div className='flex-1'>
-              <PlyrViewer src={post.plyrUrl} MediaType='video' />
+              <PlyrViewer src={post.utilsUrl} MediaType='video' />
             </div>
             <Anchor
               component={Link}

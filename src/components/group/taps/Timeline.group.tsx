@@ -29,7 +29,7 @@ function TimelineGroup() {
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
       <CreatePost />
-      <Timeline posts={POSTS.timeline} />
+      <Timeline posts={POSTS} />
     </Async>
   );
 }

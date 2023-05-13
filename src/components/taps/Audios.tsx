@@ -49,7 +49,7 @@ const View = (props: { audios: Post[]; view: string }) => {
         {props.audios.map((post) => (
           <div key={post.id} className='flex items-center my-3 md:my-0'>
             <div className='flex-1'>
-              <PlyrViewer src={post.plyrUrl} MediaType='audio' />
+              <PlyrViewer src={post.utilsUrl} MediaType='audio' />
             </div>
             <Anchor
               component={Link}

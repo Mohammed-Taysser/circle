@@ -27,7 +27,7 @@ function VideosProfile() {
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <Videos posts={POSTS.video} />
+      <Videos posts={POSTS.filter((post) => post.type === 'POST_VIDEO')} />
     </Async>
   );
 }
