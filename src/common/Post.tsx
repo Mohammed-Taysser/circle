@@ -1,29 +1,26 @@
 import {
-  Accordion,
-  Alert,
-  Anchor,
   Avatar,
   Indicator,
   Menu,
+  ScrollArea,
   ThemeIcon,
   Tooltip,
   UnstyledButton,
 } from '@mantine/core';
 import { useClipboard } from '@mantine/hooks';
+import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import parse from 'html-react-parser';
 import { ReactElement } from 'react';
-import { BsInfoCircle } from 'react-icons/bs';
 import { CgOptions } from 'react-icons/cg';
 import { FiExternalLink } from 'react-icons/fi';
 import { IoSaveOutline } from 'react-icons/io5';
 import { TbTextRecognition } from 'react-icons/tb';
 import { VscCommentDiscussion } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
-import { useReactsContext } from '../context/Reacts';
-import { POST_TYPES, REACT_ICONS, timeToX } from '../helpers';
+import { REACT_ICONS } from '../constants/reacts';
+import { POST_TYPES, timeToX } from '../helpers';
 import RoundedAvatar from './Avatar';
-import Comments, { WriteComment } from './Comment';
 
 /**
  * Post component
@@ -36,7 +33,6 @@ import Comments, { WriteComment } from './Comment';
  */
 function Post(props: { post: Post; className?: string }): ReactElement {
   const { post } = props;
-  const { setReacts } = useReactsContext();
   const clipboard = useClipboard();
   const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux
 
@@ -45,10 +41,6 @@ function Post(props: { post: Post; className?: string }): ReactElement {
   }
 
   const Body = POST_TYPES[post.type].component;
-
-  const onReactsClick = () => {
-    setReacts(post.reacts.reacts);
-  };
 
   const onCopyBtnClick = (value: string) => {
     clipboard.copy(value);
@@ -84,7 +76,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
             <div className='status-info ml-4'>
               <div className='activity-title'>
                 <Link to={`/profile/${post.user.id}`}>{post.user.name}</Link>
-                <span className='block md:inline-block'>
+                <span className='block md:inline-block text-sm'>
                   {POST_TYPES[post.type].msg}
                 </span>
               </div>
@@ -139,51 +131,57 @@ function Post(props: { post: Post; className?: string }): ReactElement {
           <p className='widget-box-status-text'>{parse(post.body)}</p>
           <Body post={post} />
         </div>
-        <Accordion>
-          <Accordion.Item value='comment' className='border-0'>
-            <div className='post-meta-wrap'>
-              <div className='cursor-pointer' onClick={onReactsClick}>
-                <Tooltip.Group openDelay={300} closeDelay={100}>
-                  <Avatar.Group spacing='sm'>
-                    {Object.keys(post.reacts.reacts).map((key) => {
-                      const react = REACT_ICONS[key as ReactsLabel];
-                      return (
-                        <Tooltip label={key} key={key} withArrow>
-                          <Avatar radius='xl' color={react.color}>
-                            <react.icon />
-                          </Avatar>
-                        </Tooltip>
-                      );
-                    })}
-                    <Avatar radius='xl'>{post.reacts.count}</Avatar>
-                  </Avatar.Group>
-                </Tooltip.Group>
-              </div>
-              <div className='post-meta activity-meta'>
-                <Accordion.Control>
-                  <div className='meta-text flex items-center'>
-                    <VscCommentDiscussion className='text-lg mr-1' />
-                    <span>{post.comments.length}</span>
-                  </div>
-                </Accordion.Control>
-              </div>
+        <div className='post-meta-wrap'>
+          <div
+            className='cursor-pointer'
+            onClick={() =>
+              modals.openContextModal({
+                modal: 'reacts',
+                title: '',
+                innerProps: {
+                  reacts: post.reacts.reacts,
+                },
+                size: 'lg',
+                scrollAreaComponent: ScrollArea.Autosize,
+                centered: true,
+              })
+            }
+          >
+            <Tooltip.Group openDelay={300} closeDelay={100}>
+              <Avatar.Group spacing='sm'>
+                {Object.keys(post.reacts.reacts).map((key) => {
+                  const react = REACT_ICONS[key as PostReactsLabel];
+                  return (
+                    <Tooltip label={key} key={key} withArrow>
+                      <Avatar radius='xl' color={react.color}>
+                        <react.icon />
+                      </Avatar>
+                    </Tooltip>
+                  );
+                })}
+                <Avatar radius='xl'>{post.reacts.count}</Avatar>
+              </Avatar.Group>
+            </Tooltip.Group>
+          </div>
+          <div className='post-meta activity-meta'>
+            <div
+              className='meta-text flex items-center cursor-pointer'
+              onClick={() =>
+                modals.openContextModal({
+                  modal: 'comments',
+                  title: '',
+                  innerProps: {},
+                  size: 'lg',
+                  centered: true,
+                  scrollAreaComponent: ScrollArea.Autosize,
+                })
+              }
+            >
+              <VscCommentDiscussion className='text-lg mr-1' />
+              <span>{post.comments}</span>
             </div>
-            <Accordion.Panel>
-              <Comments comments={post.comments} />
-              {isLoggedIn ? (
-                <WriteComment />
-              ) : (
-                <Alert icon={<BsInfoCircle />} title='Hi there!' color='teal'>
-                  To level a comment you must be
-                  <Anchor component={Link} to='/login' className='mx-1'>
-                    login
-                  </Anchor>
-                  first!
-                </Alert>
-              )}
-            </Accordion.Panel>
-          </Accordion.Item>
-        </Accordion>
+          </div>
+        </div>
       </div>
     </div>
   );
