@@ -46,6 +46,26 @@ interface GroupProps {
   className?: string;
 }
 
+// Post Component
+interface PostProps {
+  post: Post;
+  className?: string;
+  full?: boolean;
+}
+
+// Post Body
+interface PostBodyProps {
+  post: Post;
+  full?: boolean;
+}
+
+// Post Gallery
+interface PostGallery {
+  galleryId: string;
+  gallery: string[];
+  full?: boolean;
+}
+
 // Avatar returned by API
 interface AvatarDB {
   avatar: string;
@@ -54,7 +74,7 @@ interface AvatarDB {
 }
 
 // Post
-type PostType =
+type PostVariant =
   | 'UPDATE_COVER'
   | 'UPDATE_AVATAR'
   | 'POST_UPDATE'
@@ -74,7 +94,7 @@ interface PostComment {
 
 interface Post {
   id: string;
-  type: PostType;
+  variant: PostVariant;
   gallery: string[];
   user: AvatarDB;
   publishAt: Date;
