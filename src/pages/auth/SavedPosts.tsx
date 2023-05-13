@@ -1,7 +1,4 @@
-import {
-  Pagination,
-  Select
-} from '@mantine/core';
+import { Pagination, Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
@@ -50,7 +47,7 @@ function YourGroups() {
     <>
       <Banner
         title='Saved Posts'
-        subtitle={`Saved Posts: ${POSTS.timeline.length}`}
+        subtitle={`Saved Posts: ${POSTS.length}`}
         icon={VscFeedback}
       />
       <div className='nice-shadow flex justify-between mb-10 p-5 bg-white'>
@@ -80,7 +77,7 @@ function YourGroups() {
       </div>
       <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
         <div className={`my-10 `}>
-          {POSTS.timeline.map((post) => (
+          {POSTS.map((post) => (
             <Post post={post} key={post.id} />
           ))}
         </div>
