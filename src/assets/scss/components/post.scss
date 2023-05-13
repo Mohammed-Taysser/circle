@@ -66,39 +66,35 @@
       .post-thumbs {
         margin-bottom: 6px;
 
-        .gallery-wrapper {
-          gap: 15px;
+        a {
+          position: relative;
+          border-radius: 10px;
 
-          a {
-            position: relative;
+          &:hover:before {
+            opacity: 1;
+          }
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #0000003d;
+            opacity: 0;
             border-radius: 10px;
+            transition: 0.4s;
+          }
 
-            &:hover:before {
-              opacity: 1;
-            }
-
-            &::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              bottom: 0;
-              right: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background-color: #0000003d;
-              opacity: 0;
-              border-radius: 10px;
-              transition: 0.4s;
-            }
-
-            img {
-              max-width: 100%;
-              height: 240px;
-              width: 100%;
-              object-fit: cover;
-              border-radius: 10px;
-            }
+          img {
+            max-width: 100%;
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
           }
         }
       }

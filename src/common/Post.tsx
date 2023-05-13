@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Avatar,
   Indicator,
   Menu,
@@ -31,7 +32,7 @@ import RoundedAvatar from './Avatar';
 
  * @returns {ReactElement}
  */
-function Post(props: { post: Post; className?: string }): ReactElement {
+function Post(props: PostProps): ReactElement {
   const { post } = props;
   const clipboard = useClipboard();
   const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux
@@ -40,7 +41,7 @@ function Post(props: { post: Post; className?: string }): ReactElement {
     return <></>;
   }
 
-  const Body = POST_TYPES[post.type].component;
+  const Body = POST_TYPES[post.variant].component;
 
   const onCopyBtnClick = (value: string) => {
     clipboard.copy(value);
@@ -77,10 +78,21 @@ function Post(props: { post: Post; className?: string }): ReactElement {
               <div className='activity-title'>
                 <Link to={`/profile/${post.user.id}`}>{post.user.name}</Link>
                 <span className='block md:inline-block text-sm'>
-                  {POST_TYPES[post.type].msg}
+                  {POST_TYPES[post.variant].msg}
                 </span>
               </div>
-              <div className='activity-time'>{timeToX(post.publishAt)}</div>
+              <div className='activity-time'>
+                <span>{timeToX(post.publishAt)}</span>
+                {!props.full && (
+                  <Anchor
+                    component={Link}
+                    to={`/post/${post.id}`}
+                    className='mx-1'
+                  >
+                    <FiExternalLink />
+                  </Anchor>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -128,8 +140,30 @@ function Post(props: { post: Post; className?: string }): ReactElement {
       </div>
       <div className='post-body'>
         <div className='activity-inner'>
-          <p className='widget-box-status-text'>{parse(post.body)}</p>
-          <Body post={post} />
+          <p className='widget-box-status-text'>
+            {props.full ? (
+              parse(post.body)
+            ) : (
+              <>
+                {parse(post.body.substring(0, 1000))}
+                {post.body.length >= 1000 ? (
+                  <>
+                    <span className='mx-1'>.....</span>
+                    <Anchor
+                      component={Link}
+                      to={`/post/${post.id}`}
+                      className='mb-3 inline-block'
+                    >
+                      Continue Reading
+                    </Anchor>
+                  </>
+                ) : (
+                  ''
+                )}
+              </>
+            )}
+          </p>
+          <Body post={post} full={props.full} />
         </div>
         <div className='post-meta-wrap'>
           <div

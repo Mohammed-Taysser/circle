@@ -6,49 +6,37 @@ import { MdOutlineAudiotrack, MdOutlineFormatShapes } from 'react-icons/md';
 import Group from '../common/Group';
 import Friend from '../common/Member';
 import PlyrViewer from '../common/plyr';
-import LightGallery from '../components/Gallery';
+import GalleryViewer from '../components/Gallery';
 
-const PlyrVideo = (props: { post: Post }) => {
+const PlyrVideo = (props: PostBodyProps) => {
   return <PlyrViewer src={props.post.utilsUrl} MediaType='video' />;
 };
 
-const PlyrAudio = (props: { post: Post }) => {
+const PlyrAudio = (props: PostBodyProps) => {
   return <PlyrViewer src={props.post.utilsUrl} MediaType='audio' />;
 };
 
-const MapViewer = (props: { post: Post }) => {
+const MapViewer = (props: PostBodyProps) => {
   return (
     <AspectRatio ratio={16 / 9}>
-      <iframe
-        src={props.post.utilsUrl}
-        title='Map'
-        className='border-0'
-      />
+      <iframe src={props.post.utilsUrl} title='Map' className='border-0' />
     </AspectRatio>
   );
 };
 
-const Gallery = (props: { post: Post }) => {
+const Gallery = (props: PostBodyProps) => {
   return (
     <div className='post-thumbs'>
-      <LightGallery galleryId={props.post.id} gallery={props.post.gallery} />
-    </div>
-  );
-};
-
-const SoloPicture = (props: { post: Post }) => {
-  return (
-    <div className='post-thumbs'>
-      <img
-        src={props.post.gallery[0]}
-        alt='post-cover'
-        className='w-full h-96 rounded-lg object-cover'
+      <GalleryViewer
+        galleryId={props.post.id}
+        gallery={props.post.gallery}
+        full={props.full}
       />
     </div>
   );
 };
 
-const AvatarViewer = (props: { post: Post }) => {
+const AvatarViewer = (props: PostBodyProps) => {
   return (
     <div className='post-thumbs'>
       <img
@@ -60,14 +48,14 @@ const AvatarViewer = (props: { post: Post }) => {
   );
 };
 
-const JoinGroup = (props: { post: Post }) => {
+const JoinGroup = (props: PostBodyProps) => {
   if (!props.post.utils) {
     return <></>;
   }
   return <Group group={props.post.utils} />;
 };
 
-const NewFriend = (props: { post: Post }) => {
+const NewFriend = (props: PostBodyProps) => {
   if (!props.post.utils) {
     return <></>;
   }
@@ -81,7 +69,7 @@ const NewFriend = (props: { post: Post }) => {
 const POST_TYPES = {
   UPDATE_COVER: {
     msg: 'Updated his cover photo.',
-    component: SoloPicture,
+    component: Gallery,
   },
   UPDATE_AVATAR: {
     msg: 'Updated his profile picture.',
@@ -89,7 +77,7 @@ const POST_TYPES = {
   },
   POST_UPDATE: {
     msg: 'Posted an update',
-    component: SoloPicture,
+    component: Gallery,
   },
   POST_GALLERY: {
     msg: 'Published an gallery',
