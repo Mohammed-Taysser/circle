@@ -30,6 +30,7 @@ const Homepage = lazy(() => import('../pages/public/Homepage'));
 const Profile = lazy(() => import('../pages/public/Profile'));
 const Groups = lazy(() => import('../pages/public/Groups'));
 const SingleGroup = lazy(() => import('../pages/public/SingleGroup'));
+const PostDetails = lazy(() => import('../pages/public/PostDetails'));
 
 // Profile Taps
 const AboutProfile = lazy(
@@ -189,6 +190,10 @@ const router = createBrowserRouter([
       {
         path: '/help/editor',
         element: <EditorHelp />,
+      },
+      {
+        path: '/post/:postId',
+        element: <PostDetails />,
       },
     ],
   },
