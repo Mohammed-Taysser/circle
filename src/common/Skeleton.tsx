@@ -10,6 +10,7 @@ support 3 type:
 - post
 - badge
 - friend
+- comment
 
  * @returns {React.ReactElement}
  */
@@ -101,6 +102,28 @@ const Skeleton = {
                 <SkeletonM height={30} circle />
                 <SkeletonM height={30} circle />
               </div>
+            </div>
+          ))}
+      </div>
+    );
+  },
+  comment: function (props: { repeat?: number }) {
+    return (
+      <div className=''>
+        {Array(props.repeat || 1)
+          .fill(0)
+          .map(() => (
+            <div key={uuidv4()} className='mb-10 nice-shadow rounded-lg p-6 '>
+              <div className='flex items-center'>
+                <SkeletonM height={70} circle />
+                <div className='flex- mx-6'>
+                  <SkeletonM height={20} mt={6} w={200} />
+                  <SkeletonM height={15} mt={6} w={150} />
+                </div>
+              </div>
+
+              <SkeletonM height={15} mt={20} w='100%' />
+              <SkeletonM height={15} mt={2} w='100%' />
             </div>
           ))}
       </div>
