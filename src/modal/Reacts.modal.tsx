@@ -1,6 +1,7 @@
 import { Avatar, Center, Table, Tabs } from '@mantine/core';
 import { VscReactions } from 'react-icons/vsc';
-import { REACT_ICONS, uuidv4 } from '../helpers';
+import { REACT_ICONS } from '../constants/reacts';
+import { uuidv4 } from '../helpers';
 
 function ReactsModal({ innerProps }: ReactModalProps) {
   const { reacts } = innerProps;

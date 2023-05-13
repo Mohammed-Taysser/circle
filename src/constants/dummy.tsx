@@ -32,7 +32,7 @@ import universe from '../assets/images/dummy/badges/universe.svg';
 const POSTS: Post[] = [
   {
     id: '12vcvc3gf123df45fffffgdfgg6',
-    type: 'POST_MAP',
+    variant: 'POST_MAP',
     gallery: [],
     user: {
       avatar: avatar2,
@@ -40,7 +40,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
-    body: '',
+    body: `We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally guitarist for Martin Kesici's band, and Tobias Schultka. The band was originally meant as a joke, but progressed into being a more serious musical duo. The name for the band has no particular meaning, although its origins were suggested from when the two original members were driving in a car operated by Marcel Neumann and an accident almost occurred. Neumann found Schultka "so funny that he briefly lost control of the vehicle." Many of their songs from this point were covers of German folk tales and nursery rhymes. <br/>We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally guitarist for Martin Kesici's band, and Tobias Schultka. The band was originally meant as a joke, but progressed into being a more serious musical duo. The name for the band has no particular meaning, although its origins were suggested from when the two original members were driving in a car operated by Marcel Neumann and an accident almost occurred. Neumann found Schultka "so funny that he briefly lost control of the vehicle." Many of their songs from this point were covers of German folk tales and nursery rhymes.`,
     utils: {},
     utilsUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7292334.132660276!2d25.58667530725082!3d26.817360276029994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14368976c35c36e9%3A0x2c45a00925c4c444!2sEgypt!5e0!3m2!1sen!2seg!4v1683980138121!5m2!1sen!2seg',
@@ -85,7 +85,7 @@ const POSTS: Post[] = [
   },
   {
     id: '12vcvc3gf123df45fffffgdfgg6',
-    type: 'NEW_FRIEND',
+    variant: 'NEW_FRIEND',
     gallery: [avatar3],
     user: {
       avatar: avatar2,
@@ -147,7 +147,7 @@ const POSTS: Post[] = [
   },
   {
     id: '12vcvc3gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
-    type: 'JOIN_GROUP',
+    variant: 'JOIN_GROUP',
     gallery: [avatar3],
     user: {
       avatar: avatar4,
@@ -239,7 +239,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
-    type: 'UPDATE_AVATAR',
+    variant: 'UPDATE_AVATAR',
     gallery: [avatar3],
     user: {
       avatar: avatar1,
@@ -292,7 +292,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd5gggggg645dfdf45fffffgdfgg6',
-    type: 'UPDATE_COVER',
+    variant: 'UPDATE_COVER',
     gallery: [gallery1],
     user: {
       avatar: avatar1,
@@ -345,7 +345,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd5gggggg645dfdf45fffffggg6',
-    type: 'POST_GALLERY',
+    variant: 'POST_GALLERY',
     gallery: [gallery1, gallery2, gallery3, gallery4, gallery5],
     user: {
       avatar: avatar1,
@@ -398,7 +398,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd564gfgfgfgfg545ggg6',
-    type: 'POST_GALLERY',
+    variant: 'POST_GALLERY',
     gallery: [gallery6, gallery7, gallery8],
     user: {
       avatar: avatar2,
@@ -435,7 +435,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd56',
-    type: 'POST_GALLERY',
+    variant: 'POST_GALLERY',
     gallery: [gallery3, gallery4, gallery5, gallery9, gallery10],
     user: {
       avatar: avatar3,
@@ -472,7 +472,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd5gggggg645dfdf45ffffmofggg6',
-    type: 'POST_AUDIO',
+    variant: 'POST_AUDIO',
     gallery: [],
     user: {
       avatar: avatar1,
@@ -525,7 +525,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd56mo4gfgfgfgfg545ggg6',
-    type: 'POST_AUDIO',
+    variant: 'POST_AUDIO',
     gallery: [],
     user: {
       avatar: avatar2,
@@ -562,7 +562,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123mogf4dd56',
-    type: 'POST_AUDIO',
+    variant: 'POST_AUDIO',
     gallery: [],
     user: {
       avatar: avatar3,
@@ -599,7 +599,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd5ggggggggggggg645dfdf45fffffggg6',
-    type: 'POST_VIDEO',
+    variant: 'POST_VIDEO',
     gallery: [],
     user: {
       avatar: avatar1,
@@ -652,7 +652,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd564ghghhggfgfgfgfg545ggg6',
-    type: 'POST_VIDEO',
+    variant: 'POST_VIDEO',
     gallery: [],
     user: {
       avatar: avatar2,
@@ -689,7 +689,7 @@ const POSTS: Post[] = [
   },
   {
     id: '123gf4dd5hj6',
-    type: 'POST_VIDEO',
+    variant: 'POST_VIDEO',
     gallery: [],
     user: {
       avatar: avatar3,

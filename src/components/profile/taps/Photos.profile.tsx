@@ -27,7 +27,7 @@ function PhotosProfile() {
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <Photos posts={POSTS.filter((post) => post.type === 'POST_GALLERY')} />
+      <Photos posts={POSTS.filter((post) => post.variant === 'POST_GALLERY')} />
     </Async>
   );
 }

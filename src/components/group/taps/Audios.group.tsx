@@ -27,7 +27,7 @@ function AudiosGroup() {
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <Audios audios={POSTS.filter((post) => post.type === 'POST_AUDIO')} />
+      <Audios audios={POSTS.filter((post) => post.variant === 'POST_AUDIO')} />
     </Async>
   );
 }
