@@ -9,12 +9,13 @@ import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
 import { useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { ReactsProvider } from '../context/Reacts';
+import CommentsModal from '../modal/Comments.modal';
+import ReactsModal from '../modal/Reacts.modal';
+import SearchModal from '../modal/Search.modal';
 import ErrorBoundary from './ErrorBoundary';
 import router from './Routes';
 
 import '../assets/scss/app.scss';
-import ReactsModal from '../components/ReactsModal';
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -35,21 +36,25 @@ function App() {
             colorScheme,
           }}
         >
-          <ReactsProvider>
-            <>
-              <Notifications position='top-right' zIndex={2077} />
-              <ModalsProvider modals={{ reacts: ReactsModal }}>
-                <RouterProvider
-                  router={router}
-                  fallbackElement={
-                    <Center h={200}>
-                      <Loader color='teal' size='xl' variant='dots' />
-                    </Center>
-                  }
-                />
-              </ModalsProvider>
-            </>
-          </ReactsProvider>
+          <>
+            <Notifications position='top-right' zIndex={2077} />
+            <ModalsProvider
+              modals={{
+                reacts: ReactsModal,
+                comments: CommentsModal,
+                search: SearchModal,
+              }}
+            >
+              <RouterProvider
+                router={router}
+                fallbackElement={
+                  <Center h={200}>
+                    <Loader color='teal' size='xl' variant='dots' />
+                  </Center>
+                }
+              />
+            </ModalsProvider>
+          </>
         </MantineProvider>
       </ColorSchemeProvider>
     </ErrorBoundary>
