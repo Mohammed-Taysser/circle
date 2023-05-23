@@ -72,6 +72,33 @@ body {
   }
 }
 
+.events-page {
+  --fc-event-bg-color: #{$aurora-color};
+  --fc-event-border-color: #{$aurora-color};
+
+  .fc .fc-button-primary {
+    text-transform: capitalize;
+    border-color: #ced4da;
+    background-color: #fff;
+    outline: none;
+    box-shadow: none;
+    color: #333;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    &:not(:disabled).fc-button-active,
+    &:not(:disabled):active {
+      background-color: $aurora-color;
+      border-color: $aurora-color;
+      color: #fff;
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
 // components
 @import './components/avatar';
 @import './components/post';
