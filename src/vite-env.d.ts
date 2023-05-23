@@ -5,6 +5,7 @@
 /// <reference types="@tiptap/react" />
 /// <reference types="@tiptap/dropzone" />
 /// <reference types="@mantine/modals" />
+/// <reference types="@fullcalendar/core" />
 
 // ErrorBoundary
 interface ErrorBoundaryProps {
@@ -235,3 +236,14 @@ interface NavbarProps {
 
 // React Modal Props
 type ReactModalProps = ContextModalProps<{ reacts: PostReacts }>;
+
+// Event Modal Props
+type EventModalProps = ContextModalProps<{ event: EventImpl }>;
+
+// Group container props
+interface GroupContainerProps {
+  title: string;
+  onSearchFormSubmit: (values: { query: string }) => void;
+  groups: Group[];
+  icon: IconType;
+}
