@@ -101,6 +101,7 @@ interface Post {
   publishAt: Date;
   body: string;
   utilsUrl?: string;
+  isSaved?: boolean;
   comments: number;
   reacts: {
     count: number;
