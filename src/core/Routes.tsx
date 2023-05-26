@@ -6,6 +6,7 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   let location = useLocation();
 
   if (!localStorage.getItem('isLogin')) {
+    // TODO: replace with redux
     // Redirect them to the /login page, but save the current location they were
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
@@ -20,7 +21,9 @@ function RequireAuth({ children }: { children: JSX.Element }) {
 const Setting = lazy(() => import('../pages/auth/Setting'));
 const YourGroups = lazy(() => import('../pages/auth/YourGroups'));
 const FriendsGroups = lazy(() => import('../pages/auth/FriendsGroups'));
+const RecommendedGroups = lazy(() => import('../pages/auth/RecommendedGroups'));
 const SavedPosts = lazy(() => import('../pages/auth/SavedPosts'));
+const Events = lazy(() => import('../pages/auth/Events'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
@@ -29,6 +32,7 @@ const Login = lazy(() => import('../pages/public/Login'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
 const Profile = lazy(() => import('../pages/public/Profile'));
 const Groups = lazy(() => import('../pages/public/Groups'));
+const DiscoverGroups = lazy(() => import('../pages/public/DiscoverGroups'));
 const SingleGroup = lazy(() => import('../pages/public/SingleGroup'));
 const PostDetails = lazy(() => import('../pages/public/PostDetails'));
 
@@ -68,7 +72,7 @@ const MembersGroup = lazy(
   () => import('../components/group/taps/Members.group')
 );
 
-const router = createBrowserRouter([
+const routes = createBrowserRouter([
   {
     path: '/',
     element: <BaseLayout />,
@@ -79,23 +83,48 @@ const router = createBrowserRouter([
       },
       {
         path: '/groups',
-        element: <Groups />,
-      },
-      {
-        path: '/friends-groups',
-        element: (
-          <RequireAuth>
-            <FriendsGroups />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: '/your-groups',
-        element: (
-          <RequireAuth>
-            <YourGroups />
-          </RequireAuth>
-        ),
+        children: [
+          {
+            index: true,
+            element: (
+              <RequireAuth>
+                <Groups />
+              </RequireAuth>
+            ),
+          },
+          {
+            path: 'friends',
+            element: (
+              <RequireAuth>
+                <FriendsGroups />
+              </RequireAuth>
+            ),
+          },
+          {
+            path: 'discover',
+            element: (
+              <RequireAuth>
+                <DiscoverGroups />
+              </RequireAuth>
+            ),
+          },
+          {
+            path: 'your',
+            element: (
+              <RequireAuth>
+                <YourGroups />
+              </RequireAuth>
+            ),
+          },
+          {
+            path: 'recommended',
+            element: (
+              <RequireAuth>
+                <RecommendedGroups />
+              </RequireAuth>
+            ),
+          },
+        ],
       },
       {
         path: '/saved-posts',
@@ -188,12 +217,29 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: '/help/editor',
-        element: <EditorHelp />,
-      },
-      {
         path: '/post/:postId',
         element: <PostDetails />,
+      },
+      {
+        path: '/help',
+        children: [
+          {
+            path: 'editor',
+            element: <EditorHelp />,
+          },
+        ],
+      },
+      {
+        path: '/events',
+        element: (
+          <RequireAuth>
+            <Events />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },
@@ -201,10 +247,6 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Login />,
   },
-  {
-    path: '*',
-    element: <NotFound />,
-  },
 ]);
 
-export default router;
+export default routes;
