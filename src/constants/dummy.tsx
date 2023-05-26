@@ -40,6 +40,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: true,
     body: `We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally guitarist for Martin Kesici's band, and Tobias Schultka. The band was originally meant as a joke, but progressed into being a more serious musical duo. The name for the band has no particular meaning, although its origins were suggested from when the two original members were driving in a car operated by Marcel Neumann and an accident almost occurred. Neumann found Schultka "so funny that he briefly lost control of the vehicle." Many of their songs from this point were covers of German folk tales and nursery rhymes. <br/>We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally guitarist for Martin Kesici's band, and Tobias Schultka. The band was originally meant as a joke, but progressed into being a more serious musical duo. The name for the band has no particular meaning, although its origins were suggested from when the two original members were driving in a car operated by Marcel Neumann and an accident almost occurred. Neumann found Schultka "so funny that he briefly lost control of the vehicle." Many of their songs from this point were covers of German folk tales and nursery rhymes.`,
     utils: {},
     utilsUrl:
@@ -93,6 +94,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
 
     body: '',
     utils: {
@@ -155,6 +157,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
     utils: {
       id: '10f',
       visibility: 'public',
@@ -247,6 +250,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -300,6 +304,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -353,6 +358,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -406,6 +412,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date('2022'),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -443,6 +450,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date('2022'),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -480,6 +488,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -533,6 +542,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date('2022'),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -570,6 +580,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date('2022'),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -607,6 +618,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date(),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -660,6 +672,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date('2022'),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
@@ -697,6 +710,7 @@ const POSTS: Post[] = [
       id: '101',
     },
     publishAt: new Date('2022'),
+    isSaved: false,
 
     body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
 
