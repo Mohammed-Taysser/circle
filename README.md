@@ -1,69 +1,60 @@
-# LAMA
+# [Mantine][vercel-live]
 
-## pages
+For developers see [`docs`](docs.md)
 
-- profile
-  - timeline
-  - about
-  - friends
-  - pictures
-  - videos
-  - audios
-  - groups
-  - badges
+Live demo
 
-## Components
+- [![vercel](https://img.shields.io/badge/-vercel-05122A?style=plastic&logo=vercel)][vercel-live]
+- [![Netlify Status](https://api.netlify.com/api/v1/badges/ea4a25db-b750-4830-bd20-5fccc0b2aabf/deploy-status)][netlify-live]
 
-- post
+[vercel-live]: https://mantine-lime.vercel.app/
+[netlify-live]: https://mantine-lime.netlify.app/
 
-  - post an update
-  - post an video
-  - post an audio
-  - post an single picture
-  - post an images gallery
-  - post an map
-  - update avatar
-  - update cover
-  - join group
-  - new friend
+## Pages
 
-- post comment
-- friend
-- group
-- avatar
+### No Authentication
 
-.
-├── public — Static assets such as robots.txt, index.html etc.
-├── src
-│ ├── core — Core modules, React hooks, customized theme, etc.
-│ │ ├── config.ts — Application configuration
-│ │ ├── ErrorBoundary.tsx — ErrorBoundary Component
-│ │ ├── lazyLoading.tsx — Lazy loading routes
-│ │ ├── routes.tsx — Application routes
-│ │ └── App.tsx
-│ ├── layout — Layout related components
-│ │ ├── components
-│ │ │ ├── Navbar.tsx
-│ │ │ ├── NotificationsMenu.tsx
-│ │ │ ├── ThemeButton.tsx
-│ │ │ └── Footer.tsx
-│ │ ├── Base.tsx
-│ │ └── Minimal.tsx
-│ ├── pages — Application page (screen) components
-│ │ ├── public — Public page (no auth required) components
-│ │ │ ├── Homepage.tsx
-│ │ │ └── 404.tsx
-│ │ ├── auth — Auth page (auth required) components
-│ │ │ ├── Profile.tsx
-│ │ │ └── Cart.tsx
-│ │ └── dashboard
-│ │ │ ├── Reports.tsx
-│ │ │ └── Users.tsx
-│ ├── assets — Static assets such as css, images
-│ ├── dialogs — React components implementing modal dialogs
-│ ├── common — Common (shared) React components
-│ ├── global.d.ts — Global TypeScript declarations
-│ ├── index.tsx — Single-page application (SPA) entry point
-│ └── hooks
-├── package.json — Workspace settings and NPM dependencies
-└── tsconfig.json — TypeScript configuration
+| Page | Path | Component                         |
+| ---- | ---- | --------------------------------- |
+| 404  | `*`  | [`404`](src/pages/public/404.tsx) |
+
+### Need Authentication
+
+| Page     | Path                 | Component                                 |
+| -------- | -------------------- | ----------------------------------------- |
+| Homepage | `/`                  | [`Homepage`](src/pages/auth/Homepage.tsx) |
+| Profile  | `/profile/profileId` | [`Profile`](src/pages/auth/Profile.tsx)   |
+
+## Features
+
+- Modern and responsive layout
+
+## Quick start 🚀
+
+### First Step
+
+Download the files from [`releases`](https://github.com/Mohammed-Taysser/mantine/releases) or clone it with **git** version control:
+
+```shell
+git clone https://github.com/Mohammed-Taysser/mantine.git
+```
+
+### Second Step
+
+Inside mantine Directory Install Dependencies By
+
+```shell
+yarn
+# OR
+npm install
+```
+
+### Last Step
+
+Start The Development Server
+
+```shell
+yarn dev
+# OR
+npm run dev
+```
