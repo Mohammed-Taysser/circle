@@ -22,7 +22,7 @@ const Setting = lazy(() => import('../pages/auth/Setting'));
 const YourGroups = lazy(() => import('../pages/auth/YourGroups'));
 const FriendsGroups = lazy(() => import('../pages/auth/FriendsGroups'));
 const RecommendedGroups = lazy(() => import('../pages/auth/RecommendedGroups'));
-const SavedPosts = lazy(() => import('../pages/auth/SavedPosts'));
+const Bookmarks = lazy(() => import('../pages/auth/Bookmarks'));
 const Events = lazy(() => import('../pages/auth/Events'));
 
 // Public
@@ -127,10 +127,10 @@ const routes = createBrowserRouter([
         ],
       },
       {
-        path: '/saved-posts',
+        path: '/bookmarks',
         element: (
           <RequireAuth>
-            <SavedPosts />
+            <Bookmarks />
           </RequireAuth>
         ),
       },
