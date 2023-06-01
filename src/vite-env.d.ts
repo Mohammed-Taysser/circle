@@ -110,6 +110,13 @@ interface Post {
   utils?: Group | Friend;
 }
 
+interface PostViewerObject {
+  [key in PostVariant]: {
+    msg: string;
+    component: (props: PostBodyProps) => JSX.Element;
+  };
+}
+
 // Group
 type GroupVisibility = 'private' | 'public';
 
@@ -225,8 +232,36 @@ interface CreatePostTaps {
   postVariant: string;
   setPostVariant: Dispatch<SetStateAction<string>>;
   editor: Editor | null;
+  postAssets: {
+    files?: FileWithPath[];
+  };
+  setPostAssets: React.Dispatch<React.SetStateAction>;
+}
+
+interface CreatePostVariantProps {
+  postVariant: string;
+  setPostVariant: Dispatch<SetStateAction<string>>;
+  postTypeInstance: Post;
+}
+
+interface CreatePostDropzoneProps {
   files: FileWithPath[];
-  setFiles: React.Dispatch<React.SetStateAction<FileWithPath[]>>;
+  onDrop: (files: FileWithPath[]) => void;
+  maxSize?: number;
+  accept: string[];
+  maxFiles: number;
+  onError: Dispatch<SetStateAction<null>>;
+  icon: IconType;
+  title: string;
+  subtitle: string;
+  preview: boolean;
+  multiple: boolean;
+}
+
+interface CreatePostDropzoneTapProps {
+  files: FileWithPath[];
+  onDrop: (files: FileWithPath[]) => void;
+  onError: Dispatch<SetStateAction<null>>;
 }
 
 // Navbar
