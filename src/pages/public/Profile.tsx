@@ -50,11 +50,6 @@ function Profile() {
       icon: BsPersonVideo3,
     },
     {
-      label: 'Groups',
-      path: `/profile/${profileId}/groups`,
-      icon: MdGroups2,
-    },
-    {
       label: 'Badges',
       path: `/profile/${profileId}/badges`,
       icon: BsPersonBadge,
