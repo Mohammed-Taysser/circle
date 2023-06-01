@@ -1,7 +1,6 @@
+import { BsBookmarks } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
-import { HiOutlineUserGroup } from 'react-icons/hi';
 import { MdEventNote } from 'react-icons/md';
-import { TfiSave } from 'react-icons/tfi';
 import { VscFeedback } from 'react-icons/vsc';
 
 const HEADER_LINKS = [
@@ -12,22 +11,16 @@ const HEADER_LINKS = [
     path: '/',
   },
   {
-    icon: TfiSave,
+    icon: BsBookmarks,
     color: 'teal',
-    path: '/saved-posts',
-    label: 'Saved Posts',
+    path: '/bookmarks',
+    label: 'Bookmarks',
   },
   {
     icon: FiUsers,
     color: 'red',
     label: 'Groups',
-    path: '/your-groups',
-  },
-  {
-    icon: HiOutlineUserGroup,
-    color: 'violet',
-    label: 'Friend Groups',
-    path: '/friends-groups',
+    path: '/groups',
   },
   {
     icon: MdEventNote,
