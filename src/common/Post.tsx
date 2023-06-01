@@ -21,9 +21,9 @@ function Post(props: PostProps): ReactElement {
 
   return (
     <div className={`post-card ${props.className}`}>
-      <PostHeader post={post} />
-      <PostBody post={post} />
-      <PostFooter post={post} />
+      <PostHeader full={props.full} post={post} />
+      <PostBody full={props.full} post={post} />
+      <PostFooter full={props.full} post={post} />
     </div>
   );
 }
