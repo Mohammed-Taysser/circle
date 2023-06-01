@@ -10,7 +10,7 @@ import Skeleton from '../../common/Skeleton';
 import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 
-function YourGroups() {
+function Bookmarks() {
   useDocumentTitle('Mantine | Saved Posts');
   const [activePage, setPage] = useState(1);
 
@@ -46,8 +46,8 @@ function YourGroups() {
   return (
     <>
       <Banner
-        title='Saved Posts'
-        subtitle={`Saved Posts: ${POSTS.length}`}
+        title='Bookmarks'
+        subtitle={`Bookmarks: ${POSTS.length}`}
         icon={VscFeedback}
       />
       <div className='nice-shadow flex justify-between mb-10 p-5 bg-white'>
@@ -63,7 +63,7 @@ function YourGroups() {
             {...searchForm.getInputProps('sort')}
             onChange={(value) => {
               searchForm.setValues({
-                filter: value || 'updates',
+                filter: value ?? 'updates',
               });
             }}
             data={[
@@ -89,4 +89,4 @@ function YourGroups() {
   );
 }
 
-export default YourGroups;
+export default Bookmarks;
