@@ -283,3 +283,6 @@ interface GroupContainerProps {
   groups: Group[];
   icon: IconType;
 }
+
+// Search modal props
+type SearchModalProps = ContextModalProps<{ navigateTo: NavigateFunction }>;
