@@ -1,16 +1,72 @@
-import { Anchor, Badge } from '@mantine/core';
+import { Anchor, Badge, Input, Loader } from '@mantine/core';
+import { useDocumentTitle } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
+import { BiSearchAlt } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
 import Group from '../../common/Group';
+import Skeleton from '../../common/Skeleton';
 import { GROUPS } from '../../constants/dummy';
+import Async from '../../containers/Async';
 import { uuidv4 } from '../../helpers';
 
+import search from '../../assets/images/background/search.svg';
 import avatar from '../../assets/images/default/avatar.png';
 
 function Results() {
+  useDocumentTitle('Mantine | Search');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isSearching, setIsSearching] = useState(false);
+
+  const [state, setState] = useState({
+    loading: true,
+    fulfilled: false,
+    error: null,
+  });
+
+  useEffect(() => {
+    const TimerId = setTimeout(() => {
+      setState({
+        loading: false,
+        fulfilled: true,
+        error: null,
+      });
+    }, 2000);
+
+    return () => {
+      clearTimeout(TimerId);
+    };
+  }, []);
+
+  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setIsSearching(true);
+
+    setSearchParams({ query: evt.target.value });
+
+    setTimeout(() => {
+      setIsSearching(false);
+    }, 3000);
+  };
+
   return (
-    <>
+    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
+      <div className='p-4 shadow-nice bg-white mb-5'>
+        <Input
+          icon={<BiSearchAlt className='text-xl' />}
+          placeholder='Search...'
+          value={searchParams.get('query') ?? ''}
+          rightSection={isSearching && <Loader size='xs' />}
+          onChange={onInputChange}
+          data-autofocus
+        />
+      </div>
+
+      <div className='p-32 shadow-nice bg-white mb-5 text-center'>
+        <img src={search} alt='no result found' className='max-w-full' />
+        <div className='text-gray-500'>No results found</div>
+      </div>
+
       <div className='p-4 shadow-nice bg-white'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Users
@@ -53,7 +109,7 @@ function Results() {
           <Group group={group} key={group.id} />
         ))}
       </div>
-    </>
+    </Async>
   );
 }
 
