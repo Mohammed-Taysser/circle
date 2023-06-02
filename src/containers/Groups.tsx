@@ -16,7 +16,7 @@ import Banner from '../common/Banner';
 import Group from '../common/Group';
 
 function Groups(props: GroupContainerProps) {
-  useDocumentTitle(`Mantine | Groups | ${props.title}`);
+  useDocumentTitle(`Circle | Groups | ${props.title}`);
   const [view, setView] = useState('list');
   const [activePage, setPage] = useState(1);
 
