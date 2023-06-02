@@ -4,7 +4,7 @@ import { BiBookReader, BiUserVoice } from 'react-icons/bi';
 import { BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
 import { FiUserPlus, FiUsers } from 'react-icons/fi';
 import { IoImagesOutline } from 'react-icons/io5';
-import { MdGroups2, MdOutlineAudiotrack } from 'react-icons/md';
+import { MdOutlineAudiotrack } from 'react-icons/md';
 import { RiQuillPenLine } from 'react-icons/ri';
 import { TbTimelineEventText } from 'react-icons/tb';
 import { VscFeedback } from 'react-icons/vsc';
@@ -15,7 +15,7 @@ import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
 
 function Profile() {
-  useDocumentTitle('Mantine | Profile');
+  useDocumentTitle('Circle | Profile');
   const { profileId = '' } = useParams();
 
   const TAPS = [

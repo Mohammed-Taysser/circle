@@ -7,7 +7,7 @@ import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 
 function Homepage() {
-  useDocumentTitle('Mantine | Homepage');
+  useDocumentTitle('Circle | Homepage');
 
   const [state, setState] = useState({
     loading: true,

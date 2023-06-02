@@ -11,8 +11,10 @@ import {
   Group,
   Button,
 } from '@mantine/core';
+import { useDocumentTitle } from '@mantine/hooks';
 
 function Login() {
+  useDocumentTitle('Circle | Login');
   let location = useLocation();
   let navigate = useNavigate();
 

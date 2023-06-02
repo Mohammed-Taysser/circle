@@ -2,10 +2,11 @@ import { Code, Table } from '@mantine/core';
 import { useEditor } from '@tiptap/react';
 import Editor from '../../../common/Editor';
 import { getEditorOption } from '../../../helpers';
+import { useDocumentTitle } from '@mantine/hooks';
 
 const content = `
 <h2 style="text-align: center">
-  Welcome to <span style="color: #37b24d">Mantine</span> rich text editor
+  Welcome to <span style="color: #37b24d">Circle</span> rich text editor
 </h2>
 
 <p>
@@ -58,6 +59,7 @@ const content = `
 `;
 
 function EditorHelp() {
+  useDocumentTitle('Circle | Help | Editor');
   const editor = useEditor(getEditorOption(content));
 
   return (

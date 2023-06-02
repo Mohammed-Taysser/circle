@@ -7,6 +7,7 @@ import friendsImage from '../../assets/images/background/friends-groups.svg';
 import recommendedImage from '../../assets/images/background/recommended-groups.svg';
 import Banner from '../../common/Banner';
 import { uuidv4 } from '../../helpers';
+import { useDocumentTitle } from '@mantine/hooks';
 
 const GROUPS_TYPES = [
   {
@@ -32,6 +33,8 @@ const GROUPS_TYPES = [
 ];
 
 function Groups() {
+  useDocumentTitle('Circle | Groups');
+
   return (
     <>
       <Banner

@@ -15,7 +15,7 @@ import search from '../../assets/images/background/search.svg';
 import avatar from '../../assets/images/default/avatar.png';
 
 function Results() {
-  useDocumentTitle('Mantine | Search');
+  useDocumentTitle('Circle | Search Results');
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSearching, setIsSearching] = useState(false);
 

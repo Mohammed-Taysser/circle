@@ -7,7 +7,7 @@ import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 
 function PostDetails() {
-  useDocumentTitle('Mantine | Post Details');
+  useDocumentTitle('Circle | Post Details');
   const { postId = '' } = useParams();
 
   const [post, setPost] = useState<Post | null>(null);

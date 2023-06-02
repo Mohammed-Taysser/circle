@@ -11,7 +11,7 @@ import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 
 function Bookmarks() {
-  useDocumentTitle('Mantine | Saved Posts');
+  useDocumentTitle('Circle | Bookmarks');
   const [activePage, setPage] = useState(1);
 
   const searchForm = useForm({

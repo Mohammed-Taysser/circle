@@ -14,7 +14,7 @@ import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
 
 function SingleGroup() {
-  useDocumentTitle('Mantine | Developer Geeks');
+  useDocumentTitle('Circle | Developer Geeks');
   const { groupId = '' } = useParams();
 
   const TAPS = [
