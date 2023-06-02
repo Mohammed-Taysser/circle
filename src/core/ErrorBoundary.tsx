@@ -20,10 +20,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         <div className='container m-5'>
           <h2 className='text-3xl'>Something went wrong 🙂.</h2>
 
-          <button onClick={() => window.location.reload()}>Reload</button>
+          <button type='button' onClick={() => window.location.reload()}>
+            Reload
+          </button>
 
           <details className='whitespace-pre-wrap'>
-            {this.state.error && this.state.error.toString()}
+            {this.state?.error?.toString()}
             <br />
             {this.state.errorInfo?.componentStack}
           </details>
