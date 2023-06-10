@@ -17,6 +17,14 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   return children;
 }
 
+function NoRequireAuth({ children }: { children: JSX.Element }) {
+  if (localStorage.getItem('isLogin')) {
+    return <Navigate to='/' replace />;
+  }
+
+  return children;
+}
+
 // Auth
 const Setting = lazy(() => import('../pages/auth/Setting'));
 const YourGroups = lazy(() => import('../pages/auth/YourGroups'));
@@ -250,7 +258,11 @@ const routes = createBrowserRouter([
   },
   {
     path: '/join-us',
-    element: <Registration />,
+    element: (
+      <NoRequireAuth>
+        <Registration />
+      </NoRequireAuth>
+    ),
   },
 ]);
 
