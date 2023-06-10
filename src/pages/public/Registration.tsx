@@ -1,8 +1,15 @@
-import { Container, Divider, LoadingOverlay, Paper, Text } from '@mantine/core';
+import {
+  Anchor,
+  Container,
+  Divider,
+  LoadingOverlay,
+  Paper,
+  Text,
+} from '@mantine/core';
 import { useDisclosure, useDocumentTitle, useToggle } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useCallback } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Login from '../../components/registration/Login';
 import Register from '../../components/registration/Register';
 import SocialMediaIntegration from '../../components/registration/SocialMediaIntegration';
@@ -79,6 +86,14 @@ function Registration() {
 
             <ViewComponent toggleTap={toggleTap} onFormSubmit={onFormSubmit} />
           </Paper>
+          <Anchor
+            component={Link}
+            to='/forget-password'
+            color='dimmed'
+            size='xs'
+          >
+            Forget password !!, click here
+          </Anchor>
         </div>
 
         <div className='col-span-1 order-1 md:order-2'>
