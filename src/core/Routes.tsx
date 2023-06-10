@@ -28,7 +28,7 @@ const Events = lazy(() => import('../pages/auth/Events'));
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
 const EditorHelp = lazy(() => import('../pages/public/help/Editor'));
-const Login = lazy(() => import('../pages/public/Login'));
+const Registration = lazy(() => import('../pages/public/Registration'));
 const Results = lazy(() => import('../pages/public/Results'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
 const Profile = lazy(() => import('../pages/public/Profile'));
@@ -249,8 +249,8 @@ const routes = createBrowserRouter([
     ],
   },
   {
-    path: '/login',
-    element: <Login />,
+    path: '/join-us',
+    element: <Registration />,
   },
 ]);
 
