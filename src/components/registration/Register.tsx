@@ -19,6 +19,8 @@ import {
   PASSWORD_REQUIREMENTS,
   getPasswordStatus,
 } from '../../validations/register';
+import { MdOutlineAlternateEmail } from 'react-icons/md';
+import { TfiLock } from 'react-icons/tfi';
 
 function Register(props: JoinUsProps) {
   const { toggleTap } = props;
@@ -57,6 +59,7 @@ function Register(props: JoinUsProps) {
         <TextInput
           label='Email'
           placeholder='example@domain.dev'
+          icon={<MdOutlineAlternateEmail size='1rem' />}
           value={form.values.email}
           onChange={(event) =>
             form.setFieldValue('email', event.currentTarget.value)
@@ -78,6 +81,7 @@ function Register(props: JoinUsProps) {
             >
               <PasswordInput
                 label='Password'
+                icon={<TfiLock size='1rem' />}
                 placeholder='Your password'
                 {...form.getInputProps('password')}
                 radius='md'
@@ -124,6 +128,7 @@ function Register(props: JoinUsProps) {
 
         <PasswordInput
           label='Confirm password'
+          icon={<TfiLock size='1rem' />}
           placeholder='Confirm Your password'
           {...form.getInputProps('confirmPassword')}
           radius='md'
