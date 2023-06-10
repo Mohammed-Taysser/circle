@@ -44,6 +44,7 @@ const Groups = lazy(() => import('../pages/public/Groups'));
 const DiscoverGroups = lazy(() => import('../pages/public/DiscoverGroups'));
 const SingleGroup = lazy(() => import('../pages/public/SingleGroup'));
 const PostDetails = lazy(() => import('../pages/public/PostDetails'));
+const ForgetPassword = lazy(() => import('../pages/public/ForgetPassword'));
 
 // Profile Taps
 const AboutProfile = lazy(
@@ -263,6 +264,10 @@ const routes = createBrowserRouter([
         <Registration />
       </NoRequireAuth>
     ),
+  },
+  {
+    path: '/forget-password',
+    element: <ForgetPassword />,
   },
 ]);
 
