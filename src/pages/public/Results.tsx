@@ -62,10 +62,12 @@ function Results() {
         />
       </div>
 
-      <div className='p-32 shadow-nice bg-white mb-5 text-center'>
-        <img src={search} alt='no result found' className='max-w-full' />
-        <div className='text-gray-500'>No results found</div>
-      </div>
+      {/* No results image 
+        <div className='p-32 shadow-nice bg-white mb-5 text-center'>
+          <img src={search} alt='no result found' className='max-w-full' />
+          <div className='text-gray-500'>No results found</div>
+        </div>
+      */}
 
       <div className='p-4 shadow-nice bg-white'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
