@@ -286,3 +286,9 @@ interface GroupContainerProps {
 
 // Search modal props
 type SearchModalProps = ContextModalProps<{ navigateTo: NavigateFunction }>;
+
+// Register
+interface JoinUsProps {
+  toggleTap: (value?: React.SetStateAction<string>) => void;
+  onFormSubmit: (data: any) => void;
+}
