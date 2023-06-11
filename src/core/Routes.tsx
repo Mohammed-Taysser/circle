@@ -40,6 +40,7 @@ const Registration = lazy(() => import('../pages/public/Registration'));
 const Results = lazy(() => import('../pages/public/Results'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
 const Profile = lazy(() => import('../pages/public/Profile'));
+const ContactUs = lazy(() => import('../pages/public/ContactUs'));
 const Groups = lazy(() => import('../pages/public/Groups'));
 const DiscoverGroups = lazy(() => import('../pages/public/DiscoverGroups'));
 const SingleGroup = lazy(() => import('../pages/public/SingleGroup'));
@@ -94,6 +95,10 @@ const routes = createBrowserRouter([
       {
         path: '/results',
         element: <Results />,
+      },
+      {
+        path: '/contact-us',
+        element: <ContactUs />,
       },
       {
         path: '/groups',
