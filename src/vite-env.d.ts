@@ -292,3 +292,11 @@ interface JoinUsProps {
   toggleTap: (value?: React.SetStateAction<string>) => void;
   onFormSubmit: (data: any) => void;
 }
+
+// Contact us
+interface ContactIconProps
+  extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
+  icon: React.FC<any>;
+  title: React.ReactNode;
+  description: React.ReactNode;
+}
