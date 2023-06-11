@@ -1,5 +1,12 @@
-import { Anchor, Badge, Input, Loader } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
+import {
+  ActionIcon,
+  Anchor,
+  Badge,
+  Input,
+  Loader,
+  TextInput,
+} from '@mantine/core';
+import { useDebouncedState, useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
@@ -10,6 +17,7 @@ import Skeleton from '../../common/Skeleton';
 import { GROUPS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 import { uuidv4 } from '../../helpers';
+import { IconArrowRight, IconSearch } from '@tabler/icons-react';
 
 import search from '../../assets/images/background/search.svg';
 import avatar from '../../assets/images/default/avatar.png';
@@ -17,6 +25,7 @@ import avatar from '../../assets/images/default/avatar.png';
 function Results() {
   useDocumentTitle('Circle | Search Results');
   const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get('query') ?? '');
   const [isSearching, setIsSearching] = useState(false);
 
   const [state, setState] = useState({
@@ -40,25 +49,39 @@ function Results() {
   }, []);
 
   const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setIsSearching(true);
-
-    setSearchParams({ query: evt.target.value });
+    setQuery(evt.target.value);
 
     setTimeout(() => {
-      setIsSearching(false);
-    }, 3000);
+      setIsSearching(true);
+
+      setSearchParams({ query: evt.target.value });
+
+      setTimeout(() => {
+        setIsSearching(false);
+      }, 3000);
+    }, 1500);
   };
 
   return (
     <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
       <div className='p-4 shadow-nice bg-white mb-5'>
-        <Input
-          icon={<BiSearchAlt className='text-xl' />}
-          placeholder='Search...'
-          value={searchParams.get('query') ?? ''}
-          rightSection={isSearching && <Loader size='xs' />}
+        <TextInput
+          icon={<BiSearchAlt size='1.1rem' />}
+          radius='xl'
+          value={query}
+          size='md'
           onChange={onInputChange}
-          data-autofocus
+          rightSection={
+            isSearching ? (
+              <Loader size='xs' />
+            ) : (
+              <ActionIcon size={32} radius='xl' color='' variant='filled'>
+                <IconArrowRight size='1.1rem' stroke={1.5} />
+              </ActionIcon>
+            )
+          }
+          placeholder='Search...'
+          rightSectionWidth={42}
         />
       </div>
 
