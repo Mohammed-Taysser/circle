@@ -153,14 +153,6 @@ const routes = createBrowserRouter([
           </RequireAuth>
         ),
       },
-      {
-        path: '/setting',
-        element: (
-          <RequireAuth>
-            <Setting />
-          </RequireAuth>
-        ),
-      },
     ],
   },
   {
@@ -253,6 +245,14 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <Events />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/setting',
+        element: (
+          <RequireAuth>
+            <Setting />
           </RequireAuth>
         ),
       },
