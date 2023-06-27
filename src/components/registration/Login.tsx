@@ -4,11 +4,13 @@ import {
   Group,
   PasswordInput,
   Stack,
+  Text,
   TextInput,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { TfiLock } from 'react-icons/tfi';
+import { Link } from 'react-router-dom';
 
 function Login(props: JoinUsProps) {
   const { toggleTap } = props;
@@ -43,13 +45,36 @@ function Login(props: JoinUsProps) {
           {...form.getInputProps('email')}
         />
 
-        <PasswordInput
-          icon={<TfiLock size='1rem' />}
-          label='Password'
-          placeholder='Your password'
-          radius='md'
-          {...form.getInputProps('password')}
-        />
+        <>
+          <Group position='apart' mb={-15}>
+            <Text
+              component='label'
+              htmlFor='your-password'
+              size='sm'
+              weight={500}
+            >
+              Your password
+            </Text>
+
+            <Anchor
+              to='/forget-password'
+              component={Link}
+              sx={(theme) => ({
+                fontWeight: 500,
+                fontSize: theme.fontSizes.xs,
+              })}
+            >
+              Forgot your password?
+            </Anchor>
+          </Group>
+          <PasswordInput
+            icon={<TfiLock size='1rem' />}
+            placeholder='Your password'
+            id='your-password'
+            radius='md'
+            {...form.getInputProps('password')}
+          />
+        </>
       </Stack>
 
       <Group position='apart' mt='xl'>

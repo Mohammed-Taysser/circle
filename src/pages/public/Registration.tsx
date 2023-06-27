@@ -86,14 +86,6 @@ function Registration() {
 
             <ViewComponent toggleTap={toggleTap} onFormSubmit={onFormSubmit} />
           </Paper>
-          <Anchor
-            component={Link}
-            to='/forget-password'
-            color='dimmed'
-            size='xs'
-          >
-            Forget password !!, click here
-          </Anchor>
         </div>
 
         <div className='col-span-1 order-1 md:order-2'>
