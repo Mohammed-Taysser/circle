@@ -1,46 +1,47 @@
+# CHANGELOG
 
-# LAMA changelog
+## todo
+
+- [ ] create calender as header component
+- [ ] create events page
+- [ ] create `create-event` modal
+- [ ] finish navbar
+- [ ] finish sidebar
+- [x] finish spotlight setup
+- [ ] refactor post data (no need properties for each post-type)
+- [ ] add post reacts docs
+- [ ] reduce avatar indicator zIndex
+- [ ] revision app responsive
+- [ ] update readme & docs
+- [ ] update `package.json` info
+- [ ] back to changelog
+- [ ] update `index.html`
+- [ ] add meta for each page (try using react-helmet)
+- [ ] create single branch for front only before connect to api
 
 ## Upcoming Features
 
 - Create Review Video For Project Functionality
-- Chat With Other Authors
 - Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
 - [Admin Dashboard](https://appseed.us/)
 - Add Free Hand Drawer To Get Author Signature
 - Crop Avatar Before Upload
 - Add Toast For Login User
-- Add Real Payment Methods
-- Update UI Layout Use[tabler](https://preview.tabler.io)
-- Create Better Documentation (Like StoryBook)
-- Use UI Library Like [Material UI](https://mui.com/)
-- Add Useful Ui Warning (Like No Cart Items With Cart Icon 💬)
-- Add Require Option On Needed Schema Fields (Server)
-- Redux Not Work As Token Variable At Api Call (Api/Index.Js)
-- Is All Author Appear In `Author` Page. Why ?? (Use `Role` To Specify Use From Author)
-- Checkbox Page Remove Input Values On Invalid Values
 - Use Access Token & Refresh Token
 - Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
-- Why Coupons Is Still Apply After Order Create 🥲, Is This A Feature !!
 - In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
-- Handel Load More Book In Book Page
-- Handel Children Api Call (Only Parent Has Api Call)
+- [x] Post Image Gallery (Light Box)
+- [ ] Use Also Video With Images
 
 ## TODO's
 
-- post card comments
-- post card avatar border
-- [ ] Responsive Design
+- [x] post card comments
+- [ ] remove dummy data after integrate with api
+- [ ] check responsive 🙂
 - [ ] Who See My Profile 😈
-- [ ] Post Image Gallery (Light Box)
-- [ ] Use Also Video With Images
 - [ ] I18n (Translation)
 - [ ] passport auth with social media
-- [ ] Text Editor With Preview Instead Of Plain Text
-- [ ] see
-  - [ ] <https://preview.tabler.io/forgot-password.html>
-  - [ ] <https://preview.tabler.io/auth-lock.html>
-
+- [x] Text Editor With Preview Instead Of Plain Text
 - [x] empower login & register with validation
 
 ## helper
@@ -67,53 +68,52 @@
 
 ## 16 Jun 2022
 
-- Error While Two User Add Same Book To Cart Or Wishlist
-- Make Author Dropdown In Auth With More Features
-- Create Dropdown For Other Utilities Instead Of `Sitemap` Page
-- Add Validation For Profile Page Input (Email, Username, Etc...)
 - Refactor Api Call (Create Axios Instance 😈)
 - Introduce Redux & Node.Js
-- Use Express As Api
-- add 404 image for broken images
 - update register with username & confirm password
 - organize auth pages & noAuth pages
-- create tree with folder & files
-- add back to top btn
-- start using `placeholder`
 - create avatar cropper on profile page
-- update page title
 
 ## 12 Jul 2022
 
 - Init Project With React
 
-# Hana Changelog
+## Bugs
+
+- [x] createPost: when change post type, as the previous picture still exist
+- [ ] createPost: add masonry or fixed with & height to preview
+- [ ] Post-types: add multi audio & video in post
 
 ## pages
 
-- [ ] Homepage
+- [x] Homepage
+- [x] post details
 - [x] 404
 - [x] register
-  - [x] validation
 - [x] login
-  - [x] validation
-- [ ] Profile
+- [x] results
+- [x] forget password
+- [x] Profile
 - [ ] Chat
-- [ ] Bookmarks
-- [ ] Library
-- [ ] Movies
 - [ ] Setting
-- [ ] Groups
-- [ ] Pages
-- [ ] Jobs
+- [x] contact us
+- [x] Bookmarks
+- [x] single group
+- [x] Groups
+  - [x] discover
+  - [x] your
+  - [x] friends
+  - [x] recommended
 - [ ] Events
-- [ ] Courses
+- post
+  - edit
+  - delete
 
 ## Layout
 
 - [ ] Navbar
-  - [ ] logo
-  - [ ] search input
+  - [x] logo
+  - [x] search input
   - [ ] friends
   - [ ] notification
   - [ ] short chat message
@@ -121,15 +121,15 @@
   - [ ] online friends
   - [ ] features list
 - [ ] right sidebar
-  - [ ] friends birthdays
+  - [x] friends birthdays
   - [ ] most called friends
 
 ## Component
 
 - [ ] Post
-  - [ ] like
   - [ ] share
-- [ ] back to top
+  - [ ] comments
+  - [ ] reacts
 
 ## functionality
 
@@ -137,29 +137,9 @@
 - [ ] reminder of friends birthday
 - [ ] private chats
 - [ ] groups chats
+- [ ] add cookie dialog
+- [ ] add newsletter dialog
 - [ ] notifications of profile updating - comments - likes
 - [ ] shop => a small market where you can post your product sell and buy various things
 - [ ] library => where you can buy review and add your favorite books
 - [ ] movies => where you can search for your favorite read reviews and add them to your favorites
-
-## packages 😎
-
-- react-toastify
-- react-calendar
-- react-input-emoji
-- reduxjs/toolkit
-- axios
-- bootstrap
-- dayjs
-- jwt-decode
-- react-dropzone
-- react-icons
-- react-redux
-- react-router-dom
-- react-select
-- sass
-- sweetalert2
-- sweetalert2-react-content
-- yup
-- prop-types
-- formik
