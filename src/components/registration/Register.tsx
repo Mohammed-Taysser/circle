@@ -13,14 +13,11 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { IconCheck, IconX } from '@tabler/icons-react';
-import { uuidv4 } from '../../helpers';
 import { useState } from 'react';
-import {
-  PASSWORD_REQUIREMENTS,
-  getPasswordStatus,
-} from '../../validations/register';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { TfiLock } from 'react-icons/tfi';
+import { uuidv4 } from '../../helpers';
+import { PASSWORD_REQUIREMENTS, getPasswordStatus } from '../../validations';
 
 function Register(props: JoinUsProps) {
   const { toggleTap } = props;
