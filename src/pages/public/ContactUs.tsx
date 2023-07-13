@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Group,
   Paper,
@@ -13,39 +12,15 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useDocumentTitle } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
+import { useState } from 'react';
 import { FiUser } from 'react-icons/fi';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { TbPencilMinus } from 'react-icons/tb';
+import contactUsBG from '../../assets/images/background/contact-us-bg.svg';
+import ContactIcon from '../../components/contactUs/ContactIcon';
 import { MOCK_DATA } from '../../constants/contact-us';
 import { uuidv4 } from '../../helpers';
-
-import contactUsBG from '../../assets/images/background/contact-us-bg.svg';
-import { notifications } from '@mantine/notifications';
-import { useState } from 'react';
-
-function ContactIcon({
-  icon: Icon,
-  title,
-  description,
-  className,
-  ...others
-}: ContactIconProps) {
-  const { classes, cx } = useContactInfoStyles();
-  return (
-    <div className={cx(classes.wrapper, className)} {...others}>
-      <Box mr='md'>
-        <Icon size='1.5rem' />
-      </Box>
-
-      <div>
-        <Text size='xs' className={classes.title}>
-          {title}
-        </Text>
-        <Text className={classes.description}>{description}</Text>
-      </div>
-    </div>
-  );
-}
 
 const useWrapperStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan('sm');
@@ -139,24 +114,6 @@ const useWrapperStyles = createStyles((theme) => {
     },
   };
 });
-
-const useContactInfoStyles = createStyles((theme) => ({
-  wrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    color: theme.white,
-  },
-  icon: {
-    marginRight: theme.spacing.md,
-    backgroundColor: 'transparent',
-  },
-  title: {
-    color: theme.colors[theme.primaryColor][0],
-  },
-  description: {
-    color: theme.white,
-  },
-}));
 
 function ContactUs() {
   useDocumentTitle('Circle | Contact Us');
