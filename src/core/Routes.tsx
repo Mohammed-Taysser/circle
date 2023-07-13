@@ -11,7 +11,7 @@ function RequireAuth({ children }: { children: JSX.Element }) {
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
     // than dropping them off on the home page.
-    return <Navigate to='/login' state={{ next: location }} replace />;
+    return <Navigate to='/join-us' state={{ next: location }} replace />;
   }
 
   return children;
