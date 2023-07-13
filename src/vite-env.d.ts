@@ -171,6 +171,7 @@ interface InfoBannerProp {
   username: string;
   extraInfo: ReactElement;
   verified: boolean;
+  className?: string;
 }
 
 // Taps Props
@@ -299,4 +300,22 @@ interface ContactIconProps
   icon: React.FC<any>;
   title: React.ReactNode;
   description: React.ReactNode;
+}
+
+// Setting
+interface TOCProps {
+  activeId: string;
+  setActiveId: React.Dispatch<React.SetStateAction<string>>;
+}
+
+type HobbiesMockData = 'musics' | 'tvShows' | 'books' | 'movies' | 'activities';
+
+type HobbiesMockDataState = {
+  [key in HobbiesMockData]: { value: string; label: string }[];
+};
+
+interface BasicInfoFormInitValues {
+  username: string;
+  avatar: File | string;
+  cover: File | string;
 }
