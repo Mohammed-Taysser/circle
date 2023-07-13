@@ -1,13 +1,13 @@
 import { Center } from '@mantine/core';
 import { useMemo } from 'react';
-import { CREATE_POST_TYPES } from '../../../helpers';
+// import { CREATE_POST_TYPES } from '../../../helpers';
 
 function PostVariant(props: CreatePostVariantProps) {
 
   return (
     <>
       <div className={`mb-10 gap-4 md:flex justify-center`}>
-        {CREATE_POST_TYPES.map((variant) => (
+        {/* {CREATE_POST_TYPES.map((variant) => (
           <div className='checkbox-12 ' key={variant.value}>
             <label className='checkbox-wrapper'>
               <input
@@ -26,10 +26,10 @@ function PostVariant(props: CreatePostVariantProps) {
               </span>
             </label>
           </div>
-        ))}
+        ))} */}
       </div>
       <Center className='mb-20 text-gray-500'>
-        <p>{props.postTypeInstance?.msg}</p>
+        {/* <p>{props.postTypeInstance?.msg}</p> */}
       </Center>
     </>
   );

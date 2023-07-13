@@ -91,7 +91,7 @@ function HeaderPost(props: { post: Post; full?: boolean }) {
                   {props.post.user.name}
                 </Link>
                 <span className='block md:inline-block text-sm'>
-                  {POST_TYPES[props.post.variant].msg}
+                  {/* {POST_TYPES[props.post.variant].msg} */}
                 </span>
               </div>
               <div className='activity-time'>

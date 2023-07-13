@@ -8,6 +8,7 @@ import {
   rem,
   Dialog,
 } from '@mantine/core';
+import newsletterImage from '../assets/images/background/newsletter.svg';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -97,7 +98,7 @@ function Newsletter() {
             <Button className={classes.control}>Subscribe</Button>
           </div>
         </div>
-        <Image src={image.src} className={classes.image} />
+        <Image src={newsletterImage} className={classes.image} />
       </div>
     </Dialog>
   );
