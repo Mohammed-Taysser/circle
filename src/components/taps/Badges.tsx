@@ -1,7 +1,7 @@
 import { Avatar, Divider } from '@mantine/core';
 import { uuidv4 } from '../../helpers';
 
-function Badges(props: { badges: Badge[]; msg?: string }) {
+function Badges(props: BadgeProps) {
   return (
     <div className='lg:grid grid-cols-3 gap-4'>
       {props.badges.map((badge) => (
