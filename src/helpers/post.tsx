@@ -1,8 +1,4 @@
 import { AspectRatio } from '@mantine/core';
-import { IMAGE_MIME_TYPE } from '@mantine/dropzone';
-import { BsPersonVideo3 } from 'react-icons/bs';
-import { IoImageOutline, IoImagesOutline } from 'react-icons/io5';
-import { MdOutlineAudiotrack, MdOutlineFormatShapes } from 'react-icons/md';
 import Group from '../common/Group';
 import Friend from '../common/Member';
 import PlyrViewer from '../common/plyr';
@@ -66,7 +62,7 @@ const NewFriend = (props: PostBodyProps) => {
   );
 };
 
-const POST_TYPES = {
+const POST_TYPES: PostViewerObject = {
   UPDATE_COVER: {
     msg: 'Updated his cover photo.',
     component: Gallery,
@@ -105,73 +101,4 @@ const POST_TYPES = {
   },
 };
 
-const CREATE_POST_TYPES = [
-  {
-    value: 'POST_UPDATE',
-    icon: MdOutlineFormatShapes,
-    label: 'Update',
-    msg: 'This just the normal post that have optional body text and also optional single picture.',
-    dropzone: {
-      title: 'Drag single image here or click to select image',
-      subtitle:
-        'Attach single image as you like, but file should not exceed 5mb',
-      accept: IMAGE_MIME_TYPE,
-      maxFiles: 1,
-      preview: true,
-      icon: IoImageOutline,
-      multiple: false,
-      maxSize: undefined,
-    },
-  },
-  {
-    value: 'POST_GALLERY',
-    icon: IoImagesOutline,
-    label: 'Gallery',
-    msg: 'A post with optional body text and a lot of picture.',
-    dropzone: {
-      title: 'Drag images here or click to select images',
-      subtitle:
-        'Attach as many files as you like, each file should not exceed 5mb',
-      accept: IMAGE_MIME_TYPE,
-      maxFiles: 0,
-      preview: true,
-      icon: IoImagesOutline,
-      multiple: true,
-      maxSize: undefined,
-    },
-  },
-  {
-    value: 'POST_VIDEO',
-    icon: BsPersonVideo3,
-    label: 'Video',
-    msg: 'A post with optional body text and single video.',
-    dropzone: {
-      title: 'Drag single video here or click to select video',
-      subtitle: 'Attach single video as you like',
-      accept: ['video/*'],
-      maxFiles: 1,
-      preview: true,
-      icon: BsPersonVideo3,
-      multiple: false,
-      maxSize: undefined,
-    },
-  },
-  {
-    value: 'POST_AUDIO',
-    icon: MdOutlineAudiotrack,
-    label: 'Audio',
-    msg: 'A post with optional body text and a single audio.',
-    dropzone: {
-      title: 'Drag single audio here or click to select audio',
-      subtitle: 'Attach single audio as you like',
-      accept: ['audio/*'],
-      maxFiles: 1,
-      preview: true,
-      icon: MdOutlineAudiotrack,
-      multiple: false,
-      maxSize: undefined,
-    },
-  },
-];
-
-export { POST_TYPES, CREATE_POST_TYPES };
+export { POST_TYPES };
