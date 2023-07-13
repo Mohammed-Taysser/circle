@@ -1,4 +1,4 @@
-# Mantine Documentation
+# circle Documentation
 
 ## Getting start 🚀
 
@@ -6,16 +6,20 @@
 
 ### No Authentication
 
-| Page | Path | Component                         |
-| ---- | ---- | --------------------------------- |
-| 404  | `*`  | [`404`](src/pages/public/404.tsx) |
+| Page         | Path                 | Component                                         |
+| ------------ | -------------------- | ------------------------------------------------- |
+| 404          | `*`                  | [`404`](src/pages/public/404.tsx)                 |
+| Homepage     | `/`                  | [`Homepage`](src/pages/public/Homepage.tsx)       |
+| Groups       | `/groups`            | [`Groups`](src/pages/public/Groups.tsx)           |
+| Single Group | `/groups/groupId`    | [`SingleGroup`](src/pages/public/SingleGroup.tsx) |
+| Editor Help  | `/help/editor`       | [`Editor`](src/pages/public/help/Editor.tsx)      |
+| Profile      | `/profile/profileId` | [`Profile`](src/pages/public/Profile.tsx)         |
 
 ### Need Authentication
 
-| Page     | Path                 | Component                                 |
-| -------- | -------------------- | ----------------------------------------- |
-| Homepage | `/`                  | [`Homepage`](src/pages/auth/Homepage.tsx) |
-| Profile  | `/profile/profileId` | [`Profile`](src/pages/auth/Profile.tsx)   |
+| Page    | Path      | Component                               |
+| ------- | --------- | --------------------------------------- |
+| Setting | `Setting` | [`Setting`](src/pages/auth/Setting.tsx) |
 
 ## Components
 
