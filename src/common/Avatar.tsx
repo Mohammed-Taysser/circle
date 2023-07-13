@@ -8,14 +8,10 @@ import avatar from '../assets/images/default/avatar.png';
 - use `src` to set avatar picture
 - use `alt` to set avatar alt text
 - use `sm` to specify if small layout or not
-
- * @returns {React.ReactElement}
  */
-function Avatar(props: AvatarProps): React.ReactElement {
-  const cl = `avatar ${props.sm ? 'sm' : ''} ${props.className}`;
-
+function Avatar(props: AvatarProps) {
   return (
-    <div className={cl}>
+    <div className={`avatar ${props.sm ? 'sm' : ''} ${props.className}`}>
       <img src={props.src} alt={props.alt} />
     </div>
   );
