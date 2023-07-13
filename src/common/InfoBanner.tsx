@@ -20,7 +20,7 @@ import Avatar from './Avatar';
 function InfoBanner(props: InfoBannerProp): ReactElement {
   return (
     <div
-      className='banner-user'
+      className={`banner-user ${props.className}`}
       style={{
         backgroundImage: `url('${props.cover}')`,
       }}
@@ -29,7 +29,7 @@ function InfoBanner(props: InfoBannerProp): ReactElement {
         <Avatar src={props.avatar} alt={`picture of ${props.name}`} />
         <div className='media-body ml-7'>
           <h3 className='item-title flex items-center'>
-            <span>{props.name}</span>
+            {props.name && <span>{props.name}</span>}
             {props.verified && (
               <Tooltip label='Verified' withArrow color='teal'>
                 <div>
@@ -38,7 +38,9 @@ function InfoBanner(props: InfoBannerProp): ReactElement {
               </Tooltip>
             )}
           </h3>
-          <div className='item-subtitle my-2'>@{props.username}</div>
+          {props.username && (
+            <div className='item-subtitle my-2'>@{props.username}</div>
+          )}
           {props.extraInfo}
         </div>
       </div>
