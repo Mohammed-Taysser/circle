@@ -3,16 +3,11 @@ import { useMemo, useState } from 'react';
 import { MdOutlineErrorOutline } from 'react-icons/md';
 import Dropzone from '../../common/Dropzone';
 import Editor from '../../common/Editor';
-import { CREATE_POST_TYPES } from '../../helpers';
+import PostVariant from './taps/PostVariant';
+import { PostAudio } from './taps/PostTaps';
 
 function TapsCreatePost(props: CreatePostTaps) {
-  const [dropzoneError, setDropzoneError] = useState('');
-
-  const postTypeInstance = useMemo(() => {
-    return CREATE_POST_TYPES.find(
-      (variant) => variant.value === props.postVariant
-    );
-  }, [props.postVariant]);
+  const [Error, setError] = useState(null);
 
   return (
     <Tabs value={props.activeStep.toString()}>
@@ -20,34 +15,22 @@ function TapsCreatePost(props: CreatePostTaps) {
         <Editor editor={props.editor} />
       </Tabs.Panel>
       <Tabs.Panel value='1'>
-        <div className={`mb-10 gap-4 md:flex justify-center`}>
-          {CREATE_POST_TYPES.map((variant) => (
-            <div className='checkbox-12 ' key={variant.value}>
-              <label className='checkbox-wrapper'>
-                <input
-                  type='radio'
-                  className='checkbox-input'
-                  name='post-variant'
-                  value={variant.value}
-                  onChange={(evt) => props.setPostVariant(evt.target.value)}
-                  checked={props.postVariant === variant.value}
-                />
-                <span className='checkbox-tile'>
-                  <span className='checkbox-icon'>
-                    <variant.icon />
-                  </span>
-                  <span className='checkbox-label'>{variant.label}</span>
-                </span>
-              </label>
-            </div>
-          ))}
-        </div>
-        <Center className='mb-20 text-gray-500'>
-          <p>{postTypeInstance?.msg}</p>
-        </Center>
+        <PostAudio
+          files={props.postAssets.files ?? []}
+          onDrop={(files) =>
+            props.setPostAssets((prev: any) => ({ ...prev, files }))
+          }
+          onError={setError}
+        />
+        {/* <PostVariant
+          postVariant={props.postVariant}
+          setPostVariant={props.setPostVariant}
+          postTypeInstance={postTypeInstance}
+        /> */}
+        variant
       </Tabs.Panel>
       <Tabs.Panel value='2'>
-        <Dropzone
+        {/* <Dropzone
           files={props.files}
           onDrop={props.setFiles}
           maxSize={postTypeInstance?.dropzone?.maxSize}
@@ -69,7 +52,8 @@ function TapsCreatePost(props: CreatePostTaps) {
           >
             {JSON.stringify(dropzoneError)}
           </Alert>
-        )}
+        )} */}
+        assets
       </Tabs.Panel>
     </Tabs>
   );
