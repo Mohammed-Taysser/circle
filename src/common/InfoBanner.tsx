@@ -1,5 +1,4 @@
 import { Tooltip } from '@mantine/core';
-import { ReactElement } from 'react';
 import { VscVerified } from 'react-icons/vsc';
 import Avatar from './Avatar';
 
@@ -7,17 +6,15 @@ import Avatar from './Avatar';
  * InfoBanner component
  * @usage
 
-- use `cover` to set banner cover
-- use `avatar` to set banner avatar
-- use `name` to set banner name
-- use `username` to set banner username
-- use `verified` to set banner verified or not
+- use `cover` to set cover
+- use `avatar` to set avatar
+- use `name` to set user name
+- use `username` to set username
+- use `verified` to set if profile verified or not
 - use `extraInfo` to set extraInfo line
 - use `className` to add classes to banner wrapper
-
- * @returns {React.ReactElement}
- */
-function InfoBanner(props: InfoBannerProp): ReactElement {
+*/
+function InfoBanner(props: InfoBannerProp) {
   return (
     <div
       className={`banner-user ${props.className}`}
