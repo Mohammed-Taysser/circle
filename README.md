@@ -1,4 +1,4 @@
-# [Mantine][vercel-live]
+# [circle][vercel-live]
 
 For developers see [`docs`](docs.md)
 
@@ -58,3 +58,7 @@ yarn dev
 # OR
 npm run dev
 ```
+
+## Resources
+
+- <https://gradients.app/en/shades/24de3e>
