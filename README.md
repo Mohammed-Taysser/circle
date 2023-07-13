@@ -7,8 +7,8 @@ Live demo
 - [![vercel](https://img.shields.io/badge/-vercel-05122A?style=plastic&logo=vercel)][vercel-live]
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/ea4a25db-b750-4830-bd20-5fccc0b2aabf/deploy-status)][netlify-live]
 
-[vercel-live]: https://mantine-lime.vercel.app/
-[netlify-live]: https://mantine-lime.netlify.app/
+[vercel-live]: https://circle-react.vercel.app/
+[netlify-live]: https://circle-react.netlify.app/
 
 ## Pages
 
@@ -33,15 +33,15 @@ Live demo
 
 ### First Step
 
-Download the files from [`releases`](https://github.com/Mohammed-Taysser/mantine/releases) or clone it with **git** version control:
+Download the files from [`releases`](https://github.com/Mohammed-Taysser/circle/releases) or clone it with **git** version control:
 
 ```shell
-git clone https://github.com/Mohammed-Taysser/mantine.git
+git clone https://github.com/Mohammed-Taysser/circle.git
 ```
 
 ### Second Step
 
-Inside mantine Directory Install Dependencies By
+Inside circle Directory Install Dependencies By
 
 ```shell
 yarn
