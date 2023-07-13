@@ -1,5 +1,4 @@
 import { Button, Group, LoadingOverlay, Text } from '@mantine/core';
-import { FileWithPath } from '@mantine/dropzone';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
 import { useEditor } from '@tiptap/react';
@@ -13,11 +12,10 @@ function CreatePost() {
   const [visible, setVisible] = useState(false);
   const [activeStep, setActiveStep] = useState<number>(0);
   const [postVariant, setPostVariant] = useState('POST_UPDATE');
-
-  const [files, setFiles] = useState<FileWithPath[]>([]);
+  const [postAssets, setPostAssets] = useState({});
 
   useEffect(() => {
-    setFiles([]);
+    setPostAssets({});
   }, [postVariant]);
 
   const onPublishConfirm = () => {
@@ -52,11 +50,14 @@ function CreatePost() {
   const onPublishBtnClick = () => {
     console.log({
       type: postVariant,
-      gallery: files,
       body: editor?.getHTML(),
+      ...postAssets,
     });
 
-    if ((editor?.getText() && editor?.getText() !== '\n') || files.length) {
+    if (
+      (editor?.getText() && editor?.getText() !== '\n') ||
+      Object.keys(postAssets).length
+    ) {
       modals.openConfirmModal({
         title: 'Are you sure to publish ?',
         centered: true,
@@ -114,8 +115,8 @@ function CreatePost() {
         postVariant={postVariant}
         setPostVariant={setPostVariant}
         editor={editor}
-        files={files}
-        setFiles={setFiles}
+        postAssets={postAssets}
+        setPostAssets={setPostAssets}
       />
 
       <Group position='center' mt='xl'>
