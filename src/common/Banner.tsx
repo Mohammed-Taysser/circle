@@ -1,5 +1,4 @@
 import { Divider } from '@mantine/core';
-import React from 'react';
 import { BiConfused } from 'react-icons/bi';
 import overlay from '../assets/images/background/banner-overlay.png';
 
@@ -10,10 +9,9 @@ import overlay from '../assets/images/background/banner-overlay.png';
 - use `className` to add classes to banner wrapper
 - use `title` to set banner title
 - use `subtitle` to set banner subtitle
-
- * @returns {React.ReactElement}
+- use `icon` to change banner icon
  */
-function Banner(props: BannerProps): React.ReactElement {
+function Banner(props: BannerProps) {
   return (
     <div
       className={`banner rounded-xl py-20 px-12 overflow-hidden relative mb-8 z-10 leading-4 ${props.className}`}
