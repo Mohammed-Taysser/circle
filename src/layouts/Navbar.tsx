@@ -1,27 +1,10 @@
-import {
-  Burger,
-  Header,
-  Input,
-  Kbd,
-  MediaQuery,
-  useMantineTheme,
-} from '@mantine/core';
-import { BiSearchAlt } from 'react-icons/bi';
-import useSearchInput from '../hooks/useSearchInput';
+import { Burger, Header, MediaQuery, useMantineTheme } from '@mantine/core';
 import Logo from './navbar/Logo';
+import SearchInput from './navbar/SearchInput';
 import UserDropdown from './navbar/UserDropdown';
-import { useHotkeys } from '@mantine/hooks';
 
 function Navbar(props: NavbarProps) {
   const theme = useMantineTheme();
-  const { onSearchInputClick } = useSearchInput();
-
-  useHotkeys([
-    ['/', onSearchInputClick],
-    ['ctrl+K', onSearchInputClick],
-    ['ctrl+F', onSearchInputClick],
-    ['ctrl+P', onSearchInputClick],
-  ]);
 
   return (
     <Header height={{ base: 50, md: 70 }} className='px-10'>
@@ -31,26 +14,7 @@ function Navbar(props: NavbarProps) {
         </div>
 
         <div className='col-span-1'>
-          <Input
-            className='flex-grow'
-            icon={<BiSearchAlt />}
-            radius='md'
-            onClick={onSearchInputClick}
-            component='button'
-            styles={(theme) => ({
-              input: {
-                cursor: 'pointer',
-                '&:focus-within': {
-                  borderColor: theme.colors.gray[4],
-                },
-              },
-            })}
-          >
-            <div className='text-gray-400 flex justify-between items-center relative top-[-1px]'>
-              <>Search</>
-              <Kbd className='text-gray-300 text-xs'>/</Kbd>
-            </div>
-          </Input>
+          <SearchInput />
         </div>
 
         <div className='col-span-2'>
