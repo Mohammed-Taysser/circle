@@ -153,12 +153,6 @@ const routes = createBrowserRouter([
           </RequireAuth>
         ),
       },
-    ],
-  },
-  {
-    path: '/',
-    element: <BaseLayout minimal />,
-    children: [
       {
         path: '/group/:groupId',
         element: <SingleGroup />,
