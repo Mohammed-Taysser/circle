@@ -1,11 +1,16 @@
-import { AppShell, useMantineTheme } from '@mantine/core';
+import { AppShell, Center, Loader, useMantineTheme } from '@mantine/core';
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import Skeleton from '../common/Skeleton';
 import Aside from './Aside';
 import Header from './Header';
 import Navbar from './Navbar';
 
+/**
+ * Base Layout
+ * @usage
+
+- use `minimal` to hide sidebar
+ */
 function Base(props: { minimal?: boolean }) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
@@ -26,7 +31,13 @@ function Base(props: { minimal?: boolean }) {
       aside={props.minimal ? undefined : <Aside />}
       header={<Navbar opened={opened} setOpened={setOpened} />} // Props conflict names from mantine itself
     >
-      <Suspense fallback={<Skeleton.post repeat={10} />}>
+      <Suspense
+        fallback={
+          <Center h={200}>
+            <Loader color='teal' size='xl' variant='dots' />
+          </Center>
+        }
+      >
         <Outlet />
       </Suspense>
     </AppShell>

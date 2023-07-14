@@ -7,7 +7,7 @@ import {
 } from '@mantine/core';
 import { ModalsProvider } from '@mantine/modals';
 import { Notifications } from '@mantine/notifications';
-import { Suspense, useState } from 'react';
+import { useState } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import CommentsModal from '../modal/Comments.modal';
 import EventsModal from '../modal/Events.modal';
@@ -47,22 +47,14 @@ function App() {
                 events: EventsModal,
               }}
             >
-              <Suspense
-                fallback={
+              <RouterProvider
+                router={routes}
+                fallbackElement={
                   <Center h={200}>
                     <Loader color='teal' size='xl' variant='dots' />
                   </Center>
                 }
-              >
-                <RouterProvider
-                  router={routes}
-                  fallbackElement={
-                    <Center h={200}>
-                      <Loader color='teal' size='xl' variant='dots' />
-                    </Center>
-                  }
-                />
-              </Suspense>
+              />
             </ModalsProvider>
           </>
         </MantineProvider>
