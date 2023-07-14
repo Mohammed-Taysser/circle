@@ -1,5 +1,4 @@
 import { Avatar, Tooltip } from '@mantine/core';
-import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import AvatarA from './Avatar';
 
@@ -10,10 +9,8 @@ import AvatarA from './Avatar';
 - use `className` to add classes to Group wrapper
 - use `colView` to change view to column
 - use `group` to pass group info
-
- * @returns {ReactElement}
  */
-function Group(props: GroupProps): ReactElement {
+function Group(props: GroupProps) {
   if (!props.group) {
     return <></>;
   }
