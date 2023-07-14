@@ -1,7 +1,6 @@
 import { Anchor, Divider, Popover } from '@mantine/core';
 import { RichTextEditor } from '@mantine/tiptap';
 import EmojiPicker from 'emoji-picker-react';
-import { ReactElement } from 'react';
 import { BsEmojiSmile, BsTextWrap } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
@@ -11,10 +10,9 @@ import { Link } from 'react-router-dom';
 
 - use `editor` pass editor instance
 - use `dev` to hide help url
-
- * @returns {React.ReactElement}
+- use `className` to add className to editor wrapper
  */
-function Editor(props: EditorProps): ReactElement {
+function Editor(props: EditorProps) {
   const { editor } = props;
 
   return (
