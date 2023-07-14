@@ -4,39 +4,24 @@ import {
   Input,
   Kbd,
   MediaQuery,
-  ScrollArea,
   useMantineTheme,
 } from '@mantine/core';
-import { modals } from '@mantine/modals';
 import { BiSearchAlt } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
+import useSearchInput from '../hooks/useSearchInput';
 import Logo from './navbar/Logo';
 import UserDropdown from './navbar/UserDropdown';
+import { useHotkeys } from '@mantine/hooks';
 
 function Navbar(props: NavbarProps) {
   const theme = useMantineTheme();
-  const navigateTo = useNavigate();
+  const { onSearchInputClick } = useSearchInput();
 
-  const onSearchInputClick = () =>
-    modals.openContextModal({
-      modal: 'search',
-      title: '',
-      innerProps: {
-        navigateTo,
-      },
-      size: 'lg',
-      centered: true,
-      withCloseButton: false,
-      scrollAreaComponent: ScrollArea.Autosize,
-      overlayProps: {
-        color:
-          theme.colorScheme === 'dark'
-            ? theme.colors.dark[9]
-            : theme.colors.gray[2],
-        opacity: 0.55,
-        blur: 3,
-      },
-    });
+  useHotkeys([
+    ['/', onSearchInputClick],
+    ['ctrl+K', onSearchInputClick],
+    ['ctrl+F', onSearchInputClick],
+    ['ctrl+P', onSearchInputClick],
+  ]);
 
   return (
     <Header height={{ base: 50, md: 70 }} className='px-10'>
