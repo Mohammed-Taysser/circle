@@ -1,5 +1,4 @@
 import { Avatar } from '@mantine/core';
-import { ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { timeToX } from '../helpers';
 import AvatarA from './Avatar';
@@ -10,10 +9,8 @@ import AvatarA from './Avatar';
 
 - use `className` to add classes to Member wrapper
 - use `user` to pass Member info
-
- * @returns {React.ReactElement}
  */
-function Friend(props: { user: Member; className: string }): ReactElement {
+function Member(props: { user: Member; className: string }) {
   if (!props.user) {
     return <></>;
   }
@@ -61,9 +58,9 @@ function Friend(props: { user: Member; className: string }): ReactElement {
   );
 }
 
-Friend.defaultProps = {
+Member.defaultProps = {
   user: null,
   className: '',
 };
 
-export default Friend;
+export default Member;
