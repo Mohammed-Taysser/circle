@@ -13,11 +13,10 @@ import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineLogout } from 'react-icons/md';
 import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
+import avatar from '../../../src/assets/images/default/avatar.png';
 import { DROPDOWN_STATUS } from '../../constants/navbar';
 
-import avatar from '../../../src/assets/images/default/avatar.png';
-
-function UserDropdown() {
+function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
   const onStatusChange = (status: { color: string; title: string }) => {
@@ -29,7 +28,7 @@ function UserDropdown() {
   };
 
   return (
-    <div className='flex justify-end'>
+    <div className={`flex justify-end ${props.className}`}>
       <div>
         <Menu withArrow width={200}>
           <Menu.Target>
@@ -130,5 +129,9 @@ function UserDropdown() {
     </div>
   );
 }
+
+UserDropdown.defaultProps = {
+  className: '',
+};
 
 export default UserDropdown;
