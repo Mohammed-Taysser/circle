@@ -1,12 +1,19 @@
 import { useMantineColorScheme } from '@mantine/core';
 import { Link } from 'react-router-dom';
+import favicon from '../../assets/images/icons/favicon.svg';
 
 function Logo() {
   const { colorScheme } = useMantineColorScheme();
 
   return (
     <Link to='/' className='inline-block'>
-      <svg width='160' height='40' viewBox='0 0 370 100'>
+      <img src={favicon} alt='favicon' className='max-w-full md:hidden' />
+      <svg
+        width='160'
+        height='40'
+        viewBox='0 0 370 100'
+        className='hidden md:inline-block'
+      >
         <defs id='SvgjsDefs4288'></defs>
         <g
           id='SvgjsG4289'
