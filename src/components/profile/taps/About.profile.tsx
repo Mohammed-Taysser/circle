@@ -122,7 +122,7 @@ function AboutProfile() {
           </tbody>
         </Table>
       </div>
-      <div className='bg-white rounded nice-shadow py-4 px-10 mb-16'>
+      <div className='bg-white rounded nice-shadow py-4 px-10 mb-10'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Education And Others Information
         </h2>
