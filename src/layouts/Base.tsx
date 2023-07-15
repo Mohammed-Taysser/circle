@@ -27,7 +27,7 @@ function Base(props: { minimal?: boolean }) {
       }}
       navbarOffsetBreakpoint='md'
       asideOffsetBreakpoint='lg'
-      navbar={<Header opened={opened} />} // Props conflict names from mantine itself
+      navbar={<Header opened={opened} setOpened={setOpened} />} // Props conflict names from mantine itself
       aside={props.minimal ? undefined : <Aside />}
       header={<Navbar opened={opened} setOpened={setOpened} />} // Props conflict names from mantine itself
     >
