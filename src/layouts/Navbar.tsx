@@ -1,5 +1,8 @@
 import { Burger, Header, MediaQuery, useMantineTheme } from '@mantine/core';
+import FriendsDropdown from './navbar/FriendsDropdown';
 import Logo from './navbar/Logo';
+import MessagesDropdown from './navbar/MessagesDropdown';
+import NotificationDropdown from './navbar/NotificationDropdown';
 import SearchInput from './navbar/SearchInput';
 import UserDropdown from './navbar/UserDropdown';
 
@@ -18,12 +21,13 @@ function Navbar(props: NavbarProps) {
         </div>
 
         <div className='col-span-2'>
-          <div className='flex justify-around items-center'>
-            <span>dropdowns</span>
-            <span>dropdowns</span>
-            <span>dropdowns</span>
+          <div className='flex justify-center gap-10 items-center'>
+            <FriendsDropdown />
+            <MessagesDropdown />
+            <NotificationDropdown />
           </div>
         </div>
+
         <div className='col-span-1'>
           <UserDropdown />
         </div>
@@ -31,7 +35,7 @@ function Navbar(props: NavbarProps) {
         <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
             opened={props.opened}
-            onClick={() => props.setOpened((o) => !o)}
+            onClick={() => props.setOpened((prev) => !prev)}
             size='sm'
             color={theme.colors.gray[6]}
             mr='xl'
