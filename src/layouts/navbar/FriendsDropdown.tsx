@@ -9,7 +9,7 @@ import {
   ThemeIcon,
   UnstyledButton,
 } from '@mantine/core';
-
+import { useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { FiUserCheck, FiUserMinus, FiUserPlus, FiUsers } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -96,6 +96,9 @@ const NOTIFICATION = [
 ];
 
 function FriendsDropdown() {
+  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
+  const isSmallerScreen = useMediaQuery('(max-width: 36.125em)');
+
   const onRequestBtnClick = (requestName: string) => {
     const notificationId = uuidv4();
 
@@ -122,18 +125,26 @@ function FriendsDropdown() {
   };
 
   return (
-    <Popover width={500} position='bottom' withArrow>
+    <Popover
+      width={isSmallerScreen ? '100vw' : 500}
+      position='bottom'
+      withArrow
+    >
       <Popover.Target>
         <UnstyledButton>
-          <Indicator color='orange' label={12} size={16}>
+          <Indicator
+            color='orange'
+            label={<span className='text-[10px]'>12</span>}
+            size={16}
+          >
             <ThemeIcon
               className='cursor-pointer'
               variant='light'
-              size='xl'
+              size={isSmallerThanMd ? 'xl' : 'lg'}
               radius='lg'
               color='orange'
             >
-              <FiUsers className='text-2xl' />
+              <FiUsers className='text-lg md:text-2xl' />
             </ThemeIcon>
           </Indicator>
         </UnstyledButton>

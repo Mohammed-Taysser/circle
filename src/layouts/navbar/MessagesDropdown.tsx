@@ -9,7 +9,7 @@ import {
   ThemeIcon,
   UnstyledButton,
 } from '@mantine/core';
-
+import { useMediaQuery } from '@mantine/hooks';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import avatar from '../../assets/images/default/avatar.png';
@@ -107,19 +107,30 @@ const NOTIFICATION = [
 ];
 
 function MessagesDropdown() {
+  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
+  const isSmallerScreen = useMediaQuery('(max-width: 36.125em)');
+
   return (
-    <Popover width={500} position='bottom' withArrow>
+    <Popover
+      width={isSmallerScreen ? '100vw' : 500}
+      position='bottom'
+      withArrow
+    >
       <Popover.Target>
         <UnstyledButton>
-          <Indicator color='grape' label={71} size={16}>
+          <Indicator
+            color='grape'
+            label={<span className='text-[10px]'>71</span>}
+            size={16}
+          >
             <ThemeIcon
               className='cursor-pointer'
               variant='light'
-              size='xl'
+              size={isSmallerThanMd ? 'xl' : 'lg'}
               color='grape'
               radius='lg'
             >
-              <TbMessage2Bolt className='text-2xl' />
+              <TbMessage2Bolt className='text-lg md:text-2xl' />
             </ThemeIcon>
           </Indicator>
         </UnstyledButton>

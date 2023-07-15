@@ -9,6 +9,7 @@ import {
   ThemeIcon,
   UnstyledButton,
 } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { LiaShareSolid } from 'react-icons/lia';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { TbMessage2Bolt } from 'react-icons/tb';
@@ -145,19 +146,30 @@ const getIconColor = (type: string) => {
 };
 
 function NotificationDropdown() {
+  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
+  const isSmallerScreen = useMediaQuery('(max-width: 36.125em)');
+
   return (
-    <Popover width={500} position='bottom' withArrow>
+    <Popover
+      width={isSmallerScreen ? '100vw' : 500}
+      position='bottom'
+      withArrow
+    >
       <Popover.Target>
         <UnstyledButton>
-          <Indicator color='teal' label={101} size={16}>
+          <Indicator
+            color='teal'
+            label={<span className='text-[10px]'>101</span>}
+            size={16}
+          >
             <ThemeIcon
               className='cursor-pointer'
               variant='light'
-              size='xl'
+              size={isSmallerThanMd ? 'xl' : 'lg'}
               color='teal'
               radius='lg'
             >
-              <MdOutlineNotificationsActive className='text-2xl' />
+              <MdOutlineNotificationsActive className='text-lg md:text-2xl' />
             </ThemeIcon>
           </Indicator>
         </UnstyledButton>
