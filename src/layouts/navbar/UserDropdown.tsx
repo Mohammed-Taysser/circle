@@ -1,26 +1,29 @@
 import {
-  Avatar,
   ColorSwatch,
+  Indicator,
   Menu,
   Text,
   UnstyledButton,
   useMantineColorScheme,
 } from '@mantine/core';
-import { IconMoonStars, IconSun } from '@tabler/icons-react';
+import { useState } from 'react';
 import { BiMessageDetail } from 'react-icons/bi';
+import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { FiUser } from 'react-icons/fi';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineLogout } from 'react-icons/md';
 import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import avatar from '../../../src/assets/images/default/avatar.png';
+import Avatar from '../../common/Avatar';
 import { DROPDOWN_STATUS } from '../../constants/navbar';
 
 function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const [status, setStatus] = useState(DROPDOWN_STATUS[0].color);
 
   const onStatusChange = (status: { color: string; title: string }) => {
-    console.log(status);
+    setStatus(status.color);
   };
 
   const onLogoutClick = () => {
@@ -36,22 +39,22 @@ function UserDropdown(props: { className: string }) {
               sx={(theme) => ({
                 display: 'block',
                 width: '100%',
-                padding: theme.spacing.md,
                 color:
                   theme.colorScheme === 'dark'
                     ? theme.colors.dark[0]
                     : theme.black,
-
-                '&:hover': {
-                  backgroundColor:
-                    theme.colorScheme === 'dark'
-                      ? theme.colors.dark[8]
-                      : theme.colors.gray[0],
-                },
               })}
             >
-              <div className='flex gap-4 items-center'>
-                <Avatar src={avatar} radius='xl' />
+              <div className='flex gap-3 items-center'>
+                <Indicator
+                  color={status}
+                  offset={7}
+                  processing
+                  withBorder
+                  position='bottom-end'
+                >
+                  <Avatar src={avatar} sm />
+                </Indicator>
 
                 <div className='flex-1'>
                   <Text size='sm' weight={500}>
@@ -67,15 +70,16 @@ function UserDropdown(props: { className: string }) {
               </div>
             </UnstyledButton>
           </Menu.Target>
+
           <Menu.Dropdown className='border-0 shadow-nice'>
             <Menu.Label>Application</Menu.Label>
             <Menu.Item
               onClick={() => toggleColorScheme()}
               icon={
                 colorScheme === 'dark' ? (
-                  <IconSun size={14} />
+                  <BsSun size={14} />
                 ) : (
-                  <IconMoonStars size={14} />
+                  <BsMoonStars size={14} />
                 )
               }
             >
