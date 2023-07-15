@@ -1,4 +1,4 @@
-import { Burger, Header, MediaQuery, useMantineTheme } from '@mantine/core';
+import { Burger, Flex, Grid, Header, useMantineTheme } from '@mantine/core';
 import FriendsDropdown from './navbar/FriendsDropdown';
 import Logo from './navbar/Logo';
 import MessagesDropdown from './navbar/MessagesDropdown';
@@ -10,38 +10,35 @@ function Navbar(props: NavbarProps) {
   const theme = useMantineTheme();
 
   return (
-    <Header height={{ base: 50, md: 70 }} className='px-10'>
-      <div className='h-full grid grid-cols-5 items-center'>
-        <div className='col-span-1'>
+    <Header height={80} className='px-10 border-0 shadow-nice'>
+      <Grid className='h-[80px]' align='center'>
+        <Grid.Col span={2}>
           <Logo />
-        </div>
+        </Grid.Col>
 
-        <div className='col-span-1'>
+        <Grid.Col lg={3} md={2} span={3}>
           <SearchInput />
-        </div>
+        </Grid.Col>
 
-        <div className='col-span-2'>
-          <div className='flex justify-center gap-10 items-center'>
+        <Grid.Col md={4} span={4}>
+          <div className='flex justify-center gap-3 md:gap-10 items-center'>
             <FriendsDropdown />
             <MessagesDropdown />
             <NotificationDropdown />
           </div>
-        </div>
+        </Grid.Col>
 
-        <div className='col-span-1'>
-          <UserDropdown />
-        </div>
-
-        <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-          <Burger
-            opened={props.opened}
-            onClick={() => props.setOpened((prev) => !prev)}
-            size='sm'
-            color={theme.colors.gray[6]}
-            mr='xl'
-          />
-        </MediaQuery>
-      </div>
+        <Grid.Col lg={3} md={4} span={3}>
+          <UserDropdown className='hidden md:flex' />
+          <Flex justify='end' className='md:hidden'>
+            <Burger
+              opened={props.opened}
+              onClick={() => props.setOpened((prev) => !prev)}
+              color={theme.colors.gray[6]}
+            />
+          </Flex>
+        </Grid.Col>
+      </Grid>
     </Header>
   );
 }
