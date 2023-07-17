@@ -19,7 +19,7 @@ function EventsTimeline() {
     <Timeline color='teal' active={EVENTS.length} bulletSize={15}>
       {EVENTS.map((event) => (
         <Timeline.Item
-          title={dayjs(event.date).format('h:mm:ss A')}
+          title={dayjs(event.date).format('hh:mm:ss A')}
           key={event.id}
         >
           <Accordion>
