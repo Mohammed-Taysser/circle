@@ -15,7 +15,7 @@ function BodyPost(props: { post: Post; full?: boolean }) {
           ) : (
             <>
               {parse(props.post.body.substring(0, 1000))}
-              {props.post.body.length >= 1000 ? (
+              {props.post.body.length >= 1000 && (
                 <>
                   <span className='mx-1'>.....</span>
                   <Anchor
@@ -26,8 +26,6 @@ function BodyPost(props: { post: Post; full?: boolean }) {
                     Continue Reading
                   </Anchor>
                 </>
-              ) : (
-                <></>
               )}
             </>
           )}
