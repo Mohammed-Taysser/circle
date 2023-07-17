@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { POST_TYPES } from '../../helpers';
 
 function BodyPost(props: { post: Post; full?: boolean }) {
-  // const Body = POST_TYPES[props.post.variant].component;
+  const Body = POST_TYPES[props.post.variant].component;
 
   return (
     <div className='post-body'>
@@ -27,12 +27,12 @@ function BodyPost(props: { post: Post; full?: boolean }) {
                   </Anchor>
                 </>
               ) : (
-                ''
+                <></>
               )}
             </>
           )}
         </p>
-        {/* <Body post={props.post} full={props.full} /> */}
+        <Body post={props.post} full={props.full} />
       </div>
     </div>
   );
