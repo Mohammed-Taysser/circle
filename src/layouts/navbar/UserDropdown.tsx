@@ -32,104 +32,100 @@ function UserDropdown(props: { className: string }) {
 
   return (
     <div className={`flex justify-end ${props.className}`}>
-      <div>
-        <Menu withArrow width={200}>
-          <Menu.Target>
-            <UnstyledButton
-              sx={(theme) => ({
-                display: 'block',
-                width: '100%',
-                color:
-                  theme.colorScheme === 'dark'
-                    ? theme.colors.dark[0]
-                    : theme.black,
-              })}
-            >
-              <div className='flex gap-3 items-center'>
-                <Indicator
-                  color={status}
-                  offset={7}
-                  processing
-                  withBorder
-                  position='bottom-end'
-                >
-                  <Avatar src={avatar} sm />
-                </Indicator>
-
-                <div className='flex-1'>
-                  <Text size='sm' weight={500}>
-                    Mohammed Taysser
-                  </Text>
-
-                  <Text color='dimmed' size='xs'>
-                    @mohammed-taysser
-                  </Text>
-                </div>
-
-                <TfiAngleDown />
-              </div>
-            </UnstyledButton>
-          </Menu.Target>
-
-          <Menu.Dropdown className='border-0 shadow-nice'>
-            <Menu.Label>Application</Menu.Label>
-            <Menu.Item
-              onClick={() => toggleColorScheme()}
-              icon={
-                colorScheme === 'dark' ? (
-                  <BsSun size={14} />
-                ) : (
-                  <BsMoonStars size={14} />
-                )
-              }
-            >
-              {colorScheme === 'dark' ? 'Light' : 'Dark'} mode
-            </Menu.Item>
-            <Menu.Item
-              component={Link}
-              to={`/profile/1`}
-              icon={<FiUser size={14} />}
-            >
-              Profile
-            </Menu.Item>
-            <Menu.Item
-              component={Link}
-              to={`/messenger`}
-              icon={<BiMessageDetail size={14} />}
-            >
-              Messages
-            </Menu.Item>
-            <Menu.Item
-              component={Link}
-              to={`/setting`}
-              icon={<IoSettingsOutline size={14} />}
-            >
-              Settings
-            </Menu.Item>
-
-            <Menu.Label>Status</Menu.Label>
-
-            {DROPDOWN_STATUS.map((status) => (
-              <Menu.Item
-                key={status.title}
-                onClick={() => onStatusChange(status)}
-                icon={<ColorSwatch size={14} color={status.color} />}
+      <Menu withArrow width={200}>
+        <Menu.Target>
+          <UnstyledButton
+            sx={(theme) => ({
+              color:
+                theme.colorScheme === 'dark'
+                  ? theme.colors.dark[0]
+                  : theme.black,
+            })}
+          >
+            <div className='flex gap-3 items-center'>
+              <Indicator
+                color={status}
+                offset={7}
+                processing
+                withBorder
+                position='bottom-end'
               >
-                {status.title}
-              </Menu.Item>
-            ))}
+                <Avatar src={avatar} sm />
+              </Indicator>
 
-            <Menu.Label>Danger zone</Menu.Label>
+              <div className='flex-1'>
+                <Text size='sm' weight={500}>
+                  Mohammed Taysser
+                </Text>
+
+                <Text color='dimmed' size='xs'>
+                  @mohammed-taysser
+                </Text>
+              </div>
+
+              <TfiAngleDown />
+            </div>
+          </UnstyledButton>
+        </Menu.Target>
+
+        <Menu.Dropdown className='border-0 shadow-nice'>
+          <Menu.Label>Application</Menu.Label>
+          <Menu.Item
+            onClick={() => toggleColorScheme()}
+            icon={
+              colorScheme === 'dark' ? (
+                <BsSun size={14} />
+              ) : (
+                <BsMoonStars size={14} />
+              )
+            }
+          >
+            {colorScheme === 'dark' ? 'Light' : 'Dark'} mode
+          </Menu.Item>
+          <Menu.Item
+            component={Link}
+            to={`/profile/1`}
+            icon={<FiUser size={14} />}
+          >
+            Profile
+          </Menu.Item>
+          <Menu.Item
+            component={Link}
+            to={`/messenger`}
+            icon={<BiMessageDetail size={14} />}
+          >
+            Messages
+          </Menu.Item>
+          <Menu.Item
+            component={Link}
+            to={`/setting`}
+            icon={<IoSettingsOutline size={14} />}
+          >
+            Settings
+          </Menu.Item>
+
+          <Menu.Label>Status</Menu.Label>
+
+          {DROPDOWN_STATUS.map((status) => (
             <Menu.Item
-              color='red'
-              onClick={onLogoutClick}
-              icon={<MdOutlineLogout size={14} />}
+              key={status.title}
+              onClick={() => onStatusChange(status)}
+              icon={<ColorSwatch size={14} color={status.color} />}
             >
-              Logout
+              {status.title}
             </Menu.Item>
-          </Menu.Dropdown>
-        </Menu>
-      </div>
+          ))}
+
+          <Menu.Label>Danger zone</Menu.Label>
+          <Menu.Item
+            color='red'
+            onClick={onLogoutClick}
+            icon={<MdOutlineLogout size={14} />}
+          >
+            Logout
+          </Menu.Item>
+        </Menu.Dropdown>
+      </Menu>
     </div>
   );
 }
