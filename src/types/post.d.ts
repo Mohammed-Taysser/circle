@@ -65,7 +65,7 @@ interface Post {
   publishAt: Date;
   body: string;
   utilsUrl?: string;
-  isSaved?: boolean;
+  isSaved: boolean;
   comments: number;
   reacts: {
     count: number;
@@ -74,12 +74,18 @@ interface Post {
   utils?: Group | Friend;
 }
 
-interface PostViewerObject {
+interface PostDropdownProps {
+  isSaved: boolean;
+  body: string;
+  id: string;
+}
+
+type PostViewerObject = {
   [key in PostVariant]: {
     msg: string;
     component: (props: PostBodyProps) => JSX.Element;
   };
-}
+};
 
 // Dropzone
 interface DropzoneProps {
