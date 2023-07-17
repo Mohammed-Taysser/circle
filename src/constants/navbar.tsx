@@ -1,15 +1,19 @@
 const DROPDOWN_STATUS = [
   {
-    color: '#32e4cd',
+    color: '#20c997',
     title: 'Online',
   },
   {
-    color: '#ffd52f',
+    color: '#fcc419',
     title: 'Away',
   },
   {
-    color: '#cbdfee',
+    color: '#dee2e6',
     title: 'Invisible',
+  },
+  {
+    color: '#f03e3e',
+    title: 'Offline',
   },
 ];
 

@@ -20,10 +20,10 @@ import { DROPDOWN_STATUS } from '../../constants/navbar';
 
 function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const [status, setStatus] = useState(DROPDOWN_STATUS[0].color);
+  const [status, setStatus] = useState(DROPDOWN_STATUS[0]);
 
   const onStatusChange = (status: { color: string; title: string }) => {
-    setStatus(status.color);
+    setStatus(status);
   };
 
   const onLogoutClick = () => {
@@ -44,13 +44,13 @@ function UserDropdown(props: { className: string }) {
           >
             <div className='flex gap-3 items-center'>
               <Indicator
-                color={status}
+                color={status.color}
                 offset={7}
                 processing
                 withBorder
                 position='bottom-end'
               >
-                <Avatar src={avatar} sm />
+                <Avatar src={avatar} sm alt='Mohammed Taysser' />
               </Indicator>
 
               <div className='flex-1'>
@@ -110,7 +110,7 @@ function UserDropdown(props: { className: string }) {
             <Menu.Item
               key={status.title}
               onClick={() => onStatusChange(status)}
-              icon={<ColorSwatch size={14} color={status.color} />}
+              icon={<ColorSwatch size={10} color={status.color} />}
             >
               {status.title}
             </Menu.Item>
