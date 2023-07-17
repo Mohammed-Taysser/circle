@@ -1,4 +1,5 @@
-import { AspectRatio } from '@mantine/core';
+import { AspectRatio, LoadingOverlay } from '@mantine/core';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Group from '../common/Group';
 import Friend from '../common/Member';
 import PlyrViewer from '../common/plyr';
@@ -13,9 +14,30 @@ const PlyrAudio = (props: PostBodyProps) => {
 };
 
 const MapViewer = (props: PostBodyProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    iframeRef.current?.addEventListener('load', onIframeLoad);
+
+    return () => {
+      iframeRef.current?.removeEventListener('load', onIframeLoad);
+    };
+  }, []);
+
+  const onIframeLoad = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
-    <AspectRatio ratio={16 / 9}>
-      <iframe src={props.post.utilsUrl} title='Map' className='border-0' />
+    <AspectRatio ratio={16 / 9} pos='relative'>
+      <LoadingOverlay visible={isLoading} overlayBlur={2} />
+      <iframe
+        src={props.post.utilsUrl}
+        ref={iframeRef}
+        title='Map'
+        className={`border-0 ${isLoading ? 'opacity-0' : ''}`}
+      />
     </AspectRatio>
   );
 };
