@@ -35,6 +35,13 @@ function App() {
           theme={{
             primaryColor: 'teal',
             colorScheme,
+            components: {
+              Input: {
+                defaultProps: {
+                  radius: 'xl',
+                },
+              },
+            },
           }}
         >
           <>
