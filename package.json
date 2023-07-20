@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.10.6",
     "@fullcalendar/core": "^6.1.7",
     "@fullcalendar/daygrid": "^6.1.7",
@@ -44,7 +46,7 @@
     "@tiptap/suggestion": "^2.0.3",
     "autoprefixer": "^10.4.14",
     "dayjs": "^1.11.7",
-    "emoji-picker-react": "^4.4.8",
+    "emoji-mart": "^5.5.2",
     "html-react-parser": "^3.0.16",
     "lightgallery": "^2.7.1",
     "plyr": "^3.7.8",
