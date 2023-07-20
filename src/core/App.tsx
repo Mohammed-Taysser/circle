@@ -1,6 +1,6 @@
 import { ColorScheme, ColorSchemeProvider } from '@mantine/core';
+import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import { Notifications } from '@mantine/notifications';
-import { useState } from 'react';
 import MantineProvider from '../providers/Mantine';
 import ModalsProvider from '../providers/Modals';
 import RouterProvider from '../providers/Router';
@@ -9,9 +9,16 @@ import ErrorBoundary from './ErrorBoundary';
 import '../assets/scss/app.scss';
 
 function App() {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
+  const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
+    key: 'circle-color-scheme',
+    defaultValue: 'light',
+    getInitialValueInEffect: true,
+  });
+
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value ?? (colorScheme === 'dark' ? 'light' : 'dark'));
+
+  useHotkeys([['mod+J', () => toggleColorScheme()]]);
 
   return (
     <ErrorBoundary>
