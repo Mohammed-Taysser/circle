@@ -1,24 +1,56 @@
-import { Anchor, Divider, Popover } from '@mantine/core';
-import { RichTextEditor } from '@mantine/tiptap';
-import EmojiPicker from 'emoji-picker-react';
+import data from '@emoji-mart/data';
+import Picker from '@emoji-mart/react';
+import { Divider, Popover } from '@mantine/core';
+import { Link, RichTextEditor } from '@mantine/tiptap';
+import CharacterCount from '@tiptap/extension-character-count';
+import Placeholder from '@tiptap/extension-placeholder';
+import SubScript from '@tiptap/extension-subscript';
+import Superscript from '@tiptap/extension-superscript';
+import TextAlign from '@tiptap/extension-text-align';
+import TextStyle from '@tiptap/extension-text-style';
+import Typography from '@tiptap/extension-typography';
+import Underline from '@tiptap/extension-underline';
+import { useEditor } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 import { BsEmojiSmile, BsTextWrap } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
 
-/**
- * Editor component
- * @usage
+const EDITOR_OPTIONS = {
+  extensions: [
+    StarterKit,
+    Underline,
+    Placeholder,
+    TextStyle,
+    Typography,
+    Link.configure({
+      HTMLAttributes: {
+        class: 'text-aurora no-underline hover:underline',
+      },
+    }),
+    Superscript,
+    SubScript,
+    TextAlign.configure({ types: ['heading', 'paragraph'] }),
+    CharacterCount,
+  ],
+};
 
-- use `editor` pass editor instance
-- use `dev` to hide help url
-- use `className` to add className to editor wrapper
- */
-function Editor(props: EditorProps) {
-  const { editor } = props;
+function TiptapEditor(props: TiptapEditorProps) {
+  const editorInstance = useEditor({
+    ...EDITOR_OPTIONS,
+    onUpdate: (editorInstance) => {
+      if (props.getText) {
+        const content = {
+          text: editorInstance.editor.getText(),
+          html: editorInstance.editor.getHTML(),
+        };
+        props.getText(content);
+      }
+    },
+  });
 
   return (
-    <div className={props.className}>
-      <RichTextEditor editor={editor}>
-        <RichTextEditor.Toolbar sticky stickyOffset={60}>
+    <div>
+      <RichTextEditor editor={editorInstance}>
+        <RichTextEditor.Toolbar>
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
             <RichTextEditor.Italic />
@@ -58,35 +90,6 @@ function Editor(props: EditorProps) {
           </RichTextEditor.ControlsGroup>
 
           <RichTextEditor.ControlsGroup>
-            <RichTextEditor.ColorPicker
-              colors={[
-                '#25262b',
-                '#868e96',
-                '#fa5252',
-                '#e64980',
-                '#be4bdb',
-                '#7950f2',
-                '#4c6ef5',
-                '#228be6',
-                '#15aabf',
-                '#12b886',
-                '#40c057',
-                '#82c91e',
-                '#fab005',
-                '#fd7e14',
-              ]}
-            />
-
-            <RichTextEditor.Color color='#F03E3E' />
-            <RichTextEditor.Color color='#7048E8' />
-            <RichTextEditor.Color color='#1098AD' />
-            <RichTextEditor.Color color='#37B24D' />
-            <RichTextEditor.Color color='#F59F00' />
-
-            <RichTextEditor.UnsetColor />
-          </RichTextEditor.ControlsGroup>
-
-          <RichTextEditor.ControlsGroup>
             <Popover position='bottom-end'>
               <Popover.Target>
                 <RichTextEditor.Control>
@@ -95,9 +98,10 @@ function Editor(props: EditorProps) {
               </Popover.Target>
 
               <Popover.Dropdown p='0' className='border-0'>
-                <EmojiPicker
-                  onEmojiClick={(params) =>
-                    editor?.commands.insertContent(params.emoji)
+                <Picker
+                  data={data}
+                  onEmojiSelect={(params: any) =>
+                    editorInstance?.commands.insertContent(params.native)
                   }
                 />
               </Popover.Dropdown>
@@ -106,7 +110,9 @@ function Editor(props: EditorProps) {
 
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Control
-              onClick={() => editor?.chain().focus().setHardBreak().run()}
+              onClick={() =>
+                editorInstance?.chain().focus().setHardBreak().run()
+              }
             >
               <BsTextWrap />
             </RichTextEditor.Control>
@@ -115,28 +121,17 @@ function Editor(props: EditorProps) {
 
         <RichTextEditor.Content />
       </RichTextEditor>
-      <div className='text-gray-400 text-sm flex justify-between mt-1'>
+      <div className='text-gray-400 text-sm flex mt-1'>
         <div className='flex gap-2 '>
-          <div>{editor?.storage.characterCount.characters()} characters</div>
+          <div>
+            {editorInstance?.storage.characterCount.characters()} characters
+          </div>
           <Divider orientation='vertical' />
-          <div>{editor?.storage.characterCount.words()} words</div>
-        </div>
-        <div>
-          {!props.dev && (
-            <Anchor component={Link} to='/help/editor'>
-              Learn More
-            </Anchor>
-          )}
+          <div>{editorInstance?.storage.characterCount.words()} words</div>
         </div>
       </div>
     </div>
   );
 }
 
-Editor.defaultProps = {
-  editor: null,
-  dev: false,
-  className: '',
-};
-
-export default Editor;
+export default TiptapEditor;
