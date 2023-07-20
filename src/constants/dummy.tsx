@@ -33,6 +33,7 @@ const POSTS: Post[] = [
   {
     id: '12vcvc3gf123df45fffffgdfgg6',
     variant: 'POST_MAP',
+    visibility:'public',
     gallery: [],
     user: {
       avatar: avatar2,
@@ -87,6 +88,7 @@ const POSTS: Post[] = [
   {
     id: '12vcvc3gf123df45fffffgdfgg6',
     variant: 'NEW_FRIEND',
+    visibility:'public',
     gallery: [avatar3],
     user: {
       avatar: avatar2,
@@ -150,6 +152,7 @@ const POSTS: Post[] = [
   {
     id: '12vcvc3gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
     variant: 'JOIN_GROUP',
+    visibility:'private',
     gallery: [avatar3],
     user: {
       avatar: avatar4,
@@ -243,6 +246,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
     variant: 'UPDATE_AVATAR',
+    visibility:'public',
     gallery: [avatar3],
     user: {
       avatar: avatar1,
@@ -297,6 +301,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd5gggggg645dfdf45fffffgdfgg6',
     variant: 'UPDATE_COVER',
+    visibility:'private',
     gallery: [gallery1],
     user: {
       avatar: avatar1,
@@ -351,6 +356,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd5gggggg645dfdf45fffffggg6',
     variant: 'POST_GALLERY',
+    visibility:'public',
     gallery: [gallery1, gallery2, gallery3, gallery4, gallery5],
     user: {
       avatar: avatar1,
@@ -405,6 +411,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd564gfgfgfgfg545ggg6',
     variant: 'POST_GALLERY',
+    visibility:'friends',
     gallery: [gallery6, gallery7, gallery8],
     user: {
       avatar: avatar2,
@@ -443,6 +450,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd56',
     variant: 'POST_GALLERY',
+    visibility:'public',
     gallery: [gallery3, gallery4, gallery5, gallery9, gallery10],
     user: {
       avatar: avatar3,
@@ -481,6 +489,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd5gggggg645dfdf45ffffmofggg6',
     variant: 'POST_AUDIO',
+    visibility:'public',
     gallery: [],
     user: {
       avatar: avatar1,
@@ -535,6 +544,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd56mo4gfgfgfgfg545ggg6',
     variant: 'POST_AUDIO',
+    visibility:'public',
     gallery: [],
     user: {
       avatar: avatar2,
@@ -573,6 +583,7 @@ const POSTS: Post[] = [
   {
     id: '123mogf4dd56',
     variant: 'POST_AUDIO',
+    visibility:'public',
     gallery: [],
     user: {
       avatar: avatar3,
@@ -611,6 +622,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd5ggggggggggggg645dfdf45fffffggg6',
     variant: 'POST_VIDEO',
+    visibility:'public',
     gallery: [],
     user: {
       avatar: avatar1,
@@ -665,6 +677,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd564ghghhggfgfgfgfg545ggg6',
     variant: 'POST_VIDEO',
+    visibility:'public',
     gallery: [],
     user: {
       avatar: avatar2,
@@ -703,6 +716,7 @@ const POSTS: Post[] = [
   {
     id: '123gf4dd5hj6',
     variant: 'POST_VIDEO',
+    visibility:'friends',
     gallery: [],
     user: {
       avatar: avatar3,
