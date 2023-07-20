@@ -19,7 +19,6 @@ function SearchInput() {
       <Input
         className='flex-grow hidden lg:block'
         icon={<BiSearchAlt />}
-        radius='md'
         onClick={onSearchInputClick}
         component='button'
         styles={(theme) => ({
