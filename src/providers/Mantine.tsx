@@ -8,6 +8,7 @@ function Mantine(props: MantineProviderProps) {
       theme={{
         primaryColor: 'teal',
         colorScheme: props.colorScheme,
+        fontFamily: `'Ubuntu', sans-serif`,
         components: {
           Input: {
             defaultProps: {
