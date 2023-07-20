@@ -1,20 +1,10 @@
-import {
-  Center,
-  ColorScheme,
-  ColorSchemeProvider,
-  Loader,
-  MantineProvider,
-} from '@mantine/core';
-import { ModalsProvider } from '@mantine/modals';
+import { ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import { useState } from 'react';
-import { RouterProvider } from 'react-router-dom';
-import CommentsModal from '../modal/Comments.modal';
-import EventsModal from '../modal/Events.modal';
-import ReactsModal from '../modal/Reacts.modal';
-import SearchModal from '../modal/Search.modal';
+import MantineProvider from '../providers/Mantine';
+import ModalsProvider from '../providers/Modals';
+import RouterProvider from '../providers/Router';
 import ErrorBoundary from './ErrorBoundary';
-import routes from './Routes';
 
 import '../assets/scss/app.scss';
 
@@ -29,39 +19,11 @@ function App() {
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
       >
-        <MantineProvider
-          withGlobalStyles
-          withNormalizeCSS
-          theme={{
-            primaryColor: 'teal',
-            colorScheme,
-            components: {
-              Input: {
-                defaultProps: {
-                  radius: 'xl',
-                },
-              },
-            },
-          }}
-        >
+        <MantineProvider colorScheme={colorScheme}>
           <>
             <Notifications position='top-right' zIndex={2077} />
-            <ModalsProvider
-              modals={{
-                reacts: ReactsModal,
-                comments: CommentsModal,
-                search: SearchModal,
-                events: EventsModal,
-              }}
-            >
-              <RouterProvider
-                router={routes}
-                fallbackElement={
-                  <Center h={200}>
-                    <Loader color='teal' size='xl' variant='dots' />
-                  </Center>
-                }
-              />
+            <ModalsProvider>
+              <RouterProvider />
             </ModalsProvider>
           </>
         </MantineProvider>
