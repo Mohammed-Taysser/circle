@@ -1,13 +1,29 @@
 # CHANGELOG
 
-## todo
+## Bugs & todo
 
-- [ ] create calender as header component
+- [ ] fix create-post component
+- [ ] add animation (framer motion in toggle modals)
+- [ ] reduce create-post to facebook
+- [ ] make timeline in left-sidebar async (every event it's time left make it active)
+- [x] fix post component
+- [ ] fix search modal responsive & refactor it
+- [x] createPost: when change post type, as the previous picture still exist
+- [ ] createPost: add masonry or fixed with & height to preview
+- [ ] Post-types: add multi audio & video in post
+- [ ] friend or follow requests should be sent first to the user to decide if he wants to approve or not
+- [ ] private chats
+- [ ] groups chats
+- [ ] add post share
+- [ ] add cookie dialog
+- [ ] add newsletter dialog
+- [ ] notifications of profile updating - comments - likes
+- [x] create calender as header component
 - [ ] create events page
 - [ ] create `create-event` modal
-- [ ] finish navbar
+- [x] finish navbar
 - [ ] finish sidebar
-- [x] finish spotlight setup
+- [x] replace spotlight with modal manager
 - [ ] refactor post data (no need properties for each post-type)
 - [ ] add post reacts docs
 - [ ] reduce avatar indicator zIndex
@@ -18,23 +34,16 @@
 - [ ] update `index.html`
 - [ ] add meta for each page (try using react-helmet)
 - [ ] create single branch for front only before connect to api
-
-## Upcoming Features
-
-- Create Review Video For Project Functionality
-- Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
-- [Admin Dashboard](https://appseed.us/)
-- Add Free Hand Drawer To Get Author Signature
-- Crop Avatar Before Upload
-- Add Toast For Login User
-- Use Access Token & Refresh Token
-- Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
-- In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
+- [ ] Create Review Video For Project Functionality
+- [ ] Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
+- [ ] [Admin Dashboard](https://appseed.us/)
+- [ ] Crop Avatar Before Upload
+- [x] Add Toast For Login User
+- [ ] Use Access Token & Refresh Token
+- [ ] Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
+- [ ] In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
 - [x] Post Image Gallery (Light Box)
 - [ ] Use Also Video With Images
-
-## TODO's
-
 - [x] post card comments
 - [ ] remove dummy data after integrate with api
 - [ ] check responsive 🙂
@@ -43,6 +52,48 @@
 - [ ] passport auth with social media
 - [x] Text Editor With Preview Instead Of Plain Text
 - [x] empower login & register with validation
+- [x] add search shortcuts
+
+## pages
+
+- [ ] Chat
+- [ ] Events
+- [ ] Homepage
+- [ ] Post Details
+- [ ] Setting
+- [x] 404
+- [x] Bookmarks
+- [x] Contact Us
+- [x] Forget Password
+- [x] Groups
+- [x] Login
+- [x] Profile
+- [x] Register
+- [x] Results
+- [x] Single Group
+
+## Layout
+
+- [x] Navbar
+  - [x] logo
+  - [x] search input
+  - [x] friends dropdown
+  - [x] notification dropdown
+  - [x] message dropdown
+- [ ] Menu sidebar
+  - [ ] online friends
+  - [ ] features list
+- [x] right sidebar
+  - [x] most use bookmarks
+  - [x] calender
+  - [x] events
+
+## Component
+
+- [ ] Post
+  - [ ] share
+  - [ ] comments
+  - [ ] reacts
 
 ## helper
 
@@ -66,80 +117,8 @@
 - <https://dev.to/franciscomendes10866/how-to-use-axios-interceptors-b7d>
 - Search For `Login and Registration Form in Node JS + Express + mongoDB`
 
-## 16 Jun 2022
+## Changelog
 
-- Refactor Api Call (Create Axios Instance 😈)
-- Introduce Redux & Node.Js
-- update register with username & confirm password
-- organize auth pages & noAuth pages
-- create avatar cropper on profile page
+## 20 Apr 2023
 
-## 12 Jul 2022
-
-- Init Project With React
-
-## Bugs
-
-- [x] createPost: when change post type, as the previous picture still exist
-- [ ] createPost: add masonry or fixed with & height to preview
-- [ ] Post-types: add multi audio & video in post
-
-## pages
-
-- [x] Homepage
-- [x] post details
-- [x] 404
-- [x] register
-- [x] login
-- [x] results
-- [x] forget password
-- [x] Profile
-- [ ] Chat
-- [ ] Setting
-- [x] contact us
-- [x] Bookmarks
-- [x] single group
-- [x] Groups
-  - [x] discover
-  - [x] your
-  - [x] friends
-  - [x] recommended
-- [ ] Events
-- post
-  - edit
-  - delete
-
-## Layout
-
-- [ ] Navbar
-  - [x] logo
-  - [x] search input
-  - [ ] friends
-  - [ ] notification
-  - [ ] short chat message
-- [ ] Menu sidebar
-  - [ ] online friends
-  - [ ] features list
-- [ ] right sidebar
-  - [x] friends birthdays
-  - [ ] most called friends
-
-## Component
-
-- [ ] Post
-  - [ ] share
-  - [ ] comments
-  - [ ] reacts
-
-## functionality
-
-- [ ] friend or follow requests should be sent first to the user to decide if he wants to approve or not
-- [ ] reminder of friends birthday
-- [ ] private chats
-- [ ] groups chats
-- [ ] add cookie dialog
-- [ ] add newsletter dialog
-- [ ] notifications of profile updating - comments - likes
-- [ ] shop => a small market where you can post your product sell and buy various things
-- [ ] library => where you can buy review and add your favorite books
-- [ ] movies => where you can search for your favorite read reviews and add them to your favorites
+- Init Project 🎉
