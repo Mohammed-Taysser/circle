@@ -9,9 +9,9 @@ function SearchInput() {
 
   useHotkeys([
     ['/', onSearchInputClick],
-    ['ctrl+K', onSearchInputClick],
-    ['ctrl+F', onSearchInputClick],
-    ['ctrl+P', onSearchInputClick],
+    ['mod+K', onSearchInputClick],
+    ['mod+F', onSearchInputClick],
+    ['mod+P', onSearchInputClick],
   ]);
 
   return (
