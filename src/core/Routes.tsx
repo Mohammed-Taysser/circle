@@ -35,7 +35,7 @@ const Events = lazy(() => import('../pages/auth/Events'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
-const EditorHelp = lazy(() => import('../pages/public/help/Editor'));
+const EditorHelp = lazy(() => import('../pages/public/help/Editor.help'));
 const Registration = lazy(() => import('../pages/public/Registration'));
 const Results = lazy(() => import('../pages/public/Results'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
