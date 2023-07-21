@@ -1,8 +1,9 @@
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
-import { Divider, Popover } from '@mantine/core';
+import { Divider, Popover, useMantineTheme } from '@mantine/core';
 import { Link, RichTextEditor } from '@mantine/tiptap';
 import CharacterCount from '@tiptap/extension-character-count';
+import FontFamily from '@tiptap/extension-font-family';
 import Placeholder from '@tiptap/extension-placeholder';
 import SubScript from '@tiptap/extension-subscript';
 import Superscript from '@tiptap/extension-superscript';
@@ -12,14 +13,15 @@ import Typography from '@tiptap/extension-typography';
 import Underline from '@tiptap/extension-underline';
 import { useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { BsEmojiSmile, BsTextWrap } from 'react-icons/bs';
+import { BsAlignEnd, BsEmojiSmile, BsTextWrap } from 'react-icons/bs';
 
-const EDITOR_OPTIONS = {
+const EDITOR_EXTENSION = {
   extensions: [
     StarterKit,
     Underline,
     Placeholder,
     TextStyle,
+    FontFamily,
     Typography,
     Link.configure({
       HTMLAttributes: {
@@ -34,8 +36,9 @@ const EDITOR_OPTIONS = {
 };
 
 function TiptapEditor(props: TiptapEditorProps) {
+  const theme = useMantineTheme();
   const editorInstance = useEditor({
-    ...EDITOR_OPTIONS,
+    ...EDITOR_EXTENSION,
     onUpdate: (editorInstance) => {
       if (props.getText) {
         const content = {
@@ -45,6 +48,7 @@ function TiptapEditor(props: TiptapEditorProps) {
         props.getText(content);
       }
     },
+    content: props.content,
   });
 
   return (
@@ -61,12 +65,14 @@ function TiptapEditor(props: TiptapEditorProps) {
             <RichTextEditor.CodeBlock />
           </RichTextEditor.ControlsGroup>
 
-          <RichTextEditor.ControlsGroup>
-            <RichTextEditor.H1 />
-            <RichTextEditor.H2 />
-            <RichTextEditor.H3 />
-            <RichTextEditor.H4 />
-          </RichTextEditor.ControlsGroup>
+          {!props.noFontSizes && (
+            <RichTextEditor.ControlsGroup>
+              <RichTextEditor.H1 />
+              <RichTextEditor.H2 />
+              <RichTextEditor.H3 />
+              <RichTextEditor.H4 />
+            </RichTextEditor.ControlsGroup>
+          )}
 
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Blockquote />
@@ -92,7 +98,7 @@ function TiptapEditor(props: TiptapEditorProps) {
           <RichTextEditor.ControlsGroup>
             <Popover position='bottom-end'>
               <Popover.Target>
-                <RichTextEditor.Control>
+                <RichTextEditor.Control title='Emoji picker'>
                   <BsEmojiSmile />
                 </RichTextEditor.Control>
               </Popover.Target>
@@ -100,16 +106,32 @@ function TiptapEditor(props: TiptapEditorProps) {
               <Popover.Dropdown p='0' className='border-0'>
                 <Picker
                   data={data}
+                  theme={theme.colorScheme}
                   onEmojiSelect={(params: any) =>
                     editorInstance?.commands.insertContent(params.native)
                   }
                 />
               </Popover.Dropdown>
             </Popover>
+
+            <RichTextEditor.Control
+              title='Arabic format'
+              onClick={() =>
+                editorInstance
+                  ?.chain()
+                  .focus()
+                  .setFontFamily(`'Tajawal', sans-serif`)
+                  .setTextAlign('right')
+                  .run()
+              }
+            >
+              <BsAlignEnd />
+            </RichTextEditor.Control>
           </RichTextEditor.ControlsGroup>
 
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Control
+              title='New Line'
               onClick={() =>
                 editorInstance?.chain().focus().setHardBreak().run()
               }
@@ -121,12 +143,15 @@ function TiptapEditor(props: TiptapEditorProps) {
 
         <RichTextEditor.Content />
       </RichTextEditor>
+
       <div className='text-gray-400 text-sm flex mt-1'>
-        <div className='flex gap-2 '>
+        <div className='flex gap-2'>
           <div>
             {editorInstance?.storage.characterCount.characters()} characters
           </div>
+
           <Divider orientation='vertical' />
+
           <div>{editorInstance?.storage.characterCount.words()} words</div>
         </div>
       </div>
