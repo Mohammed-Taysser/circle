@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import PostBody from '../components/post/Body.post';
 import PostFooter from '../components/post/Footer.post';
 import PostHeader from '../components/post/Header.post';
@@ -9,15 +8,9 @@ import PostHeader from '../components/post/Header.post';
 
 - use `className` to add classes to Post wrapper
 - use `post` to pass post info
-
- * @returns {ReactElement}
  */
-function Post(props: PostProps): ReactElement {
+function Post(props: PostProps) {
   const { post } = props;
-
-  if (!post) {
-    return <></>;
-  }
 
   return (
     <div className={`post-card ${props.className}`}>
