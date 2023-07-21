@@ -1,12 +1,10 @@
 import { Code, Table } from '@mantine/core';
-import { useEditor } from '@tiptap/react';
-import Editor from '../../../common/Editor';
-import { getEditorOption } from '../../../helpers';
 import { useDocumentTitle } from '@mantine/hooks';
+import TiptapEditor from '../../../common/TiptapEditor';
 
 const content = `
 <h2 style="text-align: center">
-  Welcome to <span style="color: #37b24d">Circle</span> rich text editor
+  Welcome to Circle rich text editor 💯
 </h2>
 
 <p>
@@ -33,7 +31,8 @@ const content = `
     <a rel="noopener noreferrer nofollow" class="text-aurora no-underline hover:underline text-aurora no-underline hover:underline" href="https://mantine-lime.vercel.app/">Link</a> 
     & Unlink text.
     </li>
-  <li><span style="color: #F59F00">Color</span> & Emoji picker 😀</li>
+  <li>Emoji picker 😀</li>
+  <li><p style="font-family: 'Tajawal', sans-serif;text-align: right"> <span style="font-family: 'Tajawal', sans-serif">يدعم اللغة العربية</span> </p></li>
 </ul>
 
 <br />
@@ -42,17 +41,10 @@ const content = `
   With the Typography extension, The editor understands >> what you mean << and adds
   correct characters to your text — it's like a "typography nerd" on your side.
 </p>
+
 <p>
   Try it out and type <code>(c)</code>, <code>-></code>, <code>>></code>,
   <code>1/2</code>, <code>!=</code>, <code>--</code> or <code>1x1</code> here:
-</p>
-
-<br />
-
-<p>
-  You can also teach the editor new things. For example, to recognize hex colors
-  and add a color swatch on the fly: #FFF, #0D0D0D, #616161, #A975FF, #FB5151,
-  #FD9170, #FFCB6B, #68CEF8, #80cbc4, #9DEF8F
 </p>
 
 <br />
@@ -60,12 +52,11 @@ const content = `
 
 function EditorHelp() {
   useDocumentTitle('Circle | Help | Editor');
-  const editor = useEditor(getEditorOption(content));
 
   return (
     <>
       <div className='p-10 bg-white rounded nice-shadow'>
-        <Editor dev editor={editor} />
+        <TiptapEditor content={content} />
       </div>
 
       <div className='p-10 bg-white rounded nice-shadow my-10'>
