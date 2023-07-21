@@ -29,6 +29,7 @@
     "@mantine/tiptap": "^6.0.17",
     "@tabler/icons-react": "^2.27.0",
     "@tiptap/extension-character-count": "^2.0.4",
+    "@tiptap/extension-font-family": "^2.0.4",
     "@tiptap/extension-hard-break": "^2.0.4",
     "@tiptap/extension-link": "^2.0.4",
     "@tiptap/extension-mention": "^2.0.4",
