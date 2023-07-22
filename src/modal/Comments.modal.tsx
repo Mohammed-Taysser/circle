@@ -1,18 +1,17 @@
-import { Alert, Button, Center, Textarea, Timeline } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { notifications } from '@mantine/notifications';
-import { ReactElement, useEffect, useState } from 'react';
-import { BiSend } from 'react-icons/bi';
-import { BsInfoCircle } from 'react-icons/bs';
+import { Center, Timeline } from '@mantine/core';
+import { useEffect, useState } from 'react';
 import { MdSearchOff } from 'react-icons/md';
 import Avatar from '../common/Avatar';
 import Skeleton from '../common/Skeleton';
+import WriteComment from '../components/comments/WriteComment';
 import { COMMENTS } from '../constants/dummy';
 import Async from '../containers/Async';
-import { timeToX, uuidv4 } from '../helpers';
+import { timeToX } from '../helpers';
 
-function CommentsModal(): ReactElement {
-  const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux
+function CommentsModal({ innerProps }: CommentsModalProps) {
+  console.log(innerProps);
+
+  const comments = Math.random() < 0.5 ? COMMENTS : [];
 
   const [state, setState] = useState({
     loading: true,
@@ -35,121 +34,48 @@ function CommentsModal(): ReactElement {
   }, []);
 
   return (
-    <Async {...state} skeleton={<Skeleton.comment repeat={3} />}>
-      {COMMENTS.length > 0 ? (
-        <>
-          <Timeline
-            color='teal'
-            className='px-10 py-5 '
-            lineWidth={3}
-            bulletSize={25}
-          >
-            {COMMENTS.map((comment) => (
-              <Timeline.Item
-                bullet={<Avatar sm alt='avatar' src={comment.user.avatar} />}
-                className='mb-10'
-                lineVariant='dashed'
-                key={comment.id}
-              >
-                <div className='mx-5 relative -top-4'>
-                  <div>{comment.user.name}</div>
-                  <div className=' text-gray-400 text-sm'>
-                    {timeToX(comment.publishAt)}
-                  </div>
-                  <div className='mt-4 text-gray-600'>{comment.body} </div>
+    <Async {...state} skeleton={<Skeleton variant='comment' repeat={3} />}>
+      {comments.length > 0 ? (
+        <Timeline
+          color='teal'
+          className='px-10 py-5'
+          lineWidth={3}
+          bulletSize={25}
+        >
+          {comments.map((comment) => (
+            <Timeline.Item
+              bullet={
+                <Avatar
+                  sm
+                  alt={comment.user.name + ' avatar'}
+                  src={comment.user.avatar}
+                />
+              }
+              className='mb-10'
+              lineVariant='dashed'
+              key={comment.id}
+            >
+              <div className='mx-5 relative -top-4'>
+                <div>{comment.user.name}</div>
+                <div className=' text-gray-400 text-sm'>
+                  {timeToX(comment.publishAt)}
                 </div>
-              </Timeline.Item>
-            ))}
-          </Timeline>
-          {isLoggedIn ? (
-            <WriteComment />
-          ) : (
-            <Alert icon={<BsInfoCircle />} title='Hi there!' color='teal'>
-              To level a comment you must be login first!
-            </Alert>
-          )}
-        </>
+                <div className='mt-2 text-gray-600'>{comment.body}</div>
+              </div>
+            </Timeline.Item>
+          ))}
+        </Timeline>
       ) : (
         <Center h={200}>
           <div className='text-center text-gray-400'>
             <MdSearchOff className='text-4xl' />
-            <p className='m-0'>Nothing Comments Yet...</p>
+            <p className='m-0'>No Comments Yet...</p>
           </div>
         </Center>
       )}
+
+      <WriteComment />
     </Async>
-  );
-}
-
-function WriteComment(): ReactElement {
-  const [isLoading, setIsLoading] = useState(false);
-  const form = useForm({
-    initialValues: {
-      comment: '',
-    },
-  });
-
-  const onFormSubmit = (values: { comment: string }) => {
-    console.log(values);
-    const notificationId = uuidv4();
-
-    if (values.comment) {
-      notifications.show({
-        id: notificationId,
-        title: 'Publishing comment...',
-        message: 'Hey there, your comment is being publish!',
-        loading: true,
-        withCloseButton: false,
-        color: '',
-        autoClose: false,
-      });
-
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-
-        notifications.update({
-          id: notificationId,
-          title: 'Successfully publish',
-          message: 'Hey there, your comment is successfully publish!',
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
-        });
-      }, 2000);
-    } else {
-      notifications.show({
-        title: 'Empty Comment',
-        message:
-          'Hey there, your comment is empty. please write something to publish',
-        loading: false,
-        withCloseButton: true,
-        color: '',
-        autoClose: true,
-      });
-    }
-  };
-
-  return (
-    <form onSubmit={form.onSubmit(onFormSubmit)}>
-      <Textarea
-        minRows={2}
-        maxRows={4}
-        {...form.getInputProps('comment')}
-        autosize
-        placeholder='Your comment!'
-        className='mb-3'
-      />
-      <Button
-        size='md'
-        type='submit'
-        title='publish comment'
-        leftIcon={<BiSend />}
-        loading={isLoading}
-      >
-        SEND
-      </Button>
-    </form>
   );
 }
 
