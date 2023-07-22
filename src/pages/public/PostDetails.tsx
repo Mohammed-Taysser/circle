@@ -1,5 +1,7 @@
+import { Center } from '@mantine/core';
 import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
+import { TbTimelineEventText } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
 import Post from '../../common/Post';
 import Skeleton from '../../common/Skeleton';
@@ -34,8 +36,19 @@ function PostDetails() {
   }, [postId]);
 
   return (
-    <Async {...state} skeleton={<Skeleton.post />}>
-      {post && <Post post={post} full />}
+    <Async {...state} skeleton={<Skeleton variant='post' />}>
+      {post ? (
+        <Post post={post} full />
+      ) : (
+        <div className='shadow-nice p-4 bg-white rounded'>
+          <Center h={200}>
+            <div className='text-center text-gray-400'>
+              <TbTimelineEventText className='text-4xl' />
+              <p className='m-0'>No post found, make sure the url is correct</p>
+            </div>
+          </Center>
+        </div>
+      )}
     </Async>
   );
 }
