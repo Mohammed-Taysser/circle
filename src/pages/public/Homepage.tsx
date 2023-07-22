@@ -1,8 +1,8 @@
 import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import CreatePost from '../../common/CreatePost';
+import Post from '../../common/Post';
 import Skeleton from '../../common/Skeleton';
-import Timeline from '../../components/taps/Timeline';
 import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 
@@ -30,9 +30,11 @@ function Homepage() {
   }, []);
 
   return (
-    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
+    <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>
       <CreatePost />
-      <Timeline posts={POSTS} />
+      {POSTS.map((post) => (
+        <Post post={post} key={post.id} />
+      ))}
     </Async>
   );
 }
