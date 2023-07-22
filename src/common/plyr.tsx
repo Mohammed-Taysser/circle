@@ -1,7 +1,6 @@
 import { AspectRatio } from '@mantine/core';
 import Plyr from 'plyr';
-import { ReactElement, useEffect } from 'react';
-import { vimeoUrlParser, youtubeUrlParser } from '../helpers';
+import { useEffect } from 'react';
 
 /**
  * Plyr component
@@ -10,31 +9,17 @@ import { vimeoUrlParser, youtubeUrlParser } from '../helpers';
 - use `src` to set plyr src
 - use `MediaType` can be audio or video
 - use `title` to set Plyr title
-
- * @returns {ReactElement}
  */
-function PlyrViewer(props: PlyrViewerProps): ReactElement {
+function PlyrViewer(props: PlyrViewerProps) {
   useEffect(() => {
-    const player = new Plyr(`.js-plyr`);
-
-    let provider: PlyrViewerProvider = undefined;
-    let src = props.src;
-
-    if (props.src.includes('youtube')) {
-      provider = 'youtube';
-      src = youtubeUrlParser(props.src);
-    } else if (props.src.includes('vimeo')) {
-      provider = 'vimeo';
-      src = vimeoUrlParser(props.src);
-    }
+    const player = new Plyr('.js-plyr');
 
     player.source = {
       type: props.MediaType,
       title: props.title,
       sources: [
         {
-          src,
-          provider,
+          src: props.src,
         },
       ],
     };
