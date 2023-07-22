@@ -13,11 +13,20 @@ interface PostReacts {
   [key in PostReactsLabel]: SinglePostReact[];
 }
 
+type ReactModalProps = ContextModalProps<{ postId: string }>;
+
 // Post component
 interface PostProps {
   post: Post;
   className?: string;
   full?: boolean;
+  isShared?: boolean;
+}
+
+interface PostHeaderProps {
+  post: Post;
+  full?: boolean;
+  isShared?: boolean;
 }
 
 interface PostBodyProps {
@@ -31,16 +40,21 @@ interface PostGallery {
   full?: boolean;
 }
 
+// Post core
+type PostVisibility = 'public' | 'friends' | 'private';
+
 type PostVariant =
-  | 'UPDATE_COVER'
-  | 'UPDATE_AVATAR'
-  | 'POST_UPDATE'
-  | 'POST_GALLERY'
-  | 'POST_VIDEO'
-  | 'POST_AUDIO'
-  | 'POST_MAP'
-  | 'JOIN_GROUP'
-  | 'NEW_FRIEND';
+  | 'cover'
+  | 'avatar'
+  | 'update'
+  | 'gallery'
+  | 'video'
+  | 'audio'
+  | 'embedded'
+  | 'group'
+  | 'friend'
+  | 'pdf'
+  | 'share';
 
 interface PostComment {
   id: string;
@@ -53,25 +67,48 @@ interface PostComment {
   publishAt: Date;
 }
 
+type CommentsModalProps = ContextModalProps<{ postId: string }>;
+
+interface PostAssets {
+  friend?: Friend;
+  group?: Group;
+  embedded?: string;
+  cover?: string;
+  avatar?: string;
+  gallery?: string[];
+  audios?: string[];
+  videos?: string[];
+  pdf?: string;
+}
+
 interface Post {
   id: string;
+  visibility: PostVisibility;
   variant: PostVariant;
-  gallery: string[];
   user: {
     avatar: string;
     name: string;
     id: string;
+    isVerified: boolean;
   };
   publishAt: Date;
-  body: string;
-  utilsUrl?: string;
+  editAt?: Date;
   isSaved: boolean;
-  comments: number;
+  assets: PostAssets;
+  activity?: string;
+  body: string;
+  comments: {
+    count: number;
+  };
+  share: {
+    count: number;
+    origin?: Post;
+  };
   reacts: {
     count: number;
-    reacts: PostReacts; // TODO: remove reacts as it get by API
+    labels: PostReactsLabel[];
+    react?: PostReactsLabel;
   };
-  utils?: Group | Friend;
 }
 
 interface PostDropdownProps {
@@ -80,74 +117,7 @@ interface PostDropdownProps {
   id: string;
 }
 
-type PostViewerObject = {
-  [key in PostVariant]: {
-    msg: string;
-    component: (props: PostBodyProps) => JSX.Element;
-  };
-};
-
-// Dropzone
-interface DropzoneProps {
-  onDrop: (files: FileWithPath[]) => void;
-  files: FileWithPath[];
-  onError?: ReactEventHandler<HTMLDivElement> | undefined;
-  accept?: string[] | Accept;
-  icon?: IconType;
-  title?: string;
-  subtitle?: string;
-  className?: string;
-  preview?: boolean;
-  maxFiles?: number;
-  maxSize?: number;
-  multiple?: boolean;
+interface PostViewersProps {
+  post: Post;
+  full?: boolean;
 }
-
-// PlyrViewer
-interface PlyrViewerProps {
-  src: string;
-  MediaType: 'video' | 'audio';
-  title?: string;
-}
-
-type PlyrViewerProvider = 'youtube' | 'vimeo' | undefined;
-
-// Create post
-interface CreatePostTaps {
-  activeStep: number;
-  postVariant: string;
-  setPostVariant: Dispatch<SetStateAction<string>>;
-  editor: Editor | null;
-  postAssets: {
-    files?: FileWithPath[];
-  };
-  setPostAssets: React.Dispatch<React.SetStateAction>;
-}
-
-interface CreatePostVariantProps {
-  postVariant: string;
-  setPostVariant: Dispatch<SetStateAction<string>>;
-  postTypeInstance: Post;
-}
-
-interface CreatePostDropzoneProps {
-  files: FileWithPath[];
-  onDrop: (files: FileWithPath[]) => void;
-  maxSize?: number;
-  accept: string[];
-  maxFiles: number;
-  onError: Dispatch<SetStateAction<null>>;
-  icon: IconType;
-  title: string;
-  subtitle: string;
-  preview: boolean;
-  multiple: boolean;
-}
-
-interface CreatePostDropzoneTapProps {
-  files: FileWithPath[];
-  onDrop: (files: FileWithPath[]) => void;
-  onError: Dispatch<SetStateAction<null>>;
-}
-
-type ReactModalProps = ContextModalProps<{ reacts: PostReacts }>;
