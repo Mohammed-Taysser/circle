@@ -10,7 +10,7 @@ function Gallery(props: PostGallery) {
   if (props.full) {
     return (
       <LightGallery
-        elementClassNames='grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+        elementClassNames='grid gap-4 grid-cols-2 xl:grid-cols-4'
         plugins={[lgThumbnail, lgVideo, lgFullscreen, lgRotate, lgHash]}
         galleryId={props.galleryId}
         mode='lg-soft-zoom'
@@ -49,7 +49,7 @@ function Gallery(props: PostGallery) {
   }
 
   return (
-    <div className='grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+    <div className='grid gap-4 grid-cols-2 xl:grid-cols-4'>
       {props.gallery.map((img, index) => (
         <div key={uuidv4()} className='col-span-1'>
           <img
