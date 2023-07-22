@@ -1,4 +1,4 @@
-import { ReactElement, Suspense } from 'react';
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import Skeleton from './Skeleton';
 
@@ -7,10 +7,8 @@ import Skeleton from './Skeleton';
  * @usage
 
 - use `taps` to set taps value
-
- * @returns {React.ReactElement}
  */
-function Taps(props: TapsProps): ReactElement {
+function Taps(props: TapsProps) {
   if (!props.taps.length) {
     return <></>;
   }
@@ -34,7 +32,7 @@ function Taps(props: TapsProps): ReactElement {
         </div>
       </div>
 
-      <Suspense fallback={<Skeleton.post repeat={6} />}>
+      <Suspense fallback={<Skeleton repeat={6} />}>
         <Outlet />
       </Suspense>
     </>
