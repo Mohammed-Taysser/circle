@@ -16,11 +16,11 @@ import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import avatar from '../../../src/assets/images/default/avatar.png';
 import Avatar from '../../common/Avatar';
-import { DROPDOWN_STATUS } from '../../constants/navbar';
+import { NAVBAR_DROPDOWN_STATUS } from '../../constants/layout';
 
 function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const [status, setStatus] = useState(DROPDOWN_STATUS[0]);
+  const [status, setStatus] = useState(NAVBAR_DROPDOWN_STATUS[0]);
 
   const onStatusChange = (status: { color: string; title: string }) => {
     setStatus(status);
@@ -106,7 +106,7 @@ function UserDropdown(props: { className: string }) {
 
           <Menu.Label>Status</Menu.Label>
 
-          {DROPDOWN_STATUS.map((status) => (
+          {NAVBAR_DROPDOWN_STATUS.map((status) => (
             <Menu.Item
               key={status.title}
               onClick={() => onStatusChange(status)}
