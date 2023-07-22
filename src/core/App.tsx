@@ -1,6 +1,7 @@
 import { ColorScheme, ColorSchemeProvider } from '@mantine/core';
 import { useHotkeys, useLocalStorage } from '@mantine/hooks';
 import { Notifications } from '@mantine/notifications';
+import NewsletterDialog from '../dialogs/Newsletter';
 import MantineProvider from '../providers/Mantine';
 import ModalsProvider from '../providers/Modals';
 import RouterProvider from '../providers/Router';
@@ -28,6 +29,7 @@ function App() {
       >
         <MantineProvider colorScheme={colorScheme}>
           <>
+            <NewsletterDialog />
             <Notifications position='top-right' zIndex={2077} />
             <ModalsProvider>
               <RouterProvider />
