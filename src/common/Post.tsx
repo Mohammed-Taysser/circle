@@ -14,9 +14,9 @@ function Post(props: PostProps) {
 
   return (
     <div className={`post-card ${props.className}`}>
-      <PostHeader full={props.full} post={post} />
+      <PostHeader full={props.full} isShared={props.isShared} post={post} />
       <PostBody full={props.full} post={post} />
-      <PostFooter full={props.full} post={post} />
+      {!props.isShared && <PostFooter post={post} />}
     </div>
   );
 }
@@ -24,6 +24,7 @@ function Post(props: PostProps) {
 Post.defaultProps = {
   post: null,
   className: '',
+  isShared: false,
 };
 
 export default Post;
