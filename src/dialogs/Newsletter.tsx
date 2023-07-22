@@ -8,6 +8,7 @@ import {
   createStyles,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
+import { useLocalStorage } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import newsletterImage from '../assets/images/background/newsletter.svg';
@@ -67,6 +68,10 @@ const useStyles = createStyles((theme) => ({
 
 function Newsletter() {
   const { classes } = useStyles();
+  const [isSubscribe, setIsSubscribe] = useLocalStorage<boolean>({
+    key: 'circle-newsletter-subscribe',
+    defaultValue: false,
+  });
   const [isOpened, setIsOpened] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -81,14 +86,18 @@ function Newsletter() {
   });
 
   useEffect(() => {
-    const timerId = setTimeout(() => {
-      setIsOpened(true);
-    }, 10000);
+    let timerId = 0;
+
+    if (!isSubscribe) {
+      timerId = setTimeout(() => {
+        setIsOpened(true);
+      }, 10000);
+    }
 
     return () => {
       clearTimeout(timerId);
     };
-  }, []);
+  }, [isSubscribe]);
 
   const onFormSubmit = (values: { email: string }) => {
     console.log(values);
@@ -109,6 +118,7 @@ function Newsletter() {
     setTimeout(() => {
       setIsLoading(false);
       setIsOpened(false);
+      setIsSubscribe(true);
 
       notifications.update({
         id: notificationId,
