@@ -1,10 +1,23 @@
+import { Center } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import Skeleton from '../../../common/Skeleton';
+import { BsPersonVideo3 } from 'react-icons/bs';
+import PlyrViewer from '../../../common/plyr';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
-import Videos from '../../taps/Videos';
+import { uuidv4 } from '../../../helpers';
 
 function VideosGroup() {
+  const videos =
+    Math.random() < 0.5
+      ? []
+      : POSTS.filter((post) => post.variant === 'video').reduce(
+          (prev, current) => [
+            ...prev,
+            ...(current.assets.videos ? current.assets.videos : []),
+          ],
+          [] as string[]
+        );
+
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,
@@ -26,8 +39,27 @@ function VideosGroup() {
   }, []);
 
   return (
-    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <Videos posts={POSTS.filter((post) => post.variant === 'POST_VIDEO')} />
+    <Async {...state}>
+      <div className='shadow-nice p-4 bg-white rounded'>
+        {videos.length ? (
+          <div className='md:grid grid-cols-2 gap-4'>
+            {videos.map((video) => (
+              <div key={uuidv4()} className='flex items-center my-3 md:my-0'>
+                <div className='flex-1'>
+                  <PlyrViewer src={video} MediaType='video' />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <Center h={200}>
+            <div className='text-center text-gray-400'>
+              <BsPersonVideo3 className='text-4xl' />
+              <p className='m-0'>No videos uploaded yet</p>
+            </div>
+          </Center>
+        )}
+      </div>
     </Async>
   );
 }

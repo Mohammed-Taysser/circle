@@ -27,7 +27,7 @@ function AboutGroup() {
                   </ThemeIcon>
                   <span className='mx-2'>Name</span>
                 </div>
-              </td>{' '}
+              </td>
               <td>
                 <p>Rebeca Powel</p>
               </td>

@@ -1,10 +1,19 @@
+import { Center } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import Skeleton from '../../../common/Skeleton';
+import { IoImagesOutline } from 'react-icons/io5';
+import { useParams } from 'react-router-dom';
+import Gallery from '../../../common/Gallery';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
-import Photos from '../../taps/Photos';
 
 function PhotosGroup() {
+  const { groupId = '' } = useParams();
+
+  const posts =
+    Math.random() < 0.5
+      ? []
+      : POSTS.filter((post) => post.variant === 'gallery');
+
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,
@@ -26,8 +35,29 @@ function PhotosGroup() {
   }, []);
 
   return (
-    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <Photos posts={POSTS.filter((post) => post.variant === 'POST_GALLERY')} />
+    <Async {...state}>
+      <div className='shadow-nice p-4 bg-white rounded'>
+        {posts.length ? (
+          <Gallery
+            full
+            gallery={posts.reduce(
+              (prev, current) => [
+                ...prev,
+                ...(current.assets.gallery ? current.assets.gallery : []),
+              ],
+              [] as string[]
+            )}
+            galleryId={groupId} // TODO: replace with userId
+          />
+        ) : (
+          <Center h={200}>
+            <div className='text-center text-gray-400'>
+              <IoImagesOutline className='text-4xl' />
+              <p className='m-0'>Not images uploaded yet</p>
+            </div>
+          </Center>
+        )}
+      </div>
     </Async>
   );
 }
