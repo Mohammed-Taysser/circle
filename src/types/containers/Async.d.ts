@@ -2,6 +2,6 @@ interface AsyncProps {
   loading: boolean;
   fulfilled: boolean;
   error: any;
-  skeleton: ReactElement;
+  skeleton?: ReactElement;
   children: ReactElement;
 }
