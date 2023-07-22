@@ -8,11 +8,12 @@
   .post-header {
     display: flex;
     justify-content: space-between;
-    padding: 30px 30px 18px;
+    padding: 30px 30px 10px;
 
     .media {
       display: flex;
       align-items: flex-start;
+      flex-grow: 1;
 
       .activity-avatar {
         display: flex;
@@ -24,7 +25,7 @@
             a {
               font-size: 16px;
               font-weight: 500;
-              color: #111;
+              color: #333;
               margin-right: 5px;
               text-decoration: none;
               text-transform: capitalize;
@@ -54,13 +55,12 @@
     .activity-inner {
       padding: 0 30px 10px;
 
-      p.widget-box-status-text {
+      .widget-box-status-text {
         white-space: pre-wrap;
-
         font-size: 15px;
         color: #71728c;
         line-height: 24px;
-        margin-bottom: 20px;
+        margin: 20px 0;
       }
 
       .post-thumbs {
@@ -102,26 +102,25 @@
   }
 
   .post-footer {
-    .post-meta-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 30px 18px;
+    padding: 16px 30px;
+  }
 
-      .activity-meta {
-        color: #9e9faf;
+  @media (max-width: 576px) {
+    .post-header {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
 
-        .meta-text {
-          font-size: 14px;
-          color: #9e9faf;
-          margin-left: 20px;
-          margin-right: 5px;
-        }
-
-        .meta-text:first-child {
-          margin-left: 0;
-        }
+    .post-body {
+      .activity-inner {
+        padding-left: 15px;
+        padding-right: 15px;
       }
+    }
+
+    .post-footer {
+      padding-left: 15px;
+      padding-right: 15px;
     }
   }
 }
