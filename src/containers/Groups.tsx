@@ -10,7 +10,7 @@ import { useForm } from '@mantine/form';
 import { useDocumentTitle } from '@mantine/hooks';
 import { useState } from 'react';
 import { AiOutlineUnorderedList } from 'react-icons/ai';
-import { BiSearchAlt } from 'react-icons/bi';
+import { BiSearchAlt, BiUserVoice } from 'react-icons/bi';
 import { BsColumnsGap, BsSortUpAlt } from 'react-icons/bs';
 import Banner from '../common/Banner';
 import Group from '../common/Group';
@@ -44,7 +44,7 @@ function Groups(props: GroupContainerProps) {
             placeholder='Search Groups'
             {...searchForm.getInputProps('query')}
           />
-          <Button variant='light' color='teal' className='mx-3' type='submit'>
+          <Button color='teal' className='mx-3' type='submit'>
             Search
           </Button>
           <Select
@@ -55,7 +55,7 @@ function Groups(props: GroupContainerProps) {
             {...searchForm.getInputProps('sort')}
             onChange={(value) => {
               searchForm.setValues({
-                sort: value || 'alphabetical',
+                sort: value ?? 'alphabetical',
               });
             }}
             data={[
@@ -90,14 +90,28 @@ function Groups(props: GroupContainerProps) {
           ]}
         />
       </div>
-      <div
-        className={`my-10 ${
-          view === 'col' ? 'md:grid md:grid-cols-2 lg:grid-cols-3 gap-4' : ''
-        } `}
-      >
-        {props.groups.map((group) => (
-          <Group colView={view === 'col'} group={group} key={group.id} />
-        ))}
+      {props.groups.length ? (
+        <div
+          className={`my-10 ${
+            view === 'col' ? 'md:grid md:grid-cols-2 lg:grid-cols-3 gap-4' : ''
+          } `}
+        >
+          {props.groups.map((group) => (
+            <Group colView={view === 'col'} group={group} key={group.id} />
+          ))}
+        </div>
+      ) : (
+        <div className='shadow-nice p-4 bg-white rounded my-10'>
+          <Center h={200}>
+            <div className='text-center text-gray-400'>
+              <BiUserVoice className='text-4xl' />
+              <p className='m-0'>No groups uploaded yet</p>
+            </div>
+          </Center>
+        </div>
+      )}
+
+      {props.groups.length > 0 && (
         <div className='nice-shadow p-5 flex justify-center my-10 bg-white'>
           <Pagination
             value={activePage}
@@ -105,7 +119,7 @@ function Groups(props: GroupContainerProps) {
             total={props.groups.length}
           />
         </div>
-      </div>
+      )}
     </>
   );
 }

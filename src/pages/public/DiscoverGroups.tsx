@@ -31,15 +31,13 @@ function DiscoverGroups() {
   }, []);
 
   return (
-    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      {GROUPS && (
-        <GroupsContainer
-          onSearchFormSubmit={onSearchFormSubmit}
-          title='Discover Groups'
-          groups={GROUPS}
-          icon={BsMegaphoneFill}
-        />
-      )}
+    <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>
+      <GroupsContainer
+        onSearchFormSubmit={onSearchFormSubmit}
+        title='Discover Groups'
+        groups={GROUPS}
+        icon={BsMegaphoneFill}
+      />
     </Async>
   );
 }

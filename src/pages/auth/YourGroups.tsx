@@ -6,6 +6,7 @@ import Async from '../../containers/Async';
 import GroupsContainer from '../../containers/Groups';
 
 function DiscoverGroups() {
+  const groups = Math.random() < 0.5 ? [] : GROUPS;
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,
@@ -31,15 +32,13 @@ function DiscoverGroups() {
   }, []);
 
   return (
-    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      {GROUPS && (
-        <GroupsContainer
-          onSearchFormSubmit={onSearchFormSubmit}
-          title='Your Groups'
-          groups={GROUPS}
-          icon={BiUserVoice}
-        />
-      )}
+    <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>
+      <GroupsContainer
+        onSearchFormSubmit={onSearchFormSubmit}
+        title='Your Groups'
+        groups={groups}
+        icon={BiUserVoice}
+      />
     </Async>
   );
 }
