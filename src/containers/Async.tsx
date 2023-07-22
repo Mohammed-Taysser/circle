@@ -1,6 +1,6 @@
-import { Alert, Center, Loader } from '@mantine/core';
-import { ReactElement } from 'react';
+import { Alert } from '@mantine/core';
 import { MdErrorOutline } from 'react-icons/md';
+import Skeleton from '../common/Skeleton';
 
 /**
  * Async container
@@ -10,10 +10,8 @@ import { MdErrorOutline } from 'react-icons/md';
 - use `fulfilled` to show children instead of loading skeleton
 - use `error` to show error alert
 - use `skeleton` to change skeleton loading
-
- * @returns {React.ReactElement}
  */
-function Async(props: AsyncProps): ReactElement {
+function Async(props: AsyncProps) {
   if (props.loading) {
     return props.skeleton;
   } else if (props.error) {
@@ -41,16 +39,12 @@ function Async(props: AsyncProps): ReactElement {
   }
 }
 
-Async.defaultValue = {
+Async.defaultProps = {
   loading: true,
   fulfilled: false,
   error: null,
-  children: (
-    <Center h={200}>
-      <Loader color='teal' size='xl' variant='dots' />
-    </Center>
-  ),
-  skeleton: null,
+  children: <>Async data</>,
+  skeleton: <Skeleton />,
 };
 
 export default Async;
