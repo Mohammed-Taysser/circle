@@ -10,8 +10,3 @@ interface Badge {
     id: string;
   }[];
 }
-
-interface BadgeProps {
-  badges: Badge[];
-  msg?: string;
-}
