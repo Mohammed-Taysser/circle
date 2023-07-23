@@ -1,12 +1,22 @@
 import { Button, Grid, MultiSelect, SimpleGrid, Textarea } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { BsMusicNote } from 'react-icons/bs';
 import { MdOutlineMovie, MdOutlineScreenshotMonitor } from 'react-icons/md';
 import { TfiBookmarkAlt } from 'react-icons/tfi';
 import { VscBug } from 'react-icons/vsc';
 
-function HobbiesAndInterests() {
+// TODO: replace with redux
+const initialValues = {
+  hobbies: '',
+  musics: [],
+  tvShows: [],
+  books: [],
+  movies: [],
+  activities: [],
+};
+
+function HobbiesAndInterests(props: SettingTapProps) {
   const [mockData, setMockData] = useState<HobbiesMockDataState>({
     musics: [],
     tvShows: [],
@@ -18,18 +28,18 @@ function HobbiesAndInterests() {
   const form = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
-    initialValues: {
-      hobbies: '',
-      musics: [],
-      tvShows: [],
-      books: [],
-      movies: [],
-      activities: [],
-    },
+    initialValues,
   });
 
+  const hasChanges = useMemo(
+    () => JSON.stringify(form.values) !== JSON.stringify(initialValues),
+    [form.values]
+  );
+
   const onFormSubmit = (values: any) => {
-    console.log(values);
+    if (hasChanges) {
+      props.onFormSubmit(hasChanges, values);
+    }
   };
 
   return (
@@ -38,7 +48,7 @@ function HobbiesAndInterests() {
         label='Hobbies'
         placeholder='Your Hobbies'
         autosize
-        icon={<VscBug size='1rem' />}
+        icon={<VscBug />}
         minRows={3}
         maxRows={5}
         {...form.getInputProps('hobbies')}
@@ -49,7 +59,7 @@ function HobbiesAndInterests() {
         <MultiSelect
           label='Favorite Music Bands/Artists'
           data={mockData.musics}
-          icon={<BsMusicNote size='1rem' />}
+          icon={<BsMusicNote />}
           placeholder='Favorite Music Bands/Artists'
           searchable
           creatable
@@ -68,7 +78,7 @@ function HobbiesAndInterests() {
         <MultiSelect
           label='Favorite TV Shows'
           data={mockData.tvShows}
-          icon={<MdOutlineScreenshotMonitor size='1rem' />}
+          icon={<MdOutlineScreenshotMonitor />}
           placeholder='Favorite TV Shows'
           searchable
           creatable
@@ -87,7 +97,7 @@ function HobbiesAndInterests() {
         <MultiSelect
           label='Favorite Books'
           data={mockData.books}
-          icon={<TfiBookmarkAlt size='1rem' />}
+          icon={<TfiBookmarkAlt />}
           placeholder='Favorite Books'
           searchable
           creatable
@@ -106,7 +116,7 @@ function HobbiesAndInterests() {
         <MultiSelect
           label='Favorite Movies'
           data={mockData.books}
-          icon={<MdOutlineMovie size='1rem' />}
+          icon={<MdOutlineMovie />}
           placeholder='Favorite Movies'
           searchable
           creatable
@@ -125,7 +135,7 @@ function HobbiesAndInterests() {
         <MultiSelect
           label='Favorite Activities'
           data={mockData.books}
-          icon={<MdOutlineMovie size='1rem' />}
+          icon={<MdOutlineMovie />}
           placeholder='Favorite Activities'
           searchable
           creatable
@@ -142,7 +152,12 @@ function HobbiesAndInterests() {
         />
       </SimpleGrid>
       <Grid my='lg'>
-        <Button type='submit' radius='xl'>
+        <Button
+          type='submit'
+          disabled={!hasChanges}
+          loading={props.isLoading}
+          radius='xl'
+        >
           Save Changes
         </Button>
       </Grid>

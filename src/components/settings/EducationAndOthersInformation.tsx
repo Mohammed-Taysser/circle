@@ -1,31 +1,42 @@
 import { Button, Grid, SimpleGrid, TextInput } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { useForm } from '@mantine/form';
+import { useMemo } from 'react';
 import { BsBehance } from 'react-icons/bs';
 import { FiDribbble, FiFacebook, FiTwitter, FiYoutube } from 'react-icons/fi';
 import { HiOutlineAcademicCap } from 'react-icons/hi';
 import { MdDriveFileRenameOutline, MdOutlineWorkOutline } from 'react-icons/md';
 import { RiBuilding2Line } from 'react-icons/ri';
 
-function EducationAndOthersInformation() {
+// TODO: replace with redux
+const initialValues = {
+  birthday: '',
+  education: '',
+  institution: '',
+  employment: '',
+  facebook: '',
+  twitter: '',
+  dribbble: '',
+  behance: '',
+  youtube: '',
+};
+
+function EducationAndOthersInformation(props: SettingTapProps) {
   const form = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
-    initialValues: {
-      birthday: '',
-      education: '',
-      institution: '',
-      employment: '',
-      facebook: '',
-      twitter: '',
-      dribbble: '',
-      behance: '',
-      youtube: '',
-    },
+    initialValues,
   });
 
+  const hasChanges = useMemo(
+    () => JSON.stringify(form.values) !== JSON.stringify(initialValues),
+    [form.values]
+  );
+
   const onFormSubmit = (values: any) => {
-    console.log(values);
+    if (hasChanges) {
+      props.onFormSubmit(hasChanges, values);
+    }
   };
 
   return (
@@ -33,86 +44,90 @@ function EducationAndOthersInformation() {
       <SimpleGrid breakpoints={[{ minWidth: 'md', cols: 2 }]}>
         <DateInput
           label='BirthDay'
-          valueFormat='DD MMMM YYYY'
+          valueFormat='DD/MM/YYYY'
           allowDeselect
           weekendDays={[]}
           placeholder='BirthDay'
-          icon={<MdDriveFileRenameOutline size='1rem' />}
+          icon={<MdDriveFileRenameOutline />}
           {...form.getInputProps('birthday')}
-          radius='md'
         />
 
         <TextInput
           label='Education'
           placeholder='Education'
-          icon={<HiOutlineAcademicCap size='1rem' />}
+          icon={<HiOutlineAcademicCap />}
+          name='education'
           {...form.getInputProps('education')}
-          radius='md'
         />
 
         <TextInput
           label='Institution'
           placeholder='Institution'
-          icon={<RiBuilding2Line size='1rem' />}
+          icon={<RiBuilding2Line />}
+          name='institution'
           {...form.getInputProps('institution')}
-          radius='md'
         />
 
         <TextInput
           label='Employment'
           placeholder='Employment'
-          icon={<MdOutlineWorkOutline size='1rem' />}
+          icon={<MdOutlineWorkOutline />}
+          name='employment'
           {...form.getInputProps('employment')}
-          radius='md'
         />
 
         <TextInput
           label='Facebook'
           type='url'
           placeholder='Facebook'
-          icon={<FiFacebook size='1rem' />}
+          icon={<FiFacebook />}
+          name='facebook'
           {...form.getInputProps('facebook')}
-          radius='md'
         />
 
         <TextInput
           label='Twitter'
           type='url'
           placeholder='Twitter'
-          icon={<FiTwitter size='1rem' />}
+          icon={<FiTwitter />}
+          name='twitter'
           {...form.getInputProps('twitter')}
-          radius='md'
         />
 
         <TextInput
           label='Dribbble'
           placeholder='Dribbble'
           type='url'
-          icon={<FiDribbble size='1rem' />}
+          icon={<FiDribbble />}
+          name='dribbble'
           {...form.getInputProps('dribbble')}
-          radius='md'
         />
 
         <TextInput
           label='Behance'
           placeholder='Behance'
           type='url'
-          icon={<BsBehance size='1rem' />}
+          icon={<BsBehance />}
+          name='behance'
           {...form.getInputProps('behance')}
-          radius='md'
         />
 
         <TextInput
           label='YouTube'
           placeholder='YouTube'
-          icon={<FiYoutube size='1rem' />}
+          icon={<FiYoutube />}
           type='url'
+          name='youtube'
           {...form.getInputProps('youtube')}
-          radius='md'
         />
       </SimpleGrid>
       <Grid my='lg'>
-        <Button type='submit' radius='xl'>
+        <Button
+          type='submit'
+          disabled={!hasChanges}
+          loading={props.isLoading}
+          radius='xl'
+        >
           Save Changes
         </Button>
       </Grid>

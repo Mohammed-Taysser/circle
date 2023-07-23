@@ -1,5 +1,6 @@
 import { Button, Grid, SimpleGrid, TextInput } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { isEmail, isNotEmpty, useForm } from '@mantine/form';
+import { useMemo } from 'react';
 import { BsPhone } from 'react-icons/bs';
 import { FiExternalLink } from 'react-icons/fi';
 import {
@@ -9,27 +10,37 @@ import {
 } from 'react-icons/md';
 import { TfiEmail } from 'react-icons/tfi';
 
-function ContactInfo() {
+// TODO: replace with redux
+const initialValues = {
+  email: 'mo@mo.mo',
+  firstName: 'Mohammed',
+  lastName: 'Taysser',
+  phone: '01015081861',
+  address: '59 Street, Newyorkc City',
+  website: 'http://www.rebeca.com/',
+};
+
+function ContactInfo(props: SettingTapProps) {
   const form = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
-    initialValues: {
-      email: 'mo@mo.mo',
-      firstName: 'Mohammed',
-      lastName: 'Taysser',
-      phone: '01015081861',
-      address: '59 Street, Newyorkc City',
-      website: 'http://www.rebeca.com/',
-    },
+    initialValues,
     validate: {
-      email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
-      firstName: (value) => (!value ? 'firstName is required' : null),
-      lastName: (value) => (!value ? 'lastName is required' : null),
+      email: isEmail('Invalid email'),
+      firstName: isNotEmpty('firstName is required'),
+      lastName: isNotEmpty('lastName is required'),
     },
   });
 
+  const hasChanges = useMemo(
+    () => JSON.stringify(form.values) !== JSON.stringify(initialValues),
+    [form.values]
+  );
+
   const onFormSubmit = (values: any) => {
-    console.log(values);
+    if (hasChanges) {
+      props.onFormSubmit(hasChanges, values);
+    }
   };
 
   return (
@@ -38,62 +49,61 @@ function ContactInfo() {
         <TextInput
           label='First Name'
           placeholder='First Name'
-          icon={<MdDriveFileRenameOutline size='1rem' />}
-          error={form.errors.firstName && 'Invalid firstName'}
+          name='firstName'
+          icon={<MdDriveFileRenameOutline />}
           {...form.getInputProps('firstName')}
-          radius='md'
         />
 
         <TextInput
           label='Last Name'
           placeholder='Last Name'
-          icon={<MdOutlineDriveFileRenameOutline size='1rem' />}
-          error={form.errors.lastName && 'Invalid lastName'}
+          name='lastName'
+          icon={<MdOutlineDriveFileRenameOutline />}
           {...form.getInputProps('lastName')}
-          radius='md'
         />
 
         <TextInput
           label='Email'
           type='email'
+          name='email'
           placeholder='example@domain.dev'
-          icon={<TfiEmail size='1rem' />}
-          error={form.errors.email && 'Invalid email'}
+          icon={<TfiEmail />}
           {...form.getInputProps('email')}
-          radius='md'
         />
 
         <TextInput
           label='Phone'
           type='tel'
+          name='phone'
           placeholder='+20 101 508 1861'
-          icon={<BsPhone size='1rem' />}
-          error={form.errors.phone && 'Invalid phone'}
+          icon={<BsPhone />}
           {...form.getInputProps('phone')}
-          radius='md'
         />
 
         <TextInput
           label='Address'
+          name='address'
           placeholder='59 Street, Newyorkc City'
-          icon={<MdOutlineHomeWork size='1rem' />}
-          error={form.errors.address && 'Invalid address'}
+          icon={<MdOutlineHomeWork />}
           {...form.getInputProps('address')}
-          radius='md'
         />
 
         <TextInput
           label='Website'
+          name='website'
           type='url'
           placeholder='https://dev.io'
-          icon={<FiExternalLink size='1rem' />}
-          error={form.errors.website && 'Invalid website'}
+          icon={<FiExternalLink />}
           {...form.getInputProps('website')}
-          radius='md'
         />
 
         <Grid my='md'>
-          <Button type='submit' radius='xl'>
+          <Button
+            type='submit'
+            disabled={!hasChanges}
+            loading={props.isLoading}
+            radius='xl'
+          >
             Save Changes
           </Button>
         </Grid>

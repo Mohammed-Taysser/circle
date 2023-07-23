@@ -6,52 +6,52 @@ import {
   Popover,
   Progress,
   SimpleGrid,
-  Text
+  Text,
 } from '@mantine/core';
-import { useForm } from '@mantine/form';
+import { hasLength, matchesField, useForm } from '@mantine/form';
 import { IconCheck, IconX } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { TfiLock } from 'react-icons/tfi';
 import { uuidv4 } from '../../helpers';
-import { PASSWORD_REQUIREMENTS, getPasswordStatus } from '../../validations';
 
-function ChangePassword() {
+import { PASSWORD_REQUIREMENTS, getPasswordStatus } from '../../validations';
+const initialValues = {
+  password: '',
+  confirmPassword: '',
+};
+
+function ChangePassword(props: SettingTapProps) {
   const form = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
-    initialValues: {
-      currentPassword: '',
-      newPassword: '',
-    },
+    initialValues,
     validate: {
-      newPassword: (val) =>
-        val.length <= 8
-          ? 'Password should include at least 8 characters'
-          : null,
-      currentPassword: (value) =>
-        !value ? 'Current password is required' : null,
+      password: hasLength(
+        { min: 8 },
+        'Password should include at least 8 characters'
+      ),
+      confirmPassword: matchesField('password', 'Passwords are not the same'),
     },
   });
 
+  const hasChanges = useMemo(
+    () => JSON.stringify(form.values) !== JSON.stringify(initialValues),
+    [form.values]
+  );
+
   const [popoverOpened, setPopoverOpened] = useState(false);
-  const { strength, color } = getPasswordStatus(form.values.newPassword);
+  const { strength, color } = getPasswordStatus(form.values.password);
 
   const onFormSubmit = (values: any) => {
-    console.log(values);
+    if (hasChanges) {
+      props.onFormSubmit(hasChanges, values);
+    }
   };
 
   return (
     <>
       <form onSubmit={form.onSubmit(onFormSubmit)}>
         <SimpleGrid breakpoints={[{ minWidth: 'md', cols: 2 }]}>
-          <PasswordInput
-            label='Current password'
-            icon={<TfiLock size='1rem' />}
-            placeholder='Current password'
-            {...form.getInputProps('currentPassword')}
-            radius='md'
-          />
-
           <Popover
             opened={popoverOpened}
             position='bottom'
@@ -67,8 +67,7 @@ function ChangePassword() {
                   label='New Password'
                   icon={<TfiLock size='1rem' />}
                   placeholder='New password'
-                  {...form.getInputProps('newPassword')}
-                  radius='md'
+                  {...form.getInputProps('password')}
                 />
               </div>
             </Popover.Target>
@@ -76,12 +75,12 @@ function ChangePassword() {
               <Progress color={color} value={strength} size={5} mb='xs' />
 
               <Text
-                color={form.values.newPassword.length > 7 ? 'teal' : 'red'}
+                color={form.values.password.length > 7 ? 'teal' : 'red'}
                 sx={{ display: 'flex', alignItems: 'center' }}
                 mt={7}
                 size='sm'
               >
-                {form.values.newPassword.length > 7 ? (
+                {form.values.password.length > 7 ? (
                   <IconCheck size='0.9rem' />
                 ) : (
                   <IconX size='0.9rem' />
@@ -92,16 +91,14 @@ function ChangePassword() {
               {PASSWORD_REQUIREMENTS.map((requirement) => (
                 <Text
                   color={
-                    requirement.re.test(form.values.newPassword)
-                      ? 'teal'
-                      : 'red'
+                    requirement.re.test(form.values.password) ? 'teal' : 'red'
                   }
                   sx={{ display: 'flex', alignItems: 'center' }}
                   mt={7}
                   size='sm'
                   key={uuidv4()}
                 >
-                  {requirement.re.test(form.values.newPassword) ? (
+                  {requirement.re.test(form.values.password) ? (
                     <IconCheck size='0.9rem' />
                   ) : (
                     <IconX size='0.9rem' />
@@ -112,8 +109,20 @@ function ChangePassword() {
             </Popover.Dropdown>
           </Popover>
 
+          <PasswordInput
+            label='Confirm password'
+            icon={<TfiLock size='1rem' />}
+            placeholder='Confirm password'
+            {...form.getInputProps('confirmPassword')}
+          />
+
           <Grid my='md'>
-            <Button type='submit' radius='xl'>
+            <Button
+              type='submit'
+              disabled={!hasChanges}
+              loading={props.isLoading}
+              radius='xl'
+            >
               Save Changes
             </Button>
           </Grid>
