@@ -1,3 +1,8 @@
+interface SettingTapProps {
+  isLoading: boolean;
+  onFormSubmit: (hasChanges: boolean, values: any) => void;
+}
+
 // Hobbies
 type HobbiesMockData = 'musics' | 'tvShows' | 'books' | 'movies' | 'activities';
 
