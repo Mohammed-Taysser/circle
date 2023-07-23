@@ -1,4 +1,5 @@
 import { Center, Timeline } from '@mantine/core';
+import { ContextModalProps } from '@mantine/modals';
 import { useEffect, useState } from 'react';
 import { MdSearchOff } from 'react-icons/md';
 import Avatar from '../common/Avatar';
@@ -8,9 +9,7 @@ import { COMMENTS } from '../constants/dummy';
 import Async from '../containers/Async';
 import { timeToX } from '../helpers';
 
-function CommentsModal({ innerProps }: CommentsModalProps) {
-  console.log(innerProps);
-
+function CommentsModal(props: ContextModalProps<CommentsModalInnerProps>) {
   const comments = Math.random() < 0.5 ? COMMENTS : [];
 
   const [state, setState] = useState({

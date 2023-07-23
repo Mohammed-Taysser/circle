@@ -7,17 +7,18 @@ import {
   Loader,
   ScrollArea,
 } from '@mantine/core';
+import { ContextModalProps } from '@mantine/modals';
 import { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import { FiUsers } from 'react-icons/fi';
 import { MdSearchOff } from 'react-icons/md';
+import avatar from '../assets/images/default/avatar.png';
 import Avatar from '../common/Avatar';
 import { uuidv4 } from '../helpers';
 
-import avatar from '../assets/images/default/avatar.png';
-
-function SearchModal(props: SearchModalProps) {
+function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
   const { navigateTo } = props.innerProps;
+
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
 
