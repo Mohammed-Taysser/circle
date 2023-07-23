@@ -13,8 +13,6 @@ interface PostReacts {
   [key in PostReactsLabel]: SinglePostReact[];
 }
 
-type ReactModalProps = ContextModalProps<{ postId: string }>;
-
 // Post component
 interface PostProps {
   post: Post;
@@ -66,8 +64,6 @@ interface PostComment {
   body: string;
   publishAt: Date;
 }
-
-type CommentsModalProps = ContextModalProps<{ postId: string }>;
 
 interface PostAssets {
   friend?: Friend;
