@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import BaseLayout from '../layouts/Base';
 
-function RequireAuth({ children }: { children: JSX.Element }) {
+function RequireAuth({ children }: { children: React.ReactElement }) {
   let location = useLocation();
 
   if (!localStorage.getItem('isLogin')) {
@@ -17,7 +17,7 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   return children;
 }
 
-function NoRequireAuth({ children }: { children: JSX.Element }) {
+function NoRequireAuth({ children }: { children: React.ReactElement }) {
   if (localStorage.getItem('isLogin')) {
     return <Navigate to='/' replace />;
   }
@@ -32,6 +32,7 @@ const FriendsGroups = lazy(() => import('../pages/auth/FriendsGroups'));
 const RecommendedGroups = lazy(() => import('../pages/auth/RecommendedGroups'));
 const Bookmarks = lazy(() => import('../pages/auth/Bookmarks'));
 const Events = lazy(() => import('../pages/auth/Events'));
+const Notification = lazy(() => import('../pages/auth/Notification'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
@@ -247,6 +248,14 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <Setting />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/notifications',
+        element: (
+          <RequireAuth>
+            <Notification />
           </RequireAuth>
         ),
       },
