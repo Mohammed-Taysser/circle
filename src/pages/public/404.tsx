@@ -16,7 +16,7 @@ function PageNotFound() {
           <h3 className='small text-muted'>
             We are sorry but the page you are looking for was not found, or you
             need to
-            <Anchor component={Link} to='/login' className='mx-1'>
+            <Anchor component={Link} to='/join-us' className='mx-1'>
               Login
             </Anchor>
             to see it
