@@ -1,10 +1,10 @@
 import { Anchor, Image } from '@mantine/core';
 import { BsMegaphoneFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import discoverImage from '../../assets/images/background/discover-groups.svg';
-import yourImage from '../../assets/images/background/your-groups.svg';
-import friendsImage from '../../assets/images/background/friends-groups.svg';
-import recommendedImage from '../../assets/images/background/recommended-groups.svg';
+import discoverImage from '../../assets/images/background/group/discover.svg';
+import yourImage from '../../assets/images/background/group/your.svg';
+import friendsImage from '../../assets/images/background/group/friends.svg';
+import recommendedImage from '../../assets/images/background/group/recommended.svg';
 import Banner from '../../common/Banner';
 import { uuidv4 } from '../../helpers';
 import { useDocumentTitle } from '@mantine/hooks';
