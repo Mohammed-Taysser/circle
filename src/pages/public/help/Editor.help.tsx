@@ -32,7 +32,7 @@ const content = `
     & Unlink text.
     </li>
   <li>Emoji picker 😀</li>
-  <li><p style="font-family: 'Tajawal', sans-serif;text-align: right"> <span style="font-family: 'Tajawal', sans-serif">يدعم اللغة العربية</span> </p></li>
+  <li><p style="font-family: 'Tajawal', sans-serif;"> <span style="font-family: 'Tajawal', sans-serif">يدعم اللغة العربية</span> </p></li>
 </ul>
 
 <br />
