@@ -7,16 +7,16 @@ import {
   useMantineColorScheme,
 } from '@mantine/core';
 import { useState } from 'react';
-import { BiMessageDetail } from 'react-icons/bi';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
-import { FiUser } from 'react-icons/fi';
-import { IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineLogout } from 'react-icons/md';
 import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import avatar from '../../../src/assets/images/default/avatar.png';
 import Avatar from '../../common/Avatar';
-import { NAVBAR_DROPDOWN_STATUS } from '../../constants/layout';
+import {
+  NAVBAR_DROPDOWN_STATUS,
+  USER_DROPDOWN_LINKS,
+} from '../../constants/layout';
 
 function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -82,27 +82,17 @@ function UserDropdown(props: { className: string }) {
           >
             {colorScheme === 'dark' ? 'Light' : 'Dark'} mode
           </Menu.Item>
-          <Menu.Item
-            component={Link}
-            to={`/profile/1`}
-            icon={<FiUser size={14} />}
-          >
-            Profile
-          </Menu.Item>
-          <Menu.Item
-            component={Link}
-            to={`/messenger`}
-            icon={<BiMessageDetail size={14} />}
-          >
-            Messages
-          </Menu.Item>
-          <Menu.Item
-            component={Link}
-            to={`/setting`}
-            icon={<IoSettingsOutline size={14} />}
-          >
-            Settings
-          </Menu.Item>
+
+          {USER_DROPDOWN_LINKS.map((link) => (
+            <Menu.Item
+              component={Link}
+              key={link.path}
+              to={link.path}
+              icon={<link.icon size={14} />}
+            >
+              {link.label}
+            </Menu.Item>
+          ))}
 
           <Menu.Label>Status</Menu.Label>
 
