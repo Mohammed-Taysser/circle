@@ -1,5 +1,7 @@
+import { BiMessageDetail } from 'react-icons/bi';
 import { BsBookmarks } from 'react-icons/bs';
-import { FiUsers } from 'react-icons/fi';
+import { FiUser, FiUsers } from 'react-icons/fi';
+import { IoHelpSharp, IoSettingsOutline } from 'react-icons/io5';
 import { MdEventNote } from 'react-icons/md';
 import { VscFeedback } from 'react-icons/vsc';
 import avatar from '../assets/images/default/avatar.png';
@@ -28,6 +30,29 @@ const HEADER_LINKS = [
     color: 'grape',
     label: 'Events',
     path: '/events',
+  },
+];
+
+const USER_DROPDOWN_LINKS = [
+  {
+    icon: FiUser,
+    label: 'Profile',
+    path: `/profile/1`, // TODO: replace with redux
+  },
+  {
+    icon: BiMessageDetail,
+    path: '/messenger',
+    label: 'Messenger',
+  },
+  {
+    icon: IoSettingsOutline,
+    label: 'Setting',
+    path: '/setting',
+  },
+  {
+    icon: IoHelpSharp,
+    label: 'Help',
+    path: '/help',
   },
 ];
 
@@ -173,4 +198,9 @@ const NOTIFICATIONS: SingleNotification[] = [
   },
 ];
 
-export { HEADER_LINKS, NAVBAR_DROPDOWN_STATUS, NOTIFICATIONS };
+export {
+  HEADER_LINKS,
+  NAVBAR_DROPDOWN_STATUS,
+  USER_DROPDOWN_LINKS,
+  NOTIFICATIONS,
+};
