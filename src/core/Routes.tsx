@@ -37,6 +37,8 @@ const Notification = lazy(() => import('../pages/auth/Notification'));
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
 const EditorHelp = lazy(() => import('../pages/public/help/Editor.help'));
+const CalenderHelp = lazy(() => import('../pages/public/help/Calender.help'));
+const Help = lazy(() => import('../pages/public/Help'));
 const Registration = lazy(() => import('../pages/public/Registration'));
 const Results = lazy(() => import('../pages/public/Results'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
@@ -230,8 +232,16 @@ const routes = createBrowserRouter([
         path: '/help',
         children: [
           {
+            index: true,
+            element: <Help />,
+          },
+          {
             path: 'editor',
             element: <EditorHelp />,
+          },
+          {
+            path: 'calender',
+            element: <CalenderHelp />,
           },
         ],
       },
