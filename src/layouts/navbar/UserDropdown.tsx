@@ -13,16 +13,13 @@ import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import avatar from '../../../src/assets/images/default/avatar.png';
 import Avatar from '../../common/Avatar';
-import {
-  NAVBAR_DROPDOWN_STATUS,
-  USER_DROPDOWN_LINKS,
-} from '../../constants/layout';
+import { USER_DROPDOWN_LINKS, USER_STATUS } from '../../constants/layout';
 
 function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-  const [status, setStatus] = useState(NAVBAR_DROPDOWN_STATUS[0]);
+  const [status, setStatus] = useState(USER_STATUS.online);
 
-  const onStatusChange = (status: { color: string; title: string }) => {
+  const onStatusChange = (status: SingleUserStatus) => {
     setStatus(status);
   };
 
@@ -96,15 +93,19 @@ function UserDropdown(props: { className: string }) {
 
           <Menu.Label>Status</Menu.Label>
 
-          {NAVBAR_DROPDOWN_STATUS.map((status) => (
-            <Menu.Item
-              key={status.title}
-              onClick={() => onStatusChange(status)}
-              icon={<ColorSwatch size={10} color={status.color} />}
-            >
-              {status.title}
-            </Menu.Item>
-          ))}
+          {Object.keys(USER_STATUS).map((key) => {
+            const status = USER_STATUS[key as StatusSlug];
+
+            return (
+              <Menu.Item
+                key={key}
+                onClick={() => onStatusChange(status)}
+                icon={<ColorSwatch size={10} color={status.color} />}
+              >
+                {status.title}
+              </Menu.Item>
+            );
+          })}
 
           <Menu.Label>Danger zone</Menu.Label>
           <Menu.Item
