@@ -1,6 +1,7 @@
-import { Aside, Button, Text } from '@mantine/core';
+import { Aside, Button, ScrollArea } from '@mantine/core';
 import { useState } from 'react';
 import { RiAppsLine } from 'react-icons/ri';
+import ContactFriends from './aside/ContactFriends';
 
 function Side() {
   const [isOpened, setIsOpened] = useState(false);
@@ -10,12 +11,12 @@ function Side() {
       <Aside
         p='md'
         hiddenBreakpoint='lg'
-        width={{ base: 300, lg: 350 }}
+        width={{ base: 350 }}
         className={`border-0 shadow-nice z-40 duration-500 ${
-          isOpened ? '' : '-right-[300px] md:right-0'
+          isOpened ? '' : '-right-[300px] lg:right-0'
         }`}
       >
-        <div className='relative md:hidden'>
+        <div className='relative lg:hidden'>
           <div
             className={`absolute duration-500 ${
               isOpened ? '-left-[70px]' : 'left-[-105px]'
@@ -31,7 +32,9 @@ function Side() {
           </div>
         </div>
 
-        <Text>Application sidebar</Text>
+        <ScrollArea>
+          <ContactFriends/>
+        </ScrollArea>
       </Aside>
     </>
   );
