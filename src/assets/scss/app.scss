@@ -93,6 +93,10 @@ body {
       box-shadow: none;
     }
   }
+
+  .fc .fc-popover {
+    z-index: 101;
+  }
 }
 
 // components
