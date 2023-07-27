@@ -12,99 +12,8 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
-import avatar from '../../assets/images/default/avatar.png';
+import { MESSAGES } from '../../constants/layout';
 import { timeToX } from '../../helpers';
-
-const NOTIFICATION = [
-  {
-    unread: true,
-    id: 1,
-    date: new Date(),
-    user: {
-      name: 'Mohammed Taysser',
-      avatar,
-      id: 1,
-    },
-    msg: `Hi James! It's Diana, I just wanted to let you know that we have to reschedule`,
-  },
-  {
-    unread: true,
-    id: 2,
-    date: new Date(),
-    user: {
-      name: 'Tony Stevens',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar56-sm.webp',
-      id: 1,
-    },
-    msg: `Great, I'll see you tomorrow!.`,
-  },
-  {
-    unread: false,
-    id: 3,
-    date: new Date(),
-    user: {
-      name: 'Tamara Romanoff',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar55-sm.webp',
-      id: 1,
-    },
-    msg: `We'll have to check that at the office and see if the client is on board with`,
-  },
-  {
-    unread: true,
-    id: 4,
-    date: new Date(),
-    user: {
-      name: 'Mary Jane Stark',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar57-sm.webp',
-      id: 1,
-    },
-    msg: 'Yeah! Seems fine by me!',
-  },
-  {
-    unread: false,
-    id: 5,
-    date: new Date(),
-    user: {
-      name: 'Stagg Clothing',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar58-sm.webp',
-      id: 1,
-    },
-    msg: `We'll have to check that at the office and see if the client is on board with`,
-  },
-  {
-    unread: false,
-    id: 6,
-    date: new Date(),
-    user: {
-      name: 'Jake Parker',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar60-sm.webp',
-      id: 1,
-    },
-    msg: `Hi James! It's Diana, I just wanted to let you know that we have to reschedule`,
-  },
-  {
-    unread: true,
-    id: 7,
-    date: new Date(),
-    user: {
-      name: 'Elaine Dreyfuss',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar61-sm.webp',
-      id: 1,
-    },
-    msg: '4 Friends in Common',
-  },
-  {
-    unread: false,
-    id: 8,
-    date: new Date(),
-    user: {
-      name: 'Aalaa Kamal',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar59-sm.webp',
-      id: 1,
-    },
-    msg: `We'll have to check that at the office and see if the client is on board with`,
-  },
-];
 
 function MessagesDropdown() {
   const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
@@ -143,7 +52,7 @@ function MessagesDropdown() {
 
         <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
           <Flex direction='column' wrap='wrap' gap={20}>
-            {NOTIFICATION.map((request) => (
+            {MESSAGES.map((request) => (
               <Link
                 to={`/message/${request.user.id}`}
                 key={request.id}
