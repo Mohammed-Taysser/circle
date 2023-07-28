@@ -1,76 +1,88 @@
 # CHANGELOG
 
-## Bugs & todo
+## Bugs & TODO
 
-- [ ] fix create-post component
-- [ ] add animation (framer motion in toggle modals)
-- [ ] reduce create-post to facebook
-- [ ] make timeline in left-sidebar async (every event it's time left make it active)
-- [x] fix post component
-- [ ] fix search modal responsive & refactor it
-- [x] createPost: when change post type, as the previous picture still exist
-- [ ] createPost: add masonry or fixed with & height to preview
-- [ ] Post-types: add multi audio & video in post
-- [ ] friend or follow requests should be sent first to the user to decide if he wants to approve or not
-- [ ] private chats
-- [ ] groups chats
-- [ ] add post share
-- [ ] add cookie dialog
-- [ ] add newsletter dialog
-- [ ] notifications of profile updating - comments - likes
-- [x] create calender as header component
-- [ ] create events page
-- [ ] create `create-event` modal
-- [x] finish navbar
-- [ ] finish sidebar
-- [x] replace spotlight with modal manager
-- [ ] refactor post data (no need properties for each post-type)
-- [ ] add post reacts docs
-- [ ] reduce avatar indicator zIndex
-- [ ] revision app responsive
-- [ ] update readme & docs
-- [ ] update `package.json` info
-- [ ] back to changelog
-- [ ] update `index.html`
-- [ ] add meta for each page (try using react-helmet)
-- [ ] create single branch for front only before connect to api
-- [ ] Create Review Video For Project Functionality
 - [ ] Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
-- [ ] [Admin Dashboard](https://appseed.us/)
-- [ ] Crop Avatar Before Upload
+- [ ] add login btn instead of user dropdown & notification in no login
+- [x] add map & video & audio support to create post component
+- [ ] add meta for each page (try using react-helmet)
+- [ ] check responsive 🙂
+- [ ] fix create-post component
+- [ ] fix search modal responsive & refactor it
+- [ ] friend or follow requests should be sent first to the user to decide if he wants to approve or not
+- [ ] groups chats
+- [ ] improve comments component
+- [ ] improve gallery
+- [ ] improve no login component
+- [ ] make timeline in left-sidebar async (every event it's time left make it active)
+- [ ] private chats
+- [ ] reduce create-post to facebook
+- [ ] update `index.html`
+- [ ] update `package.json` info
+- [ ] update readme & docs
+- [x] add newsletter dialog
+- [x] add nodejs & npm versions to package.json
+- [x] add post share
+- [x] add search shortcuts
 - [x] Add Toast For Login User
+- [x] create `create-event` modal
+- [x] create calender as header component
+- [x] create calender help
+- [x] create events page
+- [x] Crop Avatar Before Upload
+- [x] empower login & register with validation
+- [x] finish navbar
+- [x] finish sidebar
+- [x] fix post component
+- [x] post card comments
+- [x] Post Image Gallery (Light Box)
+- [x] reduce avatar indicator zIndex
+- [x] replace spotlight with modal manager
+- [x] Text Editor With Preview Instead Of Plain Text
+
+## Before integrate to API
+
+- [ ] create single branch for front only before connect to api
+- [ ] remove dummy data after integrate with api
+
+## API Integration
+
+- [ ] In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
 - [ ] Use Access Token & Refresh Token
 - [ ] Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
-- [ ] In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
-- [x] Post Image Gallery (Light Box)
-- [ ] Use Also Video With Images
-- [x] post card comments
-- [ ] remove dummy data after integrate with api
-- [ ] check responsive 🙂
-- [ ] Who See My Profile 😈
+- [ ] notifications of profile updating - comments - likes
+
+## Super TODO
+
+- [ ] [Admin Dashboard](https://appseed.us/)
 - [ ] I18n (Translation)
 - [ ] passport auth with social media
-- [x] Text Editor With Preview Instead Of Plain Text
-- [x] empower login & register with validation
-- [x] add search shortcuts
+- [ ] Create Review Video For Project Functionality
+- [ ] Who See My Profile 😈
+- [ ] create chat dialog
 
-## pages
+## Pages
 
-- [ ] Chat
+- [ ] [Results](https://preview.tabler.io/search-results.html)
 - [ ] Events
-- [ ] Homepage
-- [ ] Post Details
-- [ ] Setting
+- [ ] networks
 - [x] 404
 - [x] Bookmarks
+- [x] Chat
 - [x] Contact Us
 - [x] Forget Password
 - [x] Groups
+- [x] Homepage
 - [x] Login
+- [x] notification
+- [x] Post Details
 - [x] Profile
 - [x] Register
-- [x] Results
+- [x] Setting
 - [x] Single Group
+- [ ] help
+  - [x] editor
+  - [ ] calender
 
 ## Layout
 
@@ -80,9 +92,8 @@
   - [x] friends dropdown
   - [x] notification dropdown
   - [x] message dropdown
-- [ ] Menu sidebar
-  - [ ] online friends
-  - [ ] features list
+- [x] Menu sidebar
+  - [x] online friends
 - [x] right sidebar
   - [x] most use bookmarks
   - [x] calender
@@ -90,16 +101,45 @@
 
 ## Component
 
-- [ ] Post
-  - [ ] share
-  - [ ] comments
-  - [ ] reacts
+- Post
+  - header
+    - [x] avatar
+      - [x] status (online and so on)
+    - [x] visibility
+    - [x] edited post
+    - [x] publish date
+    - [x] link for post details
+    - dropdown
+      - [x] copy post url
+      - [x] copy post content
+      - [x] toggle save
+  - body (content)
+    - [x] maps
+    - [x] youtube video
+    - [x] facebook posts
+    - [x] PDF
+    - [x] video
+    - [x] audio
+    - [x] gallery
+    - [x] update avatar
+    - [x] update cover
+    - [x] simply text
+    - [x] share post
+  - footer
+    - [x] reacts
+    - [x] comments
+    - [x] share
 
-## helper
+- events
+  - [x] create
+  - [ ] update
+  - [ ] delete
+  - [ ] view details
 
-- <https://preview.tabler.io/form-elements.html>
-- <https://preview.tabler.io/activity.html>
-- <https://preview.tabler.io/settings.html>
+## Bug fix helpers
+
+- <https://github.com/manishboro/image-crop-and-zoom>
+- <https://codesandbox.io/s/y09komm059>
 
 ## Useful Articles
 
@@ -122,3 +162,8 @@
 ## 20 Apr 2023
 
 - Init Project 🎉
+- post support PDF, Video, Audio, Embedded like maps & facebook post, gallery
+- apply share post style
+- add edit & visibility options for post
+- add multi-reacts for post instead of traditional like
+- add arabic style to text-editor
