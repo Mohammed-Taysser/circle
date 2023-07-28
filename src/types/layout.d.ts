@@ -23,3 +23,22 @@ interface SingleNotification {
   };
   msg: string;
 }
+
+type StatusSlug = 'online' | 'away' | 'invisible' | 'offline';
+
+interface SingleUserStatus {
+  color: string;
+  title: string;
+}
+
+type UserStatus = {
+  [key in StatusSlug]: SingleUserStatus;
+};
+
+interface SingleContactFriend {
+  status: StatusSlug;
+  name: string;
+  img: string;
+  id: string;
+  msg:string
+}
