@@ -94,7 +94,11 @@ function Massager() {
       <Async {...state}>
         {user ? (
           <>
-            <Flex className='h-20 mb-4' justify='space-between' align='center'>
+            <Flex
+              className='h-20 mb-4 bg-white shadow-nice px-4'
+              justify='space-between'
+              align='center'
+            >
               <Flex gap={15} align='center'>
                 <Link to='/message' title='back to contacts'>
                   <PiArrowBendDoubleUpLeftDuotone className='text-2xl text-gray-500' />
