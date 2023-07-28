@@ -33,6 +33,7 @@ const RecommendedGroups = lazy(() => import('../pages/auth/RecommendedGroups'));
 const Bookmarks = lazy(() => import('../pages/auth/Bookmarks'));
 const Events = lazy(() => import('../pages/auth/Events'));
 const Notification = lazy(() => import('../pages/auth/Notification'));
+const Massager = lazy(() => import('../pages/auth/Massager'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
@@ -268,6 +269,28 @@ const routes = createBrowserRouter([
             <Notification />
           </RequireAuth>
         ),
+      },
+      {
+        path: '/message',
+
+        children: [
+          {
+            index: true,
+            element: (
+              <RequireAuth>
+                <Massager />
+              </RequireAuth>
+            ),
+          },
+          {
+            path: ':userId',
+            element: (
+              <RequireAuth>
+                <Massager />
+              </RequireAuth>
+            ),
+          },
+        ],
       },
       {
         path: '*',
