@@ -116,7 +116,7 @@ function MessagesDropdown() {
 
         <Button
           component={Link}
-          to='/messenger'
+          to='/message'
           variant='light'
           color='grape'
           fullWidth
