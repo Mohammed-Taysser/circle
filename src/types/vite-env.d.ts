@@ -357,6 +357,33 @@ interface PostViewersProps {
   full?: boolean;
 }
 
+// Helmet Hook
+type SEOPagesKey =
+  | 'homepage'
+  | '404'
+  | 'bookmarks'
+  | 'chat'
+  | 'contactUs'
+  | 'forgetPassword'
+  | 'groups'
+  | 'joinUs'
+  | 'notification'
+  | 'profile'
+  | 'setting'
+  | 'editorHelp'
+  | 'help'
+  | 'calenderHelp'
+  | 'postDetails'
+  | 'results';
+
+type SEoPagesProps = {
+  [key in SEOPagesKey]: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+};
+
 // Contact Us Page
 interface ContactIconProps
   extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
