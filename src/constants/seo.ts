@@ -263,6 +263,22 @@ const PAGES: SEoPagesProps = {
       'Advanced search filters',
     ],
   },
+  events: {
+    title: 'Events',
+    description: `Welcome to the Events page of our social media app! Here, you can find all the latest and upcoming events happening around you. Whether it's a concert, a meetup, or a social event, we've got you covered. With Events, you can easily keep track of what's happening in your area and plan your next event. From music festivals to sports events, we've got everything you need to keep up with the latest happenings. So, what are you waiting for? Sign up for an account today and start exploring the world of Events!`,
+    keywords: [
+      'social media',
+      'events',
+      'concerts',
+      'meetups',
+      'music festivals',
+      'sports events',
+      'art events',
+      'food events',
+      'film events',
+      'community events',
+    ],
+  },
 };
 
 export { PAGES };
