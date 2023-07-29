@@ -1,8 +1,7 @@
-import { useDocumentTitle } from '@mantine/hooks';
-import React from 'react';
+import useHelmet from '../../../hooks/useHelmet';
 
 function CalenderHelp() {
-  useDocumentTitle('Circle | Help | Calender');
+  useHelmet('calenderHelp');
 
   return (
     <div className='events-page shadow-nice p-4 rounded mb-20 bg-white'>

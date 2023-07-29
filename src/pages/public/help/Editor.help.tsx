@@ -1,6 +1,6 @@
 import { Code, Table } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
 import TiptapEditor from '../../../common/TiptapEditor';
+import useHelmet from '../../../hooks/useHelmet';
 
 const content = `
 <h2 style="text-align: center">
@@ -51,7 +51,7 @@ const content = `
 `;
 
 function EditorHelp() {
-  useDocumentTitle('Circle | Help | Editor');
+  useHelmet('editorHelp');
 
   return (
     <>

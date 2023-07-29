@@ -1,11 +1,11 @@
 import { Anchor, Image } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
 import { TbProgressHelp } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import calenderImage from '../../assets/images/background/help/calender.svg';
 import editorImage from '../../assets/images/background/help/editor.svg';
 import Banner from '../../common/Banner';
 import { uuidv4 } from '../../helpers';
+import useHelmet from '../../hooks/useHelmet';
 
 const HELP_PAGES = [
   {
@@ -21,7 +21,7 @@ const HELP_PAGES = [
 ];
 
 function Help() {
-  useDocumentTitle('Circle | Help');
+  useHelmet('help');
 
   return (
     <>

@@ -2,12 +2,12 @@ import { Anchor, Image } from '@mantine/core';
 import { BsMegaphoneFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import discoverImage from '../../assets/images/background/group/discover.svg';
-import yourImage from '../../assets/images/background/group/your.svg';
 import friendsImage from '../../assets/images/background/group/friends.svg';
 import recommendedImage from '../../assets/images/background/group/recommended.svg';
+import yourImage from '../../assets/images/background/group/your.svg';
 import Banner from '../../common/Banner';
 import { uuidv4 } from '../../helpers';
-import { useDocumentTitle } from '@mantine/hooks';
+import useHelmet from '../../hooks/useHelmet';
 
 const GROUPS_TYPES = [
   {
@@ -33,7 +33,7 @@ const GROUPS_TYPES = [
 ];
 
 function Groups() {
-  useDocumentTitle('Circle | Groups');
+  useHelmet('groups');
 
   return (
     <>

@@ -1,12 +1,12 @@
 import { Flex, Pagination } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import SingleNotification from '../../components/notification/SingleNotification';
 import { NOTIFICATIONS } from '../../constants/layout';
 import Async from '../../containers/Async';
+import useHelmet from '../../hooks/useHelmet';
 
 function Notification() {
-  useDocumentTitle('Circle | Notifications');
+  useHelmet('notification');
 
   const [state, setState] = useState({
     loading: true,

@@ -1,13 +1,14 @@
 import { Tabs } from '@mantine/core';
-import { useDocumentTitle, useMediaQuery } from '@mantine/hooks';
+import { useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useState } from 'react';
 import { VscSettings } from 'react-icons/vsc';
 import Banner from '../../common/Banner';
 import { TOC } from '../../constants/setting';
+import useHelmet from '../../hooks/useHelmet';
 
 function Setting() {
-  useDocumentTitle('Circle | Setting');
+  useHelmet('setting');
   const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
   const [isLoading, setIsLoading] = useState(false);
 

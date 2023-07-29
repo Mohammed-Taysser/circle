@@ -1,11 +1,11 @@
 import { Anchor, Button } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
 import { VscArrowSmallLeft } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import PageNotFoundImage from '../../assets/images/background/404.svg';
+import useHelmet from '../../hooks/useHelmet';
 
 function PageNotFound() {
-  useDocumentTitle('Circle | 404 page');
+  useHelmet('404');
 
   return (
     <div className='text-center'>

@@ -1,5 +1,4 @@
 import { Center } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { TbTimelineEventText } from 'react-icons/tb';
 import { useParams } from 'react-router-dom';
@@ -7,9 +6,10 @@ import Post from '../../common/Post';
 import Skeleton from '../../common/Skeleton';
 import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
+import useHelmet from '../../hooks/useHelmet';
 
 function PostDetails() {
-  useDocumentTitle('Circle | Post Details');
+  useHelmet('postDetails');
   const { postId = '' } = useParams();
 
   const [post, setPost] = useState<Post | null>(null);

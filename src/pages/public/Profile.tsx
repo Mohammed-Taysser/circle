@@ -1,5 +1,4 @@
 import { Tooltip } from '@mantine/core';
-import { useDocumentTitle } from '@mantine/hooks';
 import { BiBookReader, BiUserVoice } from 'react-icons/bi';
 import { BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
 import { FiUserPlus, FiUsers } from 'react-icons/fi';
@@ -13,9 +12,10 @@ import avatar from '../../assets/images/default/avatar.png';
 import cover from '../../assets/images/default/cover.jpg';
 import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
+import useHelmet from '../../hooks/useHelmet';
 
 function Profile() {
-  useDocumentTitle('Circle | Profile');
+  useHelmet('profile');
   const { profileId = '' } = useParams();
 
   const TAPS = [

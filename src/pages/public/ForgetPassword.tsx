@@ -8,16 +8,16 @@ import {
   TextInput,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useDocumentTitle } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useState } from 'react';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 import forgetPassword from '../../assets/images/background/forget-password.svg';
+import useHelmet from '../../hooks/useHelmet';
 
 function ForgetPassword() {
-  useDocumentTitle('Circle | Forget password');
+  useHelmet('forgetPassword');
   const [isLoading, setIsLoading] = useState(false);
 
   const onFormSubmit = (values: { email: string }) => {

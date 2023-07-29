@@ -1,6 +1,5 @@
 import { Center, Pagination, Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import { BsBookmarks, BsSortUpAlt } from 'react-icons/bs';
 import { TbTimelineEventText } from 'react-icons/tb';
@@ -9,9 +8,10 @@ import Post from '../../common/Post';
 import Skeleton from '../../common/Skeleton';
 import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
+import useHelmet from '../../hooks/useHelmet';
 
 function Bookmarks() {
-  useDocumentTitle('Circle | Bookmarks');
+  useHelmet('bookmarks');
   const posts = Math.random() < 0.5 ? [] : POSTS.filter((post) => post.isSaved);
 
   const [activePage, setPage] = useState(1);

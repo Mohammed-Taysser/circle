@@ -1,23 +1,23 @@
 import {
-  Anchor,
   Container,
   Divider,
   LoadingOverlay,
   Paper,
-  Text,
+  Text
 } from '@mantine/core';
-import { useDisclosure, useDocumentTitle, useToggle } from '@mantine/hooks';
+import { useDisclosure, useToggle } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useCallback } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Login from '../../components/registration/Login';
 import Register from '../../components/registration/Register';
 import SocialMediaIntegration from '../../components/registration/SocialMediaIntegration';
 
 import registration from '../../assets/images/background/registration.svg';
+import useHelmet from '../../hooks/useHelmet';
 
 function Registration() {
-  useDocumentTitle('Circle | Registration');
+  useHelmet('joinUs');
   const [isLoading, { toggle: toggleLoading }] = useDisclosure(false);
 
   let location = useLocation();

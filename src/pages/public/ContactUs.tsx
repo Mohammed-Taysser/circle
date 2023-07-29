@@ -21,6 +21,7 @@ import contactUsBG from '../../assets/images/background/contact-us-bg.svg';
 import ContactIcon from '../../components/contactUs/ContactIcon';
 import { MOCK_DATA } from '../../constants/contact-us';
 import { uuidv4 } from '../../helpers';
+import useHelmet from '../../hooks/useHelmet';
 
 const useWrapperStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan('sm');
@@ -116,7 +117,7 @@ const useWrapperStyles = createStyles((theme) => {
 });
 
 function ContactUs() {
-  useDocumentTitle('Circle | Contact Us');
+  useHelmet('contactUs');
   const [isLoading, setIsLoading] = useState(false);
   const { classes } = useWrapperStyles();
 

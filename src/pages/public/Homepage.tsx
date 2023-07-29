@@ -1,13 +1,13 @@
-import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
 import CreatePost from '../../common/CreatePost';
 import Post from '../../common/Post';
 import Skeleton from '../../common/Skeleton';
 import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
+import useHelmet from '../../hooks/useHelmet';
 
 function Homepage() {
-  useDocumentTitle('Circle | Homepage');
+  useHelmet('homepage');
 
   const [state, setState] = useState({
     loading: true,

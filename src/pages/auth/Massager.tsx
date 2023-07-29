@@ -12,7 +12,6 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useDocumentTitle } from '@mantine/hooks';
 import { useEffect, useRef, useState } from 'react';
 import { BsEmojiSmile } from 'react-icons/bs';
 import { FiUser } from 'react-icons/fi';
@@ -24,9 +23,10 @@ import Avatar from '../../common/Avatar';
 import Massages from '../../components/massager/Massages';
 import { MESSAGES, USER_STATUS } from '../../constants/layout';
 import Async from '../../containers/Async';
+import useHelmet from '../../hooks/useHelmet';
 
 function Massager() {
-  useDocumentTitle('Circle | Massager');
+  useHelmet('chat');
   const theme = useMantineTheme();
   const { userId = '' } = useParams();
   const viewport = useRef<HTMLDivElement>(null);
