@@ -2,6 +2,7 @@
   "name": "circle",
   "private": false,
   "version": "1.0.0",
+  "description": "Circle is a social media app that allows users to connect with friends and family members from all over the world. With Circle, users can share photos, videos, and messages with their friends, as well as join groups based on their interests and hobbies.",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -70,8 +71,8 @@
     "vite": "^4.4.5"
   },
   "engines": {
-    "npm": "^9.6.4",
-    "yarn": "^1.22.19",
+    "npm": "^9.6.0",
+    "yarn": "^1.22.0",
     "node": "^18.12.1"
   }
 }
