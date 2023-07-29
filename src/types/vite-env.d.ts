@@ -207,7 +207,7 @@ interface CommentsModalInnerProps {
 }
 
 interface EventModalInnerProps {
-  event: string;
+  event: clickInfo;
 }
 
 interface CreateEventModalInnerProps {
@@ -374,6 +374,7 @@ type SEOPagesKey =
   | 'help'
   | 'calenderHelp'
   | 'postDetails'
+  | 'events'
   | 'results';
 
 type SEoPagesProps = {
