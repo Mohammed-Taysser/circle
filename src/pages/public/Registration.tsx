@@ -72,7 +72,7 @@ function Registration() {
 
             <Text size='lg' weight={500}>
               {activeTap === 'register'
-                ? 'Welcome to Mantine, register with'
+                ? 'Welcome to Circle, register with'
                 : 'Welcome back, login with'}
             </Text>
 
