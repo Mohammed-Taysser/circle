@@ -24,12 +24,15 @@ function PostFooter(props: { post: Post }) {
   const onCommentBtnClick = () => {
     modals.openContextModal({
       modal: 'comments',
-      title: 'Comments',
+      title: '',
       innerProps: {
         postId: post.id,
       },
       size: 'xl',
       centered: true,
+      classNames: {
+        content: 'overflow-visible',
+      },
     });
   };
 
