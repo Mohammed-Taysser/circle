@@ -3,6 +3,7 @@ import {
   Badge,
   Center,
   Divider,
+  Flex,
   Input,
   Loader,
   ScrollArea,
@@ -10,7 +11,6 @@ import {
 import { ContextModalProps } from '@mantine/modals';
 import { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
-import { FiUsers } from 'react-icons/fi';
 import { MdSearchOff } from 'react-icons/md';
 import avatar from '../assets/images/default/avatar.png';
 import Avatar from '../common/Avatar';
@@ -32,8 +32,17 @@ function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
     }, 3000);
   };
 
+  const onLinkClick = (
+    evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    url: string
+  ) => {
+    evt.preventDefault();
+    navigateTo(url);
+    props.context.closeModal(props.id);
+  };
+
   return (
-    <>
+    <div>
       <Input
         icon={<BiSearchAlt className='text-xl' />}
         variant='unstyled'
@@ -59,38 +68,38 @@ function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
             .fill(0)
             .map(() => (
               <Anchor
-                onClick={() => navigateTo(`/profile/${1}`)}
-                className='flex gap-5 items-center hover:bg-gray-100 transition p-3 cursor-pointer my-2 hover:no-underline'
+                onClick={(evt) => onLinkClick(evt, `/profile/${1}`)}
+                className='flex w-full gap-5 items-center hover:bg-gray-100 transition p-2 my-1 hover:no-underline'
                 key={uuidv4()}
               >
                 <Avatar sm alt='avatar' src={avatar} />
-                <div className=''>
-                  <h4 className='m-0'>Mohammed Taysser</h4>
-                  <h5 className='text-gray-500 font-normal m-0'>
-                    @mohammed-taysser
-                  </h5>
-                </div>
-                <Badge className='mx-auto' color='teal'>
-                  multi-friend
-                </Badge>
-                <div className='text-gray-500 ml-auto'>
-                  <div className='flex items-center gap-1'>
-                    <FiUsers className='text-lg' />
-                    <small>123</small>
+                <Flex
+                  gap={15}
+                  className='flex-grow md:items-center'
+                  justify='space-between'
+                >
+                  <div>
+                    <h4 className='m-0 text-sm md:text-base'>
+                      Mohammed Taysser
+                    </h4>
+                    <h5 className='text-gray-500 text-xs md:text-sm font-normal m-0'>
+                      @mohammed-taysser
+                    </h5>
                   </div>
-                </div>
+                  <Badge color='teal'>friend</Badge>
+                </Flex>
               </Anchor>
             ))}
         </ScrollArea>
       )}
       <div className='text-gray-600 mt-3'>
         Looking for more Results, got to{' '}
-        <Anchor onClick={() => navigateTo(`/results?query=${query}`)}>
+        <Anchor onClick={(evt) => onLinkClick(evt, `/results?query=${query}`)}>
           Results
         </Anchor>
         .
       </div>
-    </>
+    </div>
   );
 }
 
