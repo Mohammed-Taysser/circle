@@ -52,7 +52,7 @@ const NotFound = lazy(() => import('../pages/public/404'));
 const EditorHelp = lazy(() => import('../pages/public/help/Editor.help'));
 const CalenderHelp = lazy(() => import('../pages/public/help/Calender.help'));
 const Help = lazy(() => import('../pages/public/Help'));
-const Registration = lazy(() => import('../pages/public/Registration'));
+const JoinUs = lazy(() => import('../pages/public/JoinUs'));
 const Results = lazy(() => import('../pages/public/Results'));
 const Homepage = lazy(() => import('../pages/public/Homepage'));
 const Profile = lazy(() => import('../pages/public/Profile'));
@@ -322,7 +322,7 @@ const routes = createBrowserRouter([
     path: '/join-us',
     element: (
       <NoRequireAuth>
-        <Registration />
+        <JoinUs />
       </NoRequireAuth>
     ),
   },
