@@ -15,7 +15,7 @@ function SingleNotification(props: { request: SingleNotification }) {
         align='center'
         justify='space-between'
         gap={10}
-        className={`p-4 duration-200 rounded ${
+        className={`p-2 md:p-4 duration-200 rounded ${
           request.unread ? 'bg-gray-100' : 'hover:bg-gray-100'
         } `}
       >

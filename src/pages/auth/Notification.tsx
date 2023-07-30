@@ -31,7 +31,7 @@ function Notification() {
   return (
     <Async {...state}>
       <>
-        <div className='mb-10 nice-shadow p-7 bg-white rounded relative'>
+        <div className='mb-10 nice-shadow p-3 md:p-7 bg-white rounded relative'>
           <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold mt-0'>
             Activity
           </h2>
@@ -43,7 +43,7 @@ function Notification() {
           </Flex>
         </div>
         <div className='mb-10 nice-shadow p-7 bg-white rounded relative'>
-          <Pagination total={10} withEdges position='center' />
+          <Pagination total={3} withEdges position='center' />
         </div>
       </>
     </Async>

@@ -12,7 +12,6 @@ import { useLocalStorage } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import newsletterImage from '../assets/images/background/newsletter.svg';
-import { uuidv4 } from '../helpers';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -102,28 +101,15 @@ function Newsletter() {
   const onFormSubmit = (values: { email: string }) => {
     console.log(values);
 
-    const notificationId = uuidv4();
-
-    notifications.show({
-      id: notificationId,
-      title: 'Publishing comment...',
-      message: 'Hey there, your comment is being publish!',
-      loading: true,
-      withCloseButton: false,
-      color: '',
-      autoClose: false,
-    });
-
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
       setIsOpened(false);
       setIsSubscribe(true);
 
-      notifications.update({
-        id: notificationId,
-        title: 'Successfully publish',
-        message: 'Hey there, your comment is successfully publish!',
+      notifications.show({
+        title: 'Successfully subscribed',
+        message: 'Hey there, you successfully subscribed in newsletter!',
         loading: false,
         withCloseButton: true,
         autoClose: true,
