@@ -33,6 +33,7 @@ const RecommendedGroups = lazy(() => import('../pages/auth/RecommendedGroups'));
 const Bookmarks = lazy(() => import('../pages/auth/Bookmarks'));
 const Events = lazy(() => import('../pages/auth/Events'));
 const Notification = lazy(() => import('../pages/auth/Notification'));
+const Networks = lazy(() => import('../pages/auth/Networks'));
 const Massager = lazy(() => import('../pages/auth/Massager'));
 
 // Public
@@ -267,6 +268,14 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <Notification />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '/network',
+        element: (
+          <RequireAuth>
+            <Networks />
           </RequireAuth>
         ),
       },
