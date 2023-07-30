@@ -61,6 +61,13 @@
         color: #71728c;
         line-height: 24px;
         margin: 20px 0;
+
+        @media (max-width: 576px) {
+          ul,
+          ol {
+            padding: 0 15px;
+          }
+        }
       }
 
       .post-thumbs {
@@ -95,6 +102,10 @@
             width: 100%;
             object-fit: cover;
             border-radius: 10px;
+
+            @media (max-width: 576px) {
+              height: 150px;
+            }
           }
         }
       }
