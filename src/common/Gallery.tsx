@@ -20,7 +20,7 @@ function Gallery(props: PostGallery) {
             <img
               src={props.gallery[0]}
               alt='gallery-photo'
-              className='w-full h-[400px!important] rounded-lg object-cover'
+              className='w-full h-52 md:h-[400px!important] rounded-lg object-cover'
             />
           </a>
         ) : (
@@ -43,7 +43,7 @@ function Gallery(props: PostGallery) {
       <img
         src={props.gallery[0]}
         alt='gallery-photo'
-        className='w-full h-[400px!important] rounded-lg object-cover'
+        className='w-full h-52 md:h-[400px!important] rounded-lg object-cover'
       />
     );
   }
