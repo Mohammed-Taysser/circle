@@ -1,55 +1,55 @@
-import { Alert, Button } from '@mantine/core';
+import data from '@emoji-mart/data';
+import Picker from '@emoji-mart/react';
+import {
+  Alert,
+  Flex,
+  Input,
+  Loader,
+  Popover,
+  UnstyledButton,
+  useMantineTheme,
+} from '@mantine/core';
+import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
-import { useState } from 'react';
-import { BiSend } from 'react-icons/bi';
-import { BsInfoCircle } from 'react-icons/bs';
-import TiptapEditor from '../../common/TiptapEditor';
-import { uuidv4 } from '../../helpers';
+import { useRef, useState } from 'react';
+import { BsEmojiSmile, BsInfoCircle } from 'react-icons/bs';
+import { VscSend } from 'react-icons/vsc';
 
 function WriteComment() {
+  const theme = useMantineTheme();
   const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux
-  const [editorContent, setEditorContent] = useState({ text: '', html: '' });
   const [isLoading, setIsLoading] = useState(false);
+  const viewport = useRef<HTMLDivElement>(null);
 
-  const onCommentSubmit = () => {
-    console.log(editorContent);
-    const notificationId = uuidv4();
+  const form = useForm({
+    initialValues: {
+      msg: '',
+    },
+  });
 
-    if (editorContent.text) {
-      notifications.show({
-        id: notificationId,
-        title: 'Publishing comment...',
-        message: 'Hey there, your comment is being publish!',
-        loading: true,
-        withCloseButton: false,
-        color: '',
-        autoClose: false,
-      });
-
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-
-        notifications.update({
-          id: notificationId,
-          title: 'Successfully publish',
-          message: 'Hey there, your comment is successfully publish!',
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
-        });
-      }, 2000);
-    } else {
-      notifications.show({
-        title: 'Empty Comment',
-        message:
-          'Hey there, your comment is empty. please write something to publish',
-        loading: false,
-        withCloseButton: true,
-        color: '',
-        autoClose: true,
+  const onFormSubmit = (values: { msg: string }) => {
+    console.log(values);
+    if (viewport.current) {
+      viewport.current.scrollTo({
+        top: viewport.current.scrollHeight,
+        behavior: 'smooth',
       });
     }
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      form.setFieldValue('msg', '');
+
+      notifications.show({
+        title: 'Successfully publish',
+        message: 'Hey there, your comment is successfully publish!',
+        loading: false,
+        withCloseButton: true,
+        autoClose: true,
+      });
+    }, 2000);
   };
 
   if (!isLoggedIn) {
@@ -62,24 +62,49 @@ function WriteComment() {
 
   return (
     <>
-      <TiptapEditor
-        noFontSizes
-        getText={(content) => {
-          setEditorContent(content);
-        }}
-      />
-
-      <Button
-        mt={20}
-        size='md'
-        type='submit'
-        title='publish comment'
-        leftIcon={<BiSend />}
-        loading={isLoading}
-        onClick={onCommentSubmit}
+      <form
+        className='h-10 bg-gray-100 px-4 flex justify-center content-between'
+        onSubmit={form.onSubmit(onFormSubmit)}
       >
-        SEND
-      </Button>
+        <Input
+          variant='unstyled'
+          placeholder='Type something ...'
+          className='flex-1'
+          {...form.getInputProps('msg')}
+        />
+        <Flex gap={10} align='center'>
+          <Popover position='bottom-end'>
+            <Popover.Target>
+              <UnstyledButton>
+                <BsEmojiSmile className='text-gray-600' />
+              </UnstyledButton>
+            </Popover.Target>
+
+            <Popover.Dropdown
+              p='0'
+              className='border-0 z-[10001!important] overflow-auto'
+            >
+              <Picker
+                data={data}
+                theme={theme.colorScheme}
+                onEmojiSelect={(params: any) => {
+                  form.setFieldValue(
+                    'msg',
+                    `${form.values.msg} ${params.native}`
+                  );
+                }}
+              />
+            </Popover.Dropdown>
+          </Popover>
+          <UnstyledButton type='submit' disabled={form.values.msg === ''}>
+            {isLoading ? (
+              <Loader color='' size='xs' />
+            ) : (
+              <VscSend className='text-gray-600' />
+            )}
+          </UnstyledButton>
+        </Flex>
+      </form>
     </>
   );
 }
