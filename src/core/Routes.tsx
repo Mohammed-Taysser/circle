@@ -1,6 +1,7 @@
-import { lazy } from 'react';
+import { Suspense, lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import BaseLayout from '../layouts/Base';
+import { Center, Loader } from '@mantine/core';
 
 function RequireAuth({ children }: { children: React.ReactElement }) {
   let location = useLocation();
@@ -22,7 +23,17 @@ function NoRequireAuth({ children }: { children: React.ReactElement }) {
     return <Navigate to='/' replace />;
   }
 
-  return children;
+  return (
+    <Suspense
+      fallback={
+        <Center h={200}>
+          <Loader color='teal' size='xl' variant='dots' />
+        </Center>
+      }
+    >
+      {children}
+    </Suspense>
+  );
 }
 
 // Auth
