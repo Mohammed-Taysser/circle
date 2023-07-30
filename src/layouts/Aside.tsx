@@ -19,21 +19,22 @@ function Side() {
         <div className='relative lg:hidden'>
           <div
             className={`absolute duration-500 ${
-              isOpened ? '-left-[70px]' : 'left-[-105px]'
+              isOpened ? '-left-[50px]' : 'left-[-40px]'
             }`}
           >
             <Button
               variant='filled'
               color=''
+              compact
               onClick={() => setIsOpened((prev) => !prev)}
             >
-              <RiAppsLine className='text-lg' />
+              <RiAppsLine className='text-base' />
             </Button>
           </div>
         </div>
 
         <ScrollArea>
-          <ContactFriends/>
+          <ContactFriends />
         </ScrollArea>
       </Aside>
     </>
