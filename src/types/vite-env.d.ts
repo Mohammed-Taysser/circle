@@ -375,6 +375,7 @@ type SEOPagesKey =
   | 'calenderHelp'
   | 'postDetails'
   | 'events'
+  | 'network'
   | 'results';
 
 type SEoPagesProps = {

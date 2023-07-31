@@ -279,6 +279,22 @@ const PAGES: SEoPagesProps = {
       'community events',
     ],
   },
+  network: {
+    title: 'Network',
+    description: `The Social Media App Network page is a platform that allows users to connect with other users who share similar interests and hobbies. The app allows users to create profiles, add friends, and share updates and photos. Users can also search for other users based on their interests and connect with them through private messaging or video calls. The app also includes features such as news feed, chat rooms, and groups, which allow users to stay up-to-date with their friends' lives. Overall, the Social Media App Network page is a great tool for connecting with others and building meaningful relationships.`,
+    keywords: [
+      'Social Media',
+      'Network',
+      'Connect',
+      'Build Relationships',
+      'Share Life',
+      'Updates',
+      'Photos',
+      'Search',
+      'Interests',
+      'Hobbies',
+    ],
+  },
 };
 
 export { PAGES };
