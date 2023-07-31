@@ -8,7 +8,7 @@ function PageNotFound() {
   useHelmet('404');
 
   return (
-    <div className='text-center'>
+    <div className='text-center shadow-nice p-5 md:p-10 bg-white rounded'>
       <div className='flex h-full content-center justify-center'>
         <div className='self-center'>
           <img src={PageNotFoundImage} alt='404 page' className='max-w-full' />
