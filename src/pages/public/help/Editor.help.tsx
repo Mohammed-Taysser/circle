@@ -55,11 +55,11 @@ function EditorHelp() {
 
   return (
     <>
-      <div className='p-4 md:p-10 bg-white rounded nice-shadow'>
+      <div className='p-4 md:p-10 bg-white rounded shadow-nice'>
         <TiptapEditor content={content} />
       </div>
 
-      <div className='p-4 md:p-10 bg-white rounded nice-shadow my-10'>
+      <div className='p-4 md:p-10 bg-white rounded shadow-nice my-10'>
         <h2>Typography extension</h2>
         <Table striped withColumnBorders>
           <thead>
@@ -215,7 +215,7 @@ function EditorHelp() {
           </tbody>
         </Table>
       </div>
-      <div className='p-4 md:p-10 bg-white rounded nice-shadow my-10'>
+      <div className='p-4 md:p-10 bg-white rounded shadow-nice my-10'>
         <h2>Essentials shortcuts</h2>
         <Table striped withColumnBorders>
           <thead>
@@ -292,7 +292,7 @@ function EditorHelp() {
           </tbody>
         </Table>
       </div>
-      <div className='p-4 md:p-10 bg-white rounded nice-shadow my-10'>
+      <div className='p-4 md:p-10 bg-white rounded shadow-nice my-10'>
         <h2> Text Formatting shortcuts</h2>
         <Table striped withColumnBorders>
           <thead>
@@ -360,7 +360,7 @@ function EditorHelp() {
           </tbody>
         </Table>
       </div>
-      <div className='p-4 md:p-10 bg-white rounded nice-shadow my-10'>
+      <div className='p-4 md:p-10 bg-white rounded shadow-nice my-10'>
         <h2>Paragraph Formatting shortcuts</h2>
         <Table striped withColumnBorders>
           <thead>
@@ -536,7 +536,7 @@ function EditorHelp() {
           </tbody>
         </Table>
       </div>
-      <div className='p-4 md:p-10 bg-white rounded nice-shadow my-10'>
+      <div className='p-4 md:p-10 bg-white rounded shadow-nice my-10'>
         <h2>Text Selection shortcuts</h2>
         <Table striped withColumnBorders>
           <thead>

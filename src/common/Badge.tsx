@@ -3,7 +3,7 @@ import { Avatar, Divider } from '@mantine/core';
 function Badge(props: { badge: Badge; className?: string }) {
   return (
     <div
-      className={`nice-shadow p-7 text-center bg-white rounded ${props.className}`}
+      className={`shadow-nice p-7 text-center bg-white rounded ${props.className}`}
     >
       <Avatar src={props.badge.picture} size='lg' className='mx-auto' />
       <h3 className='my-4'>{props.badge.label}</h3>

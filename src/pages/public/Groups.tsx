@@ -45,7 +45,7 @@ function Groups() {
       <div className='md:grid grid-cols-2 gap-4'>
         {GROUPS_TYPES.map((groupType) => (
           <div className='col' key={uuidv4()}>
-            <div className='nice-shadow  p-5 bg-white'>
+            <div className='shadow-nice p-5 bg-white'>
               <Image
                 withPlaceholder
                 height={350}

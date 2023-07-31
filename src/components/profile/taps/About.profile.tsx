@@ -28,7 +28,7 @@ import { VscBug } from 'react-icons/vsc';
 function AboutProfile() {
   return (
     <>
-      <div className='bg-white rounded nice-shadow py-4 px-10 mb-10'>
+      <div className='bg-white rounded shadow-nice py-4 px-10 mb-10'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Contact Info
         </h2>
@@ -124,7 +124,7 @@ function AboutProfile() {
           </Table>
         </ScrollArea>
       </div>
-      <div className='bg-white rounded nice-shadow py-4 px-10 mb-10'>
+      <div className='bg-white rounded shadow-nice py-4 px-10 mb-10'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Education And Others Information
         </h2>
@@ -272,7 +272,7 @@ function AboutProfile() {
           </Table>
         </ScrollArea>
       </div>
-      <div className='bg-white rounded nice-shadow py-4 px-10 mb-10'>
+      <div className='bg-white rounded shadow-nice py-4 px-10 mb-10'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Hobbies and Interests
         </h2>

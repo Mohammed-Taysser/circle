@@ -24,7 +24,7 @@ function Taps(props: TapsProps) {
   return (
     <>
       <ScrollArea offsetScrollbars className='mb-10' type='always'>
-        <div className='bg-white p-2 nice-shadow rounded min-w-[max-content]'>
+        <div className='bg-white p-2 shadow-nice rounded min-w-[max-content]'>
           <div className='flex flex-wrap gap-3 '>
             {props.taps.map((tap) => (
               <NavLink to={`${tap.path}`} key={tap.path} className={cls} end>

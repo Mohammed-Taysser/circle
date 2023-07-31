@@ -48,7 +48,7 @@ const Friend = function (props: { repeat?: number }) {
       {Array(props.repeat ?? 1)
         .fill(0)
         .map(() => (
-          <div className='nice-shadow rounded-lg p-6 flex gap-3' key={uuidv4()}>
+          <div className='shadow-nice rounded-lg p-6 flex gap-3' key={uuidv4()}>
             <div>
               <SkeletonM height={125} w={125} circle />
             </div>
@@ -75,7 +75,7 @@ const Post = function (props: { repeat?: number }) {
       {Array(props.repeat ?? 1)
         .fill(0)
         .map(() => (
-          <div key={uuidv4()} className='mb-10 nice-shadow rounded-lg p-6 '>
+          <div key={uuidv4()} className='mb-10 shadow-nice rounded-lg p-6 '>
             <div className='flex items-center justify-between'>
               <div className='flex items-center'>
                 <SkeletonM height={70} circle />
@@ -114,7 +114,7 @@ const Badge = function (props: { repeat?: number }) {
         .map(() => (
           <div
             key={uuidv4()}
-            className='nice-shadow p-7 text-center bg-white rounded'
+            className='shadow-nice p-7 text-center bg-white rounded'
           >
             <div className='flex flex-col items-center justify-center'>
               <div>
@@ -145,7 +145,7 @@ const Comment = function (props: { repeat?: number }) {
       {Array(props.repeat ?? 1)
         .fill(0)
         .map(() => (
-          <div key={uuidv4()} className='mb-10 nice-shadow rounded-lg p-6 '>
+          <div key={uuidv4()} className='mb-10 shadow-nice rounded-lg p-6 '>
             <div className='flex items-center'>
               <SkeletonM height={70} circle />
               <div className='flex- mx-6'>

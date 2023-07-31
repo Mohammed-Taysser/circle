@@ -13,7 +13,7 @@ import { TfiEmail } from 'react-icons/tfi';
 function AboutGroup() {
   return (
     <>
-      <div className='bg-white rounded nice-shadow py-4 px-10 mb-10'>
+      <div className='bg-white rounded shadow-nice py-4 px-10 mb-10'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Contact Info
         </h2>
@@ -88,7 +88,7 @@ function AboutGroup() {
           </Table>
         </ScrollArea>
       </div>
-      <div className='bg-white rounded nice-shadow py-4 px-10 mb-16'>
+      <div className='bg-white rounded shadow-nice py-4 px-10 mb-16'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
           Social Media Information
         </h2>

@@ -55,7 +55,7 @@ function Bookmarks() {
       <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>
         {posts.length ? (
           <>
-            <div className='nice-shadow flex justify-between mb-10 p-5 bg-white'>
+            <div className='shadow-nice flex justify-between mb-10 p-5 bg-white'>
               <form
                 className='flex items-center flex-1'
                 onSubmit={searchForm.onSubmit(onFormSearchFormSubmit)}
@@ -85,7 +85,7 @@ function Bookmarks() {
                 <Post post={post} key={post.id} />
               ))}
             </div>
-            <div className='nice-shadow p-5 flex justify-center my-10 bg-white'>
+            <div className='shadow-nice p-5 flex justify-center my-10 bg-white'>
               <Pagination value={activePage} onChange={setPage} total={10} />
             </div>
           </>

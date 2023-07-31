@@ -35,7 +35,7 @@ function Groups(props: GroupContainerProps) {
         icon={props.icon}
       />
 
-      <div className='nice-shadow md:flex justify-between p-5 bg-white'>
+      <div className='shadow-nice md:flex justify-between p-5 bg-white'>
         <form
           className='flex md:items-center flex-1 gap-5 flex-col md:flex-row'
           onSubmit={searchForm.onSubmit(props.onSearchFormSubmit)}
@@ -114,7 +114,7 @@ function Groups(props: GroupContainerProps) {
       )}
 
       {props.groups.length > 0 && (
-        <div className='nice-shadow p-5 flex justify-center my-10 bg-white'>
+        <div className='shadow-nice p-5 flex justify-center my-10 bg-white'>
           <Pagination
             value={activePage}
             onChange={setPage}
