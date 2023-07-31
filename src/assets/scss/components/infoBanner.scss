@@ -78,9 +78,11 @@
       margin-bottom: 2px;
       position: relative;
       text-transform: capitalize;
+      margin-top: 0;
 
       @media (max-width: 575px) {
         justify-content: center;
+        margin-top: 20px;
       }
     }
   }
