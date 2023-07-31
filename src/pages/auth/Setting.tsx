@@ -9,10 +9,11 @@ import useHelmet from '../../hooks/useHelmet';
 
 function Setting() {
   useHelmet('setting');
+  const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
   const isSmallerThanMd = useMediaQuery('(max-width: 56.25em)');
   const [isLoading, setIsLoading] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
-  const tapsRef = useClickOutside(() => setIsOpened(false));
+  const tapsRef = useClickOutside(() => setIsOpened(false), null, [buttonRef]);
 
   const onFormSubmit = (hasChanges: boolean, values: any) => {
     console.log(values);
@@ -52,7 +53,11 @@ function Setting() {
       />
 
       <div className='shadow-nice p-5 md:p-10 rounded-lg mb-20 bg-white relative'>
-        <Button onClick={() => setIsOpened((prev) => !prev)} className='mb-4'>
+        <Button
+          onClick={() => setIsOpened((prev) => !prev)}
+          ref={setButtonRef}
+          className='mb-4 md:hidden'
+        >
           {isOpened ? 'Close' : 'Open'} Menu
         </Button>
 
