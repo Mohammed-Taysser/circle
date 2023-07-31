@@ -9,7 +9,7 @@ function Networks() {
 
   return (
     <>
-      <div className='p-4 shadow-nice bg-white my-5'>
+      <div className='p-4 shadow-nice bg-white'>
         <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold my-0'>
           Requests
         </h2>
