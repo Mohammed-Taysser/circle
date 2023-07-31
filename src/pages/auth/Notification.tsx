@@ -32,10 +32,12 @@ function Notification() {
     <Async {...state}>
       <>
         <div className='mb-10 shadow-nice p-3 md:p-7 bg-white rounded relative'>
-          <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold mt-0'>
+          <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold my-0'>
             Activity
           </h2>
+        </div>
 
+        <div className='mb-10 shadow-nice p-3 md:p-7 bg-white rounded relative'>
           <Flex direction='column' wrap='wrap' gap={10}>
             {NOTIFICATIONS.map((request) => (
               <SingleNotification request={request} key={request.id} />
