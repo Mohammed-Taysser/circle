@@ -1,37 +1,35 @@
-import {
-  ActionIcon,
-  Anchor,
-  Badge,
-  Input,
-  Loader,
-  TextInput,
-} from '@mantine/core';
-import { useDebouncedState, useDocumentTitle } from '@mantine/hooks';
+import { Button, Input, Select, Tabs } from '@mantine/core';
+import { useForm } from '@mantine/form';
 import { useEffect, useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
-import { FiUsers } from 'react-icons/fi';
-import { Link, useSearchParams } from 'react-router-dom';
-import Avatar from '../../common/Avatar';
-import Group from '../../common/Group';
-import Skeleton from '../../common/Skeleton';
-import { GROUPS } from '../../constants/dummy';
+import { BsFilter } from 'react-icons/bs';
+import { useSearchParams } from 'react-router-dom';
+import noResults from '../../assets/images/background/search/no-results.svg';
+import Groups from '../../components/search/Groups.results';
+import Users from '../../components/search/Users.results';
+import { FRIENDS, GROUPS } from '../../constants/dummy';
 import Async from '../../containers/Async';
-import { uuidv4 } from '../../helpers';
-import { IconArrowRight, IconSearch } from '@tabler/icons-react';
-
-import search from '../../assets/images/background/search.svg';
-import avatar from '../../assets/images/default/avatar.png';
+import useHelmet from '../../hooks/useHelmet';
 
 function Results() {
-  useDocumentTitle('Circle | Search Results');
+  useHelmet('results');
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get('query') ?? '');
-  const [isSearching, setIsSearching] = useState(false);
+  const results = {
+    users: Math.random() > 0.5 ? FRIENDS : [],
+    groups: Math.random() < 0.5 ? GROUPS : [],
+  };
 
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,
     error: null,
+  });
+
+  const searchForm = useForm({
+    initialValues: {
+      query: searchParams.get('query') ?? '',
+      filter: searchParams.get('filter') ?? 'all',
+    },
   });
 
   useEffect(() => {
@@ -48,92 +46,71 @@ function Results() {
     };
   }, []);
 
-  const onInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(evt.target.value);
-
-    setTimeout(() => {
-      setIsSearching(true);
-
-      setSearchParams({ query: evt.target.value });
-
-      setTimeout(() => {
-        setIsSearching(false);
-      }, 3000);
-    }, 1500);
+  const onSearchFormSubmit = (values: { query: string; filter: string }) => {
+    console.log(values);
+    setSearchParams({ query: values.query ?? '', filter: values.filter });
   };
 
   return (
-    <Async {...state} skeleton={<Skeleton.post repeat={6} />}>
-      <div className='p-4 shadow-nice bg-white mb-5'>
-        <TextInput
-          icon={<BiSearchAlt size='1.1rem' />}
-          radius='xl'
-          value={query}
-          size='md'
-          onChange={onInputChange}
-          rightSection={
-            isSearching ? (
-              <Loader size='xs' />
-            ) : (
-              <ActionIcon size={32} radius='xl' color='' variant='filled'>
-                <IconArrowRight size='1.1rem' stroke={1.5} />
-              </ActionIcon>
-            )
-          }
-          placeholder='Search...'
-          rightSectionWidth={42}
-        />
+    <Async {...state}>
+      <div className='shadow-nice p-5 bg-white'>
+        <form
+          className='flex md:items-center gap-5 flex-col md:flex-row'
+          onSubmit={searchForm.onSubmit(onSearchFormSubmit)}
+        >
+          <Input
+            icon={<BiSearchAlt />}
+            name='search'
+            placeholder={`Search ${searchForm.values.filter}`}
+            {...searchForm.getInputProps('query')}
+          />
+
+          <Select
+            icon={<BsFilter />}
+            placeholder='Filter By'
+            clearable
+            {...searchForm.getInputProps('filter')}
+            onChange={(value) => {
+              searchForm.setValues({
+                filter: value ?? 'all',
+              });
+            }}
+            data={[
+              { value: 'all', label: 'All' },
+              { value: 'users', label: 'Users' },
+              { value: 'groups', label: 'Groups' },
+            ]}
+          />
+
+          <Button type='submit'>Search</Button>
+        </form>
       </div>
 
-      {/* No results image 
-        <div className='p-32 shadow-nice bg-white mb-5 text-center'>
-          <img src={search} alt='no result found' className='max-w-full' />
+      {results.groups.length & results.users.length ? (
+        <Tabs value={searchForm.values.filter}>
+          <Tabs.Panel value='all'>
+            <Users users={results.users} />
+            <Groups groups={results.groups} />
+          </Tabs.Panel>
+
+          <Tabs.Panel value='users'>
+            <Users users={results.users} />
+          </Tabs.Panel>
+
+          <Tabs.Panel value='groups'>
+            <Groups groups={results.groups} />
+          </Tabs.Panel>
+        </Tabs>
+      ) : (
+        <div className='p-32 shadow-nice bg-white my-5 text-center'>
+          <img
+            src={noResults}
+            alt='no result found'
+            className='max-w-full md:w-96'
+          />
           <div className='text-gray-500'>No results found</div>
         </div>
-      */}
-
-      <div className='p-4 shadow-nice bg-white'>
-        <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
-          Users
-        </h2>
-        {Array(10)
-          .fill(0)
-          .map(() => (
-            <Anchor
-              key={uuidv4()}
-              to={`/profile/${1}`}
-              component={Link}
-              className='flex gap-5 items-center hover:bg-gray-100 transition p-3 cursor-pointer my-2 hover:no-underline rounded-sm'
-            >
-              <Avatar sm alt='avatar' src={avatar} />
-              <div>
-                <h4 className='m-0'>Mohammed Taysser</h4>
-                <h5 className='text-gray-500 font-normal m-0'>
-                  @mohammed-taysser
-                </h5>
-              </div>
-              <Badge className='mx-auto' color='teal'>
-                multi-friend
-              </Badge>
-              <div className='text-gray-500 ml-auto'>
-                <div className='flex items-center gap-1'>
-                  <FiUsers className='text-lg' />
-                  <small>123</small>
-                </div>
-              </div>
-            </Anchor>
-          ))}
-      </div>
-
-      <div className='p-4 shadow-nice bg-white my-5'>
-        <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold'>
-          Group
-        </h2>
-
-        {GROUPS.map((group) => (
-          <Group group={group} key={group.id} />
-        ))}
-      </div>
+      )}
     </Async>
   );
 }
