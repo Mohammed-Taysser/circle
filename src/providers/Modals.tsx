@@ -1,10 +1,10 @@
 import { ModalsProvider } from '@mantine/modals';
-import CommentsModal from '../modal/Comments.modal';
-import CreateEventModal from '../modal/CreateEvent.modal';
+import CreateEventModal from '../modal/events/CreateEvent.modal';
 import CropperModal from '../modal/Cropper.modal';
-import EventModal from '../modal/Event.modal';
-import ReactsModal from '../modal/Reacts.modal';
 import SearchModal from '../modal/Search.modal';
+import EventModal from '../modal/events/Event.modal';
+import CommentsModal from '../modal/posts/Comments.modal';
+import ReactsModal from '../modal/posts/Reacts.modal';
 
 function Modals(props: { children: React.ReactElement }) {
   return (

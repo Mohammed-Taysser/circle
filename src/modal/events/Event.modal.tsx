@@ -1,9 +1,9 @@
 import { Button, Center, Flex, Text } from '@mantine/core';
 import { ContextModalProps } from '@mantine/modals';
-import { timeToX } from '../helpers';
-import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
+import { useState } from 'react';
 import { BsInfoCircle } from 'react-icons/bs';
+import { timeToX } from '../../helpers';
 
 function EventModal(props: ContextModalProps<EventModalInnerProps>) {
   const { event } = props.innerProps;

@@ -2,11 +2,11 @@ import { Center, Table, Tabs, ThemeIcon } from '@mantine/core';
 import { ContextModalProps } from '@mantine/modals';
 import { useEffect, useState } from 'react';
 import { VscReactions } from 'react-icons/vsc';
-import Avatar from '../common/Avatar';
-import { POST_REACTS } from '../constants/dummy';
-import { REACT_ICONS } from '../constants/reacts';
-import Async from '../containers/Async';
-import { uuidv4 } from '../helpers';
+import Avatar from '../../common/Avatar';
+import { POST_REACTS } from '../../constants/dummy';
+import { REACT_ICONS } from '../../constants/reacts';
+import Async from '../../containers/Async';
+import { uuidv4 } from '../../helpers';
 
 function ReactsModal(props: ContextModalProps<ReactModalInnerProps>) {
   const reacts = Math.random() < 0.5 ? POST_REACTS : [];
