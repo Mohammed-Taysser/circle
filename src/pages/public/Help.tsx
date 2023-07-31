@@ -32,7 +32,7 @@ function Help() {
       />
       <div className='md:grid grid-cols-2 lg:grid-cols-3 gap-4'>
         {HELP_PAGES.map((groupType) => (
-          <div className='col' key={uuidv4()}>
+          <div className='col my-3 md:my-0' key={uuidv4()}>
             <div className='shadow-nice p-5 bg-white'>
               <Image
                 withPlaceholder
