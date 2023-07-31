@@ -65,8 +65,8 @@ interface InfoBannerProp {
   className?: string;
 }
 
-// Member component
-interface Member {
+// User component
+interface User {
   avatar: string;
   cover: string;
   name: string;
