@@ -82,7 +82,7 @@ function BasicInfo(props: SettingTapProps) {
           icon={<MdDriveFileRenameOutline />}
           {...form.getInputProps('username')}
         />
-        <div className='flex items-end justify-end gap-3'>
+        <div className='flex items-end md:justify-end gap-3'>
           <FileButton
             onChange={(file) => onInputChange('avatar', file)}
             accept='image/*'
@@ -107,7 +107,7 @@ function BasicInfo(props: SettingTapProps) {
       </SimpleGrid>
 
       <InfoBanner
-        className='p-[35px!important] mb-[0!important] mt-20'
+        className='p-[35px!important] mb-[0!important] mt-8 md:mt-20'
         avatar={
           typeof form.values.avatar === 'string'
             ? form.values.avatar

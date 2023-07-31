@@ -34,21 +34,20 @@ function Groups(props: GroupContainerProps) {
         subtitle={`${props.title}: ${props.groups.length}`}
         icon={props.icon}
       />
-      <div className='nice-shadow flex justify-between p-5 bg-white'>
+
+      <div className='nice-shadow md:flex justify-between p-5 bg-white'>
         <form
-          className='flex items-center flex-1'
+          className='flex md:items-center flex-1 gap-5 flex-col md:flex-row'
           onSubmit={searchForm.onSubmit(props.onSearchFormSubmit)}
         >
           <Input
             icon={<BiSearchAlt />}
+            name='search'
             placeholder='Search Groups'
             {...searchForm.getInputProps('query')}
           />
-          <Button color='teal' className='mx-3' type='submit'>
-            Search
-          </Button>
+
           <Select
-            className='ml-auto inline-block'
             icon={<BsSortUpAlt />}
             placeholder='Order By'
             clearable
@@ -64,31 +63,34 @@ function Groups(props: GroupContainerProps) {
               { value: 'member', label: 'Most Members' },
             ]}
           />
+
+          <Button type='submit'>Search</Button>
         </form>
-        <SegmentedControl
-          className='ml-5'
-          color='teal'
-          value={view}
-          onChange={setView}
-          data={[
-            {
-              value: 'col',
-              label: (
-                <Center>
-                  <BsColumnsGap />
-                </Center>
-              ),
-            },
-            {
-              value: 'list',
-              label: (
-                <Center>
-                  <AiOutlineUnorderedList />
-                </Center>
-              ),
-            },
-          ]}
-        />
+        <div className='hidden md:block justify-end'>
+          <SegmentedControl
+            color='teal'
+            value={view}
+            onChange={setView}
+            data={[
+              {
+                value: 'col',
+                label: (
+                  <Center>
+                    <BsColumnsGap />
+                  </Center>
+                ),
+              },
+              {
+                value: 'list',
+                label: (
+                  <Center>
+                    <AiOutlineUnorderedList />
+                  </Center>
+                ),
+              },
+            ]}
+          />
+        </div>
       </div>
       {props.groups.length ? (
         <div

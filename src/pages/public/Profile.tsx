@@ -65,31 +65,31 @@ function Profile() {
         name='Mohammed Taysser'
         verified
         extraInfo={
-          <div className='mb-2 flex items-center'>
+          <div className='mb-2 flex items-center justify-center md:justify-start gap-4'>
             <Tooltip label='Friends' withArrow>
-              <div className='flex items-center'>
-                <FiUsers /> <span className='mx-1 text-sm'>12</span>
+              <div className='flex items-center gap-1'>
+                <FiUsers /> <span className='text-sm'>12</span>
               </div>
             </Tooltip>
             <Tooltip label='Posts' withArrow>
-              <div className='flex items-center mx-1'>
-                <VscFeedback /> <span className='mx-1 text-sm'>12</span>
+              <div className='flex items-center gap-1'>
+                <VscFeedback /> <span className='text-sm'>12</span>
               </div>
             </Tooltip>
             <Tooltip label='Followers' withArrow>
-              <div className='flex items-center mx-1'>
+              <div className='flex items-center gap-1'>
                 <BiUserVoice />
-                <span className='mx-1 text-sm'>303,202,2</span>
+                <span className='text-sm'>303,202,2</span>
               </div>
             </Tooltip>
             <Tooltip label='Following' withArrow>
-              <div className='flex items-center mx-1'>
-                <FiUserPlus /> <span className='mx-1 text-sm'>1023</span>
+              <div className='flex items-center gap-1'>
+                <FiUserPlus /> <span className='text-sm'>1023</span>
               </div>
             </Tooltip>
             <Tooltip label='Viewers' withArrow>
-              <div className='flex items-center mx-1'>
-                <BiBookReader /> <span className='mx-1 text-sm'>258941</span>
+              <div className='flex items-center gap-1'>
+                <BiBookReader /> <span className='text-sm'>258941</span>
               </div>
             </Tooltip>
           </div>

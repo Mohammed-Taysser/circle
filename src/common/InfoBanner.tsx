@@ -24,7 +24,7 @@ function InfoBanner(props: InfoBannerProp) {
     >
       <div className='media'>
         <Avatar src={props.avatar} alt={`picture of ${props.name}`} />
-        <div className='media-body ml-7'>
+        <div className='media-body md:ml-7'>
           <h3 className='item-title flex items-center'>
             {props.name && <span>{props.name}</span>}
             {props.verified && (
@@ -50,6 +50,7 @@ InfoBanner.defaultProps = {
   avatar: '',
   name: '',
   username: '',
+  className: '',
   verified: false,
   extraInfo: <></>,
 };

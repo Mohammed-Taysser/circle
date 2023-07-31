@@ -33,7 +33,7 @@ function BadgesGroup() {
       {badges.length ? (
         <div className='lg:grid grid-cols-3 gap-4'>
           {badges.map((badge) => (
-            <Badge key={badge.id} badge={badge} />
+            <Badge key={badge.id} badge={badge} className='my-3 md:my-0' />
           ))}
         </div>
       ) : (

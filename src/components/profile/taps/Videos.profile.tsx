@@ -44,10 +44,8 @@ function VideosProfile() {
         {videos.length ? (
           <div className='md:grid grid-cols-2 gap-4'>
             {videos.map((video) => (
-              <div key={uuidv4()} className='flex items-center my-3 md:my-0'>
-                <div className='flex-1'>
-                  <PlyrViewer src={video} MediaType='video' />
-                </div>
+              <div key={uuidv4()} className='my-3 md:my-0'>
+                <PlyrViewer src={video} MediaType='video' />
               </div>
             ))}
           </div>

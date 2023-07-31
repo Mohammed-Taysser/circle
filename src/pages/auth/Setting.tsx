@@ -1,7 +1,7 @@
-import { Tabs } from '@mantine/core';
-import { useMediaQuery } from '@mantine/hooks';
+import { Button, Tabs } from '@mantine/core';
+import { useClickOutside, useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { VscSettings } from 'react-icons/vsc';
 import Banner from '../../common/Banner';
 import { TOC } from '../../constants/setting';
@@ -9,8 +9,10 @@ import useHelmet from '../../hooks/useHelmet';
 
 function Setting() {
   useHelmet('setting');
-  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
+  const isSmallerThanMd = useMediaQuery('(max-width: 56.25em)');
   const [isLoading, setIsLoading] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
+  const tapsRef = useClickOutside(() => setIsOpened(false));
 
   const onFormSubmit = (hasChanges: boolean, values: any) => {
     console.log(values);
@@ -32,6 +34,15 @@ function Setting() {
     }
   };
 
+  const tapsClasses = useMemo(() => {
+    if (isSmallerThanMd) {
+      const cls = `absolute z-10 bg-white shadow-nice p-4 max-w-[250px] duration-300 `;
+      const left = isOpened ? 'left-5' : '-left-[280px]';
+      return cls + left;
+    }
+    return '';
+  }, [isSmallerThanMd, isOpened]);
+
   return (
     <>
       <Banner
@@ -40,12 +51,13 @@ function Setting() {
         icon={VscSettings}
       />
 
-      <div className='shadow-nice p-10 rounded-lg mb-20 bg-white'>
-        <Tabs
-          defaultValue={TOC[0].id}
-          orientation={isSmallerThanMd ? 'vertical' : 'horizontal'}
-        >
-          <Tabs.List className={isSmallerThanMd ? 'mb-10' : ''}>
+      <div className='shadow-nice p-5 md:p-10 rounded-lg mb-20 bg-white relative'>
+        <Button onClick={() => setIsOpened((prev) => !prev)} className='mb-4'>
+          {isOpened ? 'Close' : 'Open'} Menu
+        </Button>
+
+        <Tabs defaultValue={TOC[0].id} orientation='vertical' ref={tapsRef}>
+          <Tabs.List className={tapsClasses}>
             {TOC.map((item) => (
               <Tabs.Tab value={item.id} key={item.id}>
                 {item.label}

@@ -64,7 +64,7 @@ function SingleGroup() {
         name='Developer Geeks'
         verified
         extraInfo={
-          <div className='mb-2 flex items-center'>
+          <div className='mb-2 flex items-center justify-center md:justify-start '>
             <Tooltip label='Members' withArrow>
               <div className='flex items-center'>
                 <FiUsers /> <span className='mx-1 text-sm'>1200</span>

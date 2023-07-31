@@ -32,14 +32,14 @@ function Member(props: { user: Member; className: string }) {
         <div className='mx-12'>
           <Link
             to={`/profile/${props.user.id}`}
-            className='text-black text-xl no-underline transition hover:text-aurora'
+            className='text-black text-base md:text-xl no-underline transition hover:text-aurora'
           >
             {props.user.name}
           </Link>
-          <div className='text-gray-400 mb-1 text-sm'>
+          <div className='text-gray-400 mb-1 text-xs md:text-sm'>
             @{props.user.username}
           </div>
-          <div className='text-gray-500 text-sm mb-4'>
+          <div className='text-gray-500 text-xs md:text-sm mb-4'>
             Since: {timeToX(props.user.joinAt)}
           </div>
           <Avatar.Group spacing='sm'>
