@@ -2,43 +2,17 @@
 
 ## Bugs & TODO
 
-- [ ] Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
-- [ ] add login btn instead of user dropdown & notification in no login
-- [x] add map & video & audio support to create post component
-- [ ] add meta for each page (try using react-helmet)
-- [ ] check responsive 🙂
+- [ ] check light box
+- [ ] create demo page
 - [ ] fix create-post component
-- [ ] fix search modal responsive & refactor it
-- [ ] friend or follow requests should be sent first to the user to decide if he wants to approve or not
-- [ ] groups chats
-- [ ] improve comments component
-- [ ] improve gallery
 - [ ] improve no login component
-- [ ] make timeline in left-sidebar async (every event it's time left make it active)
-- [ ] private chats
+- [ ] improve user component
 - [ ] reduce create-post to facebook
-- [ ] update `index.html`
-- [ ] update `package.json` info
 - [ ] update readme & docs
-- [x] add newsletter dialog
-- [x] add nodejs & npm versions to package.json
-- [x] add post share
-- [x] add search shortcuts
-- [x] Add Toast For Login User
-- [x] create `create-event` modal
-- [x] create calender as header component
-- [x] create calender help
-- [x] create events page
-- [x] Crop Avatar Before Upload
-- [x] empower login & register with validation
-- [x] finish navbar
-- [x] finish sidebar
-- [x] fix post component
-- [x] post card comments
-- [x] Post Image Gallery (Light Box)
-- [x] reduce avatar indicator zIndex
-- [x] replace spotlight with modal manager
-- [x] Text Editor With Preview Instead Of Plain Text
+- [x] add user dropdown to aside on mobile view
+- [x] check responsive 🙂
+- [x] how to join group
+- [x] how to send friend request
 
 ## Before integrate to API
 
@@ -48,24 +22,28 @@
 ## API Integration
 
 - [ ] In Auth Route User Can Use Bad Token. Add More Validation That User Already Auth 🤐
+- [ ] Active Forget-Password Page [see](https://www.tutsmake.com/forgot-reset-password-in-node-js-express-mysql/)
 - [ ] Use Access Token & Refresh Token
 - [ ] Update Exist Token (Api Call) As Update Avatar Use The Previous Token 😥
 - [ ] notifications of profile updating - comments - likes
 
 ## Super TODO
 
+- [ ] Add tests 🥺
 - [ ] [Admin Dashboard](https://appseed.us/)
 - [ ] I18n (Translation)
 - [ ] passport auth with social media
 - [ ] Create Review Video For Project Functionality
 - [ ] Who See My Profile 😈
 - [ ] create chat dialog
+- [ ] groups chats
+- [ ] make timeline in left-sidebar async (every event it's time left make it active)
 
 ## Pages
 
-- [ ] [Results](https://preview.tabler.io/search-results.html)
-- [ ] Events
-- [ ] networks
+- [x] Results
+- [x] networks
+- [x] Events
 - [x] 404
 - [x] Bookmarks
 - [x] Chat
@@ -73,68 +51,15 @@
 - [x] Forget Password
 - [x] Groups
 - [x] Homepage
-- [x] Login
 - [x] notification
 - [x] Post Details
 - [x] Profile
-- [x] Register
+- [x] Register/login
 - [x] Setting
 - [x] Single Group
-- [ ] help
+- [x] help
   - [x] editor
-  - [ ] calender
-
-## Layout
-
-- [x] Navbar
-  - [x] logo
-  - [x] search input
-  - [x] friends dropdown
-  - [x] notification dropdown
-  - [x] message dropdown
-- [x] Menu sidebar
-  - [x] online friends
-- [x] right sidebar
-  - [x] most use bookmarks
   - [x] calender
-  - [x] events
-
-## Component
-
-- Post
-  - header
-    - [x] avatar
-      - [x] status (online and so on)
-    - [x] visibility
-    - [x] edited post
-    - [x] publish date
-    - [x] link for post details
-    - dropdown
-      - [x] copy post url
-      - [x] copy post content
-      - [x] toggle save
-  - body (content)
-    - [x] maps
-    - [x] youtube video
-    - [x] facebook posts
-    - [x] PDF
-    - [x] video
-    - [x] audio
-    - [x] gallery
-    - [x] update avatar
-    - [x] update cover
-    - [x] simply text
-    - [x] share post
-  - footer
-    - [x] reacts
-    - [x] comments
-    - [x] share
-
-- events
-  - [x] create
-  - [ ] update
-  - [ ] delete
-  - [ ] view details
 
 ## Bug fix helpers
 
@@ -159,7 +84,39 @@
 
 ## Changelog
 
-## 20 Apr 2023
+## 28 July 2023
+
+- add map & video & audio support to create post component
+- add meta for each page
+- add newsletter dialog
+- add nodejs & npm versions to `package.json`
+- add post share
+- add search shortcuts
+- fix search modal responsive & refactor it
+- improve comments component
+- improve gallery component
+- update `index.html`
+
+## 2 July 2023
+
+- update `package.json` info
+- Add Toast For Login User
+- create `create-event` modal
+- create calender as header component
+- create calender help
+- create events page
+- Crop Avatar Before Upload
+- empower login & register with validation
+- finish navbar
+- finish sidebar
+- fix post component
+- add post card comments
+- Post Image Gallery (Light Box)
+- reduce avatar indicator zIndex
+- replace spotlight with modal manager
+- replace Text Editor With Preview Instead Of Plain Text
+
+## 20 April 2023
 
 - Init Project 🎉
 - post support PDF, Video, Audio, Embedded like maps & facebook post, gallery
