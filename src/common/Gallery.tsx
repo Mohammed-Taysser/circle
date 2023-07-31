@@ -14,6 +14,7 @@ function Gallery(props: PostGallery) {
         plugins={[lgThumbnail, lgVideo, lgFullscreen, lgRotate, lgHash]}
         galleryId={props.galleryId}
         mode='lg-soft-zoom'
+        mobileSettings={{ controls: false, showCloseIcon: true }}
       >
         {props.gallery.length === 1 ? (
           <a href={props.gallery[0]} className='col-span-full'>
