@@ -8,101 +8,13 @@
 
 $aurora-color: #20c997;
 
-body {
-  background-color: #eff4fb !important;
-  --plyr-color-main: #{$aurora-color};
-}
-
-.arabic-font {
-  font-family: 'Tajawal', sans-serif;
-}
-
-.nice-shadow {
-  box-shadow: 0 3px 15px rgba(22, 41, 124, 0.1);
-}
-
-.post-editor {
-  .ProseMirror {
-    min-height: 150px;
-  }
-
-  code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      Liberation Mono, Courier New, monospace;
-    line-height: 1.55;
-    padding: 0.125rem calc(0.625rem / 2);
-    border-radius: 0.25rem;
-    color: #1a1b1e;
-    background-color: rgba(248, 249, 250, 1);
-    font-size: 0.75rem;
-  }
-
-  pre {
-    background: rgba(248, 249, 250, 0.65);
-    border-radius: 0.25rem;
-    color: #212529;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-      Liberation Mono, Courier New, monospace;
-    padding: 1rem 1.5rem;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .color {
-    white-space: nowrap;
-
-    &::before {
-      background-color: var(--color);
-      border: 1px solid rgba(128, 128, 128, 0.3);
-      border-radius: 2px;
-      content: ' ';
-      display: inline-block;
-      height: 1em;
-      margin-bottom: 0.15em;
-      margin-right: 0.1em;
-      vertical-align: middle;
-      width: 1em;
-    }
-  }
-}
-
-.events-page {
-  --fc-event-bg-color: #{$aurora-color};
-  --fc-event-border-color: #{$aurora-color};
-
-  .fc .fc-button-primary {
-    text-transform: capitalize;
-    border-color: #ced4da;
-    background-color: #fff;
-    outline: none;
-    box-shadow: none;
-    color: #333;
-
-    &:hover {
-      background-color: #f8f9fa;
-    }
-
-    &:not(:disabled).fc-button-active,
-    &:not(:disabled):active {
-      background-color: $aurora-color;
-      border-color: $aurora-color;
-      color: #fff;
-      outline: none;
-      box-shadow: none;
-    }
-  }
-
-  .fc .fc-popover {
-    z-index: 101;
-  }
-}
-
 // components
 @import './components/avatar';
 @import './components/post';
 @import './components/group';
-@import './components/friend';
+@import './components/user';
 @import './components/infoBanner';
 @import './components/createPost';
+
+// styles
+@import './helpers/base';
