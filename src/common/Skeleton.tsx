@@ -48,12 +48,14 @@ const Friend = function (props: { repeat?: number }) {
       {Array(props.repeat ?? 1)
         .fill(0)
         .map(() => (
-          <div className='nice-shadow rounded-lg p-6 flex' key={uuidv4()}>
-            <SkeletonM height={125} circle />
-            <div className='flex-1 mx-6'>
+          <div className='nice-shadow rounded-lg p-6 flex gap-3' key={uuidv4()}>
+            <div>
+              <SkeletonM height={125} w={125} circle />
+            </div>
+            <div className='flex-1 '>
               <SkeletonM height={20} mt={6} w={200} />
               <SkeletonM height={15} mt={6} w={100} />
-              <SkeletonM height={10} mt={6} w={250} />
+              <SkeletonM height={10} mt={6} w={220} />
               <div className='flex mt-3'>
                 <SkeletonM height={30} circle />
                 <SkeletonM height={30} circle />
