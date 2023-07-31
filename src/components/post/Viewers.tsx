@@ -1,6 +1,6 @@
 import GalleryViewer from '../../common/Gallery';
 import Group from '../../common/Group';
-import Member from '../../common/Member';
+import User from '../../common/User';
 import Post from '../../common/Post';
 import PlyrViewer from '../../common/plyr';
 import EmbeddedViewer from './body/Embedded';
@@ -58,7 +58,7 @@ function Viewers(props: PostViewersProps) {
     case 'friend':
       return (
         <div className='flex justify-center'>
-          <Member user={post.assets.friend} />
+          <User user={post.assets.friend} />
         </div>
       );
     case 'group':

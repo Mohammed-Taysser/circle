@@ -1,7 +1,7 @@
 import { Center } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { FiUsers } from 'react-icons/fi';
-import Member from '../../../common/Member';
+import User from '../../../common/User';
 import Skeleton from '../../../common/Skeleton';
 import { FRIENDS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
@@ -33,7 +33,7 @@ function MembersGroup() {
       {members.length ? (
         <div className='md:grid grid-cols-2 gap-4'>
           {members.map((friend) => (
-            <Member key={friend.id} user={friend} />
+            <User key={friend.id} user={friend} />
           ))}
         </div>
       ) : (

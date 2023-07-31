@@ -4,19 +4,19 @@ import { timeToX } from '../helpers';
 import AvatarA from './Avatar';
 
 /**
- * Member component
+ * User component
  * @usage
 
-- use `className` to add classes to Member wrapper
-- use `user` to pass Member info
+- use `className` to add classes to User wrapper
+- use `user` to pass User info
  */
-function Member(props: { user: Member; className: string }) {
+function User(props: { user: User; className: string }) {
   if (!props.user) {
     return <></>;
   }
 
   return (
-    <div className={`friend ${props.className}`}>
+    <div className={`user ${props.className}`}>
       <img
         src={props.user.cover}
         alt={`Cover of ${props.user.name}`}
@@ -58,9 +58,9 @@ function Member(props: { user: Member; className: string }) {
   );
 }
 
-Member.defaultProps = {
+User.defaultProps = {
   user: null,
   className: '',
 };
 
-export default Member;
+export default User;
