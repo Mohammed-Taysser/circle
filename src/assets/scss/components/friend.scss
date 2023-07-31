@@ -10,6 +10,10 @@
   justify-content: space-between;
   padding: 25px;
 
+  @media (max-width: 575px) {
+    padding: 15px;
+  }
+
   img.cover {
     top: 5px;
     transform: rotate(-90deg) translateY(-50%);
@@ -21,5 +25,11 @@
     height: 180px;
     width: 190px;
     bottom: 0;
+
+    @media (max-width: 575px) {
+      width: 160px;
+      left: 80px;
+      top: -14px;
+    }
   }
 }
