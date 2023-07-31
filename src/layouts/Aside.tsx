@@ -2,6 +2,7 @@ import { Aside, Button, ScrollArea } from '@mantine/core';
 import { useState } from 'react';
 import { RiAppsLine } from 'react-icons/ri';
 import ContactFriends from './aside/ContactFriends';
+import UserDropdown from './navbar/UserDropdown';
 
 function Side() {
   const [isOpened, setIsOpened] = useState(false);
@@ -33,9 +34,13 @@ function Side() {
           </div>
         </div>
 
-        <ScrollArea>
+        <Aside.Section grow component={ScrollArea} type='auto'>
           <ContactFriends />
-        </ScrollArea>
+        </Aside.Section>
+
+        <Aside.Section className='md:hidden'>
+          <UserDropdown className='!block' />
+        </Aside.Section>
       </Aside>
     </>
   );
