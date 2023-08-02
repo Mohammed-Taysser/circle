@@ -53,6 +53,7 @@
     "lightgallery": "^2.7.1",
     "plyr": "^3.7.8",
     "postcss": "^8.4.26",
+    "pretty-bytes": "^6.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-easy-crop": "^5.0.0",
