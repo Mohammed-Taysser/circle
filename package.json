@@ -29,6 +29,7 @@
     "@mantine/prism": "^6.0.17",
     "@mantine/tiptap": "^6.0.17",
     "@tabler/icons-react": "^2.27.0",
+    "@tiptap/core": "^2.0.4",
     "@tiptap/extension-character-count": "^2.0.4",
     "@tiptap/extension-font-family": "^2.0.4",
     "@tiptap/extension-hard-break": "^2.0.4",
@@ -64,7 +65,6 @@
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@types/react-easy-crop": "^2.0.0",
     "@types/uuid": "^9.0.2",
     "@vitejs/plugin-react": "^4.0.3",
     "typescript": "^5.1.6",
