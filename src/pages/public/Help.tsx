@@ -2,6 +2,7 @@ import { Anchor, Image } from '@mantine/core';
 import { TbProgressHelp } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import calenderImage from '../../assets/images/background/help/calender.svg';
+import contactImage from '../../assets/images/background/help/contact.svg';
 import editorImage from '../../assets/images/background/help/editor.svg';
 import Banner from '../../common/Banner';
 import { uuidv4 } from '../../helpers';
@@ -11,12 +12,17 @@ const HELP_PAGES = [
   {
     img: calenderImage,
     title: 'Calender',
-    url: 'calender',
+    url: '/help/calender',
   },
   {
     img: editorImage,
     title: 'Editor',
-    url: 'editor',
+    url: '/help/editor',
+  },
+  {
+    img: contactImage,
+    title: 'Contact Us',
+    url: '/contact-us',
   },
 ];
 
@@ -42,7 +48,7 @@ function Help() {
               />
               <Anchor
                 component={Link}
-                to={`/help/${groupType.url}`}
+                to={`${groupType.url}`}
                 className='mt-3 inline-block text-2xl no-underline'
               >
                 {groupType.title}
