@@ -1,13 +1,12 @@
 import { BackgroundImage, Center } from '@mantine/core';
 import dayjs from 'dayjs';
-
 import eventBG from '../../assets/images/background/bg-event-day.webp';
 
 function MiniCalender() {
   const today = dayjs();
 
   return (
-    <BackgroundImage src={eventBG} radius='sm' h={200}>
+    <BackgroundImage src={eventBG} radius='sm' h={170}>
       <Center className='items-center h-full'>
         <div className='p-6 text-white text-center'>
           <h2 className='text-6xl m-0'>{today.format('DD')}</h2>
