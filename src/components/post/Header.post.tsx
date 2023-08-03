@@ -3,12 +3,14 @@ import { FiExternalLink } from 'react-icons/fi';
 import { VscVerified } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
+import { POST_VISIBILITY } from '../../constants/post';
 import { timeToX } from '../../helpers';
 import PostDropdown from './header/PostDropdown';
-import Visibility from './header/Visibility';
 
 function HeaderPost(props: PostHeaderProps) {
   const { post } = props;
+
+  const VisibilityIcon = POST_VISIBILITY[post.visibility].icon;
 
   return (
     <>
@@ -44,7 +46,9 @@ function HeaderPost(props: PostHeaderProps) {
               <Flex gap={10} align='center'>
                 <span className='activity-time'>{timeToX(post.publishAt)}</span>
                 {post.editAt && <span className='activity-time'>Edited</span>}
-                <Visibility visibility={post.visibility} />
+                <div>
+                  <VisibilityIcon color='gray' />
+                </div>
                 {!props.full && (
                   <Anchor component={Link} to={`/post/${post.id}`}>
                     <FiExternalLink />
