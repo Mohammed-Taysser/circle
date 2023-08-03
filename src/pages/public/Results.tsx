@@ -1,10 +1,12 @@
 import { Button, Input, Select, Tabs } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useEffect, useState } from 'react';
+import { AiOutlineFileSearch } from 'react-icons/ai';
 import { BiSearchAlt } from 'react-icons/bi';
 import { BsFilter } from 'react-icons/bs';
 import { useSearchParams } from 'react-router-dom';
 import noResults from '../../assets/images/background/search/no-results.svg';
+import Banner from '../../common/Banner';
 import Groups from '../../components/search/Groups.results';
 import Users from '../../components/search/Users.results';
 import { FRIENDS, GROUPS } from '../../constants/dummy';
@@ -53,6 +55,12 @@ function Results() {
 
   return (
     <Async {...state}>
+      <Banner
+        title='Results'
+        subtitle={`Results: ${Object.keys(results).length}`}
+        icon={AiOutlineFileSearch}
+      />
+
       <div className='shadow-nice p-5 bg-white'>
         <form
           className='flex md:items-center gap-5 flex-col md:flex-row'
