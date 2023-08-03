@@ -6,17 +6,19 @@ function SocialMediaIntegration() {
   return (
     <>
       <Group grow mb='md' mt='md'>
-        <Button radius='xl' variant='default'>
-          <div className='flex items-center gap-2 justify-center'>
-            <AiOutlineGoogle className='text-xl' />
-            <span>Google</span>
-          </div>
+        <Button
+          leftIcon={<AiOutlineGoogle className='text-xl' />}
+          radius='xl'
+          variant='default'
+        >
+          Google
         </Button>
-        <Button radius='xl' variant='default'>
-          <div className='flex items-center gap-2 justify-center'>
-            <FiTwitter className='text-xl' />
-            <span>Twitter</span>
-          </div>
+        <Button
+          leftIcon={<FiTwitter className='text-xl' />}
+          radius='xl'
+          variant='default'
+        >
+          Twitter
         </Button>
       </Group>
     </>
