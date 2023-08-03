@@ -18,7 +18,7 @@ function Bookmarks() {
 
   const searchForm = useForm({
     initialValues: {
-      filter: 'updates',
+      filter: 'blogs',
     },
   });
 
@@ -57,22 +57,22 @@ function Bookmarks() {
           <>
             <div className='shadow-nice flex justify-between mb-10 p-5 bg-white'>
               <form
-                className='flex items-center flex-1'
+                className='md:flex items-center flex-1'
                 onSubmit={searchForm.onSubmit(onFormSearchFormSubmit)}
               >
                 <Select
-                  className='ml-auto inline-block'
+                  className='md:ml-auto'
                   icon={<BsSortUpAlt />}
                   placeholder='Filter By'
                   clearable
                   {...searchForm.getInputProps('sort')}
                   onChange={(value) => {
                     searchForm.setValues({
-                      filter: value ?? 'updates',
+                      filter: value ?? 'blogs',
                     });
                   }}
                   data={[
-                    { value: 'updates', label: 'Updates' },
+                    { value: 'blogs', label: 'Blogs' },
                     { value: 'photos', label: 'Photos' },
                     { value: 'videos', label: 'Videos' },
                     { value: 'audios', label: 'Audios' },
