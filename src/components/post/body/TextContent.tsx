@@ -1,4 +1,4 @@
-import { Anchor } from '@mantine/core';
+import { Anchor, Spoiler } from '@mantine/core';
 import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
 
@@ -8,21 +8,19 @@ function TextContent(props: { full?: boolean; body: string; id: string }) {
       {props.full ? (
         parse(props.body)
       ) : (
-        <>
-          {parse(props.body.substring(0, 1000))}
-          {props.body.length >= 1000 && (
+        <Spoiler
+          maxHeight={250}
+          showLabel='Show more'
+          hideLabel={
             <>
-              <span className='mx-1'>.....</span>
-              <Anchor
-                component={Link}
-                to={`/post/${props.id}`}
-                className='mb-3 inline-block'
-              >
-                Continue Reading
+              <Anchor to={`/post/${props.id}`} component={Link}>
+                To continue reading, Show Original post
               </Anchor>
             </>
-          )}
-        </>
+          }
+        >
+          {parse(props.body)}
+        </Spoiler>
       )}
     </div>
   );
