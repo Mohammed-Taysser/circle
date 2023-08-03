@@ -202,6 +202,10 @@ interface ReactModalInnerProps {
   postId: string;
 }
 
+interface CreatePostModalInnerProps {
+  navigateTo: NavigateFunction;
+}
+
 interface CommentsModalInnerProps {
   postId: string;
 }
@@ -283,15 +287,47 @@ type PostVisibility = 'public' | 'friends' | 'private';
 type PostVariant =
   | 'cover'
   | 'avatar'
-  | 'update'
+  | 'blog'
   | 'gallery'
   | 'video'
   | 'audio'
-  | 'embedded'
+  | 'youtube'
+  | 'pdf'
   | 'group'
   | 'friend'
-  | 'pdf'
   | 'share';
+
+type CreatePostVariant =
+  | 'blog'
+  | 'gallery'
+  | 'video'
+  | 'audio'
+  | 'pdf'
+  | 'youtube';
+
+interface FileTapProps {
+  onChange: (file: File) => void;
+  icon: IconType;
+  file: File | null;
+  accept: string;
+  label: string;
+}
+
+interface YoutubeMetaData {
+  title: string;
+  author_name: string;
+  author_url: string;
+  type: string;
+  height: number;
+  width: number;
+  version: string;
+  provider_name: string;
+  provider_url: string;
+  thumbnail_height: number;
+  thumbnail_width: number;
+  thumbnail_url: string;
+  html: string;
+}
 
 interface PostComment {
   id: string;
@@ -311,8 +347,8 @@ interface PostAssets {
   cover?: string;
   avatar?: string;
   gallery?: string[];
-  audios?: string[];
-  videos?: string[];
+  audio?: string;
+  video?: string;
   pdf?: string;
 }
 
@@ -346,10 +382,53 @@ interface Post {
   };
 }
 
+type PostReactsConstant = {
+  [key in PostReactsLabel]: {
+    icon: IconType;
+    color: string;
+  };
+};
+
+type PostVariantConstant = {
+  [key in CreatePostVariant]: {
+    icon: IconType;
+    label: string;
+  };
+};
+
+type PostVisibilityConstant = {
+  [key in PostVisibility]: {
+    icon: IconType;
+    label: string;
+  };
+};
+
+interface CreatePostModalInitialFormValue {
+  visibility: string;
+  variant: string;
+  assets: {
+    audio?: null | File;
+    video?: null | File;
+    pdf?: null | File;
+    gallery?: FileWithPath[];
+    youtube?: string;
+  };
+}
+
+interface ModalTapsProp {
+  form: UseFormReturnType<CreatePostModalInitialFormValue>;
+  icon: IconType;
+}
+
 interface PostDropdownProps {
   isSaved: boolean;
   body: string;
   id: string;
+}
+
+interface GalleryTapProps {
+  files: FileWithPath[];
+  onChange: (files: FileWithPath[]) => void;
 }
 
 interface PostViewersProps {
