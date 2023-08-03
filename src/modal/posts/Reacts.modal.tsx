@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { VscReactions } from 'react-icons/vsc';
 import Avatar from '../../common/Avatar';
 import { POST_REACTS } from '../../constants/dummy';
-import { REACT_ICONS } from '../../constants/reacts';
+import { REACT_ICONS } from '../../constants/post';
 import Async from '../../containers/Async';
 import { uuidv4 } from '../../helpers';
 
