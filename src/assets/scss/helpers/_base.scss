@@ -10,6 +10,8 @@ body {
 .post-editor {
   .ProseMirror {
     min-height: 150px;
+    max-height: 250px;
+    overflow: auto;
   }
 
   code {
