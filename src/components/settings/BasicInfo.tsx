@@ -74,40 +74,40 @@ function BasicInfo(props: SettingTapProps) {
 
   return (
     <form onSubmit={form.onSubmit(onFormSubmit)}>
+      <TextInput
+        label='Username'
+        name='username'
+        placeholder='Username'
+        className='mb-3'
+        icon={<MdDriveFileRenameOutline />}
+        {...form.getInputProps('username')}
+      />
+
       <SimpleGrid breakpoints={[{ minWidth: 'md', cols: 2 }]}>
-        <TextInput
-          label='Username'
-          name='username'
-          placeholder='Username'
-          icon={<MdDriveFileRenameOutline />}
-          {...form.getInputProps('username')}
-        />
-        <div className='flex items-end md:justify-end gap-3'>
-          <FileButton
-            onChange={(file) => onInputChange('avatar', file)}
-            accept='image/*'
-          >
-            {(props) => (
-              <Button {...props} variant='default'>
-                Update Avatar
-              </Button>
-            )}
-          </FileButton>
-          <FileButton
-            onChange={(file) => onInputChange('cover', file)}
-            accept='image/*'
-          >
-            {(props) => (
-              <Button {...props} variant='default'>
-                Update Cover
-              </Button>
-            )}
-          </FileButton>
-        </div>
+        <FileButton
+          onChange={(file) => onInputChange('avatar', file)}
+          accept='image/*'
+        >
+          {(props) => (
+            <Button {...props} variant='default'>
+              Update Avatar
+            </Button>
+          )}
+        </FileButton>
+        <FileButton
+          onChange={(file) => onInputChange('cover', file)}
+          accept='image/*'
+        >
+          {(props) => (
+            <Button {...props} variant='default'>
+              Update Cover
+            </Button>
+          )}
+        </FileButton>
       </SimpleGrid>
 
       <InfoBanner
-        className='p-[35px!important] mb-[0!important] mt-8 md:mt-20'
+        className='p-[35px!important] mb-[0!important] mt-8 md:mt-10'
         avatar={
           typeof form.values.avatar === 'string'
             ? form.values.avatar

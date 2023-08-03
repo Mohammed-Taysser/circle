@@ -49,10 +49,9 @@ function HobbiesAndInterests(props: SettingTapProps) {
         placeholder='Your Hobbies'
         autosize
         icon={<VscBug />}
-        minRows={3}
+        minRows={1}
         maxRows={5}
         {...form.getInputProps('hobbies')}
-        radius='md'
       />
 
       <SimpleGrid breakpoints={[{ minWidth: 'md', cols: 2 }]} mt={20}>
