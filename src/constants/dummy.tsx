@@ -1,5 +1,6 @@
 import audio from '../assets/music/skyline.mp3';
 import video from '../assets/videos/video.mp4';
+import pdf from '../assets/pdf/cv.pdf';
 
 import avatar1 from '../assets/images/dummy/avatar/avatar-1.png';
 import avatar2 from '../assets/images/dummy/avatar/avatar-2.png';
@@ -28,731 +29,341 @@ import spring from '../assets/images/dummy/badges/spring.svg';
 import target from '../assets/images/dummy/badges/target.svg';
 import trending from '../assets/images/dummy/badges/trending.svg';
 import universe from '../assets/images/dummy/badges/universe.svg';
+import { EventInput } from '@fullcalendar/core';
 
 const POSTS: Post[] = [
   {
-    id: '12vcvc3gf123df45fffffgdfgg6',
-    variant: 'POST_MAP',
-    visibility:'public',
-    gallery: [],
-    user: {
-      avatar: avatar2,
-      name: 'Aurora Light',
-      id: '101',
+    id: '11',
+    variant: 'pdf',
+    visibility: 'public',
+    assets: {
+      pdf: pdf,
     },
-    publishAt: new Date(),
-    isSaved: true,
-    body: `We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally guitarist for Martin Kesici's band, and Tobias Schultka. The band was originally meant as a joke, but progressed into being a more serious musical duo. The name for the band has no particular meaning, although its origins were suggested from when the two original members were driving in a car operated by Marcel Neumann and an accident almost occurred. Neumann found Schultka "so funny that he briefly lost control of the vehicle." Many of their songs from this point were covers of German folk tales and nursery rhymes. <br/>We Butter the Bread with Butter was founded in 2007 by Marcel Neumann, who was originally guitarist for Martin Kesici's band, and Tobias Schultka. The band was originally meant as a joke, but progressed into being a more serious musical duo. The name for the band has no particular meaning, although its origins were suggested from when the two original members were driving in a car operated by Marcel Neumann and an accident almost occurred. Neumann found Schultka "so funny that he briefly lost control of the vehicle." Many of their songs from this point were covers of German folk tales and nursery rhymes.`,
-    utils: {},
-    utilsUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7292334.132660276!2d25.58667530725082!3d26.817360276029994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14368976c35c36e9%3A0x2c45a00925c4c444!2sEgypt!5e0!3m2!1sen!2seg!4v1683980138121!5m2!1sen!2seg',
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '12vcvc3gf123df45fffffgdfgg6',
-    variant: 'NEW_FRIEND',
-    visibility:'public',
-    gallery: [avatar3],
-    user: {
-      avatar: avatar2,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date(),
-    isSaved: false,
-
-    body: '',
-    utils: {
-      avatar: avatar3,
-      username: 'Horsefighter',
-      name: 'Horsefighter',
-      id: '10j1',
-      cover: gallery3,
-      joinAt: new Date(),
-      badges: [],
-    },
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '12vcvc3gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
-    variant: 'JOIN_GROUP',
-    visibility:'private',
-    gallery: [avatar3],
     user: {
       avatar: avatar4,
+      name: 'Mohammed Taysser',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    editAt: new Date('2021'),
+    isSaved: true,
+    body: `<p>Sharing your CV can be a great way to showcase your skills and experience to potential employers. Here are some tips to help you share your CV effectively:</p><ol><li><p>Tailor your CV: Choose the sections that are most relevant to your job application and highlight your strengths and achievements. Avoid including unnecessary information or details that could lead to a poor impression.</p></li><li><p>Use a clear and concise format: Use a clear and concise format that is easy to read and understand. Use bullet points to highlight key information and organize your CV in a logical manner.</p></li><li><p>Include your contact information: Make sure to include your contact information, such as your email address and phone number, so that potential employers can easily contact you if they have questions or concerns.</p></li><li><p>Proofread your CV: Proofread your CV carefully to ensure that there are no typos or grammatical errors. Ask a friend or colleague to review your CV as well to catch any errors or inconsistencies.</p></li><li><p>Keep it up-to-date: Make sure to update your CV regularly with your latest skills and experience. This will help you stand out from other applicants and increase your chances of getting hired.</p></li></ol><p style="text-align: start">Remember, sharing your CV is a personal choice and should be done responsibly. It is important to always act in the best interests of the person you are sharing your CV with.</p>`,
+    share: {
+      count: 1,
+    },
+    comments: {
+      count: 0,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '10',
+    variant: 'youtube',
+    visibility: 'public',
+    assets: {
+      embedded: 'https://www.youtube.com/embed/MSq_DCRxOxw',
+    },
+    user: {
+      avatar: avatar4,
+      name: 'Mohammed Taysser',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    editAt: new Date('2021'),
+    isSaved: true,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 1,
+    },
+    comments: {
+      count: 0,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '7',
+    variant: 'avatar',
+    visibility: 'public',
+    assets: {
+      avatar: avatar5,
+    },
+    user: {
+      avatar: avatar4,
+      name: 'Mohammed Taysser',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    editAt: new Date('2021'),
+    isSaved: true,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 1,
+    },
+    comments: {
+      count: 0,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '8',
+    variant: 'cover',
+    visibility: 'friends',
+    assets: {
+      cover: gallery6,
+    },
+    user: {
+      avatar: avatar3,
       name: 'Amy Horsefighter',
       id: '101',
+      isVerified: true,
     },
     publishAt: new Date(),
     isSaved: false,
-    utils: {
-      id: '10f',
-      visibility: 'public',
-      title: 'Developer Geeks',
-      users: [
-        {
-          avatar: gallery5,
-          name: 'Mohammed',
+    body: `<div style="font-family: 'Tajawal', sans-serif;text-align: right"> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. <br/>ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.</div>`,
+    share: {
+      count: 10,
+    },
+    comments: {
+      count: 110,
+    },
+    reacts: {
+      count: 101,
+      labels: ['star', 'like'],
+      react: 'star',
+    },
+  },
+  {
+    id: '1',
+    variant: 'blog',
+    visibility: 'friends',
+    assets: {},
+    user: {
+      avatar: avatar3,
+      name: 'Amy Horsefighter',
+      id: '101',
+      isVerified: true,
+    },
+    publishAt: new Date(),
+    isSaved: false,
+    body: `<div style="font-family: 'Tajawal', sans-serif;text-align: right"> هناك حقيقة مثبتة منذ زمن طويل وهي أن المحتوى المقروء لصفحة ما سيلهي القارئ عن التركيز على الشكل الخارجي للنص أو شكل توضع الفقرات في الصفحة التي يقرأها. <br/>ولذلك يتم استخدام طريقة لوريم إيبسوم لأنها تعطي توزيعاَ طبيعياَ -إلى حد ما- للأحرف عوضاً عن استخدام "هنا يوجد محتوى نصي، هنا يوجد محتوى نصي" فتجعلها تبدو (أي الأحرف) وكأنها نص مقروء. العديد من برامح النشر المكتبي وبرامح تحرير صفحات الويب تستخدم لوريم إيبسوم بشكل إفتراضي كنموذج عن النص، وإذا قمت بإدخال "lorem ipsum" في أي محرك بحث ستظهر العديد من المواقع الحديثة العهد في نتائج البحث. على مدى السنين ظهرت نسخ جديدة ومختلفة من نص لوريم إيبسوم، أحياناً عن طريق الصدفة، وأحياناً عن عمد كإدخال بعض العبارات الفكاهية إليها.</div>`,
+    share: {
+      count: 10,
+    },
+    comments: {
+      count: 110,
+    },
+    reacts: {
+      count: 101,
+      labels: ['star', 'like'],
+      react: 'star',
+    },
+  },
+  {
+    id: '2',
+    variant: 'blog',
+    visibility: 'public',
+    assets: {},
+    user: {
+      avatar: avatar1,
+      name: 'Aurora Light',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2022'),
+    isSaved: false,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 10,
+    },
+    comments: {
+      count: 106,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '3',
+    variant: 'gallery',
+    visibility: 'private',
+    assets: {
+      gallery: [gallery1, gallery10, gallery2, gallery3],
+    },
+    user: {
+      avatar: avatar1,
+      name: 'Aalaa',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    isSaved: true,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 1,
+    },
+    comments: {
+      count: 0,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '4',
+    variant: 'audio',
+    visibility: 'private',
+    assets: {
+      audio,
+    },
+    user: {
+      avatar: avatar1,
+      name: 'Aalaa',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    isSaved: false,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 1,
+    },
+    comments: {
+      count: 0,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '5',
+    variant: 'video',
+    visibility: 'private',
+    assets: {
+      video: video,
+    },
+    user: {
+      avatar: avatar4,
+      name: 'Mohammed Taysser',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    isSaved: true,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 1,
+    },
+    comments: {
+      count: 0,
+    },
+    reacts: {
+      count: 0,
+      labels: [],
+    },
+  },
+  {
+    id: '6',
+    variant: 'share',
+    visibility: 'private',
+    assets: {},
+    user: {
+      avatar: avatar1,
+      name: 'Aalaa',
+      id: '101',
+      isVerified: false,
+    },
+    publishAt: new Date('2021'),
+    isSaved: false,
+    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+    share: {
+      count: 1,
+      origin: {
+        id: '3',
+        variant: 'gallery',
+        visibility: 'private',
+        assets: {
+          gallery: [gallery1, gallery10, gallery2, gallery3],
+        },
+        user: {
+          avatar: avatar1,
+          name: 'Aalaa',
           id: '101',
+          isVerified: false,
         },
-        {
-          avatar: gallery8,
-          name: 'Aurora',
-          id: '1001',
+        publishAt: new Date('2021'),
+        isSaved: true,
+        body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
+        share: {
+          count: 1,
         },
-        {
-          avatar: avatar3,
-          name: 'Dr strange',
-          id: '1h01',
+        comments: {
+          count: 0,
         },
-        {
-          avatar: avatar4,
-          name: 'Dr stone',
-          id: '10h01',
+        reacts: {
+          count: 0,
+          labels: [],
         },
-        {
-          avatar: avatar5,
-          name: 'Dr home',
-          id: '10ggg1',
-        },
-        {
-          avatar: gallery5,
-          name: 'Dr dev',
-          id: '100gggg1',
-        },
-      ],
-      picture: gallery7,
-      cover: gallery3,
-      posts: 1092,
-    },
-    body: '',
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
       },
     },
-  },
-  {
-    id: '123gf4dd5gdfdfdfggggg645dfdf45fffffgdfgg6',
-    variant: 'UPDATE_AVATAR',
-    visibility:'public',
-    gallery: [avatar3],
-    user: {
-      avatar: avatar1,
-      name: 'Amy Horsefighter',
-      id: '101',
+    comments: {
+      count: 0,
     },
-    publishAt: new Date(),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 5,
     reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd5gggggg645dfdf45fffffgdfgg6',
-    variant: 'UPDATE_COVER',
-    visibility:'private',
-    gallery: [gallery1],
-    user: {
-      avatar: avatar1,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date(),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd5gggggg645dfdf45fffffggg6',
-    variant: 'POST_GALLERY',
-    visibility:'public',
-    gallery: [gallery1, gallery2, gallery3, gallery4, gallery5],
-    user: {
-      avatar: avatar1,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date(),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd564gfgfgfgfg545ggg6',
-    variant: 'POST_GALLERY',
-    visibility:'friends',
-    gallery: [gallery6, gallery7, gallery8],
-    user: {
-      avatar: avatar2,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date('2022'),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar3,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar4,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd56',
-    variant: 'POST_GALLERY',
-    visibility:'public',
-    gallery: [gallery3, gallery4, gallery5, gallery9, gallery10],
-    user: {
-      avatar: avatar3,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date('2022'),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar1,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar2,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd5gggggg645dfdf45ffffmofggg6',
-    variant: 'POST_AUDIO',
-    visibility:'public',
-    gallery: [],
-    user: {
-      avatar: avatar1,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date(),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: audio,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd56mo4gfgfgfgfg545ggg6',
-    variant: 'POST_AUDIO',
-    visibility:'public',
-    gallery: [],
-    user: {
-      avatar: avatar2,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date('2022'),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: audio,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar3,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar4,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123mogf4dd56',
-    variant: 'POST_AUDIO',
-    visibility:'public',
-    gallery: [],
-    user: {
-      avatar: avatar3,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date('2022'),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: audio,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar1,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar2,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd5ggggggggggggg645dfdf45fffffggg6',
-    variant: 'POST_VIDEO',
-    visibility:'public',
-    gallery: [],
-    user: {
-      avatar: avatar1,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date(),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar2,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar3,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-        wow: [
-          {
-            id: '1',
-            avatar: avatar4,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar5,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd564ghghhggfgfgfgfg545ggg6',
-    variant: 'POST_VIDEO',
-    visibility:'public',
-    gallery: [],
-    user: {
-      avatar: avatar2,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date('2022'),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar3,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar4,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
-    },
-  },
-  {
-    id: '123gf4dd5hj6',
-    variant: 'POST_VIDEO',
-    visibility:'friends',
-    gallery: [],
-    user: {
-      avatar: avatar3,
-      name: 'Amy Horsefighter',
-      id: '101',
-    },
-    publishAt: new Date('2022'),
-    isSaved: false,
-
-    body: "Sed ut perspiciatis unde omnis natus error sit voluptatem accusantium der doloremque laudantium Sed ut perspicia tisery. I'll be uploading new content every day, improving the quality.",
-
-    utilsUrl: video,
-    comments: 10,
-    reacts: {
-      count: 101,
-      reacts: {
-        star: [
-          {
-            id: '1',
-            avatar: avatar1,
-            username: 'mohammed-taysser',
-            fullName: 'Mohammed Taysser',
-            date: '2 yearn ago',
-          },
-          {
-            id: '10',
-            avatar: avatar2,
-            username: 'mohammed',
-            fullName: 'Mohammed',
-            date: '2 yearn ago',
-          },
-        ],
-      },
+      count: 0,
+      labels: [],
     },
   },
 ];
+
+const POST_REACTS = {
+  star: [
+    {
+      id: '1',
+      avatar: avatar2,
+      username: 'mohammed-taysser',
+      fullName: 'Mohammed Taysser',
+      date: '2 yearn ago',
+    },
+    {
+      id: '10',
+      avatar: avatar3,
+      username: 'mohammed',
+      fullName: 'Mohammed',
+      date: '2 yearn ago',
+    },
+  ],
+  wow: [
+    {
+      id: '1',
+      avatar: avatar4,
+      username: 'mohammed-taysser',
+      fullName: 'Mohammed Taysser',
+      date: '2 yearn ago',
+    },
+    {
+      id: '10',
+      avatar: avatar5,
+      username: 'mohammed',
+      fullName: 'Mohammed',
+      date: '2 yearn ago',
+    },
+  ],
+};
 
 const COMMENTS: PostComment[] = [
   {
@@ -1273,7 +884,7 @@ const BADGES: Badge[] = [
   },
 ];
 
-const FRIENDS: Member[] = [
+const FRIENDS: User[] = [
   {
     avatar: avatar1,
     cover: gallery5,
@@ -1326,4 +937,50 @@ const EVENTS = [
   },
 ];
 
-export { POSTS, COMMENTS, GROUPS, BADGES, FRIENDS, EVENTS };
+let todayStr = new Date().toISOString().replace(/T.*$/, '');
+
+const INITIAL_EVENTS: EventInput[] = [
+  {
+    id: '1',
+    title: 'All-day event',
+    start: todayStr,
+    timeText: '12p',
+    allDay: true,
+  },
+  {
+    id: '2',
+    title: 'All-day event',
+    start: todayStr,
+    timeText: '12p',
+    allDay: true,
+  },
+  {
+    title: 'event1',
+    start: todayStr,
+    id: '3',
+  },
+  {
+    id: '4',
+    title: 'event2',
+    start: todayStr,
+    allDay: false,
+    end: '2023-05-07',
+  },
+  {
+    id: '5',
+    title: 'event3',
+    start: '2023-05-26T12:30:00',
+    allDay: false, // will make the time show
+  },
+];
+
+export {
+  POSTS,
+  POST_REACTS,
+  COMMENTS,
+  GROUPS,
+  BADGES,
+  FRIENDS,
+  EVENTS,
+  INITIAL_EVENTS,
+};
