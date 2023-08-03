@@ -11,10 +11,12 @@ function AudiosProfile() {
     Math.random() < 0.5
       ? []
       : POSTS.filter((post) => post.variant === 'audio').reduce(
-          (prev, current) => [
-            ...prev,
-            ...(current.assets.audios ? current.assets.audios : []),
-          ],
+          (prev, current) => {
+            if (current.assets.audio) {
+              return [...prev, current.assets.audio];
+            }
+            return prev;
+          },
           [] as string[]
         );
 
@@ -44,7 +46,10 @@ function AudiosProfile() {
         {audios.length ? (
           <div className='md:grid grid-cols-2 gap-4'>
             {audios.map((audio) => (
-              <div key={uuidv4()} className='flex items-center my-3 md:my-0 shadow-nice'>
+              <div
+                key={uuidv4()}
+                className='flex items-center my-3 md:my-0 shadow-nice'
+              >
                 <div className='flex-1'>
                   <PlyrViewer src={audio} MediaType='audio' />
                 </div>
