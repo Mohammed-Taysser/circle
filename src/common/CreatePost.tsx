@@ -32,7 +32,7 @@ function CreatePost() {
   };
 
   return (
-    <div className='mb-10 shadow-nice p-3 md:p-7 bg-white rounded post-editor relative'>
+    <div className='mb-5 shadow-nice p-3 md:p-7 bg-white rounded post-editor relative'>
       <Flex align='center' gap={20}>
         <Link to={`/profile/1`}>
           {/* TODO: replace with redux [link, src, alt] */}
