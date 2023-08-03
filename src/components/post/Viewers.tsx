@@ -13,16 +13,16 @@ function Viewers(props: PostViewersProps) {
     case 'audio':
       return (
         <div className='shadow-nice'>
-          <PlyrViewer src={post.assets?.audios?.[0]} MediaType='audio' />
+          <PlyrViewer src={post.assets?.audio} MediaType='audio' />
         </div>
       );
     case 'video':
       return (
         <div className='shadow-nice'>
-          <PlyrViewer src={post.assets?.videos?.[0]} MediaType='video' />
+          <PlyrViewer src={post.assets?.video} MediaType='video' />
         </div>
       );
-    case 'embedded':
+    case 'youtube':
       return <EmbeddedViewer src={post.assets?.embedded} />;
     case 'pdf':
       return <PDF src={post.assets?.pdf ?? ''} />;
