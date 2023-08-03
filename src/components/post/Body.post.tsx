@@ -11,7 +11,7 @@ function BodyPost(props: { post: Post; full?: boolean }) {
           full={props.full}
         />
 
-        {props.post.variant !== 'update' && (
+        {props.post.variant !== 'blog' && (
           <Viewers post={props.post} full={props.full} />
         )}
       </div>
