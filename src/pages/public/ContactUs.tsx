@@ -10,8 +10,7 @@ import {
   createStyles,
   rem,
 } from '@mantine/core';
-import { useForm } from '@mantine/form';
-import { useDocumentTitle } from '@mantine/hooks';
+import { isEmail, isNotEmpty, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useState } from 'react';
 import { FiUser } from 'react-icons/fi';
@@ -131,10 +130,10 @@ function ContactUs() {
       message: '',
     },
     validate: {
-      email: (value) => (!value ? 'Email is required' : null),
-      name: (value) => (!value ? 'Name is required' : null),
-      subject: (value) => (!value ? 'Subject is required' : null),
-      message: (value) => (!value ? 'Message is required' : null),
+      email: isEmail('Email is required'),
+      name: isNotEmpty('Name is required'),
+      subject: isNotEmpty('Subject is required'),
+      message: isNotEmpty('Message is required'),
     },
   });
 
@@ -182,7 +181,6 @@ function ContactUs() {
               <SimpleGrid cols={2} breakpoints={[{ maxWidth: 'sm', cols: 1 }]}>
                 <TextInput
                   label='Your name'
-                  radius='md'
                   name='name'
                   icon={<FiUser size='1rem' />}
                   placeholder='Your name'
@@ -192,7 +190,6 @@ function ContactUs() {
                   label='Your email'
                   icon={<MdOutlineAlternateEmail size='1rem' />}
                   placeholder='example@domain.dev'
-                  radius='md'
                   name='email'
                   type='email'
                   {...form.getInputProps('email')}
@@ -202,7 +199,6 @@ function ContactUs() {
               <TextInput
                 mt='md'
                 label='Subject'
-                radius='md'
                 name='subject'
                 icon={<TbPencilMinus size='1rem' />}
                 placeholder='Subject'
@@ -212,7 +208,6 @@ function ContactUs() {
               <Textarea
                 mt='md'
                 label='Your message'
-                radius='md'
                 name='message'
                 placeholder='Please include all relevant information'
                 minRows={3}
