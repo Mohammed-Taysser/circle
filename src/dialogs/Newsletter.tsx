@@ -35,9 +35,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   body: {
-    paddingRight: `calc(${theme.spacing.xl} * 4)`,
     [theme.fn.smallerThan('sm')]: {
-      paddingRight: 0,
       marginTop: theme.spacing.xl,
     },
   },
@@ -109,7 +107,7 @@ function Newsletter() {
 
       notifications.show({
         title: 'Successfully subscribed',
-        message: 'Hey there, you successfully subscribed in newsletter!',
+        message: 'Check your inbox to confirm subscribe in newsletter!',
         loading: false,
         withCloseButton: true,
         autoClose: true,
