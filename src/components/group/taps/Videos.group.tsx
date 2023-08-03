@@ -11,10 +11,12 @@ function VideosGroup() {
     Math.random() < 0.5
       ? []
       : POSTS.filter((post) => post.variant === 'video').reduce(
-          (prev, current) => [
-            ...prev,
-            ...(current.assets.videos ? current.assets.videos : []),
-          ],
+          (prev, current) => {
+            if (current.assets.video) {
+              return [...prev, current.assets.video];
+            }
+            return prev;
+          },
           [] as string[]
         );
 

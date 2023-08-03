@@ -11,10 +11,12 @@ function AudiosGroup() {
     Math.random() < 0.5
       ? []
       : POSTS.filter((post) => post.variant === 'audio').reduce(
-          (prev, current) => [
-            ...prev,
-            ...(current.assets.audios ? current.assets.audios : []),
-          ],
+          (prev, current) => {
+            if (current.assets.audio) {
+              return [...prev, current.assets.audio];
+            }
+            return prev;
+          },
           [] as string[]
         );
 
