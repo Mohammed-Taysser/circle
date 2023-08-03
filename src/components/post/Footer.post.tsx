@@ -9,12 +9,12 @@ import {
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
+import { useState } from 'react';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { TfiShare } from 'react-icons/tfi';
 import { VscReactions } from 'react-icons/vsc';
-import { REACT_ICONS } from '../../constants/reacts';
+import { REACT_ICONS } from '../../constants/post';
 import { uuidv4 } from '../../helpers';
-import { useState } from 'react';
 
 function PostFooter(props: { post: Post }) {
   const { post } = props;
