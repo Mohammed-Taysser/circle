@@ -143,18 +143,6 @@ const MESSAGES = [
     },
     msg: '4 Friends in Common',
   },
-  {
-    unread: false,
-    id: 8,
-    date: new Date(),
-    status: 'invisible',
-    user: {
-      name: 'Aalaa Kamal',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar59-sm.webp',
-      id: 8,
-    },
-    msg: `We'll have to check that at the office and see if the client is on board with`,
-  },
 ];
 
 const USER_STATUS: UserStatus = {
