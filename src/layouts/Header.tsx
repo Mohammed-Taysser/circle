@@ -8,12 +8,12 @@ function Header(props: HeaderProps) {
     <Navbar
       p='md'
       hiddenBreakpoint='md'
-      width={{ base: 400 }}
+      width={{ base: 300 }}
       className={`border-0 shadow-nice z-[100] duration-500 ${
         props.opened ? '' : 'left-[-100%] md:left-0'
       }`}
     >
-      <Navbar.Section mx='-xs' className='mb-10'>
+      <Navbar.Section mx='-xs' className='mb-3'>
         <HeaderLink />
       </Navbar.Section>
 
