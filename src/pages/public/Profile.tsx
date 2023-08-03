@@ -178,11 +178,6 @@ function Profile() {
                   <FiUserPlus /> <span className='text-sm'>1023</span>
                 </div>
               </Tooltip>
-              <Tooltip label='Viewers' withArrow>
-                <div className='flex items-center gap-1'>
-                  <BiBookReader /> <span className='text-sm'>258941</span>
-                </div>
-              </Tooltip>
             </div>
             <Flex
               gap={10}
