@@ -1,22 +1,12 @@
-import data from '@emoji-mart/data';
-import Picker from '@emoji-mart/react';
-import {
-  Alert,
-  Flex,
-  Input,
-  Loader,
-  Popover,
-  UnstyledButton,
-  useMantineTheme,
-} from '@mantine/core';
+import { Alert, Flex, Input, Loader, UnstyledButton } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useRef, useState } from 'react';
-import { BsEmojiSmile, BsInfoCircle } from 'react-icons/bs';
+import { BsInfoCircle } from 'react-icons/bs';
 import { VscSend } from 'react-icons/vsc';
+import EmojiPicker from '../../common/EmojiPicker';
 
 function WriteComment() {
-  const theme = useMantineTheme();
   const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux
   const [isLoading, setIsLoading] = useState(false);
   const viewport = useRef<HTMLDivElement>(null);
@@ -73,29 +63,12 @@ function WriteComment() {
           {...form.getInputProps('msg')}
         />
         <Flex gap={10} align='center'>
-          <Popover position='bottom-end'>
-            <Popover.Target>
-              <UnstyledButton>
-                <BsEmojiSmile className='text-gray-600' />
-              </UnstyledButton>
-            </Popover.Target>
+          <EmojiPicker
+            onEmojiSelect={(params: any) => {
+              form.setFieldValue('msg', `${form.values.msg} ${params.native}`);
+            }}
+          />
 
-            <Popover.Dropdown
-              p='0'
-              className='border-0 z-[10001!important] overflow-auto'
-            >
-              <Picker
-                data={data}
-                theme={theme.colorScheme}
-                onEmojiSelect={(params: any) => {
-                  form.setFieldValue(
-                    'msg',
-                    `${form.values.msg} ${params.native}`
-                  );
-                }}
-              />
-            </Popover.Dropdown>
-          </Popover>
           <UnstyledButton type='submit' disabled={form.values.msg === ''}>
             {isLoading ? (
               <Loader color='' size='xs' />
