@@ -6,8 +6,8 @@ function Navigation() {
   const cls = (props: { isActive: boolean }) =>
     `my-1 block text-gray-500 no-underline text-base py-2 px-4 mx-2 border-l-4 border-0 border-solid transition rounded ${
       props.isActive
-        ? 'border-l-aurora bg-gray-100'
-        : 'border-l-transparent hover:border-l-aurora hover:bg-gray-100'
+        ? 'border-l-aurora bg-slate-50'
+        : 'border-l-transparent hover:border-l-aurora hover:bg-slate-50'
     }`;
 
   return (
