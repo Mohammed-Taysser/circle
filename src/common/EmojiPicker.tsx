@@ -33,4 +33,8 @@ function EmojiPicker(props: { onEmojiSelect: (params: any) => void }) {
   );
 }
 
+EmojiPicker.defaultProp = {
+  onEmojiSelect: (emoji: any) => console.log(emoji),
+};
+
 export default EmojiPicker;
