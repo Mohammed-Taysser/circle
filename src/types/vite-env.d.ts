@@ -115,11 +115,7 @@ interface Group {
   cover: string;
   visibility: 'private' | 'public';
   title: string;
-  users: {
-    avatar: string;
-    name: string;
-    id: string;
-  }[];
+  users: number;
   posts: number;
 }
 
