@@ -144,6 +144,7 @@ function PostFooter(props: { post: Post }) {
               variant='light'
               color={post.reacts.react ? likeIcon.color : 'gray'}
               size='md'
+              title='Post react'
             >
               <likeIcon.icon className='text-2xl' />
             </Button>
@@ -174,6 +175,7 @@ function PostFooter(props: { post: Post }) {
           variant='light'
           color='gray'
           size='md'
+          title='Post comments'
           onClick={onCommentBtnClick}
         >
           <TbMessage2Bolt className='text-2xl' />
@@ -183,6 +185,7 @@ function PostFooter(props: { post: Post }) {
           variant='light'
           color='gray'
           size='md'
+          title='Share post'
           onClick={onShareBtnClick}
           disabled={isSharing}
         >
