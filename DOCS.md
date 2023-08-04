@@ -29,12 +29,12 @@
 
 #### Props
 
-| Props       | Type      | Default                                          | Description                    |
-| ----------- | --------- | ------------------------------------------------ | ------------------------------ |
-| `src`       | `String`  | [`avatar`](src/assets/images/default/avatar.png) | set avatar picture             |
-| `alt`       | `String`  | `avatar`                                         | set avatar alt text            |
-| `sm`        | `Boolean` | `false`                                          | specify if small layout or not |
-| `className` | `String`  | `''`                                             | add class to Avatar wrapper    |
+| Props       | Type      | Default                                          | Description                                                          |
+| ----------- | --------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| `src`       | `String`  | [`avatar`](src/assets/images/default/avatar.png) | specifies the source of the avatar image to the avatar wrapper       |
+| `alt`       | `String`  | `avatar`                                         | specifies the alt text for the avatar                                |
+| `sm`        | `Boolean` | `false`                                          | specifies whether or not to use a small image                        |
+| `className` | `String`  | `''`                                             | specifies any custom classes to be added layout for the avatar image |
 
 #### Usage
 
@@ -42,7 +42,7 @@
 import Avatar from './common/Avatar';
 
 <Avatar sm />;
-<Avatar src={avatar.png} />;
+<Avatar src={avatar.png} alt='user-avatar' />;
 ```
 
 ### Banner

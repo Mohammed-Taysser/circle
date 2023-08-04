@@ -1,13 +1,15 @@
-import avatar from '../assets/images/default/avatar.png';
+import { avatar } from '../constants/default';
 
 /**
  * Avatar component
+ *
+ * This component renders an avatar image with optional small layout and custom classes.
+ *
  * @usage
-
-- use `className` to add classes to banner wrapper
-- use `src` to set avatar picture
-- use `alt` to set avatar alt text
-- use `sm` to specify if small layout or not
+ * - use `className` specifies any custom classes to be added to the avatar wrapper
+ * - use `src` specifies the source of the avatar image
+ * - use `alt` specifies the alt text for the avatar image
+ * - use `sm` specifies whether or not to use a small layout for the avatar image
  */
 function Avatar(props: AvatarProps) {
   return (
