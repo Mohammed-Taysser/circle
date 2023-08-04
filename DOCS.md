@@ -101,6 +101,24 @@ import CreatePost from './common/CreatePost';
 <CreatePost />;
 ```
 
+### EmojiPicker
+
+[source](src/common/EmojiPicker.tsx)
+
+#### Props
+
+| Props           | Type       | Default                 | Description                                                                          |
+| --------------- | ---------- | ----------------------- | ------------------------------------------------------------------------------------ |
+| `onEmojiSelect` | `Function` | `(params: any) => void` | callback function that receives an object with information about the selected emoji. |
+
+#### Usage
+
+```tsx
+import EmojiPicker from './common/EmojiPicker';
+
+<EmojiPicker onEmojiSelect={} />;
+```
+
 ### Group
 
 [source](src/common/Group.tsx)
