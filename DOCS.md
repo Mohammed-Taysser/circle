@@ -265,9 +265,9 @@ import Skeleton from './common/Skeleton';
 
 #### Props
 
-| Props       | Type          | Default | Description               |
-| ----------- | ------------- | ------- | ------------------------- |
-| `taps`      | `SingleTap[]` | `[]`    | array of taps             |
+| Props  | Type          | Default | Description   |
+| ------ | ------------- | ------- | ------------- |
+| `taps` | `SingleTap[]` | `[]`    | array of taps |
 
 #### Usage
 
@@ -275,6 +275,31 @@ import Skeleton from './common/Skeleton';
 import Taps from './common/Taps';
 
 <Taps taps={TAPS} />;
+```
+
+### TiptapEditor
+
+[source](src/common/TiptapEditor.tsx)
+
+#### Props
+
+| Props         | Type                                                | Default                                                       | Description                                     |
+| ------------- | --------------------------------------------------- | ------------------------------------------------------------- | ----------------------------------------------- |
+| `noFontSizes` | `Boolean`                                           | `false`                                                       | specifies if hide font size controller or not   |
+| `content`     | `String`                                            | `''`                                                          | the initial content of the editor               |
+| `getText`     | `(content: { text: string; html: string }) => void` | `(data: { text: string; html: string }) => console.log(data)` | callback function to retrieve the text content. |
+
+#### Usage
+
+```tsx
+import TiptapEditor from './common/TiptapEditor';
+
+<TiptapEditor content={initContent} />;
+
+<TiptapEditor
+  content={initContent}
+  getText={(content: { text: string; html: string }) => {}}
+/>;
 ```
 
 ### Member

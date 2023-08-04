@@ -35,6 +35,17 @@ const EDITOR_EXTENSION = {
   ],
 };
 
+/**
+ * Tiptap Editor component
+ * 
+ * The 'TiptapEditor' function is a React component that provides a rich text editor with various formatting options and extensions. Its main objective is to allow users to create and edit rich text content with ease.
+ * 
+ * @usage
+
+- use `noFontSizes` specifies if hide font size controller or not
+- use `content` the initial content of the editor
+- use `getText` callback function to retrieve the text content.
+ */
 function TiptapEditor(props: TiptapEditorProps) {
   const theme = useMantineTheme();
   const editorInstance = useEditor({
@@ -158,5 +169,11 @@ function TiptapEditor(props: TiptapEditorProps) {
     </div>
   );
 }
+
+TiptapEditor.defaultProps = {
+  getText: (data: { text: string; html: string }) => console.log(data),
+  content:'',
+  noFontSizes:false
+};
 
 export default TiptapEditor;
