@@ -393,38 +393,7 @@ const GROUPS: Group[] = [
     id: '10f',
     visibility: 'public',
     title: 'Developer Geeks',
-    users: [
-      {
-        avatar: gallery5,
-        name: 'Mohammed',
-        id: '101',
-      },
-      {
-        avatar: gallery8,
-        name: 'Aurora',
-        id: '1001',
-      },
-      {
-        avatar: avatar3,
-        name: 'Dr strange',
-        id: '1h01',
-      },
-      {
-        avatar: avatar4,
-        name: 'Dr stone',
-        id: '10h01',
-      },
-      {
-        avatar: avatar5,
-        name: 'Dr home',
-        id: '10ggg1',
-      },
-      {
-        avatar: gallery5,
-        name: 'Dr dev',
-        id: '100gggg1',
-      },
-    ],
+    users: 147,
     picture: gallery7,
     cover: gallery3,
     posts: 1092,
@@ -433,38 +402,7 @@ const GROUPS: Group[] = [
     id: '1',
     visibility: 'private',
     title: 'Sky fall',
-    users: [
-      {
-        avatar: avatar1,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      {
-        avatar: avatar2,
-        name: 'Amy Horsefighter',
-        id: '1001',
-      },
-      {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '1h01',
-      },
-      {
-        avatar: avatar4,
-        name: 'Amy Horsefighter',
-        id: '10h01',
-      },
-      {
-        avatar: avatar5,
-        name: 'Amy Horsefighter',
-        id: '10ggg1',
-      },
-      {
-        avatar: gallery5,
-        name: 'Amy Horsefighter',
-        id: '100gggg1',
-      },
-    ],
+    users: 45621,
     picture: gallery1,
     cover: gallery6,
     posts: 456,
@@ -473,18 +411,7 @@ const GROUPS: Group[] = [
     id: '10',
     visibility: 'public',
     title: 'Transformers',
-    users: [
-      {
-        avatar: avatar3,
-        name: 'Amy Horsefighter',
-        id: '101',
-      },
-      {
-        avatar: avatar4,
-        name: 'Amy Horsefighter',
-        id: '1001',
-      },
-    ],
+    users: 4562,
     picture: gallery3,
     cover: gallery10,
     posts: 102,
