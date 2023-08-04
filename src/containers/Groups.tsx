@@ -66,7 +66,8 @@ function Groups(props: GroupContainerProps) {
 
           <Button type='submit'>Search</Button>
         </form>
-        <div className='hidden md:block justify-end'>
+
+        <div className='hidden md:block justify-end md:ml-3'>
           <SegmentedControl
             color='teal'
             value={view}
