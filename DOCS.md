@@ -259,6 +259,24 @@ import Skeleton from './common/Skeleton';
 <Skeleton variant='badge' repeat={6} />;
 ```
 
+### Taps
+
+[source](src/common/Taps.tsx)
+
+#### Props
+
+| Props       | Type          | Default | Description               |
+| ----------- | ------------- | ------- | ------------------------- |
+| `taps`      | `SingleTap[]` | `[]`    | array of taps             |
+
+#### Usage
+
+```tsx
+import Taps from './common/Taps';
+
+<Taps taps={TAPS} />;
+```
+
 ### Member
 
 [source](src/common/Member.tsx)
@@ -276,25 +294,6 @@ import Skeleton from './common/Skeleton';
 import Member from './common/Member';
 
 <Member user={user} />;
-```
-
-### Taps
-
-[source](src/common/Skeleton.tsx)
-
-#### Props
-
-| Props       | Type          | Default | Description               |
-| ----------- | ------------- | ------- | ------------------------- |
-| `taps`      | `SingleTap[]` | `[]`    | array of taps             |
-| `className` | `String`      | `''`    | add class to Taps wrapper |
-
-#### Usage
-
-```tsx
-import Taps from './common/Taps';
-
-<Taps taps={TAPS} />;
 ```
 
 ## Context

@@ -5,15 +5,17 @@ import Skeleton from './Skeleton';
 
 /**
  * Taps component
+ * 
+ * - Render a scrollable list of navigation links based on the 'taps' prop passed to it.
+- Dynamically load content based on the selected link using the 'Outlet' component from 'react-router-dom'.
+- Provide a fallback skeleton component to display while the content is being loaded using the 'Suspense' component from 'react'.
+- Apply styles to the navigation links based on whether they are active or not.
+
  * @usage
 
-- use `taps` to set taps value
+- use `taps` pass taps array of tap
  */
 function Taps(props: TapsProps) {
-  if (!props.taps.length) {
-    return <></>;
-  }
-
   const cls = (props: { isActive: boolean }) =>
     `text-lg no-underline transition p-2 inline-block border-0 border-b-2 border-solid ${
       props.isActive
