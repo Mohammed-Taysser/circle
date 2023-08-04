@@ -42,21 +42,23 @@ function Groups() {
         subtitle={`Search open groups`}
         icon={BsMegaphoneFill}
       />
+
       <div className='md:grid grid-cols-2 gap-4'>
         {GROUPS_TYPES.map((groupType) => (
           <div className='col' key={uuidv4()}>
             <div className='shadow-nice p-5 bg-white'>
-              <Image
-                withPlaceholder
-                height={350}
-                src={groupType.img}
-                alt={`${groupType.title}-groups`}
-              />
               <Anchor
                 component={Link}
                 to={`/groups/${groupType.url}`}
-                className='mt-3 inline-block text-2xl no-underline'
+                className='text-2xl hover:no-underline'
               >
+                <Image
+                  withPlaceholder
+                  height={250}
+                  mb={15}
+                  src={groupType.img}
+                  alt={`${groupType.title}-groups`}
+                />
                 {groupType.title} Groups
               </Anchor>
             </div>
