@@ -50,7 +50,7 @@ function HeaderPost(props: PostHeaderProps) {
                   <VisibilityIcon color='gray' />
                 </div>
                 {!props.full && (
-                  <Anchor component={Link} to={`/post/${post.id}`}>
+                  <Anchor component={Link} to={`/post/${post.id}`} title='Show full post details' >
                     <FiExternalLink />
                   </Anchor>
                 )}
