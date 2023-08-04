@@ -340,12 +340,33 @@ import User from './common/User';
 
 ### timeToX
 
-[timeToX](src/helpers/dayjs.ts)
+[source](src/helpers/dayjs.ts)
 
 Using `day.js` package to create `timeToX` helper function that return a value of readable format between passed date and now.
 
 ```ts
 timeToX('1990-01-01'); //> "31 years ago"
+```
+
+### millify
+
+[source](src/helpers/millify.ts)
+
+#### formateNumber
+
+Converts long numbers into pretty, human-readable strings.
+
+```ts
+formateNumber(2000); //> 2K
+formateNumber(2500); //> 2.5K
+```
+
+#### formateUnit
+
+Converts long sizes into pretty, human-readable unit.
+
+```ts
+formateUnit(1440000); //> 1.44MB
 ```
 
 ## Project Structure
