@@ -5,14 +5,10 @@ import { uuidv4 } from '../helpers';
  * Skeleton component
  * @usage
 
-- post
-- badge
-- friend
-- comment
-*/
-
+- use `repeat` number of Skeleton reparation
+- use `variant` The 'Skeleton', 'Friend', 'Post', 'Badge', and 'Comment' components are defined within the function and are used as the different variants of the loading skeleton UI.
+ */
 // TODO: create group Skeleton
-
 function Skeleton(props: { repeat?: number; variant?: SkeletonVariant }) {
   let Skt = Default;
 
@@ -33,6 +29,11 @@ function Skeleton(props: { repeat?: number; variant?: SkeletonVariant }) {
 
   return <Skt repeat={props.repeat} />;
 }
+
+Skeleton.defaultProp = {
+  repeat: 6,
+  variant: '',
+};
 
 const Default = (props: { repeat?: number }) => {
   return (

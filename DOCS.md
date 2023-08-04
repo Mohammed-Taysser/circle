@@ -230,6 +230,35 @@ import Post from './common/Post';
 <Post post={post} isShared />;
 ```
 
+### Skeleton
+
+[source](src/common/Skeleton.tsx)
+
+#### variant
+
+- Skeleton
+- Friend
+- Post
+- Badge
+- Comment
+
+#### Props
+
+| Props     | Type              | Default | Description                                                                                                                                                            |
+| --------- | ----------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `repeat`  | `number`          | `1`     | number of Skeleton repetition                                                                                                                                          |
+| `variant` | `SkeletonVariant` | `''`    | The 'Skeleton', 'Friend', 'Post', 'Badge', and 'Comment' components are defined within the function and are used as the different variants of the loading skeleton UI. |
+
+#### Usage
+
+```tsx
+import Skeleton from './common/Skeleton';
+
+<Skeleton variant='post' repeat={6} />;
+<Skeleton variant='friend' repeat={6} />;
+<Skeleton variant='badge' repeat={6} />;
+```
+
 ### Member
 
 [source](src/common/Member.tsx)
@@ -247,32 +276,6 @@ import Post from './common/Post';
 import Member from './common/Member';
 
 <Member user={user} />;
-```
-
-### Skeleton
-
-[source](src/common/Skeleton.tsx)
-
-Dot notation support 3 types
-
-- **post**
-- **friend**
-- **badge**
-
-#### Props
-
-| Props    | Type     | Default | Description                   |
-| -------- | -------- | ------- | ----------------------------- |
-| `repeat` | `number` | `1`     | number of Skeleton repetition |
-
-#### Usage
-
-```tsx
-import Skeleton from './common/Skeleton';
-
-<Skeleton.post repeat={6} />;
-<Skeleton.friend repeat={6} />;
-<Skeleton.badge repeat={6} />;
 ```
 
 ### Taps
