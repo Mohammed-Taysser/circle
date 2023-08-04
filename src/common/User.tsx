@@ -10,8 +10,9 @@ import AvatarA from './Avatar';
  * User component
  * @usage
 
-- use `className` to add classes to User wrapper
-- use `user` to pass User info
+- use `className` string that represents the CSS class name for the component.
+- use `user` object that contains information about the user, such as their name, username, avatar, cover image, and badges.
+
  */
 function User(props: { user: User; className: string }) {
   return (

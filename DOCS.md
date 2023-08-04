@@ -302,23 +302,23 @@ import TiptapEditor from './common/TiptapEditor';
 />;
 ```
 
-### Member
+### User
 
-[source](src/common/Member.tsx)
+[source](src/common/User.tsx)
 
 #### Props
 
-| Props       | Type     | Default | Description                 |
-| ----------- | -------- | ------- | --------------------------- |
-| `user`      | `Member` | `null`  | pass member info            |
-| `className` | `String` | `''`    | add class to Member wrapper |
+| Props       | Type     | Default | Description                                                                                                     |
+| ----------- | -------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| `user`      | `User`   | `null`  | object that contains information about the user, such as their name, username, avatar, cover image, and badges. |
+| `className` | `String` | `''`    | a string that represents the CSS class name for the component.                                                  |
 
 #### Usage
 
 ```tsx
-import Member from './common/Member';
+import User from './common/User';
 
-<Member user={user} />;
+<User user={user} />;
 ```
 
 ## Context
