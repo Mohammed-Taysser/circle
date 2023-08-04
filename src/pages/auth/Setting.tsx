@@ -4,8 +4,40 @@ import { notifications } from '@mantine/notifications';
 import { useMemo, useState } from 'react';
 import { VscSettings } from 'react-icons/vsc';
 import Banner from '../../common/Banner';
-import { TOC } from '../../constants/setting';
+import BasicInfo from '../../components/settings/BasicInfo';
+import ChangePassword from '../../components/settings/ChangePassword';
+import ContactInfo from '../../components/settings/ContactInfo';
+import EducationAndOthersInformation from '../../components/settings/EducationAndOthersInformation';
+import HobbiesAndInterests from '../../components/settings/HobbiesAndInterests';
 import useHelmet from '../../hooks/useHelmet';
+
+const TOC = [
+  {
+    label: 'Contact Info',
+    id: 'contactInfo',
+    component: ContactInfo,
+  },
+  {
+    label: 'Basic Info',
+    id: 'basicInfo',
+    component: BasicInfo,
+  },
+  {
+    label: 'Change Password',
+    id: 'changePassword',
+    component: ChangePassword,
+  },
+  {
+    label: 'Education And Others Information',
+    id: 'educationAndOthersInformation',
+    component: EducationAndOthersInformation,
+  },
+  {
+    label: 'Hobbies and Interests',
+    id: 'hobbiesAndInterests',
+    component: HobbiesAndInterests,
+  },
+];
 
 function Setting() {
   useHelmet('setting');
