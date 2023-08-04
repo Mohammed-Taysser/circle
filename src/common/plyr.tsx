@@ -6,9 +6,9 @@ import { useEffect } from 'react';
  * Plyr component
  * @usage
 
-- use `src` to set plyr src
-- use `MediaType` can be audio or video
-- use `title` to set Plyr title
+- use `src` specifies the source of the media to be played.
+- use `MediaType` specifies the type of media to be played, either 'audio' or 'video'.
+- use `title` specifies the title of the media to be played.
  */
 function PlyrViewer(props: PlyrViewerProps) {
   useEffect(() => {
@@ -43,7 +43,7 @@ function PlyrViewer(props: PlyrViewerProps) {
 PlyrViewer.defaultProps = {
   MediaType: 'video',
   src: null,
-  title: 'Title',
+  title: 'Plyr Title',
 };
 
 export default PlyrViewer;

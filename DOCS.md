@@ -186,6 +186,28 @@ import InfoBanner from './common/InfoBanner';
 <InfoBanner user={user} />;
 ```
 
+### PlyrViewer
+
+[source](src/common/PlyrViewer.tsx)
+
+#### Props
+
+| Props       | Type     | Default        | Description                                                          |
+| ----------- | -------- | -------------- | -------------------------------------------------------------------- |
+| `src`       | `string` | `''`           | specifies the source of the media to be played.                      |
+| `MediaType` | `audio`  | `'video'`      | specifies the type of media to be played, either 'audio' or 'video'. |
+| `title`     | `string` | `'Plyr Title'` | specifies the title of the media to be played.                       |
+
+#### Usage
+
+```tsx
+import PlyrViewer from './common/PlyrViewer';
+
+<PlyrViewer src='audio.mp3' MediaType='audio' />;
+
+<PlyrViewer src='video.mp3' MediaType='video' />;
+```
+
 ### Member
 
 [source](src/common/Member.tsx)
