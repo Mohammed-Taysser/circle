@@ -1,4 +1,3 @@
-import { Avatar, Tooltip } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import AvatarA from './Avatar';
 
@@ -44,27 +43,6 @@ function Group(props: GroupProps) {
           </div>
         </div>
       </div>
-      <div className='group-avatar flex justify-center my-5'>
-        <Avatar.Group spacing='sm'>
-          {props.group.users.slice(0, 4).map((user) => (
-            <Tooltip label={user.name} key={user.id}>
-              <Avatar
-                component={Link}
-                to={`/profile/${user.id}`}
-                src={user.avatar}
-                alt={user.name + ' avatar'}
-                radius='xl'
-              />
-            </Tooltip>
-          ))}
-
-          {props.group.users.length > 5 && (
-            <Avatar color='' radius='xl'>
-              +
-            </Avatar>
-          )}
-        </Avatar.Group>
-      </div>
 
       <ul className='statistics'>
         <li>
@@ -72,7 +50,7 @@ function Group(props: GroupProps) {
           <span className='statistics-text'>Posts</span>
         </li>
         <li>
-          <span className='statistics-number'>{props.group.users.length}</span>
+          <span className='statistics-number'>{props.group.users}</span>
           <span className='statistics-text'>Member</span>
         </li>
       </ul>
