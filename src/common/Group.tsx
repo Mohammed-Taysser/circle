@@ -1,19 +1,15 @@
 import { Link } from 'react-router-dom';
-import AvatarA from './Avatar';
+import Avatar from './Avatar';
 
 /**
  * Group component
  * @usage
 
-- use `className` to add classes to Group wrapper
-- use `colView` to change view to column
-- use `group` to pass group info
+- use `className` allows adding additional classes to the group card.
+- use `colView`  determines whether the group card should be displayed in a column view or not.
+- use `group` object field that contains the group information
  */
 function Group(props: GroupProps) {
-  if (!props.group) {
-    return <></>;
-  }
-
   return (
     <div
       className={`group ${props.colView ? 'col-view' : ''} ${props.className}`}
@@ -25,7 +21,7 @@ function Group(props: GroupProps) {
       />
       <div className='group-info-wrapper items-center relative'>
         <Link to={`/group/${props.group.id}`}>
-          <AvatarA
+          <Avatar
             src={props.group.picture}
             alt={`Group logo of ${props.group.title}`}
           />
