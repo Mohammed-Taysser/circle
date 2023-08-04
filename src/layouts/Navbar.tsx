@@ -35,6 +35,7 @@ function Navbar(props: NavbarProps) {
               opened={props.opened}
               onClick={() => props.setOpened((prev) => !prev)}
               color={theme.colors.gray[6]}
+              title='Toggle header'
             />
           </Flex>
         </Grid.Col>
