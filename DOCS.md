@@ -85,6 +85,22 @@ import Banner from './common/Banner';
 <Banner title='Profile' subtitle='Welcome to your account dashboard!' />;
 ```
 
+### CreatePost
+
+[source](src/common/CreatePost.tsx)
+
+#### Props
+
+> No Props Yet
+
+#### Usage
+
+```tsx
+import CreatePost from './common/CreatePost';
+
+<CreatePost />;
+```
+
 ### Group
 
 [source](src/common/Group.tsx)

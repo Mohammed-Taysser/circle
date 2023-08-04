@@ -3,6 +3,14 @@ import { modals } from '@mantine/modals';
 import { Link, useNavigate } from 'react-router-dom';
 import Avatar from './Avatar';
 
+/**
+ * CreatePost component
+ * 
+ * A post editor component with an avatar and input field that opens a modal when clicked.
+ * 
+ * @usage
+TODO: add post distinction (group, user)
+ */
 function CreatePost() {
   const theme = useMantineTheme();
   const navigateTo = useNavigate();
@@ -16,7 +24,7 @@ function CreatePost() {
       },
       size: 'xl',
       centered: true,
-      scrollAreaComponent:ScrollArea.Autosize,
+      scrollAreaComponent: ScrollArea.Autosize,
       classNames: {
         // content: 'overflow-visible',
       },
