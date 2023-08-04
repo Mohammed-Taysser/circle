@@ -17,6 +17,8 @@ function Banner(props: BannerProps) {
       className={`banner rounded-xl py-20 px-12 overflow-hidden relative mb-8 z-10 leading-4 ${props.className}`}
       style={{
         backgroundImage: `url('${overlay}'), linear-gradient(to right, #20c997, #57e6b0fa) `,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       <div className='flex items-center text-white'>
