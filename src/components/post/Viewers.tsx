@@ -1,10 +1,10 @@
 import GalleryViewer from '../../common/Gallery';
 import Group from '../../common/Group';
-import User from '../../common/User';
 import Post from '../../common/Post';
-import PlyrViewer from '../../common/plyr';
-import EmbeddedViewer from './body/Embedded';
+import User from '../../common/User';
+import Plyr from '../../common/plyr';
 import PDF from './body/viewers/Pdf';
+import Youtube from './body/viewers/Youtube';
 
 function Viewers(props: PostViewersProps) {
   const { post, full } = props;
@@ -13,17 +13,17 @@ function Viewers(props: PostViewersProps) {
     case 'audio':
       return (
         <div className='shadow-nice'>
-          <PlyrViewer src={post.assets?.audio} MediaType='audio' />
+          <Plyr src={post.assets?.audio} MediaType='audio' />
         </div>
       );
     case 'video':
       return (
         <div className='shadow-nice'>
-          <PlyrViewer src={post.assets?.video} MediaType='video' />
+          <Plyr src={post.assets?.video} MediaType='video' />
         </div>
       );
     case 'youtube':
-      return <EmbeddedViewer src={post.assets?.embedded} />;
+      return <Youtube src={post.assets?.embedded??''} />;
     case 'pdf':
       return <PDF src={post.assets?.pdf ?? ''} />;
     case 'gallery':
