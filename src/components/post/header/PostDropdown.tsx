@@ -57,7 +57,7 @@ function PostDropdown(props: PostDropdownProps) {
   return (
     <Menu shadow='md' width={180} position='bottom-end'>
       <Menu.Target>
-        <UnstyledButton>
+        <UnstyledButton title='Toggle post options' >
           <ThemeIcon variant='light' size='lg' color='gray'>
             <CgOptions />
           </ThemeIcon>
