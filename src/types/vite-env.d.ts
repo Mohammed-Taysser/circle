@@ -85,6 +85,7 @@ interface PlyrViewerProps {
   src: string;
   MediaType: 'video' | 'audio';
   title?: string;
+  id?: string;
 }
 
 // Skeleton component

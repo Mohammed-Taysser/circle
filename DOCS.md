@@ -144,6 +144,7 @@ import EmojiPicker from './common/EmojiPicker';
 | `galleryId` | `String`   | `just-gallery-id` | provide an ID for the gallery.                             |
 | `gallery`   | `String[]` | `[]`              | specify an array of image URLs.                            |
 | `full`      | `Boolean`  | `false`           | determine if the gallery should be displayed in full mode. |
+| `id`        | `String`   | `uuidv4()`        | pass and id to plr                                         |
 
 #### Usage
 
