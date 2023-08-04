@@ -11,6 +11,7 @@ import Groups from '../../components/search/Groups.results';
 import Users from '../../components/search/Users.results';
 import { FRIENDS, GROUPS } from '../../constants/dummy';
 import Async from '../../containers/Async';
+import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
 
 function Results() {
@@ -57,7 +58,7 @@ function Results() {
     <Async {...state}>
       <Banner
         title='Results'
-        subtitle={`Results: ${Object.keys(results).length}`}
+        subtitle={`Results: ${formateNumber(Object.keys(results).length)}`}
         icon={AiOutlineFileSearch}
       />
 

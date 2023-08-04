@@ -17,6 +17,7 @@ import cover from '../../assets/images/default/cover.jpg';
 import avatar from '../../assets/images/default/group.jpg';
 import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
+import { formateNumber } from '../../helpers/millify';
 
 function SingleGroup() {
   useDocumentTitle('Circle | Developer Geeks'); // TODO: improve SEO
@@ -120,13 +121,15 @@ function SingleGroup() {
           <Flex justify='space-between'>
             <div className='flex-1 flex gap-3 items-center justify-center md:justify-start '>
               <Tooltip label='Members' withArrow>
-                <div className='flex items-center gap-1 '>
-                  <FiUsers /> <span className='text-sm'>1200</span>
+                <div className='flex items-center gap-1'>
+                  <FiUsers />
+                  <span className='text-sm'>{formateNumber(1200)}</span>
                 </div>
               </Tooltip>
               <Tooltip label='Posts' withArrow>
                 <div className='flex items-center gap-1'>
-                  <VscFeedback /> <span className='text-sm'>102</span>
+                  <VscFeedback />
+                  <span className='text-sm'>{formateNumber(102)}</span>
                 </div>
               </Tooltip>
               <Tooltip label='Visibility' withArrow>

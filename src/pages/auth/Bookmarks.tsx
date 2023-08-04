@@ -8,6 +8,7 @@ import Post from '../../common/Post';
 import Skeleton from '../../common/Skeleton';
 import { POSTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
+import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
 
 function Bookmarks() {
@@ -49,7 +50,7 @@ function Bookmarks() {
     <>
       <Banner
         title='Bookmarks'
-        subtitle={`Bookmarks: ${posts.length}`}
+        subtitle={`Bookmarks: ${formateNumber(posts.length)}`}
         icon={BsBookmarks}
       />
       <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>

@@ -1,5 +1,8 @@
 import { Button, Flex, Text, Tooltip } from '@mantine/core';
-import { BiBookReader, BiUserVoice } from 'react-icons/bi';
+import { modals } from '@mantine/modals';
+import { notifications } from '@mantine/notifications';
+import { useState } from 'react';
+import { BiUserVoice } from 'react-icons/bi';
 import { BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
 import { FiUserCheck, FiUserPlus, FiUserX, FiUsers } from 'react-icons/fi';
 import { IoImagesOutline } from 'react-icons/io5';
@@ -12,10 +15,8 @@ import avatar from '../../assets/images/default/avatar.png';
 import cover from '../../assets/images/default/cover.jpg';
 import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
+import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
-import { useState } from 'react';
-import { notifications } from '@mantine/notifications';
-import { modals } from '@mantine/modals';
 
 function Profile() {
   useHelmet('profile'); // TODO: improve SEO
@@ -159,23 +160,26 @@ function Profile() {
             <div className='flex items-center justify-center md:justify-start gap-4'>
               <Tooltip label='Friends' withArrow>
                 <div className='flex items-center gap-1'>
-                  <FiUsers /> <span className='text-sm'>12</span>
+                  <FiUsers />
+                  <span className='text-sm'>{formateNumber(1412)}</span>
                 </div>
               </Tooltip>
               <Tooltip label='Posts' withArrow>
                 <div className='flex items-center gap-1'>
-                  <VscFeedback /> <span className='text-sm'>12</span>
+                  <VscFeedback />
+                  <span className='text-sm'>{formateNumber(124411)}</span>
                 </div>
               </Tooltip>
               <Tooltip label='Followers' withArrow>
                 <div className='flex items-center gap-1'>
                   <BiUserVoice />
-                  <span className='text-sm'>303,202,2</span>
+                  <span className='text-sm'>{formateNumber(30302202)}</span>
                 </div>
               </Tooltip>
               <Tooltip label='Following' withArrow>
                 <div className='flex items-center gap-1'>
-                  <FiUserPlus /> <span className='text-sm'>1023</span>
+                  <FiUserPlus />
+                  <span className='text-sm'>{formateNumber(10243)}</span>
                 </div>
               </Tooltip>
             </div>

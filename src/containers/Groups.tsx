@@ -14,6 +14,7 @@ import { BiSearchAlt, BiUserVoice } from 'react-icons/bi';
 import { BsColumnsGap, BsSortUpAlt } from 'react-icons/bs';
 import Banner from '../common/Banner';
 import Group from '../common/Group';
+import { formateNumber } from '../helpers/millify';
 
 function Groups(props: GroupContainerProps) {
   useDocumentTitle(`Circle | Groups | ${props.title}`);
@@ -31,7 +32,7 @@ function Groups(props: GroupContainerProps) {
     <>
       <Banner
         title={props.title}
-        subtitle={`${props.title}: ${props.groups.length}`}
+        subtitle={`${props.title}: ${formateNumber(props.groups.length)}`}
         icon={props.icon}
       />
 

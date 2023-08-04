@@ -14,6 +14,7 @@ import { TbMessage2Bolt } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 import { MESSAGES } from '../../constants/layout';
 import { timeToX } from '../../helpers';
+import { formateNumber } from '../../helpers/millify';
 
 function MessagesDropdown() {
   const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
@@ -29,7 +30,7 @@ function MessagesDropdown() {
         <UnstyledButton>
           <Indicator
             color='grape'
-            label={<span className='text-[10px]'>71</span>}
+            label={<span className='text-[10px]'>{formateNumber(71)}</span>}
             size={16}
           >
             <ThemeIcon

@@ -13,6 +13,7 @@ import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import SingleNotification from '../../components/notification/SingleNotification';
 import { NOTIFICATIONS } from '../../constants/layout';
+import { formateNumber } from '../../helpers/millify';
 
 function NotificationDropdown() {
   const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
@@ -28,7 +29,7 @@ function NotificationDropdown() {
         <UnstyledButton>
           <Indicator
             color='teal'
-            label={<span className='text-[10px]'>101</span>}
+            label={<span className='text-[10px]'>{formateNumber(101)}</span>}
             size={16}
           >
             <ThemeIcon

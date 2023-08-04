@@ -15,6 +15,7 @@ import { FiUserCheck, FiUserMinus, FiUserPlus, FiUsers } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import avatar from '../../assets/images/default/avatar.png';
 import { uuidv4 } from '../../helpers';
+import { formateNumber } from '../../helpers/millify';
 
 const NOTIFICATION = [
   {
@@ -134,7 +135,7 @@ function FriendsDropdown() {
         <UnstyledButton>
           <Indicator
             color='orange'
-            label={<span className='text-[10px]'>12</span>}
+            label={<span className='text-[10px]'>{formateNumber(12)}</span>}
             size={16}
           >
             <ThemeIcon

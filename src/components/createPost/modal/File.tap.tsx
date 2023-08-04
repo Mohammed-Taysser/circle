@@ -6,7 +6,7 @@ import {
   Text,
   ThemeIcon,
 } from '@mantine/core';
-import prettyBytes from 'pretty-bytes';
+import { formateUnit } from '../../../helpers/millify';
 
 function FileTap(props: FileTapProps) {
   const { label } = props;
@@ -31,9 +31,7 @@ function FileTap(props: FileTapProps) {
               {props.file.name}
             </Text>
             <Text color='dimmed' size='xs'>
-              {prettyBytes(props.file.size, {
-                space: false,
-              })}
+              {formateUnit(props.file.size)}
             </Text>
           </div>
         </Group>

@@ -15,6 +15,7 @@ import { TfiShare } from 'react-icons/tfi';
 import { VscReactions } from 'react-icons/vsc';
 import { REACT_ICONS } from '../../constants/post';
 import { uuidv4 } from '../../helpers';
+import { formateNumber } from '../../helpers/millify';
 
 function PostFooter(props: { post: Post }) {
   const { post } = props;
@@ -115,7 +116,7 @@ function PostFooter(props: { post: Post }) {
           })}
           <Avatar radius='xl'>
             {post.reacts.count ? (
-              post.reacts.count
+              formateNumber(post.reacts.count)
             ) : (
               <VscReactions className='text-2xl' />
             )}
@@ -125,12 +126,12 @@ function PostFooter(props: { post: Post }) {
         <Flex gap={20} align='center' className='text-gray-500'>
           <Flex gap={5} align='center'>
             <TbMessage2Bolt className='text-lg' />
-            <small>{post.comments.count}</small>
+            <small>{formateNumber(post.comments.count)}</small>
           </Flex>
 
           <Flex gap={5} align='center'>
             <TfiShare className='text-md' />
-            <small>{post.share.count}</small>
+            <small>{formateNumber(post.share.count)}</small>
           </Flex>
         </Flex>
       </Flex>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { formateNumber } from '../helpers/millify';
 import Avatar from './Avatar';
 
 /**
@@ -10,43 +11,46 @@ import Avatar from './Avatar';
 - use `group` object field that contains the group information
  */
 function Group(props: GroupProps) {
+  const { group } = props;
+
   return (
     <div
       className={`group ${props.colView ? 'col-view' : ''} ${props.className}`}
     >
       <img
-        src={props.group.cover}
-        alt={`Group Cover of ${props.group.title}`}
+        src={group.cover}
+        alt={`Group Cover of ${group.title}`}
         className='cover'
       />
       <div className='group-info-wrapper items-center relative'>
-        <Link to={`/group/${props.group.id}`}>
-          <Avatar
-            src={props.group.picture}
-            alt={`Group logo of ${props.group.title}`}
-          />
+        <Link to={`/group/${group.id}`}>
+          <Avatar src={group.picture} alt={`Group logo of ${group.title}`} />
         </Link>
 
         <div className='group-info'>
           <Link
-            to={`/group/${props.group.id}`}
+            to={`/group/${group.id}`}
             className='text-black text-xl no-underline transition hover:text-aurora'
           >
-            {props.group.title}
+            {group.title}
           </Link>
           <div className='text-gray-400 text-sm'>
-            <span className='capitalize'>{props.group.visibility}</span> Group
+            <span className='capitalize'>{group.visibility}</span> Group
           </div>
         </div>
       </div>
 
       <ul className='statistics'>
         <li>
-          <span className='statistics-number'>{props.group.posts}</span>
+          <span className='statistics-number'>
+            {formateNumber(group.posts)}
+          </span>
           <span className='statistics-text'>Posts</span>
         </li>
         <li>
-          <span className='statistics-number'>{props.group.users}</span>
+          <span className='statistics-number'>
+            {formateNumber(group.users)}
+          </span>
           <span className='statistics-text'>Member</span>
         </li>
       </ul>
