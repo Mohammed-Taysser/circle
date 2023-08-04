@@ -119,6 +119,26 @@ import EmojiPicker from './common/EmojiPicker';
 <EmojiPicker onEmojiSelect={} />;
 ```
 
+### Gallery
+
+[source](src/common/Gallery.tsx)
+
+#### Props
+
+| Props       | Type       | Default           | Description                                                |
+| ----------- | ---------- | ----------------- | ---------------------------------------------------------- |
+| `galleryId` | `String`   | `just-gallery-id` | provide an ID for the gallery.                             |
+| `gallery`   | `String[]` | `[]`              | specify an array of image URLs.                            |
+| `full`      | `Boolean`  | `false`           | determine if the gallery should be displayed in full mode. |
+
+#### Usage
+
+```tsx
+import Gallery from './common/Gallery';
+
+<Gallery gallery={[]} />;
+```
+
 ### Group
 
 [source](src/common/Group.tsx)

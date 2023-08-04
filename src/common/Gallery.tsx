@@ -6,6 +6,16 @@ import lgVideo from 'lightgallery/plugins/video';
 import LightGallery from 'lightgallery/react';
 import { uuidv4 } from '../helpers';
 
+/**
+ * Gallery component
+ *
+ * Displays a gallery of images or a single image. It uses the LightGallery library to provide a user-friendly interface for viewing the images.
+
+ * @usage
+ * - Use `galleryId` to provide an ID for the gallery.
+ * - Use `gallery` to specify an array of image URLs.
+ * - Use `full` to determine if the gallery should be displayed in full mode.
+ */
 function Gallery(props: PostGallery) {
   if (props.full) {
     return (
@@ -63,5 +73,11 @@ function Gallery(props: PostGallery) {
     </div>
   );
 }
+
+Gallery.defaultProp = {
+  galleryId: 'just-gallery-id',
+  full: false,
+  gallery: [],
+};
 
 export default Gallery;
