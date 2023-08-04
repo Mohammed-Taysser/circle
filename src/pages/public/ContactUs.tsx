@@ -12,15 +12,26 @@ import {
 } from '@mantine/core';
 import { isEmail, isNotEmpty, useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
+import { IconAt, IconMapPin, IconPhone, IconSun } from '@tabler/icons-react';
 import { useState } from 'react';
 import { FiUser } from 'react-icons/fi';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { TbPencilMinus } from 'react-icons/tb';
 import contactUsBG from '../../assets/images/background/contact-us-bg.svg';
 import ContactIcon from '../../components/contactUs/ContactIcon';
-import { MOCK_DATA } from '../../constants/contact-us';
 import { uuidv4 } from '../../helpers';
 import useHelmet from '../../hooks/useHelmet';
+
+const MOCK_DATA = [
+  { title: 'Email', description: 'mohammedtaysser983@gmail.com', icon: IconAt },
+  { title: 'Phone', description: '+201015081861', icon: IconPhone },
+  {
+    title: 'Address',
+    description: 'Egypt, Ad Daqahliyah, Markaz Meet Ghamr',
+    icon: IconMapPin,
+  },
+  { title: 'Working hours', description: '7 a.m. - 10 p.m.', icon: IconSun },
+];
 
 const useWrapperStyles = createStyles((theme) => {
   const BREAKPOINT = theme.fn.smallerThan('sm');
