@@ -1,18 +1,20 @@
 # CHANGELOG
 
-## Bugs & TODO
+## TODO's
 
+- [ ] add Indicator to avatar
 - [ ] check light box
 - [ ] create demo page
-- [ ] fix create-post component
+- [ ] create youtube viewer instead of embedded
+- [ ] dark mode
+- [ ] improve dummy API call (make single file that use dummy data)
 - [ ] improve no login component
-- [ ] improve user component
-- [ ] reduce create-post to facebook
 - [ ] update readme & docs
-- [x] add user dropdown to aside on mobile view
-- [x] check responsive 🙂
-- [x] how to join group
-- [x] how to send friend request
+
+## BUGS
+
+- [ ] Emoji picker on modal not scroll
+- [ ] fins a suitable way to get editor content (not store data into ref instead of state but, not detect if changed or not)
 
 ## Before integrate to API
 
@@ -36,35 +38,19 @@
 - [ ] Create Review Video For Project Functionality
 - [ ] Who See My Profile 😈
 - [ ] create chat dialog
+- [ ] add felling/Activity for post
 - [ ] groups chats
 - [ ] make timeline in left-sidebar async (every event it's time left make it active)
-
-## Pages
-
-- [x] Results
-- [x] networks
-- [x] Events
-- [x] 404
-- [x] Bookmarks
-- [x] Chat
-- [x] Contact Us
-- [x] Forget Password
-- [x] Groups
-- [x] Homepage
-- [x] notification
-- [x] Post Details
-- [x] Profile
-- [x] Register/login
-- [x] Setting
-- [x] Single Group
-- [x] help
-  - [x] editor
-  - [x] calender
 
 ## Bug fix helpers
 
 - <https://github.com/manishboro/image-crop-and-zoom>
 - <https://codesandbox.io/s/y09komm059>
+
+## Resources
+
+- <http://sociala.uitheme.net/>
+- <https://html.crumina.net/html-olympus/>
 
 ## Useful Articles
 
@@ -83,6 +69,18 @@
 - Search For `Login and Registration Form in Node JS + Express + mongoDB`
 
 ## Changelog
+
+## 4 August 2023
+
+- add user dropdown to aside on mobile view
+- check PC screen for responsive
+- check responsive 🙂
+- drop map from post variant
+- fix create-post component
+- how to join group
+- how to send friend request
+- improve user component
+- reduce create-post to facebook
 
 ## 28 July 2023
 
