@@ -51,10 +51,10 @@ import Avatar from './common/Avatar';
 
 #### Props
 
-| Props       | Type      | Default                                          | Description                                                          |
-| ----------- | --------- | ------------------------------------------------ | -------------------------------------------------------------------- |
-| `badge`       | `Badge`  | `null` | The badge object with properties for picture, label, message, and users.       |
-| `className` | `String`  | `''`                                             | An optional string for customizing the CSS class of the component. |
+| Props       | Type     | Default | Description                                                              |
+| ----------- | -------- | ------- | ------------------------------------------------------------------------ |
+| `badge`     | `Badge`  | `null`  | The badge object with properties for picture, label, message, and users. |
+| `className` | `String` | `''`    | An optional string for customizing the CSS class of the component.       |
 
 #### Usage
 
@@ -70,11 +70,12 @@ import Badge from './common/Badge';
 
 #### Props
 
-| Props       | Type     | Default    | Description                 |
-| ----------- | -------- | ---------- | --------------------------- |
-| `title`     | `String` | `title`    | add Banner title            |
-| `subtitle`  | `String` | `subtitle` | add Banner subtitle         |
-| `className` | `String` | `''`       | add class to Banner wrapper |
+| Props       | Type     | Default      | Description                                                                   |
+| ----------- | -------- | ------------ | ----------------------------------------------------------------------------- |
+| `title`     | `String` | `title`      | a string that sets the banner title                                           |
+| `subtitle`  | `String` | `subtitle`   | a string that sets the banner subtitle                                        |
+| `className` | `String` | `''`         | a string that allows for the addition of custom classes to the banner wrapper |
+| `icon`      | `String` | `BiConfused` | a React component that sets the banner icon                                   |
 
 #### Usage
 
@@ -82,25 +83,6 @@ import Badge from './common/Badge';
 import Banner from './common/Banner';
 
 <Banner title='Profile' subtitle='Welcome to your account dashboard!' />;
-```
-
-### Comments
-
-[source](src/common/Comments.tsx)
-
-#### Props
-
-| Props       | Type            | Default | Description                   |
-| ----------- | --------------- | ------- | ----------------------------- |
-| `comments`  | `PostComment[]` | `null`  | pass Comments info            |
-| `className` | `String`        | `''`    | add class to Comments wrapper |
-
-#### Usage
-
-```tsx
-import Member from './common/Member';
-
-<Member user={user} />;
 ```
 
 ### Group

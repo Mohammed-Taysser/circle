@@ -1,15 +1,15 @@
 import { Divider } from '@mantine/core';
 import { BiConfused } from 'react-icons/bi';
-import overlay from '../assets/images/background/banner-overlay.png';
+import { overlay } from '../constants/default';
 
 /**
  * Banner component
  * @usage
 
-- use `className` to add classes to banner wrapper
-- use `title` to set banner title
-- use `subtitle` to set banner subtitle
-- use `icon` to change banner icon
+- use `className` a string that allows for the addition of custom classes to the banner wrapper
+- use `title` a string that sets the banner title
+- use `subtitle`  a string that sets the banner subtitle
+- use `icon` a React component that sets the banner icon
  */
 function Banner(props: BannerProps) {
   return (
