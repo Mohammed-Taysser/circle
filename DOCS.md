@@ -208,6 +208,28 @@ import PlyrViewer from './common/PlyrViewer';
 <PlyrViewer src='video.mp3' MediaType='video' />;
 ```
 
+### Post
+
+[source](src/common/Post.tsx)
+
+#### Props
+
+| Props       | Type      | Default | Description                                                                                                                                                                            |
+| ----------- | --------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `className` | `String`  | `''`    | A string field that allows for additional CSS classes to be added to the post card wrapper.                                                                                            |
+| `post`      | `Post`    | `null`  | The main field of the class, which is an object containing information about the post, including the user who posted, the post content, and the number of likes, comments, and shares. |
+| `isShared`  | `Boolean` | `false` | A boolean field that specifies whether the post is a shared post or not. If true, the post footer is not displayed.                                                                    |
+
+#### Usage
+
+```tsx
+import Post from './common/Post';
+
+<Post post={post} />;
+
+<Post post={post} isShared />;
+```
+
 ### Member
 
 [source](src/common/Member.tsx)
@@ -225,25 +247,6 @@ import PlyrViewer from './common/PlyrViewer';
 import Member from './common/Member';
 
 <Member user={user} />;
-```
-
-### Post
-
-[source](src/common/Post.tsx)
-
-#### Props
-
-| Props       | Type     | Default | Description               |
-| ----------- | -------- | ------- | ------------------------- |
-| `post`      | `Post`   | `null`  | pass Post info            |
-| `className` | `String` | `''`    | add class to Post wrapper |
-
-#### Usage
-
-```tsx
-import Post from './common/Post';
-
-<Post post={post} />;
 ```
 
 ### Skeleton
