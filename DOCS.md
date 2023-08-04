@@ -45,6 +45,25 @@ import Avatar from './common/Avatar';
 <Avatar src={avatar.png} alt='user-avatar' />;
 ```
 
+### Badge
+
+[source](src/common/Badge.tsx)
+
+#### Props
+
+| Props       | Type      | Default                                          | Description                                                          |
+| ----------- | --------- | ------------------------------------------------ | -------------------------------------------------------------------- |
+| `badge`       | `Badge`  | `null` | The badge object with properties for picture, label, message, and users.       |
+| `className` | `String`  | `''`                                             | An optional string for customizing the CSS class of the component. |
+
+#### Usage
+
+```tsx
+import Badge from './common/Badge';
+
+<Badge badge={badge} />;
+```
+
 ### Banner
 
 [source](src/common/Banner.tsx)

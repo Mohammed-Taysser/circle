@@ -1,5 +1,14 @@
 import { Avatar, Divider } from '@mantine/core';
 
+/**
+ * Badge component
+ *
+ * Renders a badge component with an avatar, label, message, and a list of users who have earned the badge.
+ *
+ * @usage
+ * - use `badge` The badge object with properties for picture, label, message, and users.
+ * - use `className` An optional string for customizing the CSS class of the component.
+ */
 function Badge(props: { badge: Badge; className?: string }) {
   return (
     <div
@@ -34,5 +43,10 @@ function Badge(props: { badge: Badge; className?: string }) {
     </div>
   );
 }
+
+Badge.defaultProps = {
+  className: '',
+  badge: null,
+};
 
 export default Badge;
