@@ -12,7 +12,7 @@ function Side() {
       <Aside
         p='md'
         hiddenBreakpoint='lg'
-        width={{ base: 350 }}
+        width={{ base: 300 }}
         className={`border-0 shadow-nice z-40 duration-500 ${
           isOpened ? '' : '-right-[300px] lg:right-0'
         }`}
@@ -27,6 +27,7 @@ function Side() {
               variant='filled'
               color=''
               compact
+              title='Toggle contacts'
               onClick={() => setIsOpened((prev) => !prev)}
             >
               <RiAppsLine className='text-base' />
