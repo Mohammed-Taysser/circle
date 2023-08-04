@@ -145,11 +145,11 @@ import Gallery from './common/Gallery';
 
 #### Props
 
-| Props       | Type      | Default | Description                     |
-| ----------- | --------- | ------- | ------------------------------- |
-| `group`     | `Group`   | `null`  | pass Group info                 |
-| `className` | `String`  | `''`    | add class to Group wrapper      |
-| `colView`   | `Boolean` | `false` | specify if column layout or not |
+| Props       | Type      | Default | Description                                                                    |
+| ----------- | --------- | ------- | ------------------------------------------------------------------------------ |
+| `className` | `String`  | `''`    | allows adding additional classes to the group card.                            |
+| `colView`   | `Boolean` | `false` | determines whether the group card should be displayed in a column view or not. |
+| `group`     | `Group`   | `null`  | object field that contains the group information                               |
 
 #### Usage
 
@@ -157,6 +157,9 @@ import Gallery from './common/Gallery';
 import Group from './common/Group';
 
 <Group group={group} />;
+
+// column View
+<Group group={group} colView />;
 ```
 
 ### InfoBanner
@@ -165,14 +168,15 @@ import Group from './common/Group';
 
 #### Props
 
-| Props       | Type           | Default | Description                |
-| ----------- | -------------- | ------- | -------------------------- |
-| `cover`     | `string`       | `''`    | pass banner cover          |
-| `avatar`    | `string`       | `''`    | pass banner avatar         |
-| `name`      | `string`       | `''`    | pass banner name           |
-| `username`  | `string`       | `''`    | pass banner username       |
-| `verified`  | `boolean`      | `''`    | pass banner verified value |
-| `extraInfo` | `ReactElement` | `''`    | pass banner extraInfo line |
+| Props       | Type           | Default | Description                                                                  |
+| ----------- | -------------- | ------- | ---------------------------------------------------------------------------- |
+| `cover`     | `string`       | `''`    | string representing the URL of the cover image                               |
+| `avatar`    | `string`       | `''`    | string representing the URL of the avatar image                              |
+| `name`      | `string`       | `''`    | string representing the user's name                                          |
+| `username`  | `string`       | `''`    | string representing the user's username                                      |
+| `verified`  | `boolean`      | `''`    | boolean representing whether the user is verified or not                     |
+| `extraInfo` | `ReactElement` | `<></>` | JSX element representing any additional information to display in the banner |
+| `className` | `string`       | `''`    | string representing additional CSS classes to apply to the banner            |
 
 #### Usage
 

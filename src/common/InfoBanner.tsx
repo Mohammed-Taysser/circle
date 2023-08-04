@@ -4,15 +4,18 @@ import Avatar from './Avatar';
 
 /**
  * InfoBanner component
+ * 
+ * displays a banner with user information, including a cover image, avatar, name, username, and extra information. It also has an option to display a verification badge if the user is verified. The class allows for customization through props, such as setting the cover image and avatar.
+ * 
  * @usage
 
-- use `cover` to set cover
-- use `avatar` to set avatar
-- use `name` to set user name
-- use `username` to set username
-- use `verified` to set if profile verified or not
-- use `extraInfo` to set extraInfo line
-- use `className` to add classes to banner wrapper
+- use `cover` string representing the URL of the cover image
+- use `avatar` string representing the URL of the avatar image
+- use `name` string representing the user's name
+- use `username` string representing the user's username
+- use `verified` boolean representing whether the user is verified or not
+- use `extraInfo` JSX element representing any additional information to display in the banner
+- use `className` string representing additional CSS classes to apply to the banner
 */
 function InfoBanner(props: InfoBannerProp) {
   return (
