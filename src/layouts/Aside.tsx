@@ -1,10 +1,11 @@
-import { Aside, Button, ScrollArea } from '@mantine/core';
+import { Aside, Button, ScrollArea, useMantineTheme } from '@mantine/core';
 import { useState } from 'react';
 import { RiAppsLine } from 'react-icons/ri';
 import ContactFriends from './aside/ContactFriends';
 import UserDropdown from './navbar/UserDropdown';
 
 function Side() {
+  const theme = useMantineTheme();
   const [isOpened, setIsOpened] = useState(false);
 
   return (
@@ -12,7 +13,7 @@ function Side() {
       <Aside
         p='md'
         hiddenBreakpoint='lg'
-        width={{ base: 300 }}
+        width={{ sm: 300, [theme.breakpoints.xxl]: 400 }}
         className={`border-0 shadow-nice z-40 duration-500 ${
           isOpened ? '' : '-right-[300px] lg:right-0'
         }`}
