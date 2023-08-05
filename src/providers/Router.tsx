@@ -8,7 +8,7 @@ function Router() {
       router={routes}
       fallbackElement={
         <Center h={200}>
-          <Loader color='teal' size='xl' variant='dots' />
+          <Loader size='xl' variant='dots' />
         </Center>
       }
     />
