@@ -9,7 +9,7 @@ dayjs.extend(relativeTime);
  * @param {Date} date date to be compare
  * @returns {String} of relative time to X.
  */
-function timeToX(date: Date): string {
+function timeToX(date: Date | string): string {
   return dayjs().to(dayjs(date));
 }
 
