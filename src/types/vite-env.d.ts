@@ -290,7 +290,6 @@ type PostVariant =
   | 'video'
   | 'audio'
   | 'youtube'
-  | 'pdf'
   | 'group'
   | 'friend'
   | 'share';
@@ -300,7 +299,6 @@ type CreatePostVariant =
   | 'gallery'
   | 'video'
   | 'audio'
-  | 'pdf'
   | 'youtube';
 
 interface FileTapProps {
@@ -347,7 +345,6 @@ interface PostAssets {
   gallery?: string[];
   audio?: string;
   video?: string;
-  pdf?: string;
 }
 
 interface Post {
@@ -407,7 +404,6 @@ interface CreatePostModalInitialFormValue {
   assets: {
     audio?: null | File;
     video?: null | File;
-    pdf?: null | File;
     gallery?: FileWithPath[];
     youtube?: string;
   };

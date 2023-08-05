@@ -8,7 +8,6 @@ import {
   MdOutlineTipsAndUpdates,
   MdOutlineWavingHand,
 } from 'react-icons/md';
-import { PiFilePdf } from 'react-icons/pi';
 import { RiGlobalLine } from 'react-icons/ri';
 import { TfiLock } from 'react-icons/tfi';
 
@@ -62,10 +61,6 @@ const POST_VARIANT: PostVariantConstant = {
   video: {
     label: 'Video',
     icon: BsPersonVideo3,
-  },
-  pdf: {
-    label: 'PDF',
-    icon: PiFilePdf,
   },
   youtube: {
     label: 'Youtube',

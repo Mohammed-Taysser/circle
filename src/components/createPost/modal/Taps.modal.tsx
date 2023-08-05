@@ -36,16 +36,6 @@ function TapsModal(props: ModalTapsProp) {
         />
       </Tabs.Panel>
 
-      <Tabs.Panel value='pdf'>
-        <FileTap
-          onChange={(file) => onAssetsChange('pdf', file)}
-          icon={icon}
-          file={form.values.assets?.pdf ?? null}
-          accept='application/pdf'
-          label='PDF'
-        />
-      </Tabs.Panel>
-
       <Tabs.Panel value='youtube'>
         <Input
           icon={<RxLinkBreak2 />}

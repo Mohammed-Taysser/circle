@@ -1,6 +1,5 @@
 import audio from '../assets/music/skyline.mp3';
 import video from '../assets/videos/video.mp4';
-import pdf from '../assets/pdf/cv.pdf';
 
 import avatar1 from '../assets/images/dummy/avatar/avatar-1.png';
 import avatar2 from '../assets/images/dummy/avatar/avatar-2.png';
@@ -32,34 +31,6 @@ import universe from '../assets/images/dummy/badges/universe.svg';
 import { EventInput } from '@fullcalendar/core';
 
 const POSTS: Post[] = [
-  {
-    id: '11',
-    variant: 'pdf',
-    visibility: 'public',
-    assets: {
-      pdf: pdf,
-    },
-    user: {
-      avatar: avatar4,
-      name: 'Mohammed Taysser',
-      id: '101',
-      isVerified: false,
-    },
-    publishAt: new Date('2021'),
-    editAt: new Date('2021'),
-    isSaved: true,
-    body: `<p>Sharing your CV can be a great way to showcase your skills and experience to potential employers. Here are some tips to help you share your CV effectively:</p><ol><li><p>Tailor your CV: Choose the sections that are most relevant to your job application and highlight your strengths and achievements. Avoid including unnecessary information or details that could lead to a poor impression.</p></li><li><p>Use a clear and concise format: Use a clear and concise format that is easy to read and understand. Use bullet points to highlight key information and organize your CV in a logical manner.</p></li><li><p>Include your contact information: Make sure to include your contact information, such as your email address and phone number, so that potential employers can easily contact you if they have questions or concerns.</p></li><li><p>Proofread your CV: Proofread your CV carefully to ensure that there are no typos or grammatical errors. Ask a friend or colleague to review your CV as well to catch any errors or inconsistencies.</p></li><li><p>Keep it up-to-date: Make sure to update your CV regularly with your latest skills and experience. This will help you stand out from other applicants and increase your chances of getting hired.</p></li></ol><p style="text-align: start">Remember, sharing your CV is a personal choice and should be done responsibly. It is important to always act in the best interests of the person you are sharing your CV with.</p>`,
-    share: {
-      count: 1,
-    },
-    comments: {
-      count: 0,
-    },
-    reacts: {
-      count: 0,
-      labels: [],
-    },
-  },
   {
     id: '10',
     variant: 'youtube',

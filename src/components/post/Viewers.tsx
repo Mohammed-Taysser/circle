@@ -3,7 +3,6 @@ import Group from '../../common/Group';
 import Post from '../../common/Post';
 import User from '../../common/User';
 import Plyr from '../../common/plyr';
-import PDF from './body/viewers/Pdf';
 import Youtube from './body/viewers/Youtube';
 
 function Viewers(props: PostViewersProps) {
@@ -24,8 +23,6 @@ function Viewers(props: PostViewersProps) {
       );
     case 'youtube':
       return <Youtube src={post.assets?.embedded??''} />;
-    case 'pdf':
-      return <PDF src={post.assets?.pdf ?? ''} />;
     case 'gallery':
       return (
         <div className='post-thumbs'>
