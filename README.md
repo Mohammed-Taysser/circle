@@ -1,4 +1,4 @@
-# [circle][vercel-live]
+# [Circle][vercel-live]
 
 For developers, please refer to the [`docs`](DOCS.md) for more information.
 
@@ -10,7 +10,7 @@ Live demo links:
 [vercel-live]: https://circle-react.vercel.app/
 [netlify-live]: https://circle-react.netlify.app/
 
-## Features
+## Features 🎮
 
 - Modern and responsive layout
 - Fully responsive with Modern Design
@@ -22,6 +22,7 @@ Live demo links:
 - Lint using Eslint
 - Format dates with `dayjs`
 - Improve SEO for each page
+- Dark mode support 🌓
 
 ## Quick start 🚀
 
