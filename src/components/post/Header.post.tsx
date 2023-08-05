@@ -1,4 +1,4 @@
-import { Anchor, Flex, Indicator } from '@mantine/core';
+import { Anchor, Flex } from '@mantine/core';
 import { FiExternalLink } from 'react-icons/fi';
 import { VscVerified } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
@@ -18,20 +18,12 @@ function HeaderPost(props: PostHeaderProps) {
         <div className='media'>
           <div className='activity-avatar'>
             <Link to={`/profile/${post.user.id}`}>
-              <Indicator
-                size={12}
-                offset={7}
-                position='bottom-end'
-                color='' // TODO: replace with socket.io
-                withBorder
-                zIndex={10}
-              >
-                <Avatar
-                  sm
-                  alt={post.user.name + ' avatar'}
-                  src={post.user.avatar}
-                />
-              </Indicator>
+              <Avatar
+                sm
+                alt={post.user.name + ' avatar'}
+                // status='' // TODO: replace with socket.io
+                src={post.user.avatar}
+              />
             </Link>
             <div className='status-info ml-4'>
               <div className='activity-title'>

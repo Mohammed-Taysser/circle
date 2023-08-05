@@ -1,4 +1,4 @@
-import { Flex, Indicator, Text, Tooltip } from '@mantine/core';
+import { Flex, Text, Tooltip } from '@mantine/core';
 import { FiUser } from 'react-icons/fi';
 import { MdOutlineArrowBackIosNew } from 'react-icons/md';
 import { Link } from 'react-router-dom';
@@ -21,15 +21,12 @@ function ContactInfo(props: any) {
         </Link>
         <Link to={`/profile/${user.id}`} className='no-underline'>
           <Flex align='center' justify='space-between' gap={15}>
-            <Indicator
-              color={USER_STATUS[user.status as StatusSlug].color}
-              offset={7}
-              processing
-              withBorder
-              position='bottom-end'
-            >
-              <Avatar src={user.user.avatar} alt={user.user.name} sm />
-            </Indicator>
+            <Avatar
+              src={user.user.avatar}
+              status={USER_STATUS[user.status as StatusSlug].color}
+              alt={user.user.name}
+              sm
+            />
 
             <div>
               <Text

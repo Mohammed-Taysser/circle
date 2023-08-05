@@ -1,3 +1,4 @@
+import { Indicator } from '@mantine/core';
 import { avatar } from '../constants/default';
 
 /**
@@ -10,12 +11,22 @@ import { avatar } from '../constants/default';
  * - use `src` specifies the source of the avatar image
  * - use `alt` specifies the alt text for the avatar image
  * - use `sm` specifies whether or not to use a small layout for the avatar image
+ * - use `status` a string representing the color of the status indicator, or null if no status indicator should be displayed
  */
 function Avatar(props: AvatarProps) {
   return (
-    <div className={`avatar ${props.sm ? 'sm' : ''} ${props.className}`}>
-      <img src={props.src} alt={props.alt} />
-    </div>
+    <Indicator
+      color={props.status}
+      offset={7}
+      processing
+      withBorder
+      disabled={!props.status}
+      position='bottom-end'
+    >
+      <div className={`avatar ${props.sm ? 'sm' : ''} ${props.className}`}>
+        <img src={props.src} alt={props.alt} />
+      </div>
+    </Indicator>
   );
 }
 
@@ -24,6 +35,7 @@ Avatar.defaultProps = {
   alt: 'avatar',
   className: '',
   sm: false,
+  status: null,
 };
 
 export default Avatar;

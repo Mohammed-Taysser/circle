@@ -23,6 +23,7 @@ interface AvatarProps {
   alt: string;
   className?: string;
   sm?: boolean;
+  status?: DefaultMantineColor;
 }
 
 // Tiptap Editor Component

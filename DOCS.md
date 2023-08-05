@@ -43,12 +43,13 @@
 
 #### Props
 
-| Props       | Type      | Default                                          | Description                                                          |
-| ----------- | --------- | ------------------------------------------------ | -------------------------------------------------------------------- |
-| `src`       | `String`  | [`avatar`](src/assets/images/default/avatar.png) | specifies the source of the avatar image to the avatar wrapper       |
-| `alt`       | `String`  | `avatar`                                         | specifies the alt text for the avatar                                |
-| `sm`        | `Boolean` | `false`                                          | specifies whether or not to use a small image                        |
-| `className` | `String`  | `''`                                             | specifies any custom classes to be added layout for the avatar image |
+| Props       | Type                  | Default                                          | Description                                                                                                 |
+| ----------- | --------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `src`       | `String`              | [`avatar`](src/assets/images/default/avatar.png) | specifies the source of the avatar image to the avatar wrapper                                              |
+| `alt`       | `String`              | `avatar`                                         | specifies the alt text for the avatar                                                                       |
+| `sm`        | `Boolean`             | `false`                                          | specifies whether or not to use a small image                                                               |
+| `className` | `String`              | `''`                                             | specifies any custom classes to be added layout for the avatar image                                        |
+| `status`    | `DefaultMantineColor` | `null`                                           | a string representing the color of the status indicator, or null if no status indicator should be displayed |
 
 #### Usage
 
@@ -57,6 +58,7 @@ import Avatar from './common/Avatar';
 
 <Avatar sm />;
 <Avatar src={avatar.png} alt='user-avatar' />;
+<Avatar src={avatar.png} status={} />;
 ```
 
 ### Badge

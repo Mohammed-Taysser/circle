@@ -28,19 +28,12 @@ function ContactFriends() {
                   },
                 })}
               >
-                <Indicator
-                  color={USER_STATUS[request.status as StatusSlug].color}
-                  offset={7}
-                  processing
-                  withBorder
-                  position='bottom-end'
-                >
-                  <Avatar
-                    src={request.user.avatar}
-                    alt={request.user.name}
-                    sm
-                  />
-                </Indicator>
+                <Avatar
+                  src={request.user.avatar}
+                  alt={request.user.name}
+                  status={USER_STATUS[request.status as StatusSlug].color}
+                  sm
+                />
 
                 <Flex
                   align='center'

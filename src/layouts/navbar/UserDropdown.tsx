@@ -1,10 +1,9 @@
 import {
   ColorSwatch,
-  Indicator,
   Menu,
   Text,
   UnstyledButton,
-  useMantineColorScheme,
+  useMantineColorScheme
 } from '@mantine/core';
 import { useState } from 'react';
 import { BsMoonStars, BsSun } from 'react-icons/bs';
@@ -40,15 +39,12 @@ function UserDropdown(props: { className: string }) {
             })}
           >
             <div className='flex gap-3 items-center'>
-              <Indicator
-                color={status.color}
-                offset={7}
-                processing
-                withBorder
-                position='bottom-end'
-              >
-                <Avatar src={avatar} sm alt='Mohammed Taysser' />
-              </Indicator>
+              <Avatar
+                src={avatar}
+                status={status.color}
+                sm
+                alt='Mohammed Taysser'
+              />
 
               <div className='flex-1'>
                 <Text size='sm' weight={500} className='dark:text-white'>
