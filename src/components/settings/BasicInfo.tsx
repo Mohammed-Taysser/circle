@@ -3,9 +3,8 @@ import { isNotEmpty, useForm } from '@mantine/form';
 import { modals } from '@mantine/modals';
 import { useMemo } from 'react';
 import { MdDriveFileRenameOutline } from 'react-icons/md';
-import avatar from '../../assets/images/default/avatar.png';
-import cover from '../../assets/images/default/cover.jpg';
 import InfoBanner from '../../common/InfoBanner';
+import { avatar, cover } from '../../constants/default';
 
 // TODO: replace with redux
 const initialValues = {

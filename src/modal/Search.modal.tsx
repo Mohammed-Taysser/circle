@@ -12,8 +12,8 @@ import { ContextModalProps } from '@mantine/modals';
 import { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import { MdSearchOff } from 'react-icons/md';
-import avatar from '../assets/images/default/avatar.png';
 import Avatar from '../common/Avatar';
+import { avatar } from '../constants/default';
 import { uuidv4 } from '../helpers';
 
 function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {

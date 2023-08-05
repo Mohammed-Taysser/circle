@@ -11,12 +11,11 @@ import { RiQuillPenLine } from 'react-icons/ri';
 import { TbTimelineEventText } from 'react-icons/tb';
 import { VscFeedback } from 'react-icons/vsc';
 import { useParams } from 'react-router-dom';
-import avatar from '../../assets/images/default/avatar.png';
-import cover from '../../assets/images/default/cover.jpg';
 import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
 import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
+import { avatar, cover } from '../../constants/default';
 
 function Profile() {
   useHelmet('profile'); // TODO: improve SEO

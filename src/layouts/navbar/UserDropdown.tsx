@@ -11,8 +11,8 @@ import { BsMoonStars, BsSun } from 'react-icons/bs';
 import { MdOutlineLogout } from 'react-icons/md';
 import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
-import avatar from '../../../src/assets/images/default/avatar.png';
 import Avatar from '../../common/Avatar';
+import { avatar } from '../../constants/default';
 import { USER_DROPDOWN_LINKS, USER_STATUS } from '../../constants/layout';
 
 function UserDropdown(props: { className: string }) {

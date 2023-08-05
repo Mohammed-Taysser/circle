@@ -4,7 +4,7 @@ import { FiUser, FiUsers } from 'react-icons/fi';
 import { IoHelpSharp, IoSettingsOutline } from 'react-icons/io5';
 import { MdEventNote } from 'react-icons/md';
 import { VscFeedback } from 'react-icons/vsc';
-import avatar from '../assets/images/default/avatar.png';
+import { avatar } from './default';
 
 // Header
 const HEADER_LINKS = [
@@ -289,8 +289,8 @@ const NOTIFICATIONS: SingleNotification[] = [
 
 export {
   HEADER_LINKS,
-  USER_STATUS,
-  USER_DROPDOWN_LINKS,
-  NOTIFICATIONS,
   MESSAGES,
+  NOTIFICATIONS,
+  USER_DROPDOWN_LINKS,
+  USER_STATUS,
 };

@@ -2,7 +2,7 @@ import { Button, Flex, Slider } from '@mantine/core';
 import { ContextModalProps } from '@mantine/modals';
 import { useCallback, useState } from 'react';
 import Cropper from 'react-easy-crop';
-import avatar from '../assets/images/default/avatar.png';
+import { avatar } from '../constants/default';
 
 const DEFAULT_CONFIG = {
   aspect: 4 / 3,

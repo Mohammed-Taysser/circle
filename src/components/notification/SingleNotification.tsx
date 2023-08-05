@@ -1,4 +1,5 @@
-import { Flex, Text, ThemeIcon } from '@mantine/core';
+import { Flex, Text, ThemeIcon, useMantineTheme } from '@mantine/core';
+import { useMemo } from 'react';
 import { LiaShareSolid } from 'react-icons/lia';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { TbMessage2Bolt } from 'react-icons/tb';
@@ -9,6 +10,19 @@ import { timeToX } from '../../helpers';
 
 function SingleNotification(props: { request: SingleNotification }) {
   const { request } = props;
+  const theme = useMantineTheme();
+
+  const backgroundColor = useMemo(() => {
+    if (request.unread) {
+      if (theme.colorScheme === 'dark') {
+        return theme.colors.dark[8];
+      }
+
+      return theme.colors.gray[0];
+    }
+
+    return 'transparent';
+  }, [request]);
 
   return (
     <Link to={`/post/${request.post.id}`} className='no-underline'>
@@ -18,11 +32,7 @@ function SingleNotification(props: { request: SingleNotification }) {
         gap={15}
         className={`p-2 md:p-4 duration-200 rounded`}
         sx={(theme) => ({
-          backgroundColor: request.unread
-            ? theme.colorScheme === 'dark'
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0]
-            : 'transparent',
+          backgroundColor,
           '&:hover': {
             backgroundColor:
               theme.colorScheme === 'dark'
