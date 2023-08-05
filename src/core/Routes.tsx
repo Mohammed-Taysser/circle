@@ -19,6 +19,7 @@ function RequireAuth({ children }: { children: React.ReactElement }) {
 }
 
 function NoRequireAuth({ children }: { children: React.ReactElement }) {
+  // TODO: replace with redux
   if (localStorage.getItem('isLogin')) {
     return <Navigate to='/' replace />;
   }
@@ -106,15 +107,27 @@ const routes = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Homepage />,
+        element: (
+          <RequireAuth>
+            <Homepage />
+          </RequireAuth>
+        ),
       },
       {
         path: '/results',
-        element: <Results />,
+        element: (
+          <RequireAuth>
+            <Results />
+          </RequireAuth>
+        ),
       },
       {
         path: '/contact-us',
-        element: <ContactUs />,
+        element: (
+          <RequireAuth>
+            <ContactUs />
+          </RequireAuth>
+        ),
       },
       {
         path: '/groups',
@@ -175,31 +188,59 @@ const routes = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <TimelineGroup />,
+            element: (
+              <RequireAuth>
+                <TimelineGroup />
+              </RequireAuth>
+            ),
           },
           {
             path: 'about',
-            element: <AboutGroup />,
+            element: (
+              <RequireAuth>
+                <AboutGroup />
+              </RequireAuth>
+            ),
           },
           {
             path: 'badges',
-            element: <BadgesGroup />,
+            element: (
+              <RequireAuth>
+                <BadgesGroup />
+              </RequireAuth>
+            ),
           },
           {
             path: 'members',
-            element: <MembersGroup />,
+            element: (
+              <RequireAuth>
+                <MembersGroup />
+              </RequireAuth>
+            ),
           },
           {
             path: 'photos',
-            element: <PhotosGroup />,
+            element: (
+              <RequireAuth>
+                <PhotosGroup />
+              </RequireAuth>
+            ),
           },
           {
             path: 'videos',
-            element: <VideosGroup />,
+            element: (
+              <RequireAuth>
+                <VideosGroup />
+              </RequireAuth>
+            ),
           },
           {
             path: 'audio',
-            element: <AudiosGroup />,
+            element: (
+              <RequireAuth>
+                <AudiosGroup />
+              </RequireAuth>
+            ),
           },
         ],
       },
@@ -209,52 +250,96 @@ const routes = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <TimelineProfile />,
+            element: (
+              <RequireAuth>
+                <TimelineProfile />
+              </RequireAuth>
+            ),
           },
           {
             path: 'about',
-            element: <AboutProfile />,
+            element: (
+              <RequireAuth>
+                <AboutProfile />
+              </RequireAuth>
+            ),
           },
           {
             path: 'badges',
-            element: <BadgesProfile />,
+            element: (
+              <RequireAuth>
+                <BadgesProfile />
+              </RequireAuth>
+            ),
           },
           {
             path: 'friends',
-            element: <FriendsProfile />,
+            element: (
+              <RequireAuth>
+                <FriendsProfile />
+              </RequireAuth>
+            ),
           },
           {
             path: 'photos',
-            element: <PhotosProfile />,
+            element: (
+              <RequireAuth>
+                <PhotosProfile />
+              </RequireAuth>
+            ),
           },
           {
             path: 'videos',
-            element: <VideosProfile />,
+            element: (
+              <RequireAuth>
+                <VideosProfile />
+              </RequireAuth>
+            ),
           },
           {
             path: 'audio',
-            element: <AudiosProfile />,
+            element: (
+              <RequireAuth>
+                <AudiosProfile />
+              </RequireAuth>
+            ),
           },
         ],
       },
       {
         path: '/post/:postId',
-        element: <PostDetails />,
+        element: (
+          <RequireAuth>
+            <PostDetails />
+          </RequireAuth>
+        ),
       },
       {
         path: '/help',
         children: [
           {
             index: true,
-            element: <Help />,
+            element: (
+              <RequireAuth>
+                <Help />
+              </RequireAuth>
+            ),
           },
           {
             path: 'editor',
-            element: <EditorHelp />,
+            element: (
+              <RequireAuth>
+                <EditorHelp />
+              </RequireAuth>
+            ),
           },
           {
             path: 'calender',
-            element: <CalenderHelp />,
+            element: (
+              <RequireAuth>
+                <CalenderHelp />
+              </RequireAuth>
+            ),
           },
         ],
       },
