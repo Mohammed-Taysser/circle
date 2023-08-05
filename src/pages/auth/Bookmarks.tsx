@@ -13,7 +13,7 @@ import useHelmet from '../../hooks/useHelmet';
 
 function Bookmarks() {
   useHelmet('bookmarks');
-  const posts = Math.random() < 0.5 ? [] : POSTS.filter((post) => post.isSaved);
+  const posts = POSTS.filter((post) => post.isSaved);
 
   const [activePage, setPage] = useState(1);
 

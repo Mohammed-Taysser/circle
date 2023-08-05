@@ -177,7 +177,7 @@ interface SingleNotification {
     avatar: string;
     id: string;
   };
-  msg: string;
+  msg?: string;
 }
 
 type StatusSlug = 'online' | 'away' | 'invisible' | 'offline';
@@ -198,6 +198,7 @@ interface SearchModalInnerProps {
 
 interface ReactModalInnerProps {
   postId: string;
+  navigateTo: NavigateFunction;
 }
 
 interface CreatePostModalInnerProps {
@@ -206,6 +207,7 @@ interface CreatePostModalInnerProps {
 
 interface CommentsModalInnerProps {
   postId: string;
+  navigateTo: NavigateFunction;
 }
 
 interface EventModalInnerProps {
@@ -294,12 +296,7 @@ type PostVariant =
   | 'friend'
   | 'share';
 
-type CreatePostVariant =
-  | 'blog'
-  | 'gallery'
-  | 'video'
-  | 'audio'
-  | 'youtube';
+type CreatePostVariant = 'blog' | 'gallery' | 'video' | 'audio' | 'youtube';
 
 interface FileTapProps {
   onChange: (file: File) => void;
@@ -323,17 +320,6 @@ interface YoutubeMetaData {
   thumbnail_width: number;
   thumbnail_url: string;
   html: string;
-}
-
-interface PostComment {
-  id: string;
-  user: {
-    avatar: string;
-    name: string;
-    id: string;
-  };
-  body: string;
-  publishAt: Date;
 }
 
 interface PostAssets {

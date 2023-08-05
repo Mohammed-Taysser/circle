@@ -15,6 +15,7 @@ import { MdSearchOff } from 'react-icons/md';
 import Avatar from '../common/Avatar';
 import { avatar } from '../constants/default';
 import { uuidv4 } from '../helpers';
+import { NOTIFICATION } from '../constants/dummy';
 
 function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
   const { navigateTo } = props.innerProps;
@@ -64,40 +65,42 @@ function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
         </Center>
       ) : (
         <ScrollArea h={400} offsetScrollbars>
-          {Array(10)
-            .fill(0)
-            .map(() => (
-              <Anchor
-                onClick={(evt) => onLinkClick(evt, `/profile/${1}`)}
-                className='flex w-full gap-5 items-center transition p-2 my-1 hover:no-underline'
-                key={uuidv4()}
-                sx={(theme) => ({
-                  '&:hover': {
-                    backgroundColor:
-                      theme.colorScheme === 'dark'
-                        ? theme.colors.dark[8]
-                        : theme.colors.gray[0],
-                  },
-                })}
+          {NOTIFICATION.map((result) => (
+            <Anchor
+              onClick={(evt) => onLinkClick(evt, `/profile/${result.user.id}`)}
+              className='flex w-full gap-5 items-center transition p-2 my-1 hover:no-underline'
+              key={uuidv4()}
+              sx={(theme) => ({
+                '&:hover': {
+                  backgroundColor:
+                    theme.colorScheme === 'dark'
+                      ? theme.colors.dark[8]
+                      : theme.colors.gray[0],
+                },
+              })}
+            >
+              <Avatar
+                sm
+                alt={`${result.user.name} avatar`}
+                src={result.user.avatar}
+              />
+              <Flex
+                gap={15}
+                className='flex-grow md:items-center'
+                justify='space-between'
               >
-                <Avatar sm alt='avatar' src={avatar} />
-                <Flex
-                  gap={15}
-                  className='flex-grow md:items-center'
-                  justify='space-between'
-                >
-                  <div>
-                    <h4 className='m-0 text-sm md:text-base'>
-                      Mohammed Taysser
-                    </h4>
-                    <h5 className='text-gray-500 text-xs md:text-sm font-normal m-0'>
-                      @mohammed-taysser
-                    </h5>
-                  </div>
-                  <Badge color='teal'>friend</Badge>
-                </Flex>
-              </Anchor>
-            ))}
+                <div>
+                  <h4 className='m-0 text-sm md:text-base'>
+                    {result.user.name}
+                  </h4>
+                  <h5 className='text-gray-500 text-xs md:text-sm font-normal m-0'>
+                    {result.user.name} {/* shout be username */}
+                  </h5>
+                </div>
+                <Badge color='teal'>friend</Badge>
+              </Flex>
+            </Anchor>
+          ))}
         </ScrollArea>
       )}
       <div className='text-gray-600 mt-3'>

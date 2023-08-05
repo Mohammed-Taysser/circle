@@ -1,7 +1,7 @@
 import { Flex, Pagination } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import SingleNotification from '../../components/notification/SingleNotification';
-import { NOTIFICATIONS } from '../../constants/layout';
+import { NOTIFICATION } from '../../constants/dummy';
 import Async from '../../containers/Async';
 import useHelmet from '../../hooks/useHelmet';
 
@@ -31,15 +31,15 @@ function Notification() {
   return (
     <Async {...state}>
       <>
-        <div className='mb-10 shadow-nice p-4 bg-white rounded relative'>
+        <div className='shadow-nice p-4 bg-white rounded relative'>
           <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold my-0'>
             Activity
           </h2>
         </div>
 
-        <div className='mb-10 shadow-nice p-4 bg-white rounded relative'>
+        <div className='my-5 shadow-nice p-4 bg-white rounded relative'>
           <Flex direction='column' wrap='wrap' gap={10}>
-            {NOTIFICATIONS.map((request) => (
+            {NOTIFICATION.map((request) => (
               <SingleNotification request={request} key={request.id} />
             ))}
           </Flex>

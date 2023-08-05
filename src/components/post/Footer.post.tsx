@@ -5,8 +5,8 @@ import {
   Flex,
   Loader,
   Popover,
+  ScrollArea,
   SimpleGrid,
-  useMantineColorScheme,
   useMantineTheme,
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
@@ -18,11 +18,14 @@ import { VscReactions } from 'react-icons/vsc';
 import { REACT_ICONS } from '../../constants/post';
 import { uuidv4 } from '../../helpers';
 import { formateNumber } from '../../helpers/millify';
+import { useNavigate } from 'react-router-dom';
 
 function PostFooter(props: { post: Post }) {
   const { post } = props;
+  const navigateTo = useNavigate();
   const theme = useMantineTheme();
   const [isSharing, setIsSharing] = useState(false);
+  const [isReacting, setIsReacting] = useState(false);
   const likeIcon = REACT_ICONS[post.reacts.react ?? 'like'];
 
   const onCommentBtnClick = () => {
@@ -31,9 +34,11 @@ function PostFooter(props: { post: Post }) {
       title: '',
       innerProps: {
         postId: post.id,
+        navigateTo,
       },
       size: 'xl',
       centered: true,
+      scrollAreaComponent: ScrollArea.Autosize,
       classNames: {
         content: 'overflow-visible',
       },
@@ -43,34 +48,23 @@ function PostFooter(props: { post: Post }) {
   const onLikeBtnClick = () => {
     modals.openContextModal({
       modal: 'reacts',
-      title: 'Reacts',
+      title: '',
       innerProps: {
         postId: post.id,
+        navigateTo,
       },
+      scrollAreaComponent: ScrollArea.Autosize,
       size: 'xl',
       centered: true,
     });
   };
 
   const onShareBtnClick = () => {
-    const notificationId = uuidv4();
-
-    notifications.show({
-      id: notificationId,
-      title: 'Sharing post...',
-      message: 'Hey there, your post is being share!',
-      loading: true,
-      withCloseButton: false,
-      color: '',
-      autoClose: false,
-    });
-
     setIsSharing(true);
     setTimeout(() => {
       setIsSharing(false);
 
-      notifications.update({
-        id: notificationId,
+      notifications.show({
         title: 'Successfully shared',
         message: 'Hey there, your post is successfully shared!',
         loading: false,
@@ -80,35 +74,31 @@ function PostFooter(props: { post: Post }) {
     }, 3000);
   };
 
-  const onReactBtnClick = (reactType: string) => {
-    const notificationId = uuidv4();
+  const onReactBtnClick = () => {
+    if (!isReacting) {
+      setIsReacting(true);
 
-    notifications.show({
-      id: notificationId,
-      title: `react ${reactType} post...`,
-      message: `Hey there, your react ${reactType} is being save!`,
-      loading: true,
-      withCloseButton: false,
-      color: '',
-      autoClose: false,
-    });
+      setTimeout(() => {
+        setIsReacting(false);
 
-    setTimeout(() => {
-      notifications.update({
-        id: notificationId,
-        title: `Successfully saved`,
-        message: `Hey there, your react is successfully saved!`,
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
-      });
-    }, 2000);
+        notifications.show({
+          title: `Successfully saved`,
+          message: `Hey there, your react is successfully saved!`,
+          loading: false,
+          withCloseButton: true,
+          autoClose: true,
+        });
+      }, 2000);
+    }
   };
 
   return (
     <div className='post-footer pb-4'>
       <Flex justify='space-between' align='center'>
-        <Avatar.Group className='cursor-pointer' onClick={onLikeBtnClick}>
+        <Avatar.Group
+          className='cursor-pointer items-center'
+          onClick={onLikeBtnClick}
+        >
           {post.reacts.labels.map((label) => {
             const react = REACT_ICONS[label];
             return (
@@ -117,13 +107,13 @@ function PostFooter(props: { post: Post }) {
               </Avatar>
             );
           })}
-          <Avatar radius='xl'>
+          <small className='text-gray-500'>
             {post.reacts.count ? (
               formateNumber(post.reacts.count)
             ) : (
               <VscReactions className='text-2xl' />
             )}
-          </Avatar>
+          </small>
         </Avatar.Group>
 
         <Flex gap={20} align='center' className='text-gray-500'>
@@ -154,7 +144,11 @@ function PostFooter(props: { post: Post }) {
               size='md'
               title='Post react'
             >
-              <likeIcon.icon className='text-2xl' />
+              {isReacting ? (
+                <Loader color='' variant='dots' />
+              ) : (
+                <likeIcon.icon className='text-2xl' />
+              )}
             </Button>
           </Popover.Target>
 
@@ -169,7 +163,7 @@ function PostFooter(props: { post: Post }) {
                     color={react.color}
                     key={key}
                     className='cursor-pointer'
-                    onClick={() => onReactBtnClick(key)}
+                    onClick={onReactBtnClick}
                   >
                     <react.icon />
                   </Avatar>

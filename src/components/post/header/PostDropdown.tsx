@@ -26,23 +26,8 @@ function PostDropdown(props: PostDropdownProps) {
   };
 
   const onSaveBtnClick = () => {
-    const notificationId = uuidv4();
-
-    notifications.show({
-      id: notificationId,
-      title: `${props.isSaved ? 'Un saving' : 'saving'} post...`,
-      message: `Hey there, your post is being ${
-        props.isSaved ? 'Un save' : 'save'
-      }!`,
-      loading: true,
-      withCloseButton: false,
-      color: '',
-      autoClose: false,
-    });
-
     setTimeout(() => {
-      notifications.update({
-        id: notificationId,
+      notifications.show({
         title: `Successfully ${props.isSaved ? 'Un saved' : 'saved'}`,
         message: `Hey there, your post is successfully ${
           props.isSaved ? 'Un save' : 'save'
@@ -57,7 +42,7 @@ function PostDropdown(props: PostDropdownProps) {
   return (
     <Menu shadow='md' width={180} position='bottom-end'>
       <Menu.Target>
-        <UnstyledButton title='Toggle post options' >
+        <UnstyledButton title='Toggle post options'>
           <ThemeIcon variant='light' size='lg' color='gray'>
             <CgOptions />
           </ThemeIcon>
@@ -93,7 +78,7 @@ function PostDropdown(props: PostDropdownProps) {
           onClick={onSaveBtnClick}
         >
           {isLoggedIn ? (
-            <div>{!props.isSaved ? 'Save' : 'Un save'} post</div>
+            <div>{!props.isSaved ? 'Save' : 'Un save'}</div>
           ) : (
             <Tooltip label='You need to login!'>
               <div>Save post</div>

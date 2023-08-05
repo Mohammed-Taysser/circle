@@ -11,7 +11,6 @@ import { MdOutlineLogout } from 'react-icons/md';
 import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
-import { avatar } from '../../constants/default';
 import { USER_DROPDOWN_LINKS, USER_STATUS } from '../../constants/layout';
 
 function UserDropdown(props: { className: string }) {
@@ -40,19 +39,19 @@ function UserDropdown(props: { className: string }) {
           >
             <div className='flex gap-3 items-center'>
               <Avatar
-                src={avatar}
+                src='https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/uploads/avatars/1/60af1abf04a6b-bpthumb.jpg'
                 status={status.color}
                 sm
-                alt='Mohammed Taysser'
+                alt='Aurora Light'
               />
 
               <div className='flex-1'>
                 <Text size='sm' weight={500} className='dark:text-white'>
-                  Mohammed Taysser
+                  Aurora Light
                 </Text>
 
                 <Text color='dimmed' size='xs'>
-                  @mohammed-taysser
+                  @aurora-light
                 </Text>
               </div>
 

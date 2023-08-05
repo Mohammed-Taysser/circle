@@ -8,7 +8,7 @@ import ContactInfo from '../../components/massager/ContactInfo';
 import Massages from '../../components/massager/Massages';
 import NoContactSelected from '../../components/massager/NoContactSelected';
 import NoMessages from '../../components/massager/NoMessages';
-import { MESSAGES } from '../../constants/layout';
+import { MESSAGES } from '../../constants/dummy';
 import Async from '../../containers/Async';
 import useHelmet from '../../hooks/useHelmet';
 

@@ -14,88 +14,9 @@ import { notifications } from '@mantine/notifications';
 import { FiUserCheck, FiUserMinus, FiUserPlus, FiUsers } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
-import { avatar } from '../../constants/default';
+import { NOTIFICATION } from '../../constants/dummy';
 import { uuidv4 } from '../../helpers';
 import { formateNumber } from '../../helpers/millify';
-
-const NOTIFICATION = [
-  {
-    type: 'request',
-    id: 1,
-    user: {
-      name: 'Mohammed Taysser',
-      avatar: avatar,
-      id: 1,
-    },
-    msg: '4 Friends in Common',
-  },
-  {
-    type: 'request',
-    id: 2,
-    user: {
-      name: 'Tony Stevens',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar56-sm.webp',
-      id: 1,
-    },
-    msg: '4 Friends in Common',
-  },
-  {
-    type: 'accepted',
-    id: 3,
-    user: {
-      name: 'Tamara Romanoff',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar55-sm.webp',
-      id: 1,
-    },
-  },
-  {
-    type: 'request',
-    id: 4,
-    user: {
-      name: 'Mary Jane Stark',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar57-sm.webp',
-      id: 1,
-    },
-    msg: '4 Friends in Common',
-  },
-  {
-    type: 'accepted',
-    id: 5,
-    user: {
-      name: 'Stagg Clothing',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar58-sm.webp',
-      id: 1,
-    },
-  },
-  {
-    type: 'accepted',
-    id: 6,
-    user: {
-      name: 'Jake Parker',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar60-sm.webp',
-      id: 1,
-    },
-  },
-  {
-    type: 'request',
-    id: 7,
-    user: {
-      name: 'Elaine Dreyfuss',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar61-sm.webp',
-      id: 1,
-    },
-    msg: '4 Friends in Common',
-  },
-  {
-    type: 'accepted',
-    id: 8,
-    user: {
-      name: 'Aalaa Kamal',
-      avatar: 'https://html.crumina.net/html-olympus/img/avatar59-sm.webp',
-      id: 1,
-    },
-  },
-];
 
 function FriendsDropdown() {
   const theme = useMantineTheme();

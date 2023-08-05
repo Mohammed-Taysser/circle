@@ -13,9 +13,9 @@ import { VscFeedback } from 'react-icons/vsc';
 import { useParams } from 'react-router-dom';
 import InfoBanner from '../../common/InfoBanner';
 import Taps from '../../common/Taps';
+import { cover } from '../../constants/default';
 import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
-import { avatar, cover } from '../../constants/default';
 
 function Profile() {
   useHelmet('profile'); // TODO: improve SEO
@@ -81,7 +81,7 @@ function Profile() {
       children: (
         <Text size='sm'>
           This action is so important that you are required to confirm it. Are
-          you sure to unfriend <strong>Mohammed Taysser</strong>
+          you sure to unfriend <strong>Aurora Light</strong>
         </Text>
       ),
       labels: { confirm: 'Yes, Leave', cancel: 'Cancel' },
@@ -146,10 +146,12 @@ function Profile() {
   return (
     <div className='profile-page'>
       <InfoBanner
-        avatar={avatar}
+        avatar={
+          'https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/uploads/avatars/1/60af1abf04a6b-bpthumb.jpg'
+        }
         cover={cover}
-        username='mohammed-taysser'
-        name='Mohammed Taysser'
+        username='aurora-light'
+        name='Aurora Light'
         verified
         extraInfo={
           <Flex

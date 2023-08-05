@@ -5,12 +5,12 @@ import { MdSearchOff } from 'react-icons/md';
 import Avatar from '../../common/Avatar';
 import Skeleton from '../../common/Skeleton';
 import WriteComment from '../../components/comments/WriteComment';
-import { COMMENTS } from '../../constants/dummy';
+import { POST_COMMENTS } from '../../constants/dummy';
 import Async from '../../containers/Async';
 import { timeToX } from '../../helpers';
 
 function CommentsModal(props: ContextModalProps<CommentsModalInnerProps>) {
-  const comments = Math.random() < 0.5 ? COMMENTS : [];
+  const comments = POST_COMMENTS;
 
   const [state, setState] = useState({
     loading: true,

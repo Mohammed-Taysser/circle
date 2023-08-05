@@ -13,7 +13,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 import SingleNotification from '../../components/notification/SingleNotification';
-import { NOTIFICATIONS } from '../../constants/layout';
+import { NOTIFICATION } from '../../constants/dummy';
 import { formateNumber } from '../../helpers/millify';
 
 function NotificationDropdown() {
@@ -54,7 +54,7 @@ function NotificationDropdown() {
 
         <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
           <Flex direction='column' wrap='wrap' gap={10}>
-            {NOTIFICATIONS.map((request) => (
+            {NOTIFICATION.map((request) => (
               <SingleNotification request={request} key={request.id} />
             ))}
           </Flex>

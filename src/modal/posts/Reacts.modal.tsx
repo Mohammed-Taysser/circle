@@ -9,7 +9,7 @@ import Async from '../../containers/Async';
 import { uuidv4 } from '../../helpers';
 
 function ReactsModal(props: ContextModalProps<ReactModalInnerProps>) {
-  const reacts = Math.random() < 0.5 ? POST_REACTS : [];
+  const reacts = POST_REACTS;
 
   const [state, setState] = useState({
     loading: true,
@@ -34,7 +34,7 @@ function ReactsModal(props: ContextModalProps<ReactModalInnerProps>) {
   return (
     <Async {...state}>
       {Object.entries(reacts).length > 0 ? (
-        <Tabs color='teal' defaultValue='all'>
+        <Tabs defaultValue='all'>
           <Tabs.List>
             <Tabs.Tab value='all'>All</Tabs.Tab>
             {Object.keys(reacts).map((key) => (

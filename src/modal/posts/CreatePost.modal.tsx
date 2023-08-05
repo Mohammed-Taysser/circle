@@ -123,13 +123,16 @@ function CreatePostModal(props: ContextModalProps<CreatePostModalInnerProps>) {
           {/* TODO: replace with redux [link, src, alt] */}
           <Flex gap={15} align='center'>
             <Anchor onClick={() => onAnchorClick(`/profile/${10}`)}>
-              <Avatar sm />
+              <Avatar
+                sm
+                src='https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/uploads/avatars/1/60af1abf04a6b-bpthumb.jpg'
+              />
             </Anchor>
 
             <div>
               <div>
                 <Anchor
-                  className='text-black hover:no-underline'
+                  className='text-black dark:text-white hover:no-underline'
                   onClick={() => onAnchorClick(`/profile/${10}`)}
                 >
                   Mohammed Taysser

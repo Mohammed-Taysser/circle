@@ -44,7 +44,11 @@ function CreatePost() {
       <Flex align='center' gap={20}>
         <Link to={`/profile/1`}>
           {/* TODO: replace with redux [link, src, alt] */}
-          <Avatar sm />
+          <Avatar
+            sm
+            src='https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/uploads/avatars/1/60af1abf04a6b-bpthumb.jpg'
+            alt='user-name'
+          />
         </Link>
 
         <Input
@@ -64,7 +68,7 @@ function CreatePost() {
           })}
         >
           <div className='text-gray-400 flex justify-between items-center relative top-[-1px]'>
-            <>What's in your mind, mohammed ?</>
+            <>What's in your mind, Aurora ?</>
           </div>
         </Input>
       </Flex>
