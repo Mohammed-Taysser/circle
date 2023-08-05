@@ -6,7 +6,7 @@
 @tailwind components;
 @tailwind utilities;
 
-$aurora-color: #20c997;
+$aurora-color: theme('colors.aurora');
 
 // components
 @import './components/avatar';
@@ -14,7 +14,7 @@ $aurora-color: #20c997;
 @import './components/group';
 @import './components/user';
 @import './components/infoBanner';
-@import './components/createPost';
 
 // styles
 @import './helpers/base';
+@import './helpers/darkmode';
