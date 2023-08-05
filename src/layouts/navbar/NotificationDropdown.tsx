@@ -7,6 +7,7 @@ import {
   Text,
   ThemeIcon,
   UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
@@ -16,8 +17,9 @@ import { NOTIFICATIONS } from '../../constants/layout';
 import { formateNumber } from '../../helpers/millify';
 
 function NotificationDropdown() {
-  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
-  const isSmallerScreen = useMediaQuery('(max-width: 36.125em)');
+  const theme = useMantineTheme();
+  const isSmallerThanMd = useMediaQuery(`(min-width: ${theme.breakpoints.md})`);
+  const isSmallerScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
     <Popover

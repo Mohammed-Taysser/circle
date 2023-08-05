@@ -1,6 +1,17 @@
-import { MantineProvider } from '@mantine/core';
+import { MantineProvider, useMantineTheme } from '@mantine/core';
+import { useEffect } from 'react';
 
 function Mantine(props: MantineProviderProps) {
+  const theme = useMantineTheme();
+
+  useEffect(() => {
+    if (props.colorScheme === 'dark') {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [props.colorScheme]);
+
   return (
     <MantineProvider
       withGlobalStyles
@@ -15,6 +26,10 @@ function Mantine(props: MantineProviderProps) {
               radius: 'md',
             },
           },
+        },
+        breakpoints: {
+          ...theme.breakpoints,
+          xxl: '100em',
         },
       }}
     >

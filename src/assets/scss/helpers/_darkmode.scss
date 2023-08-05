@@ -1,0 +1,90 @@
+body.dark {
+  --plyr-audio-control-color: #fff;
+  --plyr-audio-controls-background: #1a1c1f;
+  --fc-page-bg-color: #121315;
+  --fc-border-color: #121315;
+  --fc-list-event-hover-bg-color: #121315;
+
+  .bg-white {
+    background-color: #1a1c1f;
+  }
+
+  .shadow-nice {
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-card {
+    box-shadow: 0 3px 15px rgba(1, 3, 12, 0.233);
+    background-color: #1a1c1f;
+
+    .post-header {
+      .media {
+        .activity-avatar {
+          .status-info {
+            .activity-title {
+              a {
+                color: #fff;
+
+                &:hover {
+                  color: $aurora-color;
+                }
+              }
+
+              span {
+                color: #fff;
+              }
+            }
+
+            .activity-time {
+              color: gray;
+            }
+          }
+        }
+      }
+    }
+
+    .post-body {
+      .activity-inner {
+        .widget-box-status-text {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .events-page {
+    .fc .fc-button-primary {
+      border-color: #121315;
+      background-color: #1a1c1f;
+      color: #fff;
+
+      &:hover {
+        background-color: #333;
+      }
+    }
+  }
+
+  .group {
+    background-color: #1a1c1f;
+
+    .statistics {
+      li {
+        &:after {
+          background-color: #eeeeee13;
+        }
+
+        .statistics-number {
+          color: rgb(156 163 175);
+        }
+
+        .statistics-text {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .user {
+    background-color: #1a1c1f;
+  }
+}

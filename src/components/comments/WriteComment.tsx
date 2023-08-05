@@ -53,7 +53,7 @@ function WriteComment() {
   return (
     <>
       <form
-        className='h-10 bg-gray-100 px-4 flex justify-center content-between'
+        className='h-10 bg-gray-100 dark:bg-transparent dark:border dark:border-gray-700 dark:rounded dark:border-solid px-4 flex justify-center content-between'
         onSubmit={form.onSubmit(onFormSubmit)}
       >
         <Input

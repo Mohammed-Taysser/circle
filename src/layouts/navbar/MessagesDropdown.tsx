@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Button,
   Flex,
   Indicator,
@@ -8,17 +7,20 @@ import {
   Text,
   ThemeIcon,
   UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
+import Avatar from '../../common/Avatar';
 import { MESSAGES } from '../../constants/layout';
 import { timeToX } from '../../helpers';
 import { formateNumber } from '../../helpers/millify';
 
 function MessagesDropdown() {
-  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
-  const isSmallerScreen = useMediaQuery('(max-width: 36.125em)');
+  const theme = useMantineTheme();
+  const isSmallerThanMd = useMediaQuery(`(min-width: ${theme.breakpoints.md})`);
+  const isSmallerScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
     <Popover
@@ -52,7 +54,7 @@ function MessagesDropdown() {
         </Text>
 
         <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
-          <Flex direction='column' wrap='wrap' gap={20}>
+          <Flex direction='column' wrap='wrap' gap={5}>
             {MESSAGES.map((request) => (
               <Link
                 to={`/message/${request.user.id}`}
@@ -62,12 +64,20 @@ function MessagesDropdown() {
                 <Flex
                   align='center'
                   justify='space-between'
-                  gap={10}
-                  className='hover:bg-gray-50 p-4 duration-200 rounded'
+                  gap={15}
+                  className='p-3 duration-200 rounded'
+                  sx={(theme) => ({
+                    '&:hover': {
+                      backgroundColor:
+                        theme.colorScheme === 'dark'
+                          ? theme.colors.dark[8]
+                          : theme.colors.gray[0],
+                    },
+                  })}
                 >
                   <Avatar
                     src={request.user.avatar}
-                    radius='xl'
+                    sm
                     alt={request.user.name}
                   />
 
@@ -80,18 +90,21 @@ function MessagesDropdown() {
                     <div
                       className={`flex-1 ${request.unread ? '' : 'opacity-50'}`}
                     >
-                      <Text size='sm' weight={500} color='dark'>
+                      <Text
+                        size='sm'
+                        weight={500}
+                        className='text-black dark:text-white'
+                      >
                         {request.user.name}
                       </Text>
 
                       <Text
                         color='dimmed'
                         size='xs'
+                        lineClamp={1}
                         weight={request.unread ? 800 : 500}
                       >
-                        {request.msg.length > 80
-                          ? request.msg.slice(0, 80) + ' ...'
-                          : request.msg}
+                        {request.msg}
                       </Text>
 
                       <Text

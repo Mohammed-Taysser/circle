@@ -27,10 +27,10 @@ function Group(props: GroupProps) {
           <Avatar src={group.picture} alt={`Group logo of ${group.title}`} />
         </Link>
 
-        <div className='group-info'>
+        <div className='group-info mt-3'>
           <Link
             to={`/group/${group.id}`}
-            className='text-black text-xl no-underline transition hover:text-aurora'
+            className='text-black dark:text-white text-lg no-underline transition hover:text-aurora'
           >
             {group.title}
           </Link>

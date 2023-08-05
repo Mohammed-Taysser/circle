@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
 import { USER_STATUS } from '../../constants/layout';
 
-function ContactInfo(props:any) { // TODO: fix after add dummy data
+function ContactInfo(props: any) {
+  // TODO: fix after add dummy data
   const { user } = props;
 
   return (
@@ -31,7 +32,11 @@ function ContactInfo(props:any) { // TODO: fix after add dummy data
             </Indicator>
 
             <div>
-              <Text size='sm' weight={500} color='dark'>
+              <Text
+                size='sm'
+                weight={500}
+                className='text-black dark:text-white'
+              >
                 {user.user.name}
               </Text>
 

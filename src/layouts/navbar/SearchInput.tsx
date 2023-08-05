@@ -1,11 +1,12 @@
-import { Flex, Input, Kbd, ThemeIcon } from '@mantine/core';
+import { Flex, Input, Kbd, ThemeIcon, useMantineTheme } from '@mantine/core';
 import { useHotkeys, useMediaQuery } from '@mantine/hooks';
 import { BiSearchAlt } from 'react-icons/bi';
 import useSearchInput from '../../hooks/useSearchInput';
 
 function SearchInput() {
   const { onSearchInputClick } = useSearchInput();
-  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
+  const theme = useMantineTheme();
+  const isSmallerThanMd = useMediaQuery(`(min-width: ${theme.breakpoints.md})`);
 
   useHotkeys([
     ['/', onSearchInputClick],
@@ -25,7 +26,10 @@ function SearchInput() {
           input: {
             cursor: 'pointer',
             '&:focus-within': {
-              borderColor: theme.colors.gray[4],
+              borderColor:
+                theme.colorScheme === 'dark'
+                  ? theme.colors.dark[4]
+                  : theme.colors.gray[4],
             },
           },
         })}

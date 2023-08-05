@@ -1,4 +1,4 @@
-import { Button, Tabs } from '@mantine/core';
+import { Button, Tabs, useMantineTheme } from '@mantine/core';
 import { useClickOutside, useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useMemo, useState } from 'react';
@@ -41,8 +41,9 @@ const TOC = [
 
 function Setting() {
   useHelmet('setting');
+  const theme = useMantineTheme();
+  const isSmallerThanMd = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
   const [buttonRef, setButtonRef] = useState<HTMLButtonElement | null>(null);
-  const isSmallerThanMd = useMediaQuery('(max-width: 56.25em)');
   const [isLoading, setIsLoading] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
   const tapsRef = useClickOutside(() => setIsOpened(false), null, [buttonRef]);

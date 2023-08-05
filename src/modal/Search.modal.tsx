@@ -69,8 +69,16 @@ function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
             .map(() => (
               <Anchor
                 onClick={(evt) => onLinkClick(evt, `/profile/${1}`)}
-                className='flex w-full gap-5 items-center hover:bg-gray-100 transition p-2 my-1 hover:no-underline'
+                className='flex w-full gap-5 items-center transition p-2 my-1 hover:no-underline'
                 key={uuidv4()}
+                sx={(theme) => ({
+                  '&:hover': {
+                    backgroundColor:
+                      theme.colorScheme === 'dark'
+                        ? theme.colors.dark[8]
+                        : theme.colors.gray[0],
+                  },
+                })}
               >
                 <Avatar sm alt='avatar' src={avatar} />
                 <Flex

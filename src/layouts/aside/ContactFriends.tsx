@@ -18,7 +18,15 @@ function ContactFriends() {
                 align='center'
                 justify='space-between'
                 gap={10}
-                className='hover:bg-gray-50 p-3 duration-200 rounded'
+                className='p-3 duration-200 rounded'
+                sx={(theme) => ({
+                  '&:hover': {
+                    backgroundColor:
+                      theme.colorScheme === 'dark'
+                        ? theme.colors.dark[8]
+                        : theme.colors.gray[0],
+                  },
+                })}
               >
                 <Indicator
                   color={USER_STATUS[request.status as StatusSlug].color}
@@ -43,18 +51,21 @@ function ContactFriends() {
                   <div
                     className={`flex-1 ${request.unread ? '' : 'opacity-50'}`}
                   >
-                    <Text size='sm' weight={500} color='dark'>
+                    <Text
+                      size='sm'
+                      weight={500}
+                      className='text-black dark:text-white'
+                    >
                       {request.user.name}
                     </Text>
 
                     <Text
                       color='dimmed'
                       size='xs'
+                      lineClamp={1}
                       weight={request.unread ? 800 : 500}
                     >
-                      {request.msg.length > 30
-                        ? request.msg.slice(0, 30) + ' ...'
-                        : request.msg}
+                      {request.msg}
                     </Text>
                   </div>
                 </Flex>

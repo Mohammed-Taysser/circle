@@ -40,7 +40,7 @@ function CreatePost() {
   };
 
   return (
-    <div className='mb-5 shadow-nice p-3 md:p-7 bg-white rounded post-editor relative'>
+    <div className='mb-5 bg-white shadow-nice p-3 md:p-7 rounded post-editor relative'>
       <Flex align='center' gap={20}>
         <Link to={`/profile/1`}>
           {/* TODO: replace with redux [link, src, alt] */}
@@ -48,14 +48,17 @@ function CreatePost() {
         </Link>
 
         <Input
-          className='text-gray-400 flex-1'
+          className='flex-1'
           onClick={openCreatePostModal}
           component='button'
           styles={(theme) => ({
             input: {
               cursor: 'pointer',
               '&:focus-within': {
-                borderColor: theme.colors.gray[4],
+                borderColor:
+                  theme.colorScheme === 'dark'
+                    ? theme.colors.dark[4]
+                    : theme.colors.gray[4],
               },
             },
           })}

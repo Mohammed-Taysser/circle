@@ -1,9 +1,11 @@
-import { Accordion, Center, Timeline } from '@mantine/core';
+import { Accordion, Center, Timeline, useMantineTheme } from '@mantine/core';
 import dayjs from 'dayjs';
 import { BsCalendar2Minus } from 'react-icons/bs';
 import { EVENTS } from '../../constants/dummy';
 
 function EventsTimeline() {
+  const theme = useMantineTheme();
+
   if (EVENTS.length === 0) {
     return (
       <Center className='text-gray-400 text-center h-40'>
@@ -24,12 +26,30 @@ function EventsTimeline() {
         >
           <Accordion>
             <Accordion.Item value='customization' className='border-0'>
-              <Accordion.Control className='pl-0 py-0'>
-                <span className='text-base font-extrabold m-0 text-gray-700'>
+              <Accordion.Control
+                className='-ml-3 pl-3 py-0'
+                sx={(theme) => ({
+                  '&:hover': {
+                    backgroundColor:
+                      theme.colorScheme === 'dark'
+                        ? theme.colors.dark[8]
+                        : theme.colors.gray[0],
+                  },
+                })}
+              >
+                <span
+                  className={`text-sm font-extrabold m-0 ${
+                    theme.colorScheme === 'dark' ? '' : 'text-gray-700'
+                  }`}
+                >
                   {event.title}
                 </span>
               </Accordion.Control>
-              <Accordion.Panel className='px-0 text-gray-500'>
+              <Accordion.Panel
+                className={`px-0 -ml-3 ${
+                  theme.colorScheme === 'dark' ? '' : 'text-gray-500'
+                }`}
+              >
                 {event.info}
               </Accordion.Panel>
             </Accordion.Item>

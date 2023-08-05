@@ -31,7 +31,7 @@ function EventModal(props: ContextModalProps<EventModalInnerProps>) {
   return (
     <div>
       <Flex align='center' gap={10}>
-        <Text size='lg' weight={500} color='dark'>
+        <Text size='lg' weight={500} className='dark:text-white text-black'>
           {event.title}
         </Text>
         <Text size='sm' weight={500} color='dimmed'>
@@ -45,7 +45,7 @@ function EventModal(props: ContextModalProps<EventModalInnerProps>) {
         </Text>
       ) : (
         <Center h={200}>
-          <div className='text-center text-gray-400'>
+          <div className='text-center text-gray-400 dark:text-white'>
             <BsInfoCircle className='text-4xl' />
             <p className='m-0'>Not info for this event</p>
           </div>

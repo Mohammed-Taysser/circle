@@ -36,21 +36,28 @@ function HeaderPost(props: PostHeaderProps) {
             <div className='status-info ml-4'>
               <div className='activity-title'>
                 <Link to={`/profile/${post.user.id}`}>{post.user.name}</Link>
+
                 {post.user.isVerified && (
                   <VscVerified className='text-lg text-aurora' />
                 )}
+
                 <span className='block md:inline-block text-sm'>
                   {post.activity}
                 </span>
               </div>
+
               <Flex gap={10} align='center'>
                 <span className='activity-time'>{timeToX(post.publishAt)}</span>
                 {post.editAt && <span className='activity-time'>Edited</span>}
-                <div>
-                  <VisibilityIcon color='gray' />
-                </div>
+
+                <VisibilityIcon color='gray' />
+
                 {!props.full && (
-                  <Anchor component={Link} to={`/post/${post.id}`} title='Show full post details' >
+                  <Anchor
+                    component={Link}
+                    to={`/post/${post.id}`}
+                    title='Show full post details'
+                  >
                     <FiExternalLink />
                   </Anchor>
                 )}

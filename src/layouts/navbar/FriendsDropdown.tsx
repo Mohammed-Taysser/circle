@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Button,
   Flex,
   Indicator,
@@ -8,12 +7,14 @@ import {
   Text,
   ThemeIcon,
   UnstyledButton,
+  useMantineTheme,
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { FiUserCheck, FiUserMinus, FiUserPlus, FiUsers } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import avatar from '../../assets/images/default/avatar.png';
+import Avatar from '../../common/Avatar';
+import { avatar } from '../../constants/default';
 import { uuidv4 } from '../../helpers';
 import { formateNumber } from '../../helpers/millify';
 
@@ -23,7 +24,7 @@ const NOTIFICATION = [
     id: 1,
     user: {
       name: 'Mohammed Taysser',
-      avatar,
+      avatar: avatar,
       id: 1,
     },
     msg: '4 Friends in Common',
@@ -97,8 +98,9 @@ const NOTIFICATION = [
 ];
 
 function FriendsDropdown() {
-  const isSmallerThanMd = useMediaQuery('(min-width: 56.25em)');
-  const isSmallerScreen = useMediaQuery('(max-width: 36.125em)');
+  const theme = useMantineTheme();
+  const isSmallerThanMd = useMediaQuery(`(min-width: ${theme.breakpoints.md})`);
+  const isSmallerScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   const onRequestBtnClick = (requestName: string) => {
     const notificationId = uuidv4();
@@ -157,19 +159,27 @@ function FriendsDropdown() {
         </Text>
 
         <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
-          <Flex direction='column' wrap='wrap' gap={20}>
+          <Flex direction='column' wrap='wrap' gap={5}>
             {NOTIFICATION.map((request) => (
               <Flex
                 align='center'
                 justify='space-between'
                 gap={10}
                 key={request.id}
-                className='hover:bg-gray-50 p-4 duration-200 rounded'
+                className='p-3 duration-200 rounded'
+                sx={(theme) => ({
+                  '&:hover': {
+                    backgroundColor:
+                      theme.colorScheme === 'dark'
+                        ? theme.colors.dark[8]
+                        : theme.colors.gray[0],
+                  },
+                })}
               >
                 <Link to={`/profile/${request.user.id}`}>
                   <Avatar
                     src={request.user.avatar}
-                    radius='xl'
+                    sm
                     alt={request.user.name}
                   />
                 </Link>
@@ -182,13 +192,13 @@ function FriendsDropdown() {
                 >
                   <Link
                     to={`/profile/${request.user.id}`}
-                    className='flex-1 no-underline text-black'
+                    className='flex-1 no-underline text-black dark:text-white'
                   >
                     <Text size='sm' weight={500}>
                       {request.user.name}
                     </Text>
 
-                    <Text color='dimmed' size='xs'>
+                    <Text color='dimmed' size='xs' lineClamp={1}>
                       {request.type === 'request'
                         ? request?.msg
                         : `You and ${request.user.name} just became friends. Write on it's wall.`}

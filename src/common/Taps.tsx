@@ -20,7 +20,7 @@ function Taps(props: TapsProps) {
     `text-lg no-underline transition p-2 inline-block border-0 border-b-2 border-solid ${
       props.isActive
         ? 'border-b-aurora text-aurora'
-        : 'text-black border-b-transparent hover:text-aurora hover:border-b-aurora'
+        : 'text-black dark:text-white border-b-transparent hover:text-aurora hover:border-b-aurora dark:hover:text-aurora'
     }`;
 
   return (

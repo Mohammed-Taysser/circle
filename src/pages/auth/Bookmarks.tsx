@@ -53,6 +53,7 @@ function Bookmarks() {
         subtitle={`Bookmarks: ${formateNumber(posts.length)}`}
         icon={BsBookmarks}
       />
+
       <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>
         {posts.length ? (
           <>
@@ -81,17 +82,19 @@ function Bookmarks() {
                 />
               </form>
             </div>
-            <div className={`my-10 `}>
+
+            <div className='my-10'>
               {posts.map((post) => (
                 <Post post={post} key={post.id} />
               ))}
             </div>
-            <div className='shadow-nice p-5 flex justify-center my-10 bg-white'>
+
+            <div className='shadow-nice p-5 bg-white flex justify-center my-10'>
               <Pagination value={activePage} onChange={setPage} total={10} />
             </div>
           </>
         ) : (
-          <div className='shadow-nice p-4 bg-white rounded'>
+          <div className='shadow-nice bg-white p-4 rounded'>
             <Center h={200}>
               <div className='text-center text-gray-400'>
                 <TbTimelineEventText className='text-4xl' />

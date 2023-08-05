@@ -1,9 +1,10 @@
-import { Avatar, Flex, Text, ThemeIcon } from '@mantine/core';
+import { Flex, Text, ThemeIcon } from '@mantine/core';
 import { LiaShareSolid } from 'react-icons/lia';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { TfiShare } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
+import Avatar from '../../common/Avatar';
 import { timeToX } from '../../helpers';
 
 function SingleNotification(props: { request: SingleNotification }) {
@@ -14,12 +15,23 @@ function SingleNotification(props: { request: SingleNotification }) {
       <Flex
         align='center'
         justify='space-between'
-        gap={10}
-        className={`p-2 md:p-4 duration-200 rounded ${
-          request.unread ? 'bg-gray-100' : 'hover:bg-gray-100'
-        } `}
+        gap={15}
+        className={`p-2 md:p-4 duration-200 rounded`}
+        sx={(theme) => ({
+          backgroundColor: request.unread
+            ? theme.colorScheme === 'dark'
+              ? theme.colors.dark[8]
+              : theme.colors.gray[0]
+            : 'transparent',
+          '&:hover': {
+            backgroundColor:
+              theme.colorScheme === 'dark'
+                ? theme.colors.dark[8]
+                : theme.colors.gray[0],
+          },
+        })}
       >
-        <Avatar src={request.user.avatar} radius='xl' alt={request.user.name} />
+        <Avatar src={request.user.avatar} sm alt={request.user.name} />
 
         <Flex
           align='center'
@@ -28,7 +40,11 @@ function SingleNotification(props: { request: SingleNotification }) {
           className={`flex-1 ${request.unread ? '' : 'opacity-50'}`}
         >
           <div className={`flex-1 `}>
-            <Text size='sm' weight={500} color='dark' display='inline-block'>
+            <Text
+              size='sm'
+              weight={500}
+              className='text-black dark:text-white inline-block'
+            >
               {request.user.name}
             </Text>{' '}
             <Text

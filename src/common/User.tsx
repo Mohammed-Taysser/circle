@@ -34,7 +34,7 @@ function User(props: { user: User; className: string }) {
         <div className='mx-12'>
           <Link
             to={`/profile/${props.user.id}`}
-            className='text-black text-base md:text-xl no-underline transition hover:text-aurora'
+            className='text-black dark:text-white text-base md:text-xl no-underline transition hover:text-aurora'
           >
             {props.user.name}
           </Link>

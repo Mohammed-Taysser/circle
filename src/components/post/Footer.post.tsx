@@ -6,6 +6,8 @@ import {
   Loader,
   Popover,
   SimpleGrid,
+  useMantineColorScheme,
+  useMantineTheme,
 } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
@@ -19,6 +21,7 @@ import { formateNumber } from '../../helpers/millify';
 
 function PostFooter(props: { post: Post }) {
   const { post } = props;
+  const theme = useMantineTheme();
   const [isSharing, setIsSharing] = useState(false);
   const likeIcon = REACT_ICONS[post.reacts.react ?? 'like'];
 
@@ -136,7 +139,11 @@ function PostFooter(props: { post: Post }) {
         </Flex>
       </Flex>
 
-      <Divider className='border-gray-200 mt-2 mb-3' />
+      <Divider
+        className={`${
+          theme.colorScheme === 'light' ? 'border-gray-200' : 'border-gray-800'
+        } mt-2 mb-3`}
+      />
 
       <SimpleGrid cols={3}>
         <Popover position='top' withArrow>

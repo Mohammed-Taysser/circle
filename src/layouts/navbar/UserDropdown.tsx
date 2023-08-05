@@ -51,7 +51,7 @@ function UserDropdown(props: { className: string }) {
               </Indicator>
 
               <div className='flex-1'>
-                <Text size='sm' weight={500}>
+                <Text size='sm' weight={500} className='dark:text-white'>
                   Mohammed Taysser
                 </Text>
 
