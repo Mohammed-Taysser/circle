@@ -2,14 +2,8 @@
 
 ## TODO's
 
-- [ ] add Indicator to avatar
-- [ ] check light box
 - [ ] create demo page
-- [ ] create youtube viewer instead of embedded
-- [ ] dark mode
-- [ ] improve dummy API call (make single file that use dummy data)
-- [ ] improve no login component
-- [ ] update readme & docs
+- [ ] improve post gallery to be similar to facebook
 
 ## BUGS
 
@@ -37,6 +31,7 @@
 - [ ] passport auth with social media
 - [ ] Create Review Video For Project Functionality
 - [ ] Who See My Profile 😈
+- [ ] add extra post viewers (PDF, maps, and more)
 - [ ] create chat dialog
 - [ ] add felling/Activity for post
 - [ ] groups chats
@@ -69,6 +64,18 @@
 - Search For `Login and Registration Form in Node JS + Express + mongoDB`
 
 ## Changelog
+
+## 6 August 2023
+
+- improve dummy data
+- add rotate hover style to avatar
+- replace pdf viewer or drop it (dropped)
+- add Indicator to avatar
+- check light box
+- create youtube viewer instead of embedded
+- dark mode
+- improve no login component (make all page require auth)
+- update readme & docs
 
 ## 4 August 2023
 
