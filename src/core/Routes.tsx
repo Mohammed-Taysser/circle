@@ -50,6 +50,7 @@ const Massager = lazy(() => import('../pages/auth/Massager'));
 
 // Public
 const NotFound = lazy(() => import('../pages/public/404'));
+const Demo = lazy(() => import('../pages/public/Demo'));
 const EditorHelp = lazy(() => import('../pages/public/help/Editor.help'));
 const CalenderHelp = lazy(() => import('../pages/public/help/Calender.help'));
 const Help = lazy(() => import('../pages/public/Help'));
@@ -418,6 +419,10 @@ const routes = createBrowserRouter([
   {
     path: '/forget-password',
     element: <ForgetPassword />,
+  },
+  {
+    path: '/demo',
+    element: <Demo />,
   },
   {
     path: '*',
