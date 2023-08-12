@@ -1,4 +1,5 @@
 import { Burger, Flex, Grid, Header, useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import FriendsDropdown from './navbar/FriendsDropdown';
 import Logo from './navbar/Logo';
 import MessagesDropdown from './navbar/MessagesDropdown';
@@ -8,10 +9,17 @@ import UserDropdown from './navbar/UserDropdown';
 
 function Navbar(props: NavbarProps) {
   const theme = useMantineTheme();
+  const isSmallerScreen = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
 
   return (
-    <Header height={80} className='md:px-10 px-4 border-0 shadow-nice'>
-      <Grid className='h-[80px]' align='center'>
+    <Header
+      height={isSmallerScreen ? 60 : 80}
+      className='md:px-10 px-4 border-0 shadow-nice'
+    >
+      <Grid
+        className={`${isSmallerScreen ? 'h-[65px]' : 'h-[80px]'}`}
+        align='center'
+      >
         <Grid.Col span={2}>
           <Logo />
         </Grid.Col>

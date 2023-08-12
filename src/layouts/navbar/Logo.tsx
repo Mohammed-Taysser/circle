@@ -6,8 +6,14 @@ function Logo() {
   const { colorScheme } = useMantineColorScheme();
 
   return (
-    <Link to='/' className='inline-block' title='favicon' >
-      <img src={favicon} alt='favicon' className='max-w-full md:hidden' />
+    <Link to='/' className='inline-block' title='favicon'>
+      <img
+        src={favicon}
+        alt='favicon'
+        height={40}
+        width={40}
+        className='max-w-full md:hidden'
+      />
       <svg
         width='160'
         height='40'
