@@ -22,6 +22,7 @@ function Avatar(props: AvatarProps) {
       withBorder
       disabled={!props.status}
       position='bottom-end'
+      zIndex={2}
     >
       <div className={`avatar ${props.sm ? 'sm' : ''} ${props.className}`}>
         <img src={props.src} alt={props.alt} />
