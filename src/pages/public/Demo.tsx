@@ -1,9 +1,17 @@
-import React from 'react'
+import Hero from '../../components/demo/Hero';
+import Modals from '../../components/demo/Modals';
+import Pages from '../../components/demo/Pages';
+import Widget from '../../components/demo/Widget';
 
 function Demo() {
   return (
-    <div>Demo</div>
-  )
+    <div className='demo-page'>
+      <Hero />
+      <Pages />
+      <Widget />
+      <Modals />
+    </div>
+  );
 }
 
-export default Demo
+export default Demo;
