@@ -4,35 +4,36 @@
 
 ### No Authentication
 
-| Page            | Path                  | Component                                               |
-| --------------- | --------------------- | ------------------------------------------------------- |
-| 404             | `*`                   | [`404`](src/pages/public/404.tsx)                       |
-| Calender Help   | `/help/calender`      | [`Calender`](src/pages/public/help/Calender.help.tsx)   |
-| Contact Us      | `/contact-us`         | [`Contact Us`](src/pages/public/ContactUs.tsx)          |
-| Discover Groups | `/groups/discover`    | [`DiscoverGroups`](src/pages/public/DiscoverGroups.tsx) |
-| Editor Help     | `/help/editor`        | [`Editor`](src/pages/public/help/Editor.help.tsx)       |
-| Forget Password | `/forget-password`    | [`ForgetPassword`](src/pages/public/ForgetPassword.tsx) |
-| Groups          | `/groups`             | [`Groups`](src/pages/public/Groups.tsx)                 |
-| Help            | `/help`               | [`Help`](src/pages/public/Help.tsx)                     |
-| Homepage        | `/`                   | [`Homepage`](src/pages/public/Homepage.tsx)             |
-| Join Us         | `/join-us`            | [`JoinUs`](src/pages/public/JoinUs.tsx)                 |
-| Post Details    | `/post/:postId`       | [`PostDetails`](src/pages/public/PostDetails.tsx)       |
-| Profile         | `/profile/:profileId` | [`Profile`](src/pages/public/Profile.tsx)               |
-| Results         | `/results`            | [`Results`](src/pages/public/Results.tsx)               |
-| Single Group    | `/groups/:groupId`    | [`SingleGroup`](src/pages/public/SingleGroup.tsx)       |
+| Page            | Path               | Component                                               |
+| --------------- | ------------------ | ------------------------------------------------------- |
+| Demo            | `/demo`            | [`Demo`](src/pages/public/Demo.tsx)                     |
+| Forget Password | `/forget-password` | [`ForgetPassword`](src/pages/public/ForgetPassword.tsx) |
 
 ### Need Authentication
 
 | Page              | Path                  | Component                                                   |
 | ----------------- | --------------------- | ----------------------------------------------------------- |
+| 404               | `*`                   | [`404`](src/pages/public/404.tsx)                           |
 | Bookmarks         | `/bookmarks`          | [`Bookmarks`](src/pages/auth/Bookmarks.tsx)                 |
+| Calender Help     | `/help/calender`      | [`Calender`](src/pages/public/help/Calender.help.tsx)       |
+| Contact Us        | `/contact-us`         | [`Contact Us`](src/pages/public/ContactUs.tsx)              |
+| Discover Groups   | `/groups/discover`    | [`DiscoverGroups`](src/pages/public/DiscoverGroups.tsx)     |
+| Editor Help       | `/help/editor`        | [`Editor`](src/pages/public/help/Editor.help.tsx)           |
 | Events            | `/events`             | [`Events`](src/pages/auth/Events.tsx)                       |
 | FriendsGroups     | `/groups/friends`     | [`FriendsGroups`](src/pages/auth/FriendsGroups.tsx)         |
+| Groups            | `/groups`             | [`Groups`](src/pages/public/Groups.tsx)                     |
+| Help              | `/help`               | [`Help`](src/pages/public/Help.tsx)                         |
+| Homepage          | `/`                   | [`Homepage`](src/pages/public/Homepage.tsx)                 |
+| Join Us           | `/join-us`            | [`JoinUs`](src/pages/public/JoinUs.tsx)                     |
 | Massager          | `/message`            | [`Massager`](src/pages/auth/Massager.tsx)                   |
 | Networks          | `/networks`           | [`Networks`](src/pages/auth/Networks.tsx)                   |
 | Notification      | `/notification`       | [`Notification`](src/pages/auth/Notification.tsx)           |
+| Post Details      | `/post/:postId`       | [`PostDetails`](src/pages/public/PostDetails.tsx)           |
+| Profile           | `/profile/:profileId` | [`Profile`](src/pages/public/Profile.tsx)                   |
 | RecommendedGroups | `/groups/recommended` | [`RecommendedGroups`](src/pages/auth/RecommendedGroups.tsx) |
+| Results           | `/results`            | [`Results`](src/pages/public/Results.tsx)                   |
 | Setting           | `/setting`            | [`Setting`](src/pages/auth/Setting.tsx)                     |
+| Single Group      | `/groups/:groupId`    | [`SingleGroup`](src/pages/public/SingleGroup.tsx)           |
 | YourGroups        | `/groups/your`        | [`YourGroups`](src/pages/auth/YourGroups.tsx)               |
 
 ## Components
@@ -370,273 +371,3 @@ Converts long sizes into pretty, human-readable unit.
 ```ts
 formateUnit(1440000); //> 1.44MB
 ```
-
-## Project Structure
-
-### RoadMap
-
-```txt
-.
-├── CHANGELOG
-├── DOCS.md
-├── index.html
-├── LICENSE
-├── package.json
-├── postcss.config.js
-├── README.md
-├── src
-│   ├── assets
-│   │   ├── images
-│   │   │   ├── background
-│   │   │   │   ├── 404.svg
-│   │   │   │   ├── banner-overlay.png
-│   │   │   │   ├── bg-event-day.webp
-│   │   │   │   ├── chat.svg
-│   │   │   │   ├── contact-us-bg.svg
-│   │   │   │   ├── forget-password.svg
-│   │   │   │   ├── group
-│   │   │   │   │   ├── discover.svg
-│   │   │   │   │   ├── friends.svg
-│   │   │   │   │   ├── recommended.svg
-│   │   │   │   │   └── your.svg
-│   │   │   │   ├── help
-│   │   │   │   │   ├── calender.svg
-│   │   │   │   │   ├── contact.svg
-│   │   │   │   │   └── editor.svg
-│   │   │   │   ├── newsletter.svg
-│   │   │   │   ├── no-friend-request.svg
-│   │   │   │   ├── registration.svg
-│   │   │   │   └── search
-│   │   │   │       ├── groups.svg
-│   │   │   │       ├── no-results.svg
-│   │   │   │       └── users.svg
-│   │   │   ├── default
-│   │   │   │   ├── avatar.png
-│   │   │   │   ├── cover.jpg
-│   │   │   │   └── group.jpg
-│   │   │   ├── dummy
-│   │   │   │   ├── avatar
-│   │   │   │   │   ├── avatar-1.png
-│   │   │   │   │   ├── avatar-2.png
-│   │   │   │   │   ├── avatar-3.png
-│   │   │   │   │   ├── avatar-4.png
-│   │   │   │   │   └── avatar-5.png
-│   │   │   │   ├── badges
-│   │   │   │   │   ├── content-creator.svg
-│   │   │   │   │   ├── featured.svg
-│   │   │   │   │   ├── happy.svg
-│   │   │   │   │   ├── hot-hunter.svg
-│   │   │   │   │   ├── king.svg
-│   │   │   │   │   ├── rocket.svg
-│   │   │   │   │   ├── spring.svg
-│   │   │   │   │   ├── target.svg
-│   │   │   │   │   ├── trending.svg
-│   │   │   │   │   └── universe.svg
-│   │   │   │   └── gallery
-│   │   │   │       ├── gallery-10.jpg
-│   │   │   │       ├── gallery-1.jpg
-│   │   │   │       ├── gallery-2.jpg
-│   │   │   │       ├── gallery-3.jpg
-│   │   │   │       ├── gallery-4.jpg
-│   │   │   │       ├── gallery-5.jpg
-│   │   │   │       ├── gallery-6.jpg
-│   │   │   │       ├── gallery-7.jpg
-│   │   │   │       ├── gallery-8.jpg
-│   │   │   │       └── gallery-9.jpg
-│   │   │   └── icons
-│   │   │       ├── avatar-circle.png
-│   │   │       ├── avatar-sm-circle.png
-│   │   │       └── favicon.svg
-│   │   ├── music
-│   │   │   └── skyline.mp3
-│   │   ├── pdf
-│   │   │   └── cv.pdf
-│   │   ├── scss
-│   │   │   ├── app.scss
-│   │   │   ├── components
-│   │   │   │   ├── avatar.scss
-│   │   │   │   ├── createPost.scss
-│   │   │   │   ├── group.scss
-│   │   │   │   ├── infoBanner.scss
-│   │   │   │   ├── post.scss
-│   │   │   │   └── user.scss
-│   │   │   ├── helpers
-│   │   │   │   └── _base.scss
-│   │   │   └── layouts
-│   │   └── videos
-│   │       └── video.mp4
-│   ├── common
-│   │   ├── Avatar.tsx
-│   │   ├── Badge.tsx
-│   │   ├── Banner.tsx
-│   │   ├── CreatePost.tsx
-│   │   ├── EmojiPicker.tsx
-│   │   ├── Gallery.tsx
-│   │   ├── Group.tsx
-│   │   ├── InfoBanner.tsx
-│   │   ├── plyr.tsx
-│   │   ├── Post.tsx
-│   │   ├── Skeleton.tsx
-│   │   ├── Taps.tsx
-│   │   ├── TiptapEditor.tsx
-│   │   └── User.tsx
-│   ├── components
-│   │   ├── comments
-│   │   │   └── WriteComment.tsx
-│   │   ├── contactUs
-│   │   │   └── ContactIcon.tsx
-│   │   ├── createPost
-│   │   │   └── modal
-│   │   │       ├── File.tap.tsx
-│   │   │       ├── Gallery.tap.tsx
-│   │   │       ├── Taps.modal.tsx
-│   │   │       └── Youtube.tap.tsx
-│   │   ├── group
-│   │   │   └── taps
-│   │   │       ├── About.group.tsx
-│   │   │       ├── Audios.group.tsx
-│   │   │       ├── Badges.group.tsx
-│   │   │       ├── Members.group.tsx
-│   │   │       ├── Photos.group.tsx
-│   │   │       ├── Timeline.group.tsx
-│   │   │       └── Videos.group.tsx
-│   │   ├── massager
-│   │   │   ├── ContactInfo.tsx
-│   │   │   ├── Massages.tsx
-│   │   │   ├── NoContactSelected.tsx
-│   │   │   ├── NoMessages.tsx
-│   │   │   └── SingleMessage.tsx
-│   │   ├── notification
-│   │   │   └── SingleNotification.tsx
-│   │   ├── post
-│   │   │   ├── body
-│   │   │   │   ├── Embedded.tsx
-│   │   │   │   ├── TextContent.tsx
-│   │   │   │   └── viewers
-│   │   │   │       ├── Pdf.tsx
-│   │   │   │       └── Youtube.tsx
-│   │   │   ├── Body.post.tsx
-│   │   │   ├── Footer.post.tsx
-│   │   │   ├── header
-│   │   │   │   └── PostDropdown.tsx
-│   │   │   ├── Header.post.tsx
-│   │   │   └── Viewers.tsx
-│   │   ├── profile
-│   │   │   └── taps
-│   │   │       ├── About.profile.tsx
-│   │   │       ├── Audios.profile.tsx
-│   │   │       ├── Badges.profile.tsx
-│   │   │       ├── Friends.profile.tsx
-│   │   │       ├── Photos.profile.tsx
-│   │   │       ├── Timeline.profile.tsx
-│   │   │       └── Videos.profile.tsx
-│   │   ├── registration
-│   │   │   ├── Login.tsx
-│   │   │   ├── Register.tsx
-│   │   │   └── SocialMediaIntegration.tsx
-│   │   ├── search
-│   │   │   ├── Groups.results.tsx
-│   │   │   └── Users.results.tsx
-│   │   └── settings
-│   │       ├── BasicInfo.tsx
-│   │       ├── ChangePassword.tsx
-│   │       ├── ContactInfo.tsx
-│   │       ├── EducationAndOthersInformation.tsx
-│   │       └── HobbiesAndInterests.tsx
-│   ├── constants
-│   │   ├── default.ts
-│   │   ├── dummy.tsx
-│   │   ├── layout.tsx
-│   │   ├── post.tsx
-│   │   └── seo.ts
-│   ├── containers
-│   │   ├── Async.tsx
-│   │   └── Groups.tsx
-│   ├── core
-│   │   ├── App.tsx
-│   │   ├── ErrorBoundary.tsx
-│   │   └── Routes.tsx
-│   ├── dialogs
-│   │   └── Newsletter.tsx
-│   ├── helpers
-│   │   ├── dayjs.ts
-│   │   └── index.ts
-│   ├── hooks
-│   │   ├── useHelmet.tsx
-│   │   └── useSearchInput.tsx
-│   ├── layouts
-│   │   ├── aside
-│   │   │   └── ContactFriends.tsx
-│   │   ├── Aside.tsx
-│   │   ├── Base.tsx
-│   │   ├── header
-│   │   │   ├── EventsTimeline.tsx
-│   │   │   ├── MiniCalender.tsx
-│   │   │   └── Navigation.tsx
-│   │   ├── Header.tsx
-│   │   ├── navbar
-│   │   │   ├── FriendsDropdown.tsx
-│   │   │   ├── Logo.tsx
-│   │   │   ├── MessagesDropdown.tsx
-│   │   │   ├── NotificationDropdown.tsx
-│   │   │   ├── SearchInput.tsx
-│   │   │   └── UserDropdown.tsx
-│   │   └── Navbar.tsx
-│   ├── main.tsx
-│   ├── modal
-│   │   ├── Cropper.modal.tsx
-│   │   ├── events
-│   │   │   ├── CreateEvent.modal.tsx
-│   │   │   └── Event.modal.tsx
-│   │   ├── posts
-│   │   │   ├── Comments.modal.tsx
-│   │   │   ├── CreatePost.modal.tsx
-│   │   │   └── Reacts.modal.tsx
-│   │   └── Search.modal.tsx
-│   ├── pages
-│   │   ├── auth
-│   │   │   ├── Bookmarks.tsx
-│   │   │   ├── Events.tsx
-│   │   │   ├── FriendsGroups.tsx
-│   │   │   ├── Massager.tsx
-│   │   │   ├── Networks.tsx
-│   │   │   ├── Notification.tsx
-│   │   │   ├── RecommendedGroups.tsx
-│   │   │   ├── Setting.tsx
-│   │   │   └── YourGroups.tsx
-│   │   └── public
-│   │       ├── 404.tsx
-│   │       ├── ContactUs.tsx
-│   │       ├── DiscoverGroups.tsx
-│   │       ├── ForgetPassword.tsx
-│   │       ├── Groups.tsx
-│   │       ├── help
-│   │       │   ├── Calender.help.tsx
-│   │       │   └── Editor.help.tsx
-│   │       ├── Help.tsx
-│   │       ├── Homepage.tsx
-│   │       ├── JoinUs.tsx
-│   │       ├── PostDetails.tsx
-│   │       ├── Profile.tsx
-│   │       ├── Results.tsx
-│   │       └── SingleGroup.tsx
-│   ├── providers
-│   │   ├── Mantine.tsx
-│   │   ├── Modals.tsx
-│   │   └── Router.tsx
-│   ├── types
-│   │   └── vite-env.d.ts
-│   └── validations
-│       └── index.ts
-├── tailwind.config.js
-├── tsconfig.json
-├── tsconfig.node.json
-├── vite.config.ts
-└── yarn.lock
-
-59 directories, 197 files
-```
-
-## Resources
-
-- <https://preview.themeforest.net/item/cirkle-social-networking-wordpress-theme/full_screen_preview/35127441>
