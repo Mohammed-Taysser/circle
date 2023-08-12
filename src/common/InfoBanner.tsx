@@ -1,4 +1,3 @@
-import { Tooltip } from '@mantine/core';
 import { VscVerified } from 'react-icons/vsc';
 import Avatar from './Avatar';
 
@@ -30,13 +29,7 @@ function InfoBanner(props: InfoBannerProp) {
         <div className='media-body md:ml-7'>
           <h3 className='item-title flex items-center'>
             {props.name && <span>{props.name}</span>}
-            {props.verified && (
-              <Tooltip label='Verified' withArrow color='teal'>
-                <div>
-                  <VscVerified className='mx-1' />
-                </div>
-              </Tooltip>
-            )}
+            {props.verified && <VscVerified className='mx-1' />}
           </h3>
           {props.username && (
             <div className='item-subtitle my-2'>@{props.username}</div>
