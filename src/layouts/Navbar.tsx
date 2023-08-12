@@ -10,7 +10,7 @@ function Navbar(props: NavbarProps) {
   const theme = useMantineTheme();
 
   return (
-    <Header height={80} className='px-10 border-0 shadow-nice'>
+    <Header height={80} className='md:px-10 px-4 border-0 shadow-nice'>
       <Grid className='h-[80px]' align='center'>
         <Grid.Col span={2}>
           <Logo />
