@@ -7,7 +7,7 @@ import millify from 'millify';
  * @returns The formatted number with a precision of 2 decimal places.
  */
 function formateNumber(number: number) {
-  return millify(number, { precision: 2 });
+  return millify(number, { precision: 2, locales: 'en' });
 }
 
 /**
@@ -20,6 +20,7 @@ function formateUnit(number: number) {
   return millify(number, {
     precision: 2,
     units: ['B', 'KB', 'MB', 'GB', 'TB'],
+    locales: 'en',
   });
 }
 
