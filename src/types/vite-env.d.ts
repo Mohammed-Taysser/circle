@@ -497,3 +497,10 @@ interface BasicInfoFormInitValues {
   avatar: File | string;
   cover: File | string;
 }
+
+// Demo
+interface SitemapItem {
+  img: string;
+  url: string;
+  label: string;
+}
