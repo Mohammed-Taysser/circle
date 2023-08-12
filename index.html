@@ -1,11 +1,17 @@
+<!-- HTML5 -->
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <!-- Set character encoding for the document -->
     <meta charset="UTF-8" />
+
+    <!-- Document Title -->
     <title>Circle</title>
+
+    <!-- Meta Description -->
     <meta
       name="description"
-      content="Description of the page less than 150 characters"
+      content="Circle is a social media app that allows users to connect with friends and family members from all over the world. With Circle, users can share photos, videos, and messages with their friends, as well as join groups based on their interests and hobbies."
     />
 
     <!-- To run web application in full-screen -->
@@ -15,25 +21,44 @@
     <!-- Has no effect unless you have the previous meta tag -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
-    <!-- A little textbox that appears when the user holds their
-mouse over your Pinned Site's icon. -->
+    <!-- A little textbox that appears when the user holds their mouse over your Pinned Site's icon. -->
     <meta
       name="msapplication-tooltip"
-      content="A description of what this site does."
+      content="Circle is a social media app that allows users to connect with friends and family members from all over the world. With Circle, users can share photos, videos, and messages with their friends, as well as join groups based on their interests and hobbies."
     />
 
     <!-- Viewport for responsive web design -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <meta name="author" content="Mohammed Taysser" />
 
     <link rel="canonical" href="https://circle-react.vercel.app/" />
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Circle" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://circle-react.vercel.app/" />
+    <meta
+      property="og:image"
+      content="./src/assets/images/demo/pages/homepage.png"
+    />
+
+    <!-- for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!--[if lt IE 9]>
+      <script src="./src/assets/js/html5shiv.min.js"></script>
+      <script src="./src/assets/js/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+
+    <!-- favicon -->
     <link
       rel="icon"
       type="image/svg+xml"
       href="/src/assets/images/icons/favicon.svg"
     />
+    <meta name="msapplication-TileColor" content="#20c997" />
+    <meta name="theme-color" content="#20c997" />
+    <link rel="mask-icon" href="../images/favicon.png" color="#20c997" />
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,15 +67,11 @@ mouse over your Pinned Site's icon. -->
       href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
       rel="stylesheet"
     />
-
-    <!-- for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="msapplication-TileColor" content="#20c997" />
-    <meta name="theme-color" content="#ffffff" />
-    <link rel="mask-icon" href="../images/favicon.png" color="#20c997" />
   </head>
+
   <body>
     <div id="root"></div>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
