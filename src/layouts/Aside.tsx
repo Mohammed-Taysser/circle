@@ -11,11 +11,10 @@ function Side() {
   return (
     <>
       <Aside
-        p='md'
         hiddenBreakpoint='lg'
-        width={{ sm: 300, [theme.breakpoints.xxl]: 400 }}
-        className={`border-0 shadow-nice z-40 duration-500 ${
-          isOpened ? '' : '-right-[300px] lg:right-0'
+        width={{ base: 300, [theme.breakpoints.xxl]: 400 }}
+        className={`border-0 shadow-nice z-40 pt-3 duration-500 ${
+          isOpened ? '' : '-right-[263px] lg:right-0'
         }`}
       >
         <div className='relative lg:hidden'>
@@ -26,7 +25,6 @@ function Side() {
           >
             <Button
               variant='filled'
-              color=''
               compact
               title='Toggle contacts'
               onClick={() => setIsOpened((prev) => !prev)}
