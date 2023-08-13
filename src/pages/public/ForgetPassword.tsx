@@ -12,9 +12,8 @@ import { notifications } from '@mantine/notifications';
 import { useState } from 'react';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-
-import forgetPassword from '../../assets/images/background/forget-password.svg';
 import useHelmet from '../../hooks/useHelmet';
+import forgetPassword from '../../assets/images/background/forget-password.svg';
 
 function ForgetPassword() {
   useHelmet('forgetPassword');

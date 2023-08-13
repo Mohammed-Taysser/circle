@@ -71,12 +71,12 @@
 - Improve meta tags
 - Drop profile verified tooltip
 - Fix Netlify renders 404 on page refresh
+- Fix Suspense for forget-password page
 
 ### Bug Fixed
 
 - Fix skeleton on mobile view [#1](https://github.com/Mohammed-Taysser/circle/issues/1), [#5](https://github.com/Mohammed-Taysser/circle/issues/5), [#6](https://github.com/Mohammed-Taysser/circle/issues/6)
 - Fix number format [#2](https://github.com/Mohammed-Taysser/circle/issues/2)
-- Fix Vercel deployment [#3](https://github.com/Mohammed-Taysser/circle/issues/3)
 - Improve Mobile main color on mobile & improve meta tags [#4](https://github.com/Mohammed-Taysser/circle/issues/4)
 - Fix comments in mobile view (too low width) [#7](https://github.com/Mohammed-Taysser/circle/issues/7)
 - Reduce navbar height [#8](https://github.com/Mohammed-Taysser/circle/issues/8)

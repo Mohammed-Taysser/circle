@@ -1,6 +1,7 @@
-import { AppShell, Center, Loader, useMantineTheme } from '@mantine/core';
+import { AppShell, useMantineTheme } from '@mantine/core';
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import SuspenseLoading from '../common/SuspenseLoading';
 import Aside from './Aside';
 import Header from './Header';
 import Navbar from './Navbar';
@@ -13,7 +14,7 @@ import Navbar from './Navbar';
  */
 function Base(props: { minimal?: boolean }) {
   const theme = useMantineTheme();
-  const [isHeaderOpen, setIsHeaderOpen] = useState(false)
+  const [isHeaderOpen, setIsHeaderOpen] = useState(false);
 
   return (
     <AppShell
@@ -27,17 +28,15 @@ function Base(props: { minimal?: boolean }) {
       }}
       navbarOffsetBreakpoint='md'
       asideOffsetBreakpoint='lg'
-      navbar={<Header isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />} // Props conflict names from mantine itself
+      navbar={
+        <Header isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />
+      } // Props conflict names from mantine itself
       aside={props.minimal ? undefined : <Aside />}
-      header={<Navbar isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />} // Props conflict names from mantine itself
+      header={
+        <Navbar isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />
+      } // Props conflict names from mantine itself
     >
-      <Suspense
-        fallback={
-          <Center h={200}>
-            <Loader color='teal' size='xl' variant='dots' />
-          </Center>
-        }
-      >
+      <Suspense fallback={<SuspenseLoading />}>
         <Outlet />
       </Suspense>
     </AppShell>

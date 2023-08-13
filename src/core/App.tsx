@@ -7,7 +7,9 @@ import ModalsProvider from '../providers/Modals';
 import RouterProvider from '../providers/Router';
 import ErrorBoundary from './ErrorBoundary';
 
+import { Suspense } from 'react';
 import '../assets/scss/app.scss';
+import SuspenseLoading from '../common/SuspenseLoading';
 
 function App() {
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
@@ -32,7 +34,9 @@ function App() {
             <NewsletterDialog />
             <Notifications position='top-right' zIndex={2077} />
             <ModalsProvider>
-              <RouterProvider />
+              <Suspense fallback={<SuspenseLoading />}>
+                <RouterProvider />
+              </Suspense>
             </ModalsProvider>
           </>
         </MantineProvider>
