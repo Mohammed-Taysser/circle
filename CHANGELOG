@@ -70,6 +70,7 @@
 - Create demo page
 - Improve meta tags
 - Drop profile verified tooltip
+- Fix Netlify renders 404 on page refresh
 
 ### Bug Fixed
 
