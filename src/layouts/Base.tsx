@@ -13,7 +13,7 @@ import Navbar from './Navbar';
  */
 function Base(props: { minimal?: boolean }) {
   const theme = useMantineTheme();
-  const [opened, setOpened] = useState(false);
+  const [isHeaderOpen, setIsHeaderOpen] = useState(false)
 
   return (
     <AppShell
@@ -27,9 +27,9 @@ function Base(props: { minimal?: boolean }) {
       }}
       navbarOffsetBreakpoint='md'
       asideOffsetBreakpoint='lg'
-      navbar={<Header opened={opened} setOpened={setOpened} />} // Props conflict names from mantine itself
+      navbar={<Header isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />} // Props conflict names from mantine itself
       aside={props.minimal ? undefined : <Aside />}
-      header={<Navbar opened={opened} setOpened={setOpened} />} // Props conflict names from mantine itself
+      header={<Navbar isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />} // Props conflict names from mantine itself
     >
       <Suspense
         fallback={

@@ -40,8 +40,8 @@ function Navbar(props: NavbarProps) {
           <UserDropdown className='hidden md:flex' />
           <Flex justify='end' className='md:hidden'>
             <Burger
-              opened={props.opened}
-              onClick={() => props.setOpened((prev) => !prev)}
+              opened={props.isHeaderOpen}
+              onClick={() => props.setIsHeaderOpen((prev) => !prev)}
               color={theme.colors.gray[6]}
               title='Toggle header'
             />

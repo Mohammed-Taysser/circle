@@ -4,7 +4,9 @@ import Avatar from '../../common/Avatar';
 import { MESSAGES } from '../../constants/dummy';
 import { USER_STATUS } from '../../constants/layout';
 
-function ContactFriends() {
+function ContactFriends(props: AsideContactsProps) {
+  const { setIsAsideOpen } = props;
+
   return (
     <>
       <ScrollArea.Autosize type='auto' offsetScrollbars>
@@ -14,6 +16,7 @@ function ContactFriends() {
               to={`/message/${request.user.id}`}
               key={request.id}
               className='no-underline'
+              onClick={() => setIsAsideOpen(false)}
             >
               <Flex
                 align='center'

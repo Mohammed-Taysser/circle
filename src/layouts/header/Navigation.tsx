@@ -7,7 +7,8 @@ import {
 import { NavLink } from 'react-router-dom';
 import { HEADER_LINKS } from '../../constants/layout';
 
-function Navigation() {
+function Navigation(props: HeaderNavigationProps) {
+  const { setIsHeaderOpen } = props;
   const theme = useMantineTheme();
 
   const cls = (props: { isActive: boolean }) => {
@@ -40,7 +41,11 @@ function Navigation() {
             },
           })}
         >
-          <NavLink to={link.path} className={cls}>
+          <NavLink
+            to={link.path}
+            className={cls}
+            onClick={() => setIsHeaderOpen(false)}
+          >
             <Group>
               <ThemeIcon color={link.color} variant='light'>
                 <link.icon />

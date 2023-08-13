@@ -6,7 +6,7 @@ import UserDropdown from './navbar/UserDropdown';
 
 function Side() {
   const theme = useMantineTheme();
-  const [isOpened, setIsOpened] = useState(false);
+  const [isAsideOpen, setIsAsideOpen] = useState(false);
 
   return (
     <>
@@ -14,20 +14,20 @@ function Side() {
         hiddenBreakpoint='lg'
         width={{ base: 300, [theme.breakpoints.xxl]: 400 }}
         className={`border-0 shadow-nice z-40 pt-3 duration-500 ${
-          isOpened ? '' : '-right-[263px] lg:right-0'
+          isAsideOpen ? '' : '-right-[263px] lg:right-0'
         }`}
       >
         <div className='relative lg:hidden'>
           <div
             className={`absolute duration-500 ${
-              isOpened ? '-left-[50px]' : 'left-[-40px]'
+              isAsideOpen ? '-left-[50px]' : 'left-[-40px]'
             }`}
           >
             <Button
               variant='filled'
               compact
               title='Toggle contacts'
-              onClick={() => setIsOpened((prev) => !prev)}
+              onClick={() => setIsAsideOpen((prev) => !prev)}
             >
               <RiAppsLine className='text-base' />
             </Button>
@@ -35,7 +35,7 @@ function Side() {
         </div>
 
         <Aside.Section grow component={ScrollArea} type='auto'>
-          <ContactFriends />
+          <ContactFriends setIsAsideOpen={setIsAsideOpen} />
         </Aside.Section>
 
         <Aside.Section className='md:hidden'>

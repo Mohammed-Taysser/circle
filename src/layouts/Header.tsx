@@ -12,11 +12,11 @@ function Header(props: HeaderProps) {
       hiddenBreakpoint='md'
       width={{ base: 300, [theme.breakpoints.xxl]: 400 }}
       className={`border-0 shadow-nice z-[100] duration-500 ${
-        props.opened ? '' : 'left-[-100%] md:left-0'
+        props.isHeaderOpen ? '' : 'left-[-100%] md:left-0'
       }`}
     >
       <Navbar.Section mx='-xs' className='mb-3'>
-        <HeaderLink />
+        <HeaderLink setIsHeaderOpen={props.setIsHeaderOpen} />
       </Navbar.Section>
 
       <Navbar.Section className='mb-6'>
