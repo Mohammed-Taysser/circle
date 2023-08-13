@@ -38,9 +38,9 @@ function PostFooter(props: { post: Post }) {
       },
       size: 'xl',
       centered: true,
-      scrollAreaComponent: ScrollArea.Autosize,
+      // scrollAreaComponent: ScrollArea.Autosize,
       classNames: {
-        content: 'overflow-visible',
+        // content: 'overflow-visible',
       },
     });
   };

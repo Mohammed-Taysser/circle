@@ -37,7 +37,7 @@ function CommentsModal(props: ContextModalProps<CommentsModalInnerProps>) {
       {comments.length > 0 ? (
         <Timeline
           color='teal'
-          className='px-10 py-5'
+          className='md:px-10 pl-5 py-5'
           lineWidth={3}
           bulletSize={25}
         >
