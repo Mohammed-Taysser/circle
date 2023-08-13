@@ -147,11 +147,13 @@ const Comment = function (props: { repeat?: number }) {
         .fill(0)
         .map(() => (
           <div key={uuidv4()} className='mb-10 shadow-nice rounded-lg p-6 '>
-            <div className='flex items-center'>
-              <SkeletonM height={70} circle />
-              <div className='flex- mx-6'>
-                <SkeletonM height={20} mt={6} w={200} />
-                <SkeletonM height={15} mt={6} w={150} />
+            <div className='flex items-center gap-4'>
+              <div>
+                <SkeletonM height={70} circle />
+              </div>
+              <div className='flex-grow'>
+                <SkeletonM height={20} mt={6} w='80%' />
+                <SkeletonM height={15} mt={6} w='60%' />
               </div>
             </div>
 
