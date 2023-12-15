@@ -7,18 +7,15 @@ import Async from '../../../containers/Async';
 import { uuidv4 } from '../../../helpers';
 
 function AudiosGroup() {
-  const audios =
-    Math.random() < 0.5
-      ? []
-      : POSTS.filter((post) => post.variant === 'audio').reduce(
-          (prev, current) => {
-            if (current.assets.audio) {
-              return [...prev, current.assets.audio];
-            }
-            return prev;
-          },
-          [] as string[]
-        );
+  const audios = POSTS.filter((post) => post.variant === 'audio').reduce(
+    (prev, current) => {
+      if (current.assets.audio) {
+        return [...prev, current.assets.audio];
+      }
+      return prev;
+    },
+    [] as string[]
+  );
 
   const [state, setState] = useState({
     loading: true,

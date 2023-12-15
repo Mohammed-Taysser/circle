@@ -7,7 +7,7 @@ import { FRIENDS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
 
 function MembersGroup() {
-  const members = Math.random() < 0.5 ? [] : FRIENDS;
+  const members = FRIENDS;
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,

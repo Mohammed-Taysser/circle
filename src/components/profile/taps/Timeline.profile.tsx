@@ -11,12 +11,9 @@ import Async from '../../../containers/Async';
 function TimelineProfile() {
   const { profileId = '' } = useParams();
 
-  const posts =
-    Math.random() < 0.5
-      ? []
-      : POSTS.filter(
-          (post) => post.user.id === profileId || post.visibility === 'friends'
-        );
+  const posts = POSTS.filter(
+    (post) => post.user.id === profileId || post.visibility === 'friends'
+  );
 
   const [state, setState] = useState({
     loading: true,

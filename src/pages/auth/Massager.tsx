@@ -16,7 +16,7 @@ function Massager() {
   useHelmet('chat');
   const { userId = '' } = useParams();
   const viewport = useRef<HTMLDivElement>(null);
-  const messages = Math.random() > 0.5 ? MESSAGES : [];
+  const messages = MESSAGES;
   const user =
     MESSAGES.find((user) => user.id.toString() === userId) ?? MESSAGES[0];
 

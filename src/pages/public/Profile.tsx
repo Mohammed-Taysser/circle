@@ -20,8 +20,8 @@ import useHelmet from '../../hooks/useHelmet';
 function Profile() {
   useHelmet('profile'); // TODO: improve SEO
   const { profileId = '' } = useParams();
-  const isFriend = Math.random() < 0.5; // TODO: find suitable algorithm
-  const isFollow = Math.random() < 0.5; // TODO: find suitable algorithm
+  const isFriend = false; // TODO: find suitable algorithm
+  const isFollow = false; // TODO: find suitable algorithm
   const [isLoading, setIsLoading] = useState({
     friend: false,
     follow: false,
@@ -156,6 +156,8 @@ function Profile() {
         extraInfo={
           <Flex
             justify='space-between'
+            wrap='wrap'
+            rowGap={2}
             direction={{ sm: 'row', base: 'column' }}
           >
             <div className='flex items-center justify-center md:justify-start gap-4'>

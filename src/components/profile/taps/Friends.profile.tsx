@@ -7,7 +7,7 @@ import { FRIENDS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
 
 function FriendsProfile() {
-  const friends = Math.random() < 0.5 ? [] : FRIENDS;
+  const friends = FRIENDS;
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,

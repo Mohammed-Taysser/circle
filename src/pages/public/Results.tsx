@@ -18,8 +18,8 @@ function Results() {
   useHelmet('results');
   const [searchParams, setSearchParams] = useSearchParams();
   const results = {
-    users: Math.random() > 0.5 ? FRIENDS : [],
-    groups: Math.random() < 0.5 ? GROUPS : [],
+    users: FRIENDS,
+    groups: GROUPS,
   };
 
   const [state, setState] = useState({

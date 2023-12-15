@@ -21,7 +21,7 @@ import { formateNumber } from '../../helpers/millify';
 function SingleGroup() {
   useDocumentTitle('Circle | Developer Geeks'); // TODO: improve SEO
   const { groupId = '' } = useParams();
-  const isJoined = Math.random() < 0.5; // TODO: find suitable algorithm
+  const isJoined = false; // TODO: find suitable algorithm
   const [isLoading, setIsLoading] = useState(false);
 
   const TAPS = [

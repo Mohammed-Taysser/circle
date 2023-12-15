@@ -7,7 +7,7 @@ import { BADGES } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
 
 function BadgesProfile() {
-  const badges = Math.random() < 0.5 ? [] : BADGES;
+  const badges = BADGES;
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,

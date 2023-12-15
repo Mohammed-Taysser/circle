@@ -7,18 +7,15 @@ import Async from '../../../containers/Async';
 import { uuidv4 } from '../../../helpers';
 
 function VideosGroup() {
-  const videos =
-    Math.random() < 0.5
-      ? []
-      : POSTS.filter((post) => post.variant === 'video').reduce(
-          (prev, current) => {
-            if (current.assets.video) {
-              return [...prev, current.assets.video];
-            }
-            return prev;
-          },
-          [] as string[]
-        );
+  const videos = POSTS.filter((post) => post.variant === 'video').reduce(
+    (prev, current) => {
+      if (current.assets.video) {
+        return [...prev, current.assets.video];
+      }
+      return prev;
+    },
+    [] as string[]
+  );
 
   const [state, setState] = useState({
     loading: true,

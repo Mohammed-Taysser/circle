@@ -9,10 +9,7 @@ import Async from '../../../containers/Async';
 function PhotosGroup() {
   const { groupId = '' } = useParams();
 
-  const posts =
-    Math.random() < 0.5
-      ? []
-      : POSTS.filter((post) => post.variant === 'gallery');
+  const posts = POSTS.filter((post) => post.variant === 'gallery');
 
   const [state, setState] = useState({
     loading: true,

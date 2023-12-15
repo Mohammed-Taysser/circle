@@ -62,8 +62,8 @@ function User(props: { user: User; className: string }) {
 }
 
 const AddFriendBtn = () => {
-  const isFriend = Math.random() > 0.5;
-  const isPendingRequest = Math.random() > 0.5;
+  const isFriend = false;
+  const isPendingRequest = false;
   const [isLoading, setIsLoading] = useState(false);
 
   const onAddFriendBtnClick = () => {

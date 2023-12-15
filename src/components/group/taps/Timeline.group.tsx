@@ -8,7 +8,7 @@ import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
 
 function TimelineGroup() {
-  const posts = Math.random() < 0.5 ? [] : POSTS;
+  const posts = POSTS;
 
   const [state, setState] = useState({
     loading: true,

@@ -7,7 +7,7 @@ import useHelmet from '../../hooks/useHelmet';
 
 function Networks() {
   useHelmet('network');
-  const users = Math.random() > 0.5 ? FRIENDS : [];
+  const users = FRIENDS;
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,

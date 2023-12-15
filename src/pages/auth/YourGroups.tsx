@@ -6,7 +6,7 @@ import Async from '../../containers/Async';
 import GroupsContainer from '../../containers/Groups';
 
 function DiscoverGroups() {
-  const groups = Math.random() < 0.5 ? [] : GROUPS;
+  const groups = GROUPS;
   const [state, setState] = useState({
     loading: true,
     fulfilled: false,
