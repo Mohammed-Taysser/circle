@@ -63,7 +63,7 @@ function GalleryTap(props: GalleryTapProps) {
         </Group>
       </Dropzone>
 
-      <ScrollArea.Autosize mah='12rem'>
+      <ScrollArea.Autosize placeholder='' mah='12rem'>
         <SimpleGrid
           cols={4}
           breakpoints={[{ maxWidth: 'sm', cols: 2 }]}

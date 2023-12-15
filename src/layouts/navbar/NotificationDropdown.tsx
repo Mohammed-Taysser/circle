@@ -52,7 +52,12 @@ function NotificationDropdown() {
           Notification
         </Text>
 
-        <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
+        <ScrollArea.Autosize
+          mah={300}
+          type='auto'
+          offsetScrollbars
+          placeholder=''
+        >
           <Flex direction='column' wrap='wrap' gap={10}>
             {NOTIFICATION.map((request) => (
               <SingleNotification request={request} key={request.id} />

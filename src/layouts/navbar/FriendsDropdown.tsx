@@ -79,7 +79,12 @@ function FriendsDropdown() {
           Friends Requests
         </Text>
 
-        <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
+        <ScrollArea.Autosize
+          mah={300}
+          type='auto'
+          offsetScrollbars
+          placeholder=''
+        >
           <Flex direction='column' wrap='wrap' gap={5}>
             {NOTIFICATION.map((request) => (
               <Flex

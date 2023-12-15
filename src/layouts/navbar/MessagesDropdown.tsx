@@ -53,7 +53,12 @@ function MessagesDropdown() {
           Messenger
         </Text>
 
-        <ScrollArea.Autosize mah={300} type='auto' offsetScrollbars>
+        <ScrollArea.Autosize
+          mah={300}
+          type='auto'
+          offsetScrollbars
+          placeholder=''
+        >
           <Flex direction='column' wrap='wrap' gap={5}>
             {MESSAGES.map((request) => (
               <Link
