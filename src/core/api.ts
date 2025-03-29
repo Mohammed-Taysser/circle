@@ -47,6 +47,10 @@ class AxiosAPI {
     return this.axiosInstance.post<AxiosLoginResponse>('/auth/login', body);
   }
 
+  register(body:RegisterRequestBody) {
+    return this.axiosInstance.post<AxiosRegisterResponse>('/auth/register', body);
+  }
+
   subscribe(email: string) {
     return this.axiosInstance.post<AxiosSubscribeResponse>('/subscription', {
       email,

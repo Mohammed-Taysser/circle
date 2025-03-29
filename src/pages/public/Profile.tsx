@@ -1,7 +1,7 @@
 import { Button, Flex, Text, Tooltip } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { BiUserVoice } from 'react-icons/bi';
 import { BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
 import { FiUserCheck, FiUserPlus, FiUserX, FiUsers } from 'react-icons/fi';
@@ -16,6 +16,8 @@ import Taps from '../../common/Taps';
 import { cover } from '../../constants/default';
 import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
+import { selectAuth, useAppSelector } from '../../hooks/useRedux';
+import { getImageURL } from '../../helpers';
 
 function Profile() {
   useHelmet('profile'); // TODO: improve SEO
@@ -26,6 +28,8 @@ function Profile() {
     friend: false,
     follow: false,
   });
+
+  const authState = useAppSelector(selectAuth);
 
   const onAddFriendBtnClick = () => {
     setIsLoading((prev) => ({ ...prev, friend: true }));
@@ -143,16 +147,24 @@ function Profile() {
     },
   ];
 
+  const isUserProfile = useMemo(() => {
+    return authState.data?._id === profileId;
+  },[authState.data, profileId]);
+
+  if(!authState.data) {
+    return null
+  }
+
   return (
     <div className='profile-page'>
       <InfoBanner
         avatar={
-          'https://www.radiustheme.com/demo/wordpress/themes/cirkle/wp-content/uploads/avatars/1/60af1abf04a6b-bpthumb.jpg'
+          getImageURL(authState.data.avatar)
         }
-        cover={cover}
-        username='aurora-light'
-        name='Aurora Light'
-        verified
+        cover={getImageURL(authState.data.cover)}
+        username={authState.data.username}
+        name={`${authState.data.firstName} ${authState.data.lastName}`}
+        verified={authState.data.isVerified}
         extraInfo={
           <Flex
             justify='space-between'
@@ -186,7 +198,7 @@ function Profile() {
                 </div>
               </Tooltip>
             </div>
-            <Flex
+           {!isUserProfile&& <Flex
               gap={10}
               className='mt-4 md:mt-0 justify-center md:justify-start'
             >
@@ -230,7 +242,7 @@ function Profile() {
                   Un follow
                 </Button>
               )}
-            </Flex>
+            </Flex>}
           </Flex>
         }
       />

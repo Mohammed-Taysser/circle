@@ -33,29 +33,6 @@ const HEADER_LINKS = [
   },
 ];
 
-// Navbar
-const USER_DROPDOWN_LINKS = [
-  {
-    icon: FiUser,
-    label: 'Profile',
-    path: `/profile/1`, // TODO: replace with redux
-  },
-  {
-    icon: BiMessageDetail,
-    path: '/message',
-    label: 'Messenger',
-  },
-  {
-    icon: IoSettingsOutline,
-    label: 'Setting',
-    path: '/setting',
-  },
-  {
-    icon: IoHelpSharp,
-    label: 'Help',
-    path: '/help',
-  },
-];
 
 const USER_STATUS: UserStatus = {
   online: {
@@ -76,4 +53,4 @@ const USER_STATUS: UserStatus = {
   },
 };
 
-export { HEADER_LINKS, USER_DROPDOWN_LINKS, USER_STATUS };
+export { HEADER_LINKS, USER_STATUS };

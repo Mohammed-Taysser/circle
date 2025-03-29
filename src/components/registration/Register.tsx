@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Grid,
   Group,
   PasswordInput,
   Popover,
@@ -14,18 +15,44 @@ import {
 import { useForm } from '@mantine/form';
 import { IconCheck, IconX } from '@tabler/icons-react';
 import { useState } from 'react';
-import { MdOutlineAlternateEmail } from 'react-icons/md';
+import {
+  MdDriveFileRenameOutline,
+  MdOutlineAlternateEmail,
+} from 'react-icons/md';
 import { TfiLock } from 'react-icons/tfi';
 import { uuidv4 } from '../../helpers';
 import { PASSWORD_REQUIREMENTS, getPasswordStatus } from '../../validations';
+import { TbUserHexagon } from 'react-icons/tb';
+import {
+  selectAuth,
+  useAppDispatch,
+  useAppSelector,
+} from '../../hooks/useRedux';
+import { register } from '../../redux/features/auth.slice';
 
-function Register(props: JoinUsProps) {
+interface FormFields {
+  confirmPassword: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  terms: boolean;
+  username: string;
+}
+
+function Register(props: Readonly<JoinUsProps>) {
   const { toggleTap } = props;
+
+  const dispatch = useAppDispatch();
+  const authState = useAppSelector(selectAuth);
 
   const form = useForm({
     validateInputOnChange: true,
     validateInputOnBlur: true,
     initialValues: {
+      firstName: '',
+      lastName: '',
+      username: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -34,8 +61,14 @@ function Register(props: JoinUsProps) {
     validate: {
       email: (val) => (/^\S+@\S+$/.test(val) ? null : 'Invalid email'),
       terms: (value) => (!value ? 'terms is required' : null),
-      password: (val) =>
-        val.length <= 8
+      firstName: (value) =>
+        value.length < 2 ? 'First name should be at least 2 characters' : null,
+      lastName: (value) =>
+        value.length < 2 ? 'Last name should be at least 2 characters' : null,
+      username: (value) =>
+        value.length <= 8 ? 'Username should be at least 8 characters' : null,
+      password: (value) =>
+        value.length <= 8
           ? 'Password should include at least 8 characters'
           : null,
       confirmPassword: (value, values) =>
@@ -46,13 +79,51 @@ function Register(props: JoinUsProps) {
   const [popoverOpened, setPopoverOpened] = useState(false);
   const { strength, color } = getPasswordStatus(form.values.password);
 
-  const onFormSubmit = (values: any) => {
-    props.onFormSubmit(values);
+  const onFormSubmit = (values: FormFields) => {
+    const payload: RegisterRequestBody = {
+      email: values.email,
+      password: values.password,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      username: values.username,
+    };
+
+    dispatch(register(payload));
   };
 
   return (
     <form onSubmit={form.onSubmit(onFormSubmit)}>
       <Stack>
+        <Grid>
+          <Grid.Col sm={12} lg={6}>
+            <TextInput
+              label='First name'
+              placeholder='John'
+              icon={<MdDriveFileRenameOutline size='1rem' />}
+              value={form.values.firstName}
+              onChange={(event) =>
+                form.setFieldValue('firstName', event.currentTarget.value)
+              }
+              error={form.errors.firstName && 'Invalid First Name'}
+              radius='md'
+            />
+          </Grid.Col>
+
+          <Grid.Col sm={12} lg={6}>
+            <TextInput
+              label='Last name'
+              placeholder='Doe'
+              icon={<MdDriveFileRenameOutline size='1rem' />}
+              value={form.values.lastName}
+              onChange={(event) =>
+                form.setFieldValue('lastName', event.currentTarget.value)
+              }
+              error={form.errors.lastName && 'Invalid Last Name'}
+              radius='md'
+            />
+          </Grid.Col>
+        </Grid>
+
         <TextInput
           label='Email'
           placeholder='example@domain.dev'
@@ -62,6 +133,18 @@ function Register(props: JoinUsProps) {
             form.setFieldValue('email', event.currentTarget.value)
           }
           error={form.errors.email && 'Invalid email'}
+          radius='md'
+        />
+
+        <TextInput
+          label='Username'
+          placeholder='Username'
+          icon={<TbUserHexagon size='1rem' />}
+          value={form.values.username}
+          onChange={(event) =>
+            form.setFieldValue('username', event.currentTarget.value)
+          }
+          error={form.errors.username && 'Invalid username'}
           radius='md'
         />
 
@@ -147,7 +230,11 @@ function Register(props: JoinUsProps) {
         >
           Already have an account? Login
         </Anchor>
-        <Button type='submit' radius='xl'>
+        <Button
+          type='submit'
+          loading={authState.status === 'loading'}
+          radius='xl'
+        >
           Register
         </Button>
       </Group>

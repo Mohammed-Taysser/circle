@@ -18,7 +18,19 @@ const login = createAsyncThunk(
   }
 );
 
-const initialState: RequestState<AuthUser> = {
+const register = createAsyncThunk(
+  'auth/register',
+  async (body: RegisterRequestBody, thunkApi) => {
+    try {
+      const response = await API.register(body);
+      return response.data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(getErrorMessage(error));
+    }
+  }
+);
+
+const initialState: RequestState<User> = {
   data: LOCAL_STORAGE.get('user'),
   status: 'idle',
   error: '',
@@ -39,6 +51,8 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+
+      // login
       .addCase(login.pending, (state) => {
         state.status = 'loading';
         state.error = '';
@@ -46,13 +60,57 @@ const authSlice = createSlice({
       .addCase(login.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.data = action.payload.user;
-        
+
         LOCAL_STORAGE.set('token', action.payload.token);
         LOCAL_STORAGE.set('user', action.payload.user);
+
+        notifications.show({
+          title: 'Successfully login',
+          message: `Welcome back, ${action.payload.user.firstName}`,
+          loading: false,
+          color: '',
+          autoClose: true,
+        });
 
         routes.navigate('/');
       })
       .addCase(login.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+
+        notifications.show({
+          title: 'Error',
+          message: action.payload as ReactNode,
+          loading: false,
+          withCloseButton: true,
+          autoClose: true,
+          color: 'red',
+        });
+      })
+
+      // register
+      .addCase(register.pending, (state) => {
+        state.status = 'loading';
+        state.error = '';
+      })
+      .addCase(register.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.data = action.payload.user;
+
+        LOCAL_STORAGE.set('token', action.payload.token);
+        LOCAL_STORAGE.set('user', action.payload.user);
+
+        notifications.show({
+          title: 'Successfully register',
+          message: `Welcome to Circle, ${action.payload.user.firstName}`,
+          loading: false,
+          color: '',
+          autoClose: true,
+        });
+
+        routes.navigate('/');
+      })
+      .addCase(register.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.payload;
 
@@ -70,4 +128,4 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 export const { logout } = authSlice.actions;
-export { login };
+export { login, register };

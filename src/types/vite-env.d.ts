@@ -90,20 +90,22 @@ interface InfoBannerProp {
 
 // User component
 interface User {
-  avatar: string;
-  cover: string;
-  name: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  role: Role;
-  id: string;
-  joinAt: Date;
-  badges: {
-    id: string;
-    label: string;
-    picture: string;
-  }[];
+  "_id": string
+        "username": string
+        "role": string
+        "firstName": string
+        "lastName": string
+        "avatar": string
+        "cover": string
+        "email": string
+        "status": string
+        "isVerified": true,
+        "isDeleted": false,
+        "badges": [],
+        "bookmarks": [],
+        "createdAt": string
+        "updatedAt": string
+        "passwordChangeAt": string
 }
 
 // Plyr component
@@ -500,7 +502,7 @@ interface CalenderEvent {
 
 // Join Us Page
 interface JoinUsProps {
-  toggleTap: (value?:string) => void;
+  toggleTap: (value?: string) => void;
 }
 
 // Messenger Page
@@ -544,6 +546,14 @@ interface LoginRequestBody {
   password: string;
 }
 
+interface RegisterRequestBody {
+  username: string;
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+}
+
 // Axios
 interface RequestState<T = null> {
   data: T | null;
@@ -557,13 +567,6 @@ interface ResponseError {
   error: string;
 }
 
-interface AuthUser {
-  role: string;
-  username: string;
-  firstName: string;
-  lastName: string;
-  avatar: string;
-}
 
 interface Subscribe {
   email: string;
@@ -574,6 +577,11 @@ interface Subscribe {
 }
 
 interface AxiosLoginResponse {
+  token: string;
+  user: User;
+}
+
+interface AxiosRegisterResponse{
   token: string;
   user: User;
 }

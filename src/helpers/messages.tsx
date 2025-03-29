@@ -24,6 +24,10 @@ function getErrorMessage(err: unknown) {
     if (typeof error?.response?.data?.error === 'object') {
       return Object.values(error?.response?.data?.error);
     }
+
+    if (Array.isArray(error?.response?.data?.error)) {
+      return (error?.response?.data?.error as { message: string }[]).map((error) => error.message);
+    }
   }
 
   return i18n.t('error-has-occurred');
