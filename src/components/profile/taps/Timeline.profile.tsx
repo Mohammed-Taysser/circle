@@ -12,7 +12,7 @@ function TimelineProfile() {
   const { profileId = '' } = useParams();
 
   const posts = POSTS.filter(
-    (post) => post.user.id === profileId || post.visibility === 'friends'
+    (post) => post.user.id === profileId || post.visibility === 'friends',
   );
 
   const [state, setState] = useState({

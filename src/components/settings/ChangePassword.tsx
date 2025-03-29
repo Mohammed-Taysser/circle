@@ -28,7 +28,7 @@ function ChangePassword(props: SettingTapProps) {
     validate: {
       password: hasLength(
         { min: 8 },
-        'Password should include at least 8 characters'
+        'Password should include at least 8 characters',
       ),
       confirmPassword: matchesField('password', 'Passwords are not the same'),
     },
@@ -36,7 +36,7 @@ function ChangePassword(props: SettingTapProps) {
 
   const hasChanges = useMemo(
     () => JSON.stringify(form.values) !== JSON.stringify(initialValues),
-    [form.values]
+    [form.values],
   );
 
   const [popoverOpened, setPopoverOpened] = useState(false);

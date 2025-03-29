@@ -42,7 +42,7 @@ function PhotosGroup() {
                 ...prev,
                 ...(current.assets.gallery ? current.assets.gallery : []),
               ],
-              [] as string[]
+              [] as string[],
             )}
             galleryId={groupId} // TODO: replace with userId
           />

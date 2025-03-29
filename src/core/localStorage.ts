@@ -28,7 +28,7 @@ class LocalStorage {
       } catch (error) {
         console.error(
           `Error parsing localStorage value for key "${key}":`,
-          error
+          error,
         );
         return defaultValue ?? null;
       }

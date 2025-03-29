@@ -14,7 +14,7 @@ import { BsCalendar2Event } from 'react-icons/bs';
 import { TbMessage2Bolt, TbMessage2Exclamation } from 'react-icons/tb';
 
 function CreateEventModal(
-  props: ContextModalProps<CreateEventModalInnerProps>
+  props: ContextModalProps<CreateEventModalInnerProps>,
 ) {
   const { innerProps } = props;
   const [isLoading, setIsLoading] = useState(false);

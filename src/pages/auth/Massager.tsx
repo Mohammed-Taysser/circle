@@ -100,7 +100,7 @@ function Massager() {
                 onEmojiSelect={(params: any) => {
                   form.setFieldValue(
                     'msg',
-                    `${form.values.msg} ${params.native}`
+                    `${form.values.msg} ${params.native}`,
                   );
                 }}
               />

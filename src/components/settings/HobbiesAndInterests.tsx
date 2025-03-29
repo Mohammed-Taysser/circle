@@ -33,7 +33,7 @@ function HobbiesAndInterests(props: SettingTapProps) {
 
   const hasChanges = useMemo(
     () => JSON.stringify(form.values) !== JSON.stringify(initialValues),
-    [form.values]
+    [form.values],
   );
 
   const onFormSubmit = (values: any) => {

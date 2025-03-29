@@ -13,7 +13,7 @@ const getUserById = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
     }
-  }
+  },
 );
 
 const initialState: RequestState<User> = {
@@ -31,7 +31,7 @@ const profileSlice = createSlice({
 
       .addCase(getUserById.pending, (state) => {
         state.status = 'loading';
-        state.data = null
+        state.data = null;
         state.error = '';
       })
       .addCase(getUserById.fulfilled, (state, action) => {

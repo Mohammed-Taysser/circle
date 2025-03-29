@@ -86,12 +86,12 @@ function CreatePostModal(props: ContextModalProps<CreatePostModalInnerProps>) {
 
   const VisibilityObject = useMemo(
     () => POST_VISIBILITY[form.values.visibility as PostVisibility],
-    [form.values.visibility]
+    [form.values.visibility],
   );
 
   const VariantObject = useMemo(
     () => POST_VARIANT[form.values.variant as CreatePostVariant],
-    [form.values.variant]
+    [form.values.variant],
   );
 
   const onAnchorClick = (url: string) => {

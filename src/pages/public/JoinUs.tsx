@@ -25,13 +25,13 @@ function Registration() {
 
   const ViewComponent = useCallback(
     activeTap === 'register' ? Register : Login,
-    [activeTap]
+    [activeTap],
   );
 
   const toggleTapHandler = () => {
     queryParams.set(
       'activeTap',
-      activeTap === 'register' ? 'login' : 'register'
+      activeTap === 'register' ? 'login' : 'register',
     );
     setQueryParams(queryParams);
   };

@@ -25,7 +25,7 @@ class AxiosAPI {
       },
       (error) => {
         return Promise.reject(error);
-      }
+      },
     );
 
     this.axiosInstance.interceptors.response.use(
@@ -39,7 +39,7 @@ class AxiosAPI {
         }
 
         return Promise.reject(error);
-      }
+      },
     );
   }
 
@@ -50,7 +50,7 @@ class AxiosAPI {
   register(body: RegisterRequestBody) {
     return this.axiosInstance.post<AxiosRegisterResponse>(
       '/auth/register',
-      body
+      body,
     );
   }
 

@@ -17,7 +17,7 @@ import '../assets/scss/app.scss';
 
 function App() {
   const [colorScheme, setColorScheme] = useState<ColorScheme>(
-    LocalStorage.get<ColorScheme>('theme') ?? 'light'
+    LocalStorage.get<ColorScheme>('theme') ?? 'light',
   );
 
   const toggleColorScheme = (value?: ColorScheme) =>

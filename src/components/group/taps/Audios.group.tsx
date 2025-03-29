@@ -14,7 +14,7 @@ function AudiosGroup() {
       }
       return prev;
     },
-    [] as string[]
+    [] as string[],
   );
 
   const [state, setState] = useState({

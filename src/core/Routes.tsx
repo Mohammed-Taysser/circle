@@ -56,25 +56,25 @@ const ForgetPassword = lazy(() => import('../pages/public/ForgetPassword'));
 
 // Profile Taps
 const AboutProfile = lazy(
-  () => import('../components/profile/taps/About.profile')
+  () => import('../components/profile/taps/About.profile'),
 );
 const BadgesProfile = lazy(
-  () => import('../components/profile/taps/Badges.profile')
+  () => import('../components/profile/taps/Badges.profile'),
 );
 const FriendsProfile = lazy(
-  () => import('../components/profile/taps/Friends.profile')
+  () => import('../components/profile/taps/Friends.profile'),
 );
 const PhotosProfile = lazy(
-  () => import('../components/profile/taps/Photos.profile')
+  () => import('../components/profile/taps/Photos.profile'),
 );
 const TimelineProfile = lazy(
-  () => import('../components/profile/taps/Timeline.profile')
+  () => import('../components/profile/taps/Timeline.profile'),
 );
 const VideosProfile = lazy(
-  () => import('../components/profile/taps/Videos.profile')
+  () => import('../components/profile/taps/Videos.profile'),
 );
 const AudiosProfile = lazy(
-  () => import('../components/profile/taps/Audios.profile')
+  () => import('../components/profile/taps/Audios.profile'),
 );
 
 // Group Taps
@@ -82,12 +82,12 @@ const AboutGroup = lazy(() => import('../components/group/taps/About.group'));
 const BadgesGroup = lazy(() => import('../components/group/taps/Badges.group'));
 const PhotosGroup = lazy(() => import('../components/group/taps/Photos.group'));
 const TimelineGroup = lazy(
-  () => import('../components/group/taps/Timeline.group')
+  () => import('../components/group/taps/Timeline.group'),
 );
 const VideosGroup = lazy(() => import('../components/group/taps/Videos.group'));
 const AudiosGroup = lazy(() => import('../components/group/taps/Audios.group'));
 const MembersGroup = lazy(
-  () => import('../components/group/taps/Members.group')
+  () => import('../components/group/taps/Members.group'),
 );
 
 const routes = createBrowserRouter([

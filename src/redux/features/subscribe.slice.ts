@@ -12,7 +12,7 @@ const addSubscription = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
     }
-  }
+  },
 );
 
 const initialState: RequestState<Subscribe> = {

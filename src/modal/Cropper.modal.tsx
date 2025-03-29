@@ -30,7 +30,7 @@ function CropperModal(props: ContextModalProps<CropModalInnerProps>) {
     (croppedArea: CroppedArea, croppedAreaPixels: CroppedArea) => {
       setCroppedArea(croppedAreaPixels);
     },
-    []
+    [],
   );
 
   const onCropDone = async () => {
@@ -136,7 +136,7 @@ export function rotateSize(width: number, height: number, rotation: number) {
 
 async function getCanvas(
   config: CropModalInnerProps,
-  croppedArea: CroppedArea
+  croppedArea: CroppedArea,
 ) {
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -149,7 +149,7 @@ async function getCanvas(
     const { width: bBoxWidth, height: bBoxHeight } = rotateSize(
       image.width,
       image.height,
-      config.rotation
+      config.rotation,
     );
 
     // set canvas size to match the bounding box
@@ -161,7 +161,7 @@ async function getCanvas(
     ctx.rotate(rotRad);
     ctx.scale(
       config?.flip?.horizontal ? -1 : 1,
-      config?.flip?.vertical ? -1 : 1
+      config?.flip?.vertical ? -1 : 1,
     );
     ctx.translate(-image.width / 2, -image.height / 2);
 
@@ -187,7 +187,7 @@ async function getCanvas(
         0,
         0,
         croppedArea.width,
-        croppedArea.height
+        croppedArea.height,
       );
 
       return croppedCanvas;
@@ -197,7 +197,7 @@ async function getCanvas(
 
 function convertCanvasToBlob(
   canvas: HTMLCanvasElement,
-  title: string
+  title: string,
 ): Promise<File> {
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {

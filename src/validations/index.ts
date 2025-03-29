@@ -16,7 +16,7 @@ function getPasswordStatus(password: string) {
 
   const strength = Math.max(
     100 - (100 / (PASSWORD_REQUIREMENTS.length + 1)) * multiplier,
-    10
+    10,
   );
 
   let color = 'red';

@@ -34,7 +34,7 @@ function getErrorMessage(err: unknown) {
 
     if (Array.isArray(error?.response?.data?.error)) {
       return (error?.response?.data?.error as { message: string }[]).map(
-        (error) => error.message
+        (error) => error.message,
       );
     }
   }

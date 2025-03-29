@@ -35,7 +35,7 @@ function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
 
   const onLinkClick = (
     evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    url: string
+    url: string,
   ) => {
     evt.preventDefault();
     navigateTo(url);

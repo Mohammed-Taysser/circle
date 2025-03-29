@@ -15,7 +15,7 @@ const login = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
     }
-  }
+  },
 );
 
 const register = createAsyncThunk(
@@ -27,7 +27,7 @@ const register = createAsyncThunk(
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
     }
-  }
+  },
 );
 
 const initialState: RequestState<User> = {

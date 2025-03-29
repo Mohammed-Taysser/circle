@@ -42,7 +42,7 @@ function PhotosProfile() {
                 ...prev,
                 ...(current.assets.gallery ? current.assets.gallery : []),
               ],
-              [] as string[]
+              [] as string[],
             )}
             galleryId={profileId} // TODO: replace with userId
           />
