@@ -1,26 +1,25 @@
-import { Suspense, lazy } from 'react';
+import { PropsWithChildren, Suspense, lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import SuspenseLoading from '../common/SuspenseLoading';
 import BaseLayout from '../layouts/Base';
+import { selectAuth, useAppSelector } from '../hooks/useRedux';
 
-function RequireAuth({ children }: { children: React.ReactElement }) {
-  let location = useLocation();
+function RequireAuth({ children }: PropsWithChildren) {
+  const location = useLocation();
 
-  if (!localStorage.getItem('isLogin')) {
-    // TODO: replace with redux
-    // Redirect them to the /login page, but save the current location they were
-    // trying to go to when they were redirected. This allows us to send them
-    // along to that page after they login, which is a nicer user experience
-    // than dropping them off on the home page.
-    return <Navigate to='/join-us' state={{ next: location }} replace />;
+  const authState = useAppSelector(selectAuth);
+
+  if (!authState.data) {
+    return <Navigate to={`/join-us?nextUrl=${location.pathname}`} replace />;
   }
 
   return children;
 }
 
-function NoRequireAuth({ children }: { children: React.ReactElement }) {
-  // TODO: replace with redux
-  if (localStorage.getItem('isLogin')) {
+function NoRequireAuth({ children }: PropsWithChildren) {
+  const authState = useAppSelector(selectAuth);
+
+  if (authState.data) {
     return <Navigate to='/' replace />;
   }
 

@@ -11,9 +11,18 @@ import { useForm } from '@mantine/form';
 import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { TfiLock } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
+import {
+  selectAuth,
+  useAppDispatch,
+  useAppSelector,
+} from '../../hooks/useRedux';
+import { login } from '../../redux/features/auth.slice';
 
-function Login(props: JoinUsProps) {
+function Login(props: Readonly<JoinUsProps>) {
   const { toggleTap } = props;
+
+  const dispatch = useAppDispatch();
+  const authState = useAppSelector(selectAuth);
 
   const form = useForm({
     validateInputOnChange: true,
@@ -28,8 +37,13 @@ function Login(props: JoinUsProps) {
     },
   });
 
-  const onFormSubmit = (values: any) => {
-    props.onFormSubmit(values);
+  const onFormSubmit = (values: { email: string; password: string }) => {
+    const payload: LoginRequestBody = {
+      email: values.email,
+      password: values.password,
+    };
+
+    dispatch(login(payload));
   };
 
   return (
@@ -87,7 +101,11 @@ function Login(props: JoinUsProps) {
         >
           Don't have an account? Register
         </Anchor>
-        <Button type='submit' radius='xl'>
+        <Button
+          type='submit'
+          loading={authState.status === 'loading'}
+          radius='xl'
+        >
           Login
         </Button>
       </Group>

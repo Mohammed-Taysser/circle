@@ -12,17 +12,21 @@ import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
 import { USER_DROPDOWN_LINKS, USER_STATUS } from '../../constants/layout';
+import { useAppDispatch } from '../../hooks/useRedux';
+import { logout } from '../../redux/features/auth.slice';
 
 function UserDropdown(props: { className: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const [status, setStatus] = useState(USER_STATUS.online);
+
+  const dispatch = useAppDispatch();
 
   const onStatusChange = (status: SingleUserStatus) => {
     setStatus(status);
   };
 
   const onLogoutClick = () => {
-    console.log('logout');
+    dispatch(logout())
   };
 
   return (

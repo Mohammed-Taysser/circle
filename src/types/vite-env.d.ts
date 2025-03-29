@@ -7,6 +7,28 @@
 /// <reference types="@mantine/modals" />
 /// <reference types="@fullcalendar/core" />
 
+// Import ENV Variables Types
+interface ImportMetaEnv {
+  readonly VITE_SERVER_URL: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+
+// Local Storage
+type LocalStorageKeys = 'token' | 'user' | 'language' | 'subscribe' | 'theme';
+
+type LocalStorageKeysObject = {
+  [key in LocalStorageKeys]: string;
+};
+
+// Redux state
+type RequestStatus = 'idle' | 'loading' | 'succeeded' | 'failed';
+
+// Global
+type Role = 'admin' | 'user';
+
 // ErrorBoundary
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -72,6 +94,9 @@ interface User {
   cover: string;
   name: string;
   username: string;
+  firstName: string;
+  lastName: string;
+  role: Role;
   id: string;
   joinAt: Date;
   badges: {
@@ -475,8 +500,7 @@ interface CalenderEvent {
 
 // Join Us Page
 interface JoinUsProps {
-  toggleTap: (value?: React.SetStateAction<string>) => void;
-  onFormSubmit: (data: any) => void;
+  toggleTap: (value?:string) => void;
 }
 
 // Messenger Page
@@ -513,3 +537,45 @@ interface SitemapItem {
   url: string;
   label: string;
 }
+
+// Login page
+interface LoginRequestBody {
+  email: string;
+  password: string;
+}
+
+// Axios
+interface RequestState<T = null> {
+  data: T | null;
+  status: RequestStatus;
+  error: SerializedError;
+}
+
+// TODO: find a wat to make it global
+// add type to axios itself
+interface ResponseError {
+  error: string;
+}
+
+interface AuthUser {
+  role: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  avatar: string;
+}
+
+interface Subscribe {
+  email: string;
+  isVerified: boolean;
+  _id: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface AxiosLoginResponse {
+  token: string;
+  user: User;
+}
+
+type AxiosSubscribeResponse = Subscribe;

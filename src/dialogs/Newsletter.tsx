@@ -1,76 +1,22 @@
-import {
-  Button,
-  Dialog,
-  Image,
-  Input,
-  Text,
-  Title,
-  createStyles,
-} from '@mantine/core';
+import { Button, Dialog, Image, Input, Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { useLocalStorage } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import newsletterImage from '../assets/images/background/newsletter.svg';
-
-const useStyles = createStyles((theme) => ({
-  wrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: `calc(${theme.spacing.xl} * 2)`,
-    borderRadius: theme.radius.md,
-    backgroundColor:
-      theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.white,
-    [theme.fn.smallerThan('sm')]: {
-      flexDirection: 'column-reverse',
-      padding: theme.spacing.xl,
-    },
-  },
-
-  image: {
-    maxWidth: '40%',
-    [theme.fn.smallerThan('sm')]: {
-      maxWidth: '100%',
-    },
-  },
-
-  body: {
-    [theme.fn.smallerThan('sm')]: {
-      marginTop: theme.spacing.xl,
-    },
-  },
-
-  title: {
-    color: theme.colorScheme === 'dark' ? theme.white : theme.black,
-    lineHeight: 1,
-    marginBottom: theme.spacing.md,
-  },
-
-  controls: {
-    display: 'flex',
-    marginTop: theme.spacing.xl,
-  },
-
-  input: {
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-    borderRight: 0,
-  },
-
-  control: {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
-  },
-}));
+import {
+  selectSubscribe,
+  useAppDispatch,
+  useAppSelector,
+} from '../hooks/useRedux';
+import { addSubscription } from '../redux/features/subscribe.slice';
+import useStyles from '../styles/newsletter';
 
 function Newsletter() {
   const { classes } = useStyles();
-  const [isSubscribe, setIsSubscribe] = useLocalStorage<boolean>({
-    key: 'circle-newsletter-subscribe',
-    defaultValue: false,
-  });
   const [isOpened, setIsOpened] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const subscribeState = useAppSelector(selectSubscribe);
 
   const form = useForm({
     initialValues: {
@@ -83,36 +29,35 @@ function Newsletter() {
   });
 
   useEffect(() => {
-    let timerId = 0;
-
-    if (!isSubscribe) {
-      timerId = setTimeout(() => {
+    if (!subscribeState.data) {
+      setTimeout(() => {
         setIsOpened(true);
       }, 10000);
     }
-
-    return () => {
-      clearTimeout(timerId);
-    };
-  }, [isSubscribe]);
+  }, []);
 
   const onFormSubmit = (values: { email: string }) => {
-    console.log(values);
-
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsOpened(false);
-      setIsSubscribe(true);
-
-      notifications.show({
-        title: 'Successfully subscribed',
-        message: 'Check your inbox to confirm subscribe in newsletter!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
-      });
-    }, 2000);
+    dispatch(addSubscription(values.email)).then((action) => {
+      if (addSubscription.fulfilled.match(action)) {
+        notifications.show({
+          title: 'Successfully subscribed',
+          message: 'Check your inbox to confirm subscribe in newsletter!',
+          loading: false,
+          withCloseButton: true,
+          autoClose: true,
+        });
+        setIsOpened(false);
+      } else if (addSubscription.rejected.match(action)) {
+        notifications.show({
+          title: 'Error',
+          message: subscribeState.error,
+          loading: false,
+          withCloseButton: true,
+          autoClose: true,
+          color: 'red',
+        });
+      }
+    });
   };
 
   return (
@@ -146,7 +91,7 @@ function Newsletter() {
               <Button
                 className={classes.control}
                 type='submit'
-                loading={isLoading}
+                loading={subscribeState.status === 'loading'}
               >
                 Subscribe
               </Button>

@@ -1162,37 +1162,7 @@ const BADGES: Badge[] = [
   },
 ];
 
-const FRIENDS: User[] = [
-  {
-    avatar: avatar1,
-    cover: gallery5,
-    name: 'Mohammed',
-    username: 'Mohammed',
-    joinAt: new Date('2010'),
-    id: '101',
-    badges: [
-      {
-        id: '3',
-        label: 'Spring',
-        picture: spring,
-      },
-      { id: '3', label: 'Featured', picture: featured },
-    ],
-  },
-  {
-    avatar: avatar4,
-    cover: gallery9,
-    name: 'Aurora',
-    username: 'au101',
-    joinAt: new Date('2020'),
-    id: '101d',
-    badges: [
-      { id: '2', label: 'Target', picture: target },
-      { id: '3', label: 'Featured', picture: featured },
-      { id: '1', label: 'Happy Rock', picture: happy },
-    ],
-  },
-];
+const FRIENDS: User[] = []
 
 const EVENTS = [
   {
