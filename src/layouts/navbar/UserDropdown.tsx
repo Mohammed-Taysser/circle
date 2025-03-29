@@ -3,7 +3,7 @@ import {
   Menu,
   Text,
   UnstyledButton,
-  useMantineColorScheme
+  useMantineColorScheme,
 } from '@mantine/core';
 import { useMemo, useState } from 'react';
 import { BiMessageDetail } from 'react-icons/bi';
@@ -16,7 +16,11 @@ import { Link } from 'react-router-dom';
 import Avatar from '../../common/Avatar';
 import { USER_STATUS } from '../../constants/layout';
 import { getImageURL } from '../../helpers';
-import { selectAuth, useAppDispatch, useAppSelector } from '../../hooks/useRedux';
+import {
+  selectAuth,
+  useAppDispatch,
+  useAppSelector,
+} from '../../hooks/useRedux';
 import { logout } from '../../redux/features/auth.slice';
 
 function UserDropdown(props: { className?: string }) {
@@ -31,20 +35,18 @@ function UserDropdown(props: { className?: string }) {
   };
 
   const onLogoutClick = () => {
-    dispatch(logout())
+    dispatch(logout());
   };
 
-
   const fullName = useMemo(() => {
-    if(!authState.data) {
+    if (!authState.data) {
       return '';
     }
-    
-    return `${authState.data.firstName} ${authState.data.lastName}`
+
+    return `${authState.data.firstName} ${authState.data.lastName}`;
   }, [authState.data]);
 
-
-  if(!authState.data) {
+  if (!authState.data) {
     return null;
   }
 
@@ -99,36 +101,36 @@ function UserDropdown(props: { className?: string }) {
           </Menu.Item>
 
           <Menu.Item
-              component={Link}
-              to={`/profile/${authState.data._id}`}
-              icon={<FiUser size={14} />}
-            >
-              Profile
-            </Menu.Item>
+            component={Link}
+            to={`/profile/${authState.data._id}`}
+            icon={<FiUser size={14} />}
+          >
+            Profile
+          </Menu.Item>
 
-            <Menu.Item
-              component={Link}
-              to='/message'
-              icon={<BiMessageDetail size={14} />}
-            >
-              Messenger
-            </Menu.Item>
+          <Menu.Item
+            component={Link}
+            to='/message'
+            icon={<BiMessageDetail size={14} />}
+          >
+            Messenger
+          </Menu.Item>
 
-            <Menu.Item
-              component={Link}
-              to='/setting'
-              icon={<IoSettingsOutline size={14} />}
-            >
-              Setting
-            </Menu.Item>
+          <Menu.Item
+            component={Link}
+            to='/setting'
+            icon={<IoSettingsOutline size={14} />}
+          >
+            Setting
+          </Menu.Item>
 
-            <Menu.Item
-              component={Link}
-              to='/help'
-              icon={<IoHelpSharp size={14} />}
-            >
-              Help
-            </Menu.Item>
+          <Menu.Item
+            component={Link}
+            to='/help'
+            icon={<IoHelpSharp size={14} />}
+          >
+            Help
+          </Menu.Item>
 
           <Menu.Label>Status</Menu.Label>
 

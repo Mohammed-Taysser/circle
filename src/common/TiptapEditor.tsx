@@ -172,8 +172,8 @@ function TiptapEditor(props: TiptapEditorProps) {
 
 TiptapEditor.defaultProps = {
   getText: (data: { text: string; html: string }) => console.log(data),
-  content:'',
-  noFontSizes:false
+  content: '',
+  noFontSizes: false,
 };
 
 export default TiptapEditor;

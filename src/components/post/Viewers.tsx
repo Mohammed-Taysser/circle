@@ -22,7 +22,7 @@ function Viewers(props: PostViewersProps) {
         </div>
       );
     case 'youtube':
-      return <Youtube src={post.assets?.embedded??''} />;
+      return <Youtube src={post.assets?.embedded ?? ''} />;
     case 'gallery':
       return (
         <div className='post-thumbs'>

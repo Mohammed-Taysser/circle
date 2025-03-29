@@ -90,22 +90,22 @@ interface InfoBannerProp {
 
 // User component
 interface User {
-  "_id": string
-        "username": string
-        "role": string
-        "firstName": string
-        "lastName": string
-        "avatar": string
-        "cover": string
-        "email": string
-        "status": string
-        "isVerified": true,
-        "isDeleted": false,
-        "badges": [],
-        "bookmarks": [],
-        "createdAt": string
-        "updatedAt": string
-        "passwordChangeAt": string
+  _id: string;
+  username: string;
+  role: string;
+  firstName: string;
+  lastName: string;
+  avatar: string;
+  cover: string;
+  email: string;
+  status: string;
+  isVerified: true;
+  isDeleted: false;
+  badges: [];
+  bookmarks: [];
+  createdAt: string;
+  updatedAt: string;
+  passwordChangeAt: string;
 }
 
 // Plyr component
@@ -564,9 +564,12 @@ interface RequestState<T = null> {
 // TODO: find a wat to make it global
 // add type to axios itself
 interface ResponseError {
-  error: string;
+  error:
+    | string
+    | {
+        message: string;
+      };
 }
-
 
 interface Subscribe {
   email: string;
@@ -581,9 +584,13 @@ interface AxiosLoginResponse {
   user: User;
 }
 
-interface AxiosRegisterResponse{
+interface AxiosRegisterResponse {
   token: string;
   user: User;
+}
+
+interface AxiosResponse<T> {
+  data: T;
 }
 
 type AxiosSubscribeResponse = Subscribe;

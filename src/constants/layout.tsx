@@ -33,7 +33,6 @@ const HEADER_LINKS = [
   },
 ];
 
-
 const USER_STATUS: UserStatus = {
   online: {
     color: '#20c997',

@@ -1,7 +1,7 @@
-import { Button, Flex, Text, Tooltip } from '@mantine/core';
+import { Alert, Button, Flex, Loader, Text, Tooltip } from '@mantine/core';
 import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { BiUserVoice } from 'react-icons/bi';
 import { BsPersonBadge, BsPersonVideo3 } from 'react-icons/bs';
 import { FiUserCheck, FiUserPlus, FiUserX, FiUsers } from 'react-icons/fi';
@@ -16,11 +16,20 @@ import Taps from '../../common/Taps';
 import { cover } from '../../constants/default';
 import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
-import { selectAuth, useAppSelector } from '../../hooks/useRedux';
+import {
+  selectAuth,
+  selectProfile,
+  useAppDispatch,
+  useAppSelector,
+} from '../../hooks/useRedux';
 import { getImageURL } from '../../helpers';
+import { IconAlertCircle } from '@tabler/icons-react';
+import SuspenseLoading from '../../common/SuspenseLoading';
+import { getUserById } from '../../redux/features/profile.slice';
 
 function Profile() {
   useHelmet('profile'); // TODO: improve SEO
+
   const { profileId = '' } = useParams();
   const isFriend = false; // TODO: find suitable algorithm
   const isFollow = false; // TODO: find suitable algorithm
@@ -29,7 +38,12 @@ function Profile() {
     follow: false,
   });
 
-  const authState = useAppSelector(selectAuth);
+  const dispatch = useAppDispatch();
+  const profileState = useAppSelector(selectProfile);
+
+  useEffect(() => {
+    dispatch(getUserById(profileId));
+  }, [profileId]);
 
   const onAddFriendBtnClick = () => {
     setIsLoading((prev) => ({ ...prev, friend: true }));
@@ -148,23 +162,29 @@ function Profile() {
   ];
 
   const isUserProfile = useMemo(() => {
-    return authState.data?._id === profileId;
-  },[authState.data, profileId]);
+    return profileState.data?._id === profileId;
+  }, [profileState.data, profileId]);
 
-  if(!authState.data) {
-    return null
+  if (profileState.status === 'loading') {
+    return <SuspenseLoading />;
+  }
+
+  if (!profileState.data) {
+    return (
+      <Alert icon={<IconAlertCircle />} color='red' title='Profile not found'>
+        Sorry, but the profile you are looking for was not found
+      </Alert>
+    );
   }
 
   return (
     <div className='profile-page'>
       <InfoBanner
-        avatar={
-          getImageURL(authState.data.avatar)
-        }
-        cover={getImageURL(authState.data.cover)}
-        username={authState.data.username}
-        name={`${authState.data.firstName} ${authState.data.lastName}`}
-        verified={authState.data.isVerified}
+        avatar={getImageURL(profileState.data.avatar)}
+        cover={getImageURL(profileState.data.cover)}
+        username={profileState.data.username}
+        name={`${profileState.data.firstName} ${profileState.data.lastName}`}
+        verified={profileState.data.isVerified}
         extraInfo={
           <Flex
             justify='space-between'
@@ -198,51 +218,53 @@ function Profile() {
                 </div>
               </Tooltip>
             </div>
-           {!isUserProfile&& <Flex
-              gap={10}
-              className='mt-4 md:mt-0 justify-center md:justify-start'
-            >
-              {isFriend ? (
-                <Button
-                  size='xs'
-                  loading={isLoading.friend}
-                  onClick={onAddFriendBtnClick}
-                  leftIcon={<FiUserPlus className='text-lg' />}
-                >
-                  Add Friend
-                </Button>
-              ) : (
-                <Button
-                  variant='default'
-                  size='xs'
-                  loading={isLoading.friend}
-                  onClick={onUnfriendBtnClick}
-                  leftIcon={<FiUserX className='text-lg' />}
-                >
-                  Unfriend
-                </Button>
-              )}
-              {isFollow ? (
-                <Button
-                  size='xs'
-                  loading={isLoading.follow}
-                  onClick={onFollowBtnClick}
-                  leftIcon={<FiUserCheck className='text-lg' />}
-                >
-                  Follow
-                </Button>
-              ) : (
-                <Button
-                  size='xs'
-                  variant='default'
-                  loading={isLoading.follow}
-                  onClick={onUnFollowBtnClick}
-                  leftIcon={<FiUserX className='text-lg' />}
-                >
-                  Un follow
-                </Button>
-              )}
-            </Flex>}
+            {!isUserProfile && (
+              <Flex
+                gap={10}
+                className='mt-4 md:mt-0 justify-center md:justify-start'
+              >
+                {isFriend ? (
+                  <Button
+                    size='xs'
+                    loading={isLoading.friend}
+                    onClick={onAddFriendBtnClick}
+                    leftIcon={<FiUserPlus className='text-lg' />}
+                  >
+                    Add Friend
+                  </Button>
+                ) : (
+                  <Button
+                    variant='default'
+                    size='xs'
+                    loading={isLoading.friend}
+                    onClick={onUnfriendBtnClick}
+                    leftIcon={<FiUserX className='text-lg' />}
+                  >
+                    Unfriend
+                  </Button>
+                )}
+                {isFollow ? (
+                  <Button
+                    size='xs'
+                    loading={isLoading.follow}
+                    onClick={onFollowBtnClick}
+                    leftIcon={<FiUserCheck className='text-lg' />}
+                  >
+                    Follow
+                  </Button>
+                ) : (
+                  <Button
+                    size='xs'
+                    variant='default'
+                    loading={isLoading.follow}
+                    onClick={onUnFollowBtnClick}
+                    leftIcon={<FiUserX className='text-lg' />}
+                  >
+                    Un follow
+                  </Button>
+                )}
+              </Flex>
+            )}
           </Flex>
         }
       />

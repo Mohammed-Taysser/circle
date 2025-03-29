@@ -24,9 +24,7 @@ const initialState: RequestState<Subscribe> = {
 const subscribeSlice = createSlice({
   name: 'subscribe',
   initialState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(addSubscription.pending, (state) => {

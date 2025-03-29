@@ -9,7 +9,14 @@ type AppDispatch = typeof store.dispatch;
 const useAppDispatch: () => AppDispatch = useDispatch;
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
+const selectProfile = (state: RootState) => state.profile;
 const selectAuth = (state: RootState) => state.auth;
 const selectSubscribe = (state: RootState) => state.subscribe;
 
-export { selectAuth, selectSubscribe, useAppDispatch, useAppSelector };
+export {
+  selectAuth,
+  selectSubscribe,
+  useAppDispatch,
+  useAppSelector,
+  selectProfile,
+};

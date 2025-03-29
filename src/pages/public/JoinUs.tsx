@@ -28,10 +28,13 @@ function Registration() {
     [activeTap]
   );
 
-  const toggleTapHandler = () =>{
-    queryParams.set('activeTap', activeTap === 'register' ? 'login' : 'register');
+  const toggleTapHandler = () => {
+    queryParams.set(
+      'activeTap',
+      activeTap === 'register' ? 'login' : 'register'
+    );
     setQueryParams(queryParams);
-  }
+  };
 
   return (
     <Container>

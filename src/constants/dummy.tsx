@@ -1162,7 +1162,7 @@ const BADGES: Badge[] = [
   },
 ];
 
-const FRIENDS: User[] = []
+const FRIENDS: User[] = [];
 
 const EVENTS = [
   {

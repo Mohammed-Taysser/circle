@@ -43,12 +43,19 @@ class AxiosAPI {
     );
   }
 
-  login(body:LoginRequestBody) {
+  login(body: LoginRequestBody) {
     return this.axiosInstance.post<AxiosLoginResponse>('/auth/login', body);
   }
 
-  register(body:RegisterRequestBody) {
-    return this.axiosInstance.post<AxiosRegisterResponse>('/auth/register', body);
+  register(body: RegisterRequestBody) {
+    return this.axiosInstance.post<AxiosRegisterResponse>(
+      '/auth/register',
+      body
+    );
+  }
+
+  getUserById(id: string) {
+    return this.axiosInstance.get<AxiosResponse<User>>(`/users/${id}`);
   }
 
   subscribe(email: string) {

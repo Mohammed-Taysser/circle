@@ -17,6 +17,13 @@ function getErrorMessage(err: unknown) {
       return i18n.t('request-had-been-canceled');
     }
 
+    if (
+      typeof error?.response?.data?.error === 'object' &&
+      typeof error?.response?.data?.error?.message === 'string'
+    ) {
+      return error?.response?.data?.error?.message;
+    }
+
     if (typeof error?.response?.data?.error === 'string') {
       return error?.response?.data?.error;
     }
@@ -26,7 +33,9 @@ function getErrorMessage(err: unknown) {
     }
 
     if (Array.isArray(error?.response?.data?.error)) {
-      return (error?.response?.data?.error as { message: string }[]).map((error) => error.message);
+      return (error?.response?.data?.error as { message: string }[]).map(
+        (error) => error.message
+      );
     }
   }
 
