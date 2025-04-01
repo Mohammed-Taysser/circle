@@ -2,6 +2,7 @@ import { PropsWithChildren, Suspense, lazy } from 'react';
 import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import SuspenseLoading from '../common/SuspenseLoading';
 import BaseLayout from '../layouts/Base';
+import DashboardLayout from '../layouts/Dashboard';
 import { selectAuth, useAppSelector } from '../hooks/useRedux';
 
 function RequireAuth({ children }: PropsWithChildren) {
@@ -89,6 +90,10 @@ const AudiosGroup = lazy(() => import('../components/group/taps/Audios.group'));
 const MembersGroup = lazy(
   () => import('../components/group/taps/Members.group'),
 );
+
+// Dashboard
+const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
+const Users = lazy(() => import('../pages/dashboard/Users'));
 
 const routes = createBrowserRouter([
   {
@@ -392,6 +397,32 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <NotFound />
+          </RequireAuth>
+        ),
+      },
+    ],
+  },
+  {
+    path: '/dashboard',
+    element: (
+      <RequireAuth>
+        <DashboardLayout />
+      </RequireAuth>
+    ),
+    children: [
+      {
+        index: true,
+        element: (
+          <RequireAuth>
+            <Dashboard />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'users',
+        element: (
+          <RequireAuth>
+            <Users />
           </RequireAuth>
         ),
       },

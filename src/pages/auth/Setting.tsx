@@ -14,27 +14,27 @@ import useHelmet from '../../hooks/useHelmet';
 const TOC = [
   {
     label: 'Contact Info',
-    id: 'contactInfo',
+    _id: 'contactInfo',
     component: ContactInfo,
   },
   {
     label: 'Basic Info',
-    id: 'basicInfo',
+    _id: 'basicInfo',
     component: BasicInfo,
   },
   {
     label: 'Change Password',
-    id: 'changePassword',
+    _id: 'changePassword',
     component: ChangePassword,
   },
   {
     label: 'Education And Others Information',
-    id: 'educationAndOthersInformation',
+    _id: 'educationAndOthersInformation',
     component: EducationAndOthersInformation,
   },
   {
     label: 'Hobbies and Interests',
-    id: 'hobbiesAndInterests',
+    _id: 'hobbiesAndInterests',
     component: HobbiesAndInterests,
   },
 ];
@@ -94,10 +94,10 @@ function Setting() {
           {isOpened ? 'Close' : 'Open'} Menu
         </Button>
 
-        <Tabs defaultValue={TOC[0].id} orientation='vertical' ref={tapsRef}>
+        <Tabs defaultValue={TOC[0]._id} orientation='vertical' ref={tapsRef}>
           <Tabs.List className={tapsClasses}>
             {TOC.map((item) => (
-              <Tabs.Tab value={item.id} key={item.id}>
+              <Tabs.Tab value={item._id} key={item._id}>
                 {item.label}
               </Tabs.Tab>
             ))}
@@ -105,7 +105,7 @@ function Setting() {
 
           <div className='md:px-10 w-full'>
             {TOC.map((item) => (
-              <Tabs.Panel value={item.id} key={item.id}>
+              <Tabs.Panel value={item._id} key={item._id}>
                 <item.component
                   isLoading={isLoading}
                   onFormSubmit={onFormSubmit}

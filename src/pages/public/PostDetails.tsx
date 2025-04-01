@@ -20,7 +20,7 @@ function PostDetails() {
   });
 
   useEffect(() => {
-    setPost(POSTS.find((post) => post.id === postId) || null);
+    setPost(POSTS.find((post) => post._id === postId) || null);
 
     const TimerId = setTimeout(() => {
       setState({

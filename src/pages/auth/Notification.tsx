@@ -40,7 +40,7 @@ function Notification() {
         <div className='my-5 shadow-nice p-4 bg-white rounded relative'>
           <Flex direction='column' wrap='wrap' gap={10}>
             {NOTIFICATION.map((request) => (
-              <SingleNotification request={request} key={request.id} />
+              <SingleNotification request={request} key={request._id} />
             ))}
           </Flex>
         </div>

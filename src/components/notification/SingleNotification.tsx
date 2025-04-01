@@ -25,7 +25,7 @@ function SingleNotification(props: { request: SingleNotification }) {
   }, [request]);
 
   return (
-    <Link to={`/post/${request.post.id}`} className='no-underline'>
+    <Link to={`/post/${request.post._id}`} className='no-underline'>
       <Flex
         align='center'
         justify='space-between'

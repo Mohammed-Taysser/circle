@@ -33,7 +33,7 @@ function Homepage() {
     <Async {...state} skeleton={<Skeleton variant='post' repeat={6} />}>
       <CreatePost />
       {POSTS.map((post) => (
-        <Post post={post} key={post.id} />
+        <Post post={post} key={post._id} />
       ))}
     </Async>
   );

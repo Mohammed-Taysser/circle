@@ -22,7 +22,7 @@ function EventsTimeline() {
       {EVENTS.map((event) => (
         <Timeline.Item
           title={dayjs(event.date).format('hh:mm:ss A')}
-          key={event.id}
+          key={event._id}
         >
           <Accordion>
             <Accordion.Item value='customization' className='border-0'>

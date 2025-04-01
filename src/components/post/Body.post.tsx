@@ -6,7 +6,7 @@ function BodyPost(props: { post: Post; full?: boolean }) {
     <div className='post-body'>
       <div className='activity-inner'>
         <TextContent
-          id={props.post.id}
+          id={props.post._id}
           body={props.post.body}
           full={props.full}
         />

@@ -85,7 +85,7 @@ function Bookmarks() {
 
             <div className='my-10'>
               {posts.map((post) => (
-                <Post post={post} key={post.id} />
+                <Post post={post} key={post._id} />
               ))}
             </div>
 

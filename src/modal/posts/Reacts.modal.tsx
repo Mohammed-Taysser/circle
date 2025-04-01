@@ -90,7 +90,7 @@ const ReactRows = (props: { reacts: SinglePostReact[]; type: string }) => {
   return (
     <>
       {props.reacts.map((react) => (
-        <tr key={props.type + react.id}>
+        <tr key={props.type + react._id}>
           <td className='py-[12px!important]'>
             <Avatar src={react.avatar} sm alt={`${react.fullName}-avatar`} />
           </td>

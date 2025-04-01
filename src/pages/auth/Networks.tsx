@@ -39,7 +39,7 @@ function Networks() {
       {users.length > 0 ? (
         <div className='md:grid grid-cols-2 gap-4 my-5'>
           {users.map((user) => (
-            <User key={user.id} user={user} />
+            <User key={user._id} user={user} />
           ))}
         </div>
       ) : (

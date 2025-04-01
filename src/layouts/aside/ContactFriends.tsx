@@ -12,8 +12,8 @@ function ContactFriends(props: AsideContactsProps) {
       <Flex direction='column' wrap='wrap' gap={0}>
         {MESSAGES.map((request) => (
           <Link
-            to={`/message/${request.user.id}`}
-            key={request.id}
+            to={`/message/${request.user._id}`}
+            key={request._id}
             className='no-underline'
             onClick={() => setIsAsideOpen(false)}
           >

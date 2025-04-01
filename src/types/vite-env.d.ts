@@ -55,20 +55,6 @@ interface TiptapEditorProps {
   noFontSizes?: boolean;
 }
 
-// Badge component
-interface Badge {
-  id: string;
-  label: string;
-  picture: string;
-  msg: string;
-  earnedAt: Date;
-  users: {
-    avatar: string;
-    name: string;
-    id: string;
-  }[];
-}
-
 // Banner component
 interface BannerProps {
   title: string;
@@ -86,26 +72,6 @@ interface InfoBannerProp {
   extraInfo: ReactElement;
   verified: boolean;
   className?: string;
-}
-
-// User component
-interface User {
-  _id: string;
-  username: string;
-  role: string;
-  firstName: string;
-  lastName: string;
-  avatar: string;
-  cover: string;
-  email: string;
-  status: string;
-  isVerified: true;
-  isDeleted: false;
-  badges: [];
-  bookmarks: [];
-  createdAt: string;
-  updatedAt: string;
-  passwordChangeAt: string;
 }
 
 // Plyr component
@@ -139,7 +105,7 @@ interface GroupProps {
 }
 
 interface Group {
-  id: string;
+  _id: string;
   picture: string;
   cover: string;
   visibility: 'private' | 'public';
@@ -202,16 +168,16 @@ interface SingleContactFriend {
 // Notification
 interface SingleNotification {
   type: string;
-  id: string;
+  _id: string;
   unread: boolean;
   date: Date;
   post: {
-    id: string;
+    _id: string;
   };
   user: {
     name: string;
     avatar: string;
-    id: string;
+    _id: string;
   };
   msg?: string;
 }
@@ -223,7 +189,7 @@ interface SingleUserStatus {
   title: string;
 }
 
-type UserStatus = {
+type UserStatusConstant = {
   [key in StatusSlug]: SingleUserStatus;
 };
 
@@ -281,7 +247,7 @@ interface CroppedArea {
 type PostReactsLabel = 'like' | 'love' | 'star' | 'wow';
 
 interface SinglePostReact {
-  id: string;
+  _id: string;
   avatar: string;
   username: string;
   fullName: string;
@@ -370,13 +336,13 @@ interface PostAssets {
 }
 
 interface Post {
-  id: string;
+  _id: string;
   visibility: PostVisibility;
   variant: PostVariant;
   user: {
     avatar: string;
     name: string;
-    id: string;
+    _id: string;
     isVerified: boolean;
   };
   publishAt: Date;

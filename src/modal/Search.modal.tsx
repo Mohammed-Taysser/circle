@@ -13,9 +13,8 @@ import { useState } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import { MdSearchOff } from 'react-icons/md';
 import Avatar from '../common/Avatar';
-import { avatar } from '../constants/default';
-import { uuidv4 } from '../helpers';
 import { NOTIFICATION } from '../constants/dummy';
+import { uuidv4 } from '../helpers';
 
 function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
   const { navigateTo } = props.innerProps;
@@ -67,7 +66,7 @@ function SearchModal(props: ContextModalProps<SearchModalInnerProps>) {
         <ScrollArea h={400} offsetScrollbars>
           {NOTIFICATION.map((result) => (
             <Anchor
-              onClick={(evt) => onLinkClick(evt, `/profile/${result.user.id}`)}
+              onClick={(evt) => onLinkClick(evt, `/profile/${result.user._id}`)}
               className='flex w-full gap-5 items-center transition p-2 my-1 hover:no-underline'
               key={uuidv4()}
               sx={(theme) => ({

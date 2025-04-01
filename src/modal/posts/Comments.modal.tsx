@@ -52,7 +52,7 @@ function CommentsModal(props: ContextModalProps<CommentsModalInnerProps>) {
               }
               className='mb-10'
               lineVariant='dashed'
-              key={comment.id}
+              key={comment._id}
             >
               <div className='mx-5 relative -top-4'>
                 <div>{comment.user.name}</div>

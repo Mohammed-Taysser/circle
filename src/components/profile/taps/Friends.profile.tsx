@@ -33,7 +33,7 @@ function FriendsProfile() {
       {friends.length ? (
         <div className='md:grid grid-cols-2 gap-4'>
           {friends.map((friend) => (
-            <User key={friend.id} user={friend} />
+            <User key={friend._id} user={friend} />
           ))}
         </div>
       ) : (

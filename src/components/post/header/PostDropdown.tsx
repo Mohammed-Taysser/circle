@@ -6,7 +6,6 @@ import { FiExternalLink } from 'react-icons/fi';
 import { IoMdSave } from 'react-icons/io';
 import { IoSaveOutline } from 'react-icons/io5';
 import { TbTextRecognition } from 'react-icons/tb';
-import { uuidv4 } from '../../../helpers';
 
 function PostDropdown(props: PostDropdownProps) {
   const isLoggedIn = localStorage.getItem('isLogin'); // TODO: replace with redux

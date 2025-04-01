@@ -1,16 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import routes from '../../core/Routes';
-import API from '../../core/api';
 import LOCAL_STORAGE from '../../core/localStorage';
 import { getErrorMessage } from '../../helpers';
 import { notifications } from '@mantine/notifications';
 import { ReactNode } from 'react';
+import API from '../../api';
 
 const login = createAsyncThunk(
   'auth/login',
   async (body: LoginRequestBody, thunkApi) => {
     try {
-      const response = await API.login(body);
+      const response = await API.auth.login(body);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
@@ -22,7 +22,7 @@ const register = createAsyncThunk(
   'auth/register',
   async (body: RegisterRequestBody, thunkApi) => {
     try {
-      const response = await API.register(body);
+      const response = await API.auth.register(body);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
@@ -46,7 +46,7 @@ const authSlice = createSlice({
       LOCAL_STORAGE.remove('token');
       LOCAL_STORAGE.remove('user');
 
-      routes.navigate('/login');
+      routes.navigate('/join-us');
     },
   },
   extraReducers: (builder) => {

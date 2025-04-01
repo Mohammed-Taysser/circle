@@ -33,7 +33,7 @@ const HEADER_LINKS = [
   },
 ];
 
-const USER_STATUS: UserStatus = {
+const USER_STATUS: UserStatusConstant = {
   online: {
     color: '#20c997',
     title: 'Online',

@@ -12,7 +12,7 @@ function TimelineProfile() {
   const { profileId = '' } = useParams();
 
   const posts = POSTS.filter(
-    (post) => post.user.id === profileId || post.visibility === 'friends',
+    (post) => post.user._id === profileId || post.visibility === 'friends',
   );
 
   const [state, setState] = useState({
@@ -40,7 +40,7 @@ function TimelineProfile() {
       <CreatePost />
 
       {posts.length ? (
-        posts.map((post) => <Post post={post} key={post.id} />)
+        posts.map((post) => <Post post={post} key={post._id} />)
       ) : (
         <div className='shadow-nice p-4 bg-white rounded'>
           <Center h={200}>

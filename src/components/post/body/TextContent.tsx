@@ -12,11 +12,9 @@ function TextContent(props: { full?: boolean; body: string; id: string }) {
           maxHeight={250}
           showLabel='Show more'
           hideLabel={
-            <>
-              <Anchor to={`/post/${props.id}`} component={Link}>
-                To continue reading, Show Original post
-              </Anchor>
-            </>
+            <Anchor to={`/post/${props.id}`} component={Link}>
+              To continue reading, Show Original post
+            </Anchor>
           }
         >
           {parse(props.body)}

@@ -35,7 +35,7 @@ function TimelineGroup() {
       <CreatePost />
 
       {posts.length ? (
-        posts.map((post) => <Post post={post} key={post.id} />)
+        posts.map((post) => <Post post={post} key={post._id} />)
       ) : (
         <div className='shadow-nice p-4 bg-white rounded'>
           <Center h={200}>

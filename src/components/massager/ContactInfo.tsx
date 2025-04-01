@@ -19,7 +19,7 @@ function ContactInfo(props: any) {
         <Link to='/message' title='back to contacts'>
           <MdOutlineArrowBackIosNew className='text-xl text-gray-400' />
         </Link>
-        <Link to={`/profile/${user.id}`} className='no-underline'>
+        <Link to={`/profile/${user._id}`} className='no-underline'>
           <Flex align='center' justify='space-between' gap={15}>
             <Avatar
               src={user.user.avatar}
@@ -47,7 +47,7 @@ function ContactInfo(props: any) {
 
       <Tooltip label='Profile'>
         <Link
-          to={`/profile/${user.id}`}
+          to={`/profile/${user._id}`}
           className='w-8 h-8 flex justify-center items-center bg-aurora text-white rounded-full'
         >
           <FiUser className='text-lg' />

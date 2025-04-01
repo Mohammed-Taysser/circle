@@ -18,7 +18,7 @@ function Massager() {
   const viewport = useRef<HTMLDivElement>(null);
   const messages = MESSAGES;
   const user =
-    MESSAGES.find((user) => user.id.toString() === userId) ?? MESSAGES[0];
+    MESSAGES.find((user) => user._id.toString() === userId) ?? MESSAGES[0];
 
   const [state, setState] = useState({
     loading: true,

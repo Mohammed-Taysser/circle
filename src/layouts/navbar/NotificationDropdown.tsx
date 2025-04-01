@@ -60,7 +60,7 @@ function NotificationDropdown() {
         >
           <Flex direction='column' wrap='wrap' gap={10}>
             {NOTIFICATION.map((request) => (
-              <SingleNotification request={request} key={request.id} />
+              <SingleNotification request={request} key={request._id} />
             ))}
           </Flex>
         </ScrollArea.Autosize>

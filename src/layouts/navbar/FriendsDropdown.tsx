@@ -91,7 +91,7 @@ function FriendsDropdown() {
                 align='center'
                 justify='space-between'
                 gap={10}
-                key={request.id}
+                key={request._id}
                 className='p-3 duration-200 rounded'
                 sx={(theme) => ({
                   '&:hover': {
@@ -102,7 +102,7 @@ function FriendsDropdown() {
                   },
                 })}
               >
-                <Link to={`/profile/${request.user.id}`}>
+                <Link to={`/profile/${request.user._id}`}>
                   <Avatar
                     src={request.user.avatar}
                     sm
@@ -117,7 +117,7 @@ function FriendsDropdown() {
                   gap={10}
                 >
                   <Link
-                    to={`/profile/${request.user.id}`}
+                    to={`/profile/${request.user._id}`}
                     className='flex-1 no-underline text-black dark:text-white'
                   >
                     <Text size='sm' weight={500}>

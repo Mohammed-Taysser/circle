@@ -62,8 +62,8 @@ function MessagesDropdown() {
           <Flex direction='column' wrap='wrap' gap={5}>
             {MESSAGES.map((request) => (
               <Link
-                to={`/message/${request.user.id}`}
-                key={request.id}
+                to={`/message/${request.user._id}`}
+                key={request._id}
                 className='no-underline'
               >
                 <Flex

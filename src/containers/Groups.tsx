@@ -101,7 +101,7 @@ function Groups(props: GroupContainerProps) {
           } `}
         >
           {props.groups.map((group) => (
-            <Group colView={view === 'col'} group={group} key={group.id} />
+            <Group colView={view === 'col'} group={group} key={group._id} />
           ))}
         </div>
       ) : (

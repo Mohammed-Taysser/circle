@@ -13,7 +13,7 @@ function UsersResults(props: { users: User[] }) {
       {props.users.length > 0 ? (
         <div className='md:grid grid-cols-2 gap-4'>
           {props.users.map((user) => (
-            <User key={user.id} user={user} />
+            <User key={user._id} user={user} />
           ))}
         </div>
       ) : (

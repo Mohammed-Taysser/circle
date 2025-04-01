@@ -27,7 +27,7 @@ function Viewers(props: PostViewersProps) {
       return (
         <div className='post-thumbs'>
           <GalleryViewer
-            galleryId={post.id}
+            galleryId={post._id}
             gallery={post.assets.gallery ?? []}
             full={full}
           />
@@ -37,7 +37,7 @@ function Viewers(props: PostViewersProps) {
       return (
         <div className='post-thumbs'>
           <GalleryViewer
-            galleryId={post.id}
+            galleryId={post._id}
             gallery={[post.assets.cover ?? '']}
           />
         </div>

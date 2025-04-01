@@ -29,6 +29,7 @@
   ],
   "scripts": {
     "dev": "vite",
+    "lint": "tsc",
     "build": "tsc && vite build",
     "prettier:check": "prettier src --check",
     "preview": "vite preview",

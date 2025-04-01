@@ -15,10 +15,9 @@ import { useState } from 'react';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { TfiShare } from 'react-icons/tfi';
 import { VscReactions } from 'react-icons/vsc';
-import { REACT_ICONS } from '../../constants/post';
-import { uuidv4 } from '../../helpers';
-import { formateNumber } from '../../helpers/millify';
 import { useNavigate } from 'react-router-dom';
+import { REACT_ICONS } from '../../constants/post';
+import { formateNumber } from '../../helpers/millify';
 
 function PostFooter(props: { post: Post }) {
   const { post } = props;
@@ -33,7 +32,7 @@ function PostFooter(props: { post: Post }) {
       modal: 'comments',
       title: '',
       innerProps: {
-        postId: post.id,
+        postId: post._id,
         navigateTo,
       },
       size: 'xl',
@@ -50,7 +49,7 @@ function PostFooter(props: { post: Post }) {
       modal: 'reacts',
       title: '',
       innerProps: {
-        postId: post.id,
+        postId: post._id,
         navigateTo,
       },
       scrollAreaComponent: ScrollArea.Autosize,

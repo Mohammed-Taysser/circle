@@ -19,24 +19,24 @@ function User(props: { user: User; className: string }) {
     <div className={`user ${props.className}`}>
       <img
         src={props.user.cover}
-        alt={`Cover of ${props.user.name}`}
+        alt={`Cover of ${props.user.firstName}`}
         className='cover'
       />
 
       <div className='flex items-center relative'>
-        <Link to={`/profile/${props.user.id}`}>
+        <Link to={`/profile/${props.user._id}`}>
           <AvatarA
             src={props.user.avatar}
-            alt={`Avatar of ${props.user.name}`}
+            alt={`Avatar of ${props.user.firstName}`}
           />
         </Link>
 
         <div className='mx-12'>
           <Link
-            to={`/profile/${props.user.id}`}
+            to={`/profile/${props.user._id}`}
             className='text-black dark:text-white text-base md:text-xl no-underline transition hover:text-aurora'
           >
-            {props.user.name}
+            {props.user.firstName}
           </Link>
 
           <div className='text-gray-400 mb-3 text-xs md:text-sm'>
@@ -46,7 +46,7 @@ function User(props: { user: User; className: string }) {
           <Avatar.Group spacing='sm' mb={10}>
             {props.user.badges.map((badge) => (
               <Avatar
-                key={badge.id}
+                key={badge._id}
                 radius='xl'
                 src={badge.picture}
                 alt={badge.label}

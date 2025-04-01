@@ -23,13 +23,13 @@ function Group(props: GroupProps) {
         className='cover'
       />
       <div className='group-info-wrapper items-center relative'>
-        <Link to={`/group/${group.id}`}>
+        <Link to={`/group/${group._id}`}>
           <Avatar src={group.picture} alt={`Group logo of ${group.title}`} />
         </Link>
 
         <div className='group-info mt-3'>
           <Link
-            to={`/group/${group.id}`}
+            to={`/group/${group._id}`}
             className='text-black dark:text-white text-lg no-underline transition hover:text-aurora'
           >
             {group.title}

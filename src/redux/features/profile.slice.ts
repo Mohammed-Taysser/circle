@@ -1,14 +1,14 @@
 import { notifications } from '@mantine/notifications';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ReactNode } from 'react';
-import API from '../../core/api';
+import API from '../../api';
 import { getErrorMessage } from '../../helpers';
 
 const getUserById = createAsyncThunk(
   'users/get-user-by-id',
   async (id: string, thunkApi) => {
     try {
-      const response = await API.getUserById(id);
+      const response = await API.user.getById(id);
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
@@ -36,7 +36,7 @@ const profileSlice = createSlice({
       })
       .addCase(getUserById.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.data = action.payload.data;
+        state.data = action.payload;
       })
       .addCase(getUserById.rejected, (state, action) => {
         state.status = 'failed';

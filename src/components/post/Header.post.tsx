@@ -17,7 +17,7 @@ function HeaderPost(props: PostHeaderProps) {
       <div className='post-header'>
         <div className='media'>
           <div className='activity-avatar'>
-            <Link to={`/profile/${post.user.id}`}>
+            <Link to={`/profile/${post.user._id}`}>
               <Avatar
                 sm
                 alt={post.user.name + ' avatar'}
@@ -27,7 +27,7 @@ function HeaderPost(props: PostHeaderProps) {
             </Link>
             <div className='status-info ml-4'>
               <div className='activity-title'>
-                <Link to={`/profile/${post.user.id}`}>{post.user.name}</Link>
+                <Link to={`/profile/${post.user._id}`}>{post.user.name}</Link>
 
                 {post.user.isVerified && (
                   <VscVerified className='text-lg text-aurora' />
@@ -47,7 +47,7 @@ function HeaderPost(props: PostHeaderProps) {
                 {!props.full && (
                   <Anchor
                     component={Link}
-                    to={`/post/${post.id}`}
+                    to={`/post/${post._id}`}
                     title='Show full post details'
                   >
                     <FiExternalLink />
@@ -60,7 +60,7 @@ function HeaderPost(props: PostHeaderProps) {
         <div>
           {!props.isShared && (
             <PostDropdown
-              id={post.id}
+              id={post._id}
               body={post.body}
               isSaved={post.isSaved}
             />

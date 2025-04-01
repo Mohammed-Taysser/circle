@@ -26,7 +26,7 @@ function Badge(props: { badge: Badge; className?: string }) {
             <Avatar.Group spacing='sm'>
               {props.badge.users.slice(0, 5).map((user) => (
                 <Avatar
-                  key={user.id}
+                  key={user._id}
                   radius='xl'
                   src={user.avatar}
                   alt={user.name + ' avatar'}
