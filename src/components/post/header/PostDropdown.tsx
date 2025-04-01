@@ -17,10 +17,6 @@ function PostDropdown(props: PostDropdownProps) {
     notifications.show({
       title: 'Successfully copied',
       message: 'Hey there, your text has successfully copied!',
-      loading: false,
-      withCloseButton: true,
-      color: '',
-      autoClose: true,
     });
   };
 
@@ -31,9 +27,6 @@ function PostDropdown(props: PostDropdownProps) {
         message: `Hey there, your post is successfully ${
           props.isSaved ? 'Un save' : 'save'
         }!`,
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };

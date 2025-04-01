@@ -71,9 +71,6 @@ function SingleGroup() {
       notifications.show({
         title: 'Successfully join',
         message: 'Hey there, welcome to Developer Geeks!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };
@@ -101,9 +98,6 @@ function SingleGroup() {
       notifications.show({
         title: 'Successfully leave',
         message: 'Hey there, you successfully leave Developer Geeks group',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };

@@ -59,8 +59,6 @@ function CreateEventModal(
       notifications.show({
         title: 'Successfully create event',
         message: 'Hey there, your event is successfully created!',
-        withCloseButton: true,
-        autoClose: true,
       });
 
       calendarApi.addEvent(values);

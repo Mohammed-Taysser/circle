@@ -9,11 +9,13 @@ import {
   Pagination,
   PasswordInput,
   Select,
-  Stack,
   Switch,
   Table,
   TextInput,
 } from '@mantine/core';
+import { useForm } from '@mantine/form';
+import { useDisclosure } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
 import dayjs from 'dayjs';
 import { useEffect, useState } from 'react';
 import { FiEdit } from 'react-icons/fi';
@@ -22,13 +24,10 @@ import {
   MdDriveFileRenameOutline,
   MdOutlineAlternateEmail,
 } from 'react-icons/md';
-import API from '../../api';
-import { getErrorMessage, getImageURL } from '../../helpers';
-import { useDisclosure } from '@mantine/hooks';
-import { notifications } from '@mantine/notifications';
-import { useForm } from '@mantine/form';
 import { TbUserHexagon } from 'react-icons/tb';
 import { TfiLock } from 'react-icons/tfi';
+import API from '../../api';
+import { getErrorMessage, getImageURL } from '../../helpers';
 
 function Users() {
   const [selectedUser, setSelectedUser] = useState<null | User>(null);
@@ -128,9 +127,6 @@ function Users() {
         notifications.show({
           title: 'Successfully deleted',
           message: `Hey there, Successfully deleted ${selectedUser.firstName}!`,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
         setSelectedUser(null);
         closeDeleteModal();
@@ -140,9 +136,6 @@ function Users() {
         notifications.show({
           title: 'Error',
           message: getErrorMessage(err),
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
           color: 'red',
         });
       })
@@ -171,9 +164,6 @@ function Users() {
         notifications.show({
           title: 'Successfully updated',
           message: `Hey there, Successfully updated ${selectedUser.firstName}!`,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
       } else {
         const createUserPayload: UserFormFields = {
@@ -185,9 +175,6 @@ function Users() {
         notifications.show({
           title: 'Successfully created',
           message: `Hey there, Successfully created ${payload.firstName}!`,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
       }
 
@@ -198,9 +185,6 @@ function Users() {
       notifications.show({
         title: 'Error',
         message: getErrorMessage(error),
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
         color: 'red',
       });
     } finally {
@@ -444,7 +428,7 @@ function Users() {
         value={pagination.page}
         className='mt-6'
         onChange={onPageChange}
-        total={Math.floor(pagination.total / pagination.limit)}
+        total={Math.ceil(pagination.total / pagination.limit)}
         withEdges
       />
     </div>

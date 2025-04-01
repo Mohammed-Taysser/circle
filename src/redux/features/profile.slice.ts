@@ -9,7 +9,7 @@ const getUserById = createAsyncThunk(
   async (id: string, thunkApi) => {
     try {
       const response = await API.user.getById(id);
-      return response.data;
+      return response.data.data;
     } catch (error) {
       return thunkApi.rejectWithValue(getErrorMessage(error));
     }
@@ -45,9 +45,7 @@ const profileSlice = createSlice({
         notifications.show({
           title: 'Error',
           message: action.payload as ReactNode,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
+
           color: 'red',
         });
       });

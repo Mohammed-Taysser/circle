@@ -19,6 +19,12 @@ interface TablePagination {
   total: number;
 }
 
+interface BaseEntity {
+  _id: string | number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 type AxiosSimpleResponse = Array<{
   id: number;
   name: string;
@@ -27,6 +33,10 @@ type AxiosSimpleResponse = Array<{
 interface AxiosPaginatedResponse<T> {
   data: T[];
   meta: TablePagination;
+}
+
+interface AxiosResponse<T extends BaseEntity> {
+  data: T;
 }
 
 // Auth

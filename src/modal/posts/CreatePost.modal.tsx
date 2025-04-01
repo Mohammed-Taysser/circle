@@ -66,9 +66,6 @@ function CreatePostModal(props: ContextModalProps<CreatePostModalInnerProps>) {
               </Anchor>
             </>
           ),
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
       }, 2000);
     } else {
@@ -76,10 +73,7 @@ function CreatePostModal(props: ContextModalProps<CreatePostModalInnerProps>) {
         title: 'Empty post',
         message: `Hey there, your post is has no text body or assets, please make
         sure that has one of them`,
-        loading: false,
         color: 'red',
-        withCloseButton: true,
-        autoClose: true,
       });
     }
   };

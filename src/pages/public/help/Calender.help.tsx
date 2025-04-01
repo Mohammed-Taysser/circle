@@ -64,8 +64,6 @@ function CalenderHelp() {
       notifications.show({
         title: 'Successfully update event',
         message: 'Hey there, your event is successfully updated!',
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };

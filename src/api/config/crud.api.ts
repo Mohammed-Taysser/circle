@@ -1,7 +1,7 @@
 import AxiosAPI from './axios.api';
 
 abstract class CRUDAPI<
-  T,
+  T extends BaseEntity,
   CreatePayload,
   UpdatePayload,
   FilterParams extends Partial<TablePagination> = Partial<TablePagination>,
@@ -30,7 +30,7 @@ abstract class CRUDAPI<
   }
 
   getById(id: string | number) {
-    return this.axiosInstance.get<T>(`${this.endpoint}/${id}/`);
+    return this.axiosInstance.get<AxiosResponse<T>>(`${this.endpoint}/${id}/`);
   }
 
   export(params?: FilterParams) {
@@ -41,15 +41,23 @@ abstract class CRUDAPI<
   }
 
   create(payload: CreatePayload) {
-    return this.axiosInstance.post<T>(`${this.endpoint}/`, payload);
+    return this.axiosInstance.post<AxiosResponse<T>>(
+      `${this.endpoint}/`,
+      payload,
+    );
   }
 
   update(id: string | number, payload: UpdatePayload) {
-    return this.axiosInstance.put<T>(`${this.endpoint}/${id}/`, payload);
+    return this.axiosInstance.put<AxiosResponse<T>>(
+      `${this.endpoint}/${id}/`,
+      payload,
+    );
   }
 
   delete(id: string | number) {
-    return this.axiosInstance.delete<void>(`${this.endpoint}/${id}/`);
+    return this.axiosInstance.delete<AxiosResponse<T>>(
+      `${this.endpoint}/${id}/`,
+    );
   }
 }
 

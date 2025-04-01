@@ -54,9 +54,6 @@ function Profile() {
       notifications.show({
         title: 'Successfully Friend request send',
         message: 'Hey there, an request had been send to mohammed!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };
@@ -70,9 +67,6 @@ function Profile() {
       notifications.show({
         title: 'Successfully follow',
         message: 'Hey there, Successfully follow mohammed!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };
@@ -86,9 +80,6 @@ function Profile() {
       notifications.show({
         title: 'Successfully un follow',
         message: 'Hey there, Successfully un follow mohammed!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };
@@ -116,9 +107,6 @@ function Profile() {
       notifications.show({
         title: 'Successfully unfriend',
         message: 'Hey there, you successfully unfriend mohammed',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };

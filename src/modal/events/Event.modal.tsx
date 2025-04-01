@@ -20,8 +20,6 @@ function EventModal(props: ContextModalProps<EventModalInnerProps>) {
       notifications.show({
         title: 'Successfully delete event',
         message: 'Hey there, your event is successfully deleted!',
-        withCloseButton: true,
-        autoClose: true,
       });
 
       props.context.closeModal(props.id);

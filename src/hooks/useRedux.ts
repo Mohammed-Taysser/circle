@@ -20,3 +20,4 @@ export {
   useAppSelector,
   selectProfile,
 };
+export type { RootState };

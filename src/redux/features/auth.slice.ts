@@ -81,9 +81,7 @@ const authSlice = createSlice({
         notifications.show({
           title: 'Error',
           message: action.payload as ReactNode,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
+
           color: 'red',
         });
       })
@@ -117,9 +115,7 @@ const authSlice = createSlice({
         notifications.show({
           title: 'Error',
           message: action.payload as ReactNode,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
+
           color: 'red',
         });
       });

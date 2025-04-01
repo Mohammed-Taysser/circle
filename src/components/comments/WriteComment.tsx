@@ -35,9 +35,6 @@ function WriteComment() {
       notifications.show({
         title: 'Successfully publish',
         message: 'Hey there, your comment is successfully publish!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };

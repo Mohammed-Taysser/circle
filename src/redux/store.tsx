@@ -3,13 +3,13 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import authReducer from './features/auth.slice';
 import profileReducer from './features/profile.slice';
-import subscribeReducer from './features/subscribe.slice';
+import subscriptionSlice from './features/subscribe.slice';
 
 const store = configureStore({
   reducer: {
     profile: profileReducer,
     auth: authReducer,
-    subscribe: subscribeReducer,
+    subscribe: subscriptionSlice.reducer,
   },
 });
 

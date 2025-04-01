@@ -60,9 +60,6 @@ function Setting() {
         notifications.show({
           title: 'Successfully save changes',
           message: 'Hey there, your changes is successfully saved!',
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
       }, 2000);
     }

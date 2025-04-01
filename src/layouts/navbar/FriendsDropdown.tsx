@@ -31,9 +31,6 @@ function FriendsDropdown() {
       title: `${requestName}ing mohammed taysser request...`,
       message: `Hey there, ${requestName}ing mohammed taysser request in progress`,
       loading: true,
-      withCloseButton: false,
-      color: '',
-      autoClose: false,
     });
 
     setTimeout(() => {
@@ -41,9 +38,6 @@ function FriendsDropdown() {
         id: notificationId,
         title: `Successfully saved`,
         message: `Hey there, successfully ${requestName}ing mohammed taysser request!`,
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };

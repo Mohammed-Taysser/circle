@@ -66,9 +66,6 @@ function PostFooter(props: { post: Post }) {
       notifications.show({
         title: 'Successfully shared',
         message: 'Hey there, your post is successfully shared!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 3000);
   };
@@ -83,9 +80,6 @@ function PostFooter(props: { post: Post }) {
         notifications.show({
           title: `Successfully saved`,
           message: `Hey there, your react is successfully saved!`,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
       }, 2000);
     }

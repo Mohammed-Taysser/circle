@@ -537,14 +537,6 @@ interface ResponseError {
       };
 }
 
-interface Subscribe {
-  email: string;
-  isVerified: boolean;
-  _id: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
-
 interface AxiosLoginResponse {
   token: string;
   user: User;
@@ -554,9 +546,3 @@ interface AxiosRegisterResponse {
   token: string;
   user: User;
 }
-
-interface AxiosResponse<T> {
-  data: T;
-}
-
-type AxiosSubscribeResponse = Subscribe;

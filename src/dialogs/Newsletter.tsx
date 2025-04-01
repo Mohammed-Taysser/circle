@@ -8,7 +8,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../hooks/useRedux';
-import { addSubscription } from '../redux/features/subscribe.slice';
+import subscriptionSlice from '../redux/features/subscribe.slice';
 import useStyles from '../styles/newsletter';
 
 function Newsletter() {
@@ -29,7 +29,7 @@ function Newsletter() {
   });
 
   useEffect(() => {
-    if (!subscribeState.data) {
+    if (subscribeState.items.length === 0) {
       setTimeout(() => {
         setIsOpened(true);
       }, 10000);
@@ -37,27 +37,23 @@ function Newsletter() {
   }, []);
 
   const onFormSubmit = (values: { email: string }) => {
-    dispatch(addSubscription(values.email)).then((action) => {
-      if (addSubscription.fulfilled.match(action)) {
+    dispatch(subscriptionSlice.actions.create({ email: values.email }))
+      .unwrap()
+      .then(() => {
         notifications.show({
           title: 'Successfully subscribed',
           message: 'Check your inbox to confirm subscribe in newsletter!',
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
         });
+
         setIsOpened(false);
-      } else if (addSubscription.rejected.match(action)) {
+      })
+      .catch((error) => {
         notifications.show({
           title: 'Error',
-          message: subscribeState.error,
-          loading: false,
-          withCloseButton: true,
-          autoClose: true,
+          message: error,
           color: 'red',
         });
-      }
-    });
+      });
   };
 
   return (
@@ -91,7 +87,7 @@ function Newsletter() {
               <Button
                 className={classes.control}
                 type='submit'
-                loading={subscribeState.status === 'loading'}
+                loading={subscribeState.loading.create}
               >
                 Subscribe
               </Button>

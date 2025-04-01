@@ -6,14 +6,17 @@ class UserAPI extends CRUDAPI<User, Partial<UserFormFields>, UserFormFields> {
   }
 
   update(id: string | number, payload: Partial<UserFormFields>) {
-    return this.axiosInstance.patchForm<User>(
+    return this.axiosInstance.patchForm<AxiosResponse<User>>(
       `${this.endpoint}/${id}/`,
       payload,
     );
   }
 
   create(payload: UserFormFields) {
-    return this.axiosInstance.postForm<User>(`${this.endpoint}/`, payload);
+    return this.axiosInstance.postForm<AxiosResponse<User>>(
+      `${this.endpoint}/`,
+      payload,
+    );
   }
 }
 

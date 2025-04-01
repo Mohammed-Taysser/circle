@@ -75,9 +75,6 @@ const AddFriendBtn = () => {
       notifications.show({
         title: 'Successfully Friend request send',
         message: 'Hey there, an request had been send to mohammed!',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };
@@ -107,9 +104,6 @@ const AddFriendBtn = () => {
         title: 'Successfully remove friend request',
         message:
           'Hey there, you successfully remove friend request for mohammed',
-        loading: false,
-        withCloseButton: true,
-        autoClose: true,
       });
     }, 2000);
   };
