@@ -2,6 +2,7 @@ import { BsBookmarks } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 import { MdEventNote } from 'react-icons/md';
 import { PiNewspaperClippingDuotone } from 'react-icons/pi';
+import { TbUserHexagon } from 'react-icons/tb';
 import { VscFeedback } from 'react-icons/vsc';
 
 // Header
@@ -35,7 +36,7 @@ const HEADER_LINKS = [
 // Dashboard Header
 const DASHBOARD_HEADER_LINKS = [
   {
-    icon: FiUsers,
+    icon: TbUserHexagon,
     color: 'blue',
     label: 'Users',
     path: '/dashboard/users',
@@ -45,6 +46,12 @@ const DASHBOARD_HEADER_LINKS = [
     color: 'teal',
     label: 'Subscriptions',
     path: '/dashboard/subscriptions',
+  },
+  {
+    icon: FiUsers,
+    color: 'red',
+    label: 'Groups',
+    path: '/dashboard/groups',
   },
 ];
 

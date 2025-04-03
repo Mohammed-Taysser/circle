@@ -95,6 +95,7 @@ const MembersGroup = lazy(
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
 const Users = lazy(() => import('../pages/dashboard/Users'));
 const Subscriptions = lazy(() => import('../pages/dashboard/Subscriptions'));
+const DashboardGroups = lazy(() => import('../pages/dashboard/Groups'));
 
 const routes = createBrowserRouter([
   {
@@ -432,6 +433,22 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <Subscriptions />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'groups',
+        element: (
+          <RequireAuth>
+            <DashboardGroups />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: '*',
+        element: (
+          <RequireAuth>
+            <NotFound />
           </RequireAuth>
         ),
       },

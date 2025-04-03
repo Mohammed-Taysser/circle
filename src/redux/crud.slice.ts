@@ -9,9 +9,10 @@ import {
   ReducerCreators,
   Slice,
   SliceCaseReducers,
+  ThunkDispatch,
+  UnknownAction,
   ValidateSliceCaseReducers,
 } from '@reduxjs/toolkit';
-import { AsyncThunkConfig } from '@reduxjs/toolkit/dist/createAsyncThunk';
 import { ReactNode } from 'react';
 import CRUDAPI from '../api/config/crud.api';
 import { getErrorMessage } from '../helpers';
@@ -33,6 +34,17 @@ interface CRUDState<T> {
   pagination: TablePagination; // Pagination state for API calls
 }
 
+type AsyncThunkConfig = {
+  state?: unknown;
+  dispatch?: ThunkDispatch<unknown, unknown, UnknownAction>;
+  extra?: unknown;
+  rejectValue?: unknown;
+  serializedErrorType?: unknown;
+  pendingMeta?: unknown;
+  fulfilledMeta?: unknown;
+  rejectedMeta?: unknown;
+};
+
 interface Actions<T extends BaseEntity, CreatePayload, UpdatePayload> {
   fetchAll: AsyncThunk<
     AxiosPaginatedResponse<T>,
@@ -46,7 +58,7 @@ interface Actions<T extends BaseEntity, CreatePayload, UpdatePayload> {
     { id: T['_id']; payload: UpdatePayload },
     AsyncThunkConfig
   >;
-  delete: AsyncThunk<AxiosResponse<T>, string | number, AsyncThunkConfig>;
+  delete: AsyncThunk<AxiosResponse<T>, T['_id'], AsyncThunkConfig>;
   changePage: AsyncThunk<void, number, AsyncThunkConfig>;
   changeLimit: AsyncThunk<void, number, AsyncThunkConfig>;
 }

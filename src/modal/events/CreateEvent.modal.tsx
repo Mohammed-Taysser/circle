@@ -82,6 +82,8 @@ function CreateEventModal(
           label='Start Date'
           valueFormat='DD/MM/YYYY hh:mm A'
           placeholder='Start Date'
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
           icon={<BsCalendar2Event />}
           {...form.getInputProps('start')}
         />
@@ -89,6 +91,8 @@ function CreateEventModal(
         <DateTimePicker
           withSeconds
           label='End Date'
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
           valueFormat='DD/MM/YYYY hh:mm A'
           placeholder='End Date'
           icon={<BsCalendar2Event />}

@@ -19,12 +19,12 @@ function Group(props: GroupProps) {
     >
       <img
         src={group.cover}
-        alt={`Group Cover of ${group.title}`}
+        alt={`Group Cover of ${group.name}`}
         className='cover'
       />
       <div className='group-info-wrapper items-center relative'>
         <Link to={`/group/${group._id}`}>
-          <Avatar src={group.picture} alt={`Group logo of ${group.title}`} />
+          <Avatar src={group.avatar} alt={`Group logo of ${group.name}`} />
         </Link>
 
         <div className='group-info mt-3'>
@@ -32,7 +32,7 @@ function Group(props: GroupProps) {
             to={`/group/${group._id}`}
             className='text-black dark:text-white text-lg no-underline transition hover:text-aurora'
           >
-            {group.title}
+            {group.name}
           </Link>
           <div className='text-gray-400 text-sm'>
             <span className='capitalize'>{group.visibility}</span> Group
@@ -42,15 +42,11 @@ function Group(props: GroupProps) {
 
       <ul className='statistics'>
         <li>
-          <span className='statistics-number'>
-            {formateNumber(group.posts)}
-          </span>
+          <span className='statistics-number'>{formateNumber(0)}</span>
           <span className='statistics-text'>Posts</span>
         </li>
         <li>
-          <span className='statistics-number'>
-            {formateNumber(group.users)}
-          </span>
+          <span className='statistics-number'>{formateNumber(0)}</span>
           <span className='statistics-text'>Member</span>
         </li>
       </ul>

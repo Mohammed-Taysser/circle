@@ -48,7 +48,7 @@ function User(props: { user: User; className: string }) {
               <Avatar
                 key={badge._id}
                 radius='xl'
-                src={badge.picture}
+                src={badge.logo}
                 alt={badge.label}
               />
             ))}

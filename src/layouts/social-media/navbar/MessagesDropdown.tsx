@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   Indicator,
+  MantineTheme,
   Popover,
   ScrollArea,
   Text,
@@ -58,6 +59,8 @@ function MessagesDropdown() {
           type='auto'
           offsetScrollbars
           placeholder=''
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           <Flex direction='column' wrap='wrap' gap={5}>
             {MESSAGES.map((request) => (
@@ -71,7 +74,7 @@ function MessagesDropdown() {
                   justify='space-between'
                   gap={15}
                   className='p-3 duration-200 rounded'
-                  sx={(theme) => ({
+                  sx={(theme: MantineTheme) => ({
                     '&:hover': {
                       backgroundColor:
                         theme.colorScheme === 'dark'

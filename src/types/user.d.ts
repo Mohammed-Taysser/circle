@@ -1,8 +1,7 @@
 type UserRole = 'user' | 'admin';
 type UserStatus = 'active' | 'inactive';
 
-interface User {
-  _id: string;
+interface User extends BaseEntity {
   username: string;
   role: UserRole;
   firstName: string;
@@ -15,8 +14,6 @@ interface User {
   isDeleted: boolean;
   badges: Badge[];
   bookmarks: [];
-  createdAt: string;
-  updatedAt: string;
   passwordChangeAt: string;
 }
 

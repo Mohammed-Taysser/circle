@@ -1,4 +1,4 @@
-import { Flex, ScrollArea, Text } from '@mantine/core';
+import { Flex, MantineTheme, ScrollArea, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import Avatar from '../../../common/Avatar';
 import { MESSAGES } from '../../../constants/dummy';
@@ -8,7 +8,13 @@ function ContactFriends(props: AsideContactsProps) {
   const { setIsAsideOpen } = props;
 
   return (
-    <ScrollArea.Autosize type='auto' offsetScrollbars placeholder=''>
+    <ScrollArea.Autosize
+      onPointerEnterCapture={() => {}}
+      onPointerLeaveCapture={() => {}}
+      type='auto'
+      offsetScrollbars
+      placeholder=''
+    >
       <Flex direction='column' wrap='wrap' gap={0}>
         {MESSAGES.map((request) => (
           <Link
@@ -22,7 +28,7 @@ function ContactFriends(props: AsideContactsProps) {
               justify='space-between'
               gap={10}
               className='p-3 duration-200 rounded'
-              sx={(theme) => ({
+              sx={(theme: MantineTheme) => ({
                 '&:hover': {
                   backgroundColor:
                     theme.colorScheme === 'dark'

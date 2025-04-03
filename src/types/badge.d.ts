@@ -1,12 +1,5 @@
-interface Badge {
-  _id: string;
-  picture: string;
+interface Badge extends BaseEntity {
   label: string;
-  msg: string;
-  earnedAt: Date;
-  users: {
-    avatar: string;
-    name: string;
-    _id: string;
-  }[];
+  body: string;
+  logo: string;
 }

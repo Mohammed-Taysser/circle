@@ -57,6 +57,8 @@ function NotificationDropdown() {
           type='auto'
           offsetScrollbars
           placeholder=''
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           <Flex direction='column' wrap='wrap' gap={10}>
             {NOTIFICATION.map((request) => (

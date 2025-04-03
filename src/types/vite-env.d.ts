@@ -109,16 +109,6 @@ interface GroupProps {
   className?: string;
 }
 
-interface Group {
-  _id: string;
-  picture: string;
-  cover: string;
-  visibility: 'private' | 'public';
-  title: string;
-  users: number;
-  posts: number;
-}
-
 interface GroupContainerProps {
   title: string;
   onSearchFormSubmit: (values: { query: string }) => void;

@@ -2,6 +2,7 @@ import {
   Button,
   Flex,
   Indicator,
+  MantineTheme,
   Popover,
   ScrollArea,
   Text,
@@ -78,6 +79,8 @@ function FriendsDropdown() {
           type='auto'
           offsetScrollbars
           placeholder=''
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           <Flex direction='column' wrap='wrap' gap={5}>
             {NOTIFICATION.map((request) => (
@@ -87,7 +90,7 @@ function FriendsDropdown() {
                 gap={10}
                 key={request._id}
                 className='p-3 duration-200 rounded'
-                sx={(theme) => ({
+                sx={(theme: MantineTheme) => ({
                   '&:hover': {
                     backgroundColor:
                       theme.colorScheme === 'dark'

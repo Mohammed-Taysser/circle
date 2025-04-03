@@ -14,11 +14,11 @@ function Badge(props: { badge: Badge; className?: string }) {
     <div
       className={`shadow-nice p-7 text-center bg-white rounded ${props.className}`}
     >
-      <Avatar src={props.badge.picture} size='lg' className='mx-auto' />
+      <Avatar src={props.badge.logo} size='lg' className='mx-auto' />
       <h3 className='my-4'>{props.badge.label}</h3>
-      <p className='text-gray-400 text-sm'>{props.badge.msg}</p>
+      <p className='text-gray-400 text-sm'>{props.badge.body}</p>
       <h5 className='mb-4 text-gray-400 mt-10'>People who have earned this</h5>
-      <Divider
+      {/* <Divider
         my='xs'
         labelPosition='center'
         label={
@@ -39,7 +39,7 @@ function Badge(props: { badge: Badge; className?: string }) {
             </Avatar.Group>
           </>
         }
-      />
+      /> */}
     </div>
   );
 }

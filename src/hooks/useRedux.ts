@@ -13,6 +13,7 @@ const selectProfile = (state: RootState) => state.profile;
 const selectAuth = (state: RootState) => state.auth;
 const selectSubscribe = (state: RootState) => state.subscribe;
 const selectUser = (state: RootState) => state.user;
+const selectGroup = (state: RootState) => state.group;
 
 export {
   selectAuth,
@@ -21,5 +22,6 @@ export {
   useAppSelector,
   selectProfile,
   selectUser,
+  selectGroup,
 };
 export type { RootState };
