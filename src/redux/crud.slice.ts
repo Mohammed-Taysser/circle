@@ -104,7 +104,7 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
       update: this.createUpdateThunk(),
       delete: this.createDeleteThunk(),
       changePage: createAsyncThunk(
-        `${this.name}/changePage`,
+        `${this.name}/change-page`,
         async (page: number, thunkApi) => {
           const state = thunkApi.getState() as RootState;
           const currentLimit = state.subscribe.pagination.limit;
@@ -115,7 +115,7 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
         },
       ),
       changeLimit: createAsyncThunk(
-        `${this.name}/changeLimit`,
+        `${this.name}/change-limit`,
         async (limit: number, thunkApi) => {
           thunkApi.dispatch(this.slice.actions.setLimit(limit));
           thunkApi.dispatch(this.actions.fetchAll({ page: 1, limit }));
@@ -126,7 +126,7 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
 
   protected createFetchAllThunk() {
     return createAsyncThunk(
-      `${this.name}/fetchAll`,
+      `${this.name}/fetch-all`,
       async (params: Partial<TablePagination>, thunkApi) => {
         try {
           const response = await this.api.getAll(params);
@@ -140,7 +140,7 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
 
   protected createFetchByIdThunk() {
     return createAsyncThunk(
-      `${this.name}/fetchById`,
+      `${this.name}/fetch-by-id`,
       async (id: string | number, thunkApi) => {
         try {
           const response = await this.api.getById(id);

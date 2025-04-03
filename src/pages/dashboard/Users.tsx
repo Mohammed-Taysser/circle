@@ -17,7 +17,7 @@ import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import dayjs from 'dayjs';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { FiEdit } from 'react-icons/fi';
 import {
   MdDelete,
@@ -26,18 +26,17 @@ import {
 } from 'react-icons/md';
 import { TbUserHexagon } from 'react-icons/tb';
 import { TfiLock } from 'react-icons/tfi';
-import API from '../../api';
 import { getErrorMessage, getImageURL } from '../../helpers';
+import {
+  selectUser,
+  useAppDispatch,
+  useAppSelector,
+} from '../../hooks/useRedux';
+import userSlice from '../../redux/features/user.slice';
 
 function Users() {
-  const [selectedUser, setSelectedUser] = useState<null | User>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [users, setUsers] = useState<User[]>([]);
-  const [pagination, setPagination] = useState<TablePagination>({
-    total: 0,
-    page: 1,
-    limit: 25,
-  });
+  const dispatch = useAppDispatch();
+  const userState = useAppSelector(selectUser);
 
   const [
     editableModalOpen,
@@ -45,9 +44,6 @@ function Users() {
   ] = useDisclosure(false);
   const [deleteModalOpen, { open: openDeleteModal, close: closeDeleteModal }] =
     useDisclosure(false);
-
-  const [isDelete, setIsDelete] = useState(false);
-  const [isEditable, setIsEditable] = useState(false);
 
   const form = useForm<UserFormFields>({
     validateInputOnChange: true,
@@ -71,7 +67,7 @@ function Users() {
       username: (value) =>
         value.length <= 8 ? 'Username should be at least 8 characters' : null,
       password: (value) =>
-        value.length <= 8 && !selectedUser
+        value.length <= 8 && !userState.selectedItem
           ? 'Password should be at least 8 characters'
           : null,
     },
@@ -79,73 +75,65 @@ function Users() {
 
   useEffect(() => {
     fetchUsersAPI();
-  }, [pagination.page, pagination.limit]);
+  }, []);
 
   const fetchUsersAPI = async () => {
-    const params = {
-      page: pagination.page,
-      limit: pagination.limit,
-    };
-    await API.user
-      .getAll(params)
-      .then((res) => {
-        setUsers(res.data.data);
-        setPagination((prev) => ({ ...prev, total: res.data.meta.total }));
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
+    try {
+      await dispatch(
+        userSlice.actions.fetchAll({
+          page: userState.pagination.page,
+          limit: userState.pagination.limit,
+        }),
+      ).unwrap();
+    } catch (error) {
+      notifications.show({
+        title: 'Error',
+        message: getErrorMessage(error),
+        color: 'red',
       });
+    }
   };
 
   const onPageChange = (page: number) => {
-    setPagination((prev) => ({ ...prev, page: page }));
+    dispatch(userSlice.actions.changePage(page));
   };
 
   const onEditUserBtnClick = (user: User) => {
-    setSelectedUser(user);
+    dispatch(userSlice.slice.actions.setSelectedItem(user));
     openEditableModal();
 
     form.setValues(user);
   };
 
   const onDeleteUserBtnClick = (user: User) => {
-    setSelectedUser(user);
+    dispatch(userSlice.slice.actions.setSelectedItem(user));
     openDeleteModal();
   };
 
   const onConfirmDeleteBtnClick = async () => {
-    if (!selectedUser) {
+    if (!userState.selectedItem) {
       return;
     }
 
-    setIsDelete(true);
+    try {
+      await dispatch(
+        userSlice.actions.delete(userState.selectedItem._id),
+      ).unwrap();
 
-    await API.user
-      .delete(selectedUser._id)
-      .then(() => {
-        notifications.show({
-          title: 'Successfully deleted',
-          message: `Hey there, Successfully deleted ${selectedUser.firstName}!`,
-        });
-        setSelectedUser(null);
-        closeDeleteModal();
-        fetchUsersAPI();
-      })
-      .catch((err) => {
-        notifications.show({
-          title: 'Error',
-          message: getErrorMessage(err),
-          color: 'red',
-        });
-      })
-      .finally(() => {
-        setIsDelete(false);
+      dispatch(userSlice.slice.actions.setSelectedItem(null));
+      closeDeleteModal();
+      fetchUsersAPI();
+    } catch (error) {
+      notifications.show({
+        title: 'Error',
+        message: getErrorMessage(error),
+        color: 'red',
       });
+    }
   };
 
   const onFormSubmit = async (values: UserFormFields) => {
-    const payload: Partial<UserFormFields> = {
+    const payload: UserUpdatePayload = {
       email: values.email,
       firstName: values.firstName,
       lastName: values.lastName,
@@ -155,26 +143,27 @@ function Users() {
       role: values.role,
     };
 
-    setIsEditable(true);
-
     try {
-      if (selectedUser) {
-        await API.user.update(selectedUser._id, payload);
+      if (userState.selectedItem) {
+        await dispatch(
+          userSlice.actions.update({ id: userState.selectedItem._id, payload }),
+        ).unwrap();
 
         notifications.show({
           title: 'Successfully updated',
-          message: `Hey there, Successfully updated ${selectedUser.firstName}!`,
+          message: `Hey there, Successfully update ${values.firstName}!`,
         });
       } else {
-        const createUserPayload: UserFormFields = {
-          ...values,
+        const createUserPayload: UserCreatePayload = {
+          ...payload,
           password: values.password,
         };
-        await API.user.create(createUserPayload);
+
+        await dispatch(userSlice.actions.create(createUserPayload)).unwrap();
 
         notifications.show({
           title: 'Successfully created',
-          message: `Hey there, Successfully created ${payload.firstName}!`,
+          message: `Hey there, Successfully created ${values.firstName}!`,
         });
       }
 
@@ -187,13 +176,11 @@ function Users() {
         message: getErrorMessage(error),
         color: 'red',
       });
-    } finally {
-      setIsEditable(false);
     }
   };
 
   const onCancelBtnClick = () => {
-    setSelectedUser(null);
+    dispatch(userSlice.slice.actions.setSelectedItem(null));
     closeEditableModal();
     form.reset();
   };
@@ -204,7 +191,7 @@ function Users() {
         closeOnClickOutside={false}
         opened={editableModalOpen}
         onClose={onCancelBtnClick}
-        title={selectedUser ? 'Update User' : 'Create User'}
+        title={userState.selectedItem ? 'Update User' : 'Create User'}
         size='lg'
       >
         <form onSubmit={form.onSubmit(onFormSubmit)}>
@@ -257,7 +244,7 @@ function Users() {
               />
             </Grid.Col>
 
-            {!selectedUser && (
+            {!userState.selectedItem && (
               <Grid.Col sm={12} lg={6}>
                 <PasswordInput
                   icon={<TfiLock size='1rem' />}
@@ -302,7 +289,10 @@ function Users() {
               Cancel
             </Button>
 
-            <Button type='submit' loading={isEditable}>
+            <Button
+              type='submit'
+              loading={userState.loading.create || userState.loading.update}
+            >
               Save
             </Button>
           </Group>
@@ -319,21 +309,23 @@ function Users() {
         <Button
           color='red'
           className='mt-3'
-          loading={isDelete}
+          loading={userState.loading.delete}
           onClick={onConfirmDeleteBtnClick}
         >
           Yes, Delete
         </Button>
       </Modal>
 
-      <LoadingOverlay visible={isLoading} overlayBlur={2} />
+      <LoadingOverlay visible={userState.loading.fetch} overlayBlur={2} />
 
       <Group position='apart' className='mb-8'>
         <Group align='end'>
           <h2 className='first-letter:text-4xl first-letter:text-aurora text-xl font-bold my-0'>
             Users
           </h2>
-          <h5 className='my-0 text-gray-500'>(Total {pagination.total})</h5>
+          <h5 className='my-0 text-gray-500'>
+            (Total {userState.pagination.total})
+          </h5>
         </Group>
 
         <Button onClick={openEditableModal}>Add User</Button>
@@ -360,7 +352,7 @@ function Users() {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {userState.items.map((user, index) => (
               <tr key={user._id}>
                 <td>{index + 1}</td>
 
@@ -425,10 +417,12 @@ function Users() {
       </div>
 
       <Pagination
-        value={pagination.page}
+        value={userState.pagination.page}
         className='mt-6'
         onChange={onPageChange}
-        total={Math.ceil(pagination.total / pagination.limit)}
+        total={Math.ceil(
+          userState.pagination.total / userState.pagination.limit,
+        )}
         withEdges
       />
     </div>

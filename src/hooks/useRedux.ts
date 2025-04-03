@@ -12,6 +12,7 @@ const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 const selectProfile = (state: RootState) => state.profile;
 const selectAuth = (state: RootState) => state.auth;
 const selectSubscribe = (state: RootState) => state.subscribe;
+const selectUser = (state: RootState) => state.user;
 
 export {
   selectAuth,
@@ -19,5 +20,6 @@ export {
   useAppDispatch,
   useAppSelector,
   selectProfile,
+  selectUser,
 };
 export type { RootState };

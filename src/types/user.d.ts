@@ -30,3 +30,24 @@ interface UserFormFields {
   role: UserRole;
   password: string;
 }
+
+interface UserCreatePayload {
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  status: UserStatus;
+  isVerified: boolean;
+  role: UserRole;
+  password: string;
+}
+
+interface UserUpdatePayload {
+  email: string;
+  firstName: string;
+  lastName: string;
+  username: string;
+  status: UserStatus;
+  isVerified: boolean;
+  role: UserRole;
+}

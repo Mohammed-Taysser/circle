@@ -3,14 +3,14 @@ import { useForm } from '@mantine/form';
 import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import newsletterImage from '../assets/images/background/newsletter.svg';
+import LocalStorage from '../core/localStorage';
 import {
   selectSubscribe,
   useAppDispatch,
   useAppSelector,
 } from '../hooks/useRedux';
-import subscriptionSlice from '../redux/features/subscribe.slice';
+import subscriptionSlice from '../redux/features/subscription.slice';
 import useStyles from '../styles/newsletter';
-import LocalStorage from '../core/localStorage';
 
 function Newsletter() {
   const { classes } = useStyles();

@@ -22,7 +22,7 @@ import {
   useAppDispatch,
   useAppSelector,
 } from '../../hooks/useRedux';
-import subscriptionSlice from '../../redux/features/subscribe.slice';
+import subscriptionSlice from '../../redux/features/subscription.slice';
 
 function Subscriptions() {
   const dispatch = useAppDispatch();
