@@ -60,16 +60,20 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
   actions: Actions<T, CreatePayload, UpdatePayload>;
   reducer: Reducer<CRUDState<T>>;
 
-  constructor(name: string, api: CRUDAPI<T, CreatePayload, UpdatePayload>) {
+  constructor(
+    name: string,
+    api: CRUDAPI<T, CreatePayload, UpdatePayload>,
+    initialState: Partial<CRUDState<T>> = {},
+  ) {
     this.name = name;
     this.api = api;
-    this.state = this.getInitialState();
+    this.state = this.getInitialState(initialState);
     this.actions = this.createThunks();
     this.slice = this.createSlice();
     this.reducer = this.slice.reducer;
   }
 
-  protected getInitialState(): CRUDState<T> {
+  protected getInitialState(initialState: Partial<CRUDState<T>>): CRUDState<T> {
     return {
       items: [],
       selectedItem: null,
@@ -79,9 +83,16 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
         update: false,
         delete: false,
         fetchById: false,
+        ...initialState.loading,
       },
       error: null,
-      pagination: { page: 1, limit: 25, total: 0 },
+      pagination: {
+        page: 1,
+        limit: 25,
+        total: 0,
+        ...initialState.pagination,
+      },
+      ...initialState, // Only applies to flat properties
     };
   }
 

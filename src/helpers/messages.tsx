@@ -1,41 +1,72 @@
 import axios, { AxiosError } from 'axios';
 import i18n from '../core/i18n';
 
-function getErrorMessage(err: unknown) {
-  const error = err as AxiosError<ResponseError>;
+// Define the expected structure of an error response
+interface ResponseError {
+  error?:
+    | string
+    | { message?: string }
+    | Record<string, any>
+    | { message: string }[];
+}
 
-  if (!error) {
-    return null;
+function getErrorMessage(err: unknown): string | string[] {
+  if (!err) {
+    return i18n.t('error-has-occurred');
   }
 
+  const error = err as AxiosError<ResponseError>;
+
+  // Network Issues
+  if (error.message === 'Network Error') {
+    return i18n.t('please-check-your-internet-connection-and-try-again');
+  }
+
+  if (error.message === 'Request aborted') {
+    return i18n.t('request-had-been-canceled');
+  }
+
+  // Axios Errors
   if (axios.isAxiosError(error)) {
-    if (error?.message === 'Network Error') {
-      return i18n.t('please-check-your-internet-connection-and-try-again');
+    const responseData = error.response?.data;
+
+    if (!responseData) {
+      return i18n.t('error-has-occurred');
     }
 
-    if (error?.message === 'Request aborted') {
-      return i18n.t('request-had-been-canceled');
+    const errorContent = responseData.error;
+
+    // Case 1: If it's a string error
+    if (typeof errorContent === 'string') {
+      return errorContent;
     }
 
+    // Case 2: If it's an object with a `message` property
     if (
-      typeof error?.response?.data?.error === 'object' &&
-      typeof error?.response?.data?.error?.message === 'string'
+      typeof errorContent === 'object' &&
+      'message' in errorContent &&
+      typeof errorContent.message === 'string'
     ) {
-      return error?.response?.data?.error?.message;
+      return errorContent.message;
     }
 
-    if (typeof error?.response?.data?.error === 'string') {
-      return error?.response?.data?.error;
+    // Case 3: If it's a dictionary object (multiple field errors)
+    if (typeof errorContent === 'object' && !Array.isArray(errorContent)) {
+      return Object.values(errorContent).map(String); // Convert object values to strings
     }
 
-    if (typeof error?.response?.data?.error === 'object') {
-      return Object.values(error?.response?.data?.error);
-    }
-
-    if (Array.isArray(error?.response?.data?.error)) {
-      return (error?.response?.data?.error as { message: string }[]).map(
-        (error) => error.message,
-      );
+    // Case 4: If it's an array of error messages
+    if (Array.isArray(errorContent)) {
+      return errorContent.map((e) => {
+        if (typeof e === 'string') return e;
+        if (
+          typeof e === 'object' &&
+          'message' in e &&
+          typeof e.message === 'string'
+        )
+          return e.message;
+        return JSON.stringify(e); // Fallback for unexpected structures
+      });
     }
   }
 

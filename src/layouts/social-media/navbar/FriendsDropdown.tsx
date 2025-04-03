@@ -13,10 +13,10 @@ import { useMediaQuery } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import { FiUserCheck, FiUserMinus, FiUserPlus, FiUsers } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
-import Avatar from '../../common/Avatar';
-import { NOTIFICATION } from '../../constants/dummy';
-import { uuidv4 } from '../../helpers';
-import { formateNumber } from '../../helpers/millify';
+import Avatar from '../../../common/Avatar';
+import { NOTIFICATION } from '../../../constants/dummy';
+import { uuidv4 } from '../../../helpers';
+import { formateNumber } from '../../../helpers/millify';
 
 function FriendsDropdown() {
   const theme = useMantineTheme();

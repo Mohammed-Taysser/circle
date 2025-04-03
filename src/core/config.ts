@@ -6,7 +6,7 @@ const Local_Storage_Keys: LocalStorageKeysObject = {
   token: 'circle-token',
   user: 'circle-user',
   language: 'circle-language',
-  subscribe: 'circle-subscribe',
+  subscription: 'circle-subscribe',
   theme: 'circle-theme',
 };
 

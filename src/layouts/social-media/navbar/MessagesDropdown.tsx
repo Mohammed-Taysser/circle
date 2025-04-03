@@ -12,10 +12,10 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 import { TbMessage2Bolt } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
-import Avatar from '../../common/Avatar';
-import { MESSAGES } from '../../constants/dummy';
-import { timeToX } from '../../helpers';
-import { formateNumber } from '../../helpers/millify';
+import Avatar from '../../../common/Avatar';
+import { MESSAGES } from '../../../constants/dummy';
+import { timeToX } from '../../../helpers';
+import { formateNumber } from '../../../helpers/millify';
 
 function MessagesDropdown() {
   const theme = useMantineTheme();

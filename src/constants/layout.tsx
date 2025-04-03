@@ -1,8 +1,7 @@
-import { BiMessageDetail } from 'react-icons/bi';
 import { BsBookmarks } from 'react-icons/bs';
-import { FiUser, FiUsers } from 'react-icons/fi';
-import { IoHelpSharp, IoSettingsOutline } from 'react-icons/io5';
+import { FiUsers } from 'react-icons/fi';
 import { MdEventNote } from 'react-icons/md';
+import { PiNewspaperClippingDuotone } from 'react-icons/pi';
 import { VscFeedback } from 'react-icons/vsc';
 
 // Header
@@ -33,6 +32,22 @@ const HEADER_LINKS = [
   },
 ];
 
+// Dashboard Header
+const DASHBOARD_HEADER_LINKS = [
+  {
+    icon: FiUsers,
+    color: 'blue',
+    label: 'Users',
+    path: '/dashboard/users',
+  },
+  {
+    icon: PiNewspaperClippingDuotone,
+    color: 'teal',
+    label: 'Subscriptions',
+    path: '/dashboard/subscriptions',
+  },
+];
+
 const USER_STATUS: UserStatusConstant = {
   online: {
     color: '#20c997',
@@ -52,4 +67,4 @@ const USER_STATUS: UserStatusConstant = {
   },
 };
 
-export { HEADER_LINKS, USER_STATUS };
+export { DASHBOARD_HEADER_LINKS, HEADER_LINKS, USER_STATUS };

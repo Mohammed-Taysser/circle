@@ -12,9 +12,9 @@ import {
 import { useMediaQuery } from '@mantine/hooks';
 import { MdOutlineNotificationsActive } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import SingleNotification from '../../components/notification/SingleNotification';
-import { NOTIFICATION } from '../../constants/dummy';
-import { formateNumber } from '../../helpers/millify';
+import SingleNotification from '../../../components/notification/SingleNotification';
+import { NOTIFICATION } from '../../../constants/dummy';
+import { formateNumber } from '../../../helpers/millify';
 
 function NotificationDropdown() {
   const theme = useMantineTheme();

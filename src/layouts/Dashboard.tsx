@@ -2,16 +2,9 @@ import { AppShell, useMantineTheme } from '@mantine/core';
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import SuspenseLoading from '../common/SuspenseLoading';
-import Aside from './Aside';
-import Header from './Header';
-import Navbar from './Navbar';
+import DashboardHeader from './dashboard/Header.dashboard';
+import DashboardNavbar from './dashboard/Navbar.dashboard';
 
-/**
- * Base Layout
- * @usage
-
-- use `minimal` to hide sidebar
- */
 function Dashboard() {
   const theme = useMantineTheme();
   const [isHeaderOpen, setIsHeaderOpen] = useState(false);
@@ -29,10 +22,16 @@ function Dashboard() {
       navbarOffsetBreakpoint='md'
       asideOffsetBreakpoint='lg'
       navbar={
-        <Header isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />
+        <DashboardHeader
+          isHeaderOpen={isHeaderOpen}
+          setIsHeaderOpen={setIsHeaderOpen}
+        />
       } // Props conflict names from mantine itself
       header={
-        <Navbar isHeaderOpen={isHeaderOpen} setIsHeaderOpen={setIsHeaderOpen} />
+        <DashboardNavbar
+          isHeaderOpen={isHeaderOpen}
+          setIsHeaderOpen={setIsHeaderOpen}
+        />
       } // Props conflict names from mantine itself
     >
       <Suspense fallback={<SuspenseLoading />}>

@@ -1,6 +1,6 @@
 import { BackgroundImage, Center } from '@mantine/core';
 import dayjs from 'dayjs';
-import eventBG from '../../assets/images/background/bg-event-day.webp';
+import eventBG from '../../../assets/images/background/bg-event-day.webp';
 
 function MiniCalender() {
   const today = dayjs();

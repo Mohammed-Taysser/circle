@@ -17,7 +17,12 @@ interface ImportMeta {
 }
 
 // Local Storage
-type LocalStorageKeys = 'token' | 'user' | 'language' | 'subscribe' | 'theme';
+type LocalStorageKeys =
+  | 'token'
+  | 'user'
+  | 'language'
+  | 'subscription'
+  | 'theme';
 
 type LocalStorageKeysObject = {
   [key in LocalStorageKeys]: string;

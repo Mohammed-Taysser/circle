@@ -1,7 +1,7 @@
 import { Burger, Flex, Grid, Header, useMantineTheme } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import FriendsDropdown from './navbar/FriendsDropdown';
-import Logo from './navbar/Logo';
+import Logo from '../Logo';
 import MessagesDropdown from './navbar/MessagesDropdown';
 import NotificationDropdown from './navbar/NotificationDropdown';
 import SearchInput from './navbar/SearchInput';

@@ -1,6 +1,6 @@
 import { useMantineColorScheme } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import favicon from '../../assets/images/icons/favicon.svg';
+import favicon from '../assets/images/icons/favicon.svg';
 
 function Logo() {
   const { colorScheme } = useMantineColorScheme();

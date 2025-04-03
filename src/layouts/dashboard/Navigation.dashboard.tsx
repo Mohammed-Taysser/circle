@@ -5,9 +5,9 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { NavLink } from 'react-router-dom';
-import { HEADER_LINKS } from '../../constants/layout';
+import { DASHBOARD_HEADER_LINKS } from '../../constants/layout';
 
-function Navigation(props: HeaderNavigationProps) {
+function DashboardNavigation(props: HeaderNavigationProps) {
   const { setIsHeaderOpen } = props;
   const theme = useMantineTheme();
 
@@ -28,7 +28,7 @@ function Navigation(props: HeaderNavigationProps) {
 
   return (
     <>
-      {HEADER_LINKS.map((link) => (
+      {DASHBOARD_HEADER_LINKS.map((link) => (
         <UnstyledButton
           className='w-full mx-2 my-1'
           key={link.path}
@@ -59,4 +59,4 @@ function Navigation(props: HeaderNavigationProps) {
   );
 }
 
-export default Navigation;
+export default DashboardNavigation;

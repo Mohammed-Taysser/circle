@@ -13,15 +13,16 @@ import { IoHelpSharp, IoSettingsOutline } from 'react-icons/io5';
 import { MdOutlineLogout } from 'react-icons/md';
 import { TfiAngleDown } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
-import Avatar from '../../common/Avatar';
-import { USER_STATUS } from '../../constants/layout';
-import { getImageURL } from '../../helpers';
+import Avatar from '../../../common/Avatar';
+import { USER_STATUS } from '../../../constants/layout';
+import { getImageURL } from '../../../helpers';
 import {
   selectAuth,
   useAppDispatch,
   useAppSelector,
-} from '../../hooks/useRedux';
-import { logout } from '../../redux/features/auth.slice';
+} from '../../../hooks/useRedux';
+import { logout } from '../../../redux/features/auth.slice';
+import { AiOutlineDashboard } from 'react-icons/ai';
 
 function UserDropdown(props: { className?: string }) {
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -131,6 +132,16 @@ function UserDropdown(props: { className?: string }) {
           >
             Help
           </Menu.Item>
+
+          {authState.data.role === 'admin' && (
+            <Menu.Item
+              component={Link}
+              to='/dashboard'
+              icon={<AiOutlineDashboard size={14} />}
+            >
+              Dashboard
+            </Menu.Item>
+          )}
 
           <Menu.Label>Status</Menu.Label>
 

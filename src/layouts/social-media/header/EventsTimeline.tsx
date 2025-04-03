@@ -1,7 +1,7 @@
 import { Accordion, Center, Timeline, useMantineTheme } from '@mantine/core';
 import dayjs from 'dayjs';
 import { BsCalendar2Minus } from 'react-icons/bs';
-import { EVENTS } from '../../constants/dummy';
+import { EVENTS } from '../../../constants/dummy';
 
 function EventsTimeline() {
   const theme = useMantineTheme();

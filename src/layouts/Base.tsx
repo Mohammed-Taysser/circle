@@ -2,9 +2,9 @@ import { AppShell, useMantineTheme } from '@mantine/core';
 import { Suspense, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import SuspenseLoading from '../common/SuspenseLoading';
-import Aside from './Aside';
-import Header from './Header';
-import Navbar from './Navbar';
+import Aside from './social-media/Aside.social-media';
+import Header from './social-media/Header.social-media';
+import Navbar from './social-media/Navbar.social-media';
 
 /**
  * Base Layout

@@ -39,6 +39,10 @@ class AxiosAPI {
         return response;
       },
       async (error) => {
+        if (!error.response) {
+          return Promise.reject(error as Error);
+        }
+
         if (error.response.status === 401) {
           const { default: store } = await import('../../redux/store');
           store.dispatch(logout());

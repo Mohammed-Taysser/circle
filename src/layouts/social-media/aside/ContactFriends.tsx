@@ -1,8 +1,8 @@
 import { Flex, ScrollArea, Text } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import Avatar from '../../common/Avatar';
-import { MESSAGES } from '../../constants/dummy';
-import { USER_STATUS } from '../../constants/layout';
+import Avatar from '../../../common/Avatar';
+import { MESSAGES } from '../../../constants/dummy';
+import { USER_STATUS } from '../../../constants/layout';
 
 function ContactFriends(props: AsideContactsProps) {
   const { setIsAsideOpen } = props;

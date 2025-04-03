@@ -10,6 +10,7 @@ import {
 } from '../hooks/useRedux';
 import subscriptionSlice from '../redux/features/subscribe.slice';
 import useStyles from '../styles/newsletter';
+import LocalStorage from '../core/localStorage';
 
 function Newsletter() {
   const { classes } = useStyles();
@@ -29,21 +30,28 @@ function Newsletter() {
   });
 
   useEffect(() => {
-    if (subscribeState.items.length === 0) {
+    checkSubscription();
+  }, []);
+
+  const checkSubscription = () => {
+    const subscription = LocalStorage.get('subscription');
+    if (!subscription) {
       setTimeout(() => {
         setIsOpened(true);
       }, 10000);
     }
-  }, []);
+  };
 
   const onFormSubmit = (values: { email: string }) => {
     dispatch(subscriptionSlice.actions.create({ email: values.email }))
       .unwrap()
-      .then(() => {
+      .then((response) => {
         notifications.show({
           title: 'Successfully subscribed',
           message: 'Check your inbox to confirm subscribe in newsletter!',
         });
+
+        LocalStorage.set('subscription', response.data);
 
         setIsOpened(false);
       })

@@ -52,12 +52,20 @@ function Subscriptions() {
   }, []);
 
   const fetchSubscriptionsAPI = async () => {
-    dispatch(
-      subscriptionSlice.actions.fetchAll({
-        page: subscriptionState.pagination.page,
-        limit: subscriptionState.pagination.limit,
-      }),
-    );
+    try {
+      await dispatch(
+        subscriptionSlice.actions.fetchAll({
+          page: subscriptionState.pagination.page,
+          limit: subscriptionState.pagination.limit,
+        }),
+      ).unwrap();
+    } catch (error) {
+      notifications.show({
+        title: 'Error',
+        message: getErrorMessage(error),
+        color: 'red',
+      });
+    }
   };
 
   const onPageChange = (page: number) => {
@@ -75,7 +83,7 @@ function Subscriptions() {
     }
 
     try {
-      dispatch(
+      await dispatch(
         subscriptionSlice.actions.delete(subscriptionState.selectedItem._id),
       ).unwrap();
 
@@ -93,7 +101,7 @@ function Subscriptions() {
 
   const onFormSubmit = async (values: SubscriptionFormFields) => {
     try {
-      dispatch(
+      await dispatch(
         subscriptionSlice.actions.create({ email: values.email }),
       ).unwrap();
 

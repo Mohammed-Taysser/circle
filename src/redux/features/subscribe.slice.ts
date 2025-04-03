@@ -1,4 +1,5 @@
 import API from '../../api';
+import LocalStorage from '../../core/localStorage';
 import CRUDSlice from '../crud.slice';
 
 class SubscriptionSlice extends CRUDSlice<

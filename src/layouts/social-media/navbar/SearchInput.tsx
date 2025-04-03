@@ -1,7 +1,7 @@
 import { Flex, Input, Kbd, ThemeIcon, useMantineTheme } from '@mantine/core';
 import { useHotkeys, useMediaQuery } from '@mantine/hooks';
 import { BiSearchAlt } from 'react-icons/bi';
-import useSearchInput from '../../hooks/useSearchInput';
+import useSearchInput from '../../../hooks/useSearchInput';
 
 function SearchInput() {
   const { onSearchInputClick } = useSearchInput();
