@@ -93,9 +93,13 @@ const MembersGroup = lazy(
 
 // Dashboard
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
-const Users = lazy(() => import('../pages/dashboard/Users'));
-const Subscriptions = lazy(() => import('../pages/dashboard/Subscriptions'));
-const DashboardGroups = lazy(() => import('../pages/dashboard/Groups'));
+const Users = lazy(() => import('../pages/dashboard/Users.dashboard'));
+const Subscriptions = lazy(
+  () => import('../pages/dashboard/Subscriptions.dashboard'),
+);
+const DashboardGroups = lazy(
+  () => import('../pages/dashboard/Groups.dashboard'),
+);
 
 const routes = createBrowserRouter([
   {

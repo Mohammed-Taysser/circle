@@ -288,6 +288,10 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
       })
 
       // Update item
+      .addCase(this.actions.update.pending, (state) => {
+        state.loading.update = true;
+        state.error = null;
+      })
       .addCase(this.actions.update.fulfilled, (state, action) => {
         const index = state.items.findIndex(
           (item) => item._id === action.payload.data._id,
@@ -296,8 +300,16 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
           state.items[index] = action.payload.data as Draft<T>;
         }
       })
+      .addCase(this.actions.update.rejected, (state, action) => {
+        state.loading.update = false;
+        state.error = action.payload as string;
+      })
 
       // Delete item
+      .addCase(this.actions.delete.pending, (state) => {
+        state.loading.delete = true;
+        state.error = null;
+      })
       .addCase(this.actions.delete.fulfilled, (state, action) => {
         const index = state.items.findIndex(
           (item) => item._id === action.payload.data._id,
@@ -308,6 +320,10 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
             .slice(0, index)
             .concat(state.items.slice(index + 1));
         }
+      })
+      .addCase(this.actions.delete.rejected, (state, action) => {
+        state.loading.delete = false;
+        state.error = action.payload as string;
       });
   }
 }

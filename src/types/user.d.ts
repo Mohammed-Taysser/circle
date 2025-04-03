@@ -26,6 +26,8 @@ interface UserFormFields {
   isVerified: boolean;
   role: UserRole;
   password: string;
+  cover?: File;
+  avatar?: File;
 }
 
 interface UserCreatePayload {
@@ -37,6 +39,8 @@ interface UserCreatePayload {
   isVerified: boolean;
   role: UserRole;
   password: string;
+  cover?: File;
+  avatar?: File;
 }
 
 interface UserUpdatePayload {
@@ -47,4 +51,6 @@ interface UserUpdatePayload {
   status: UserStatus;
   isVerified: boolean;
   role: UserRole;
+  avatar?: File;
+  cover?: File;
 }

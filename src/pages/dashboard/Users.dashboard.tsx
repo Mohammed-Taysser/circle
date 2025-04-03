@@ -2,6 +2,7 @@ import {
   Avatar,
   Badge,
   Button,
+  FileInput,
   Grid,
   Group,
   LoadingOverlay,
@@ -33,6 +34,8 @@ import {
   useAppSelector,
 } from '../../hooks/useRedux';
 import userSlice from '../../redux/features/user.slice';
+import { IconUpload } from '@tabler/icons-react';
+import { modals } from '@mantine/modals';
 
 function Users() {
   const dispatch = useAppDispatch();
@@ -102,7 +105,8 @@ function Users() {
     dispatch(userSlice.slice.actions.setSelectedItem(user));
     openEditableModal();
 
-    form.setValues(user);
+    const { avatar, cover, ...reset } = user;
+    form.setValues(reset);
   };
 
   const onDeleteUserBtnClick = (user: User) => {
@@ -141,6 +145,8 @@ function Users() {
       status: values.status,
       isVerified: values.isVerified,
       role: values.role,
+      avatar: values.avatar instanceof File ? values.avatar : undefined,
+      cover: values.cover instanceof File ? values.cover : undefined,
     };
 
     try {
@@ -183,6 +189,46 @@ function Users() {
     dispatch(userSlice.slice.actions.setSelectedItem(null));
     closeEditableModal();
     form.reset();
+  };
+
+  const onUploadInputChange = (
+    fieldName: 'avatar' | 'cover',
+    file: null | File,
+  ) => {
+    if (file) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        const avatarConfig = {
+          cropShape: 'round',
+          aspect: 1,
+        };
+
+        const coverConfig = {
+          aspect: 5 / 3,
+        };
+
+        modals.openContextModal({
+          modal: 'cropper',
+          title: `Crop ${fieldName}`,
+          innerProps: {
+            image: reader.result,
+            onCropComplete,
+            title: fieldName,
+            ...(fieldName === 'avatar' && avatarConfig),
+            ...(fieldName === 'cover' && coverConfig),
+          },
+          size: 'md',
+          centered: true,
+        });
+      };
+    }
+  };
+
+  const onCropComplete = (image: File) => {
+    form.setFieldValue(image.name, image);
   };
 
   return (
@@ -229,6 +275,26 @@ function Users() {
                 placeholder='Username'
                 icon={<TbUserHexagon size='1rem' />}
                 {...form.getInputProps('username')}
+              />
+            </Grid.Col>
+
+            <Grid.Col sm={12} lg={6}>
+              <FileInput
+                label='Upload Avatar'
+                accept='image/*'
+                icon={<IconUpload size='1rem' />}
+                value={form.values.avatar}
+                onChange={(file) => onUploadInputChange('avatar', file)}
+              />
+            </Grid.Col>
+
+            <Grid.Col sm={12} lg={6}>
+              <FileInput
+                label='Upload Cover'
+                accept='image/*'
+                icon={<IconUpload size='1rem' />}
+                value={form.values.cover}
+                onChange={(file) => onUploadInputChange('cover', file)}
               />
             </Grid.Col>
 
