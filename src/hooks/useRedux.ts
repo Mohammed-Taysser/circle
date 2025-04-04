@@ -9,19 +9,8 @@ type AppDispatch = typeof store.dispatch;
 const useAppDispatch: () => AppDispatch = useDispatch;
 const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
-const selectProfile = (state: RootState) => state.profile;
-const selectAuth = (state: RootState) => state.auth;
-const selectSubscribe = (state: RootState) => state.subscribe;
-const selectUser = (state: RootState) => state.user;
-const selectGroup = (state: RootState) => state.group;
+// Generic selector creator
+const createSelector = <T>(selector: (state: RootState) => T) => selector;
 
-export {
-  selectAuth,
-  selectSubscribe,
-  useAppDispatch,
-  useAppSelector,
-  selectProfile,
-  selectUser,
-  selectGroup,
-};
+export { createSelector, useAppDispatch, useAppSelector };
 export type { RootState };

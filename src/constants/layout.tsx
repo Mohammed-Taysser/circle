@@ -43,7 +43,7 @@ const DASHBOARD_HEADER_LINKS = [
   },
   {
     icon: PiNewspaperClippingDuotone,
-    color: 'teal',
+    color: 'grape',
     label: 'Subscriptions',
     path: '/dashboard/subscriptions',
   },
@@ -52,6 +52,12 @@ const DASHBOARD_HEADER_LINKS = [
     color: 'red',
     label: 'Groups',
     path: '/dashboard/groups',
+  },
+  {
+    icon: MdEventNote,
+    color: 'indigo',
+    label: 'Events',
+    path: '/dashboard/events',
   },
 ];
 

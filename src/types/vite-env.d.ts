@@ -1,4 +1,5 @@
 /// <reference types="react" />
+/// <reference types="dayjs" />
 /// <reference types="vite/client" />
 /// <reference types="react-icons" />
 /// <reference types="@tiptap" />
@@ -131,27 +132,6 @@ interface MantineProviderProps {
   colorScheme: ColorScheme;
 }
 
-// Navbar Layout
-interface NavbarProps {
-  isHeaderOpen: boolean;
-  setIsHeaderOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-// Aside Layout
-interface AsideContactsProps {
-  setIsAsideOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-// Header Layout
-interface HeaderProps {
-  isHeaderOpen: boolean;
-  setIsHeaderOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface HeaderNavigationProps {
-  setIsHeaderOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 interface SingleContactFriend {
   status: StatusSlug;
   name: string;
@@ -187,56 +167,6 @@ interface SingleUserStatus {
 type UserStatusConstant = {
   [key in StatusSlug]: SingleUserStatus;
 };
-
-// Modals
-interface SearchModalInnerProps {
-  navigateTo: NavigateFunction;
-}
-
-interface ReactModalInnerProps {
-  postId: string;
-  navigateTo: NavigateFunction;
-}
-
-interface CreatePostModalInnerProps {
-  navigateTo: NavigateFunction;
-}
-
-interface CommentsModalInnerProps {
-  postId: string;
-  navigateTo: NavigateFunction;
-}
-
-interface EventModalInnerProps {
-  event: clickInfo;
-}
-
-interface CreateEventModalInnerProps {
-  onEventCreated?: (event: CalenderEvent) => void;
-  selectInfo: DateSelectArg;
-}
-
-interface CropModalInnerProps {
-  aspect: number;
-  crop: { x: number; y: number };
-  image: string;
-  zoom: number;
-  rotation: number;
-  title: string;
-  flip?: {
-    horizontal?: boolean;
-    vertical?: boolean;
-  };
-  cropShape: 'rect' | 'round';
-  onCropComplete: (image: file, base64: string) => void;
-}
-
-interface CroppedArea {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
 
 // Post Reacts
 type PostReactsLabel = 'like' | 'love' | 'star' | 'wow';
@@ -448,17 +378,6 @@ interface ContactIconProps
   icon: React.FC<any>;
   title: React.ReactNode;
   description: React.ReactNode;
-}
-
-// Event Page
-interface CalenderEvent {
-  id: string;
-  title: string;
-  start: Date;
-  end: Date;
-  allDay?: boolean;
-  info: string;
-  timeText?: string;
 }
 
 // Join Us Page

@@ -25,8 +25,13 @@ interface BaseEntity {
   updatedAt: string;
 }
 
+interface SimpleResponse {
+  _id: strig;
+  name: string;
+}
+
 type AxiosSimpleResponse = Array<{
-  id: number;
+  _id: number;
   name: string;
 }>;
 
@@ -35,7 +40,7 @@ interface AxiosPaginatedResponse<T> {
   meta: TablePagination;
 }
 
-interface AxiosResponse<T extends BaseEntity> {
+interface AxiosResponse<T> {
   data: T;
 }
 

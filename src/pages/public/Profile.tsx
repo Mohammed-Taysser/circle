@@ -17,8 +17,7 @@ import { cover } from '../../constants/default';
 import { formateNumber } from '../../helpers/millify';
 import useHelmet from '../../hooks/useHelmet';
 import {
-  selectAuth,
-  selectProfile,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../../hooks/useRedux';
@@ -39,7 +38,7 @@ function Profile() {
   });
 
   const dispatch = useAppDispatch();
-  const profileState = useAppSelector(selectProfile);
+  const profileState = useAppSelector(createSelector((state) => state.profile));
 
   useEffect(() => {
     dispatch(getUserById(profileId));

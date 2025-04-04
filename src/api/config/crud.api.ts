@@ -21,12 +21,15 @@ abstract class CRUDAPI<
   }
 
   getSimpleList(params?: FilterParams) {
-    return this.axiosInstance.get<AxiosSimpleResponse>(`${this.endpoint}/`, {
-      params: {
-        ...params,
-        simple: true,
+    return this.axiosInstance.get<AxiosResponse<SimpleResponse[]>>(
+      `${this.endpoint}/`,
+      {
+        params: {
+          ...params,
+          simple: true,
+        },
       },
-    });
+    );
   }
 
   getById(id: string | number) {
@@ -48,7 +51,7 @@ abstract class CRUDAPI<
   }
 
   update(id: string | number, payload: UpdatePayload) {
-    return this.axiosInstance.put<AxiosResponse<T>>(
+    return this.axiosInstance.patch<AxiosResponse<T>>(
       `${this.endpoint}/${id}/`,
       payload,
     );

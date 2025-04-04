@@ -12,9 +12,9 @@ import { MdOutlineAlternateEmail } from 'react-icons/md';
 import { TfiLock } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import {
-  selectAuth,
   useAppDispatch,
   useAppSelector,
+  createSelector,
 } from '../../hooks/useRedux';
 import { login } from '../../redux/features/auth.slice';
 
@@ -22,7 +22,7 @@ function Login(props: Readonly<JoinUsProps>) {
   const { toggleTap } = props;
 
   const dispatch = useAppDispatch();
-  const authState = useAppSelector(selectAuth);
+  const authState = useAppSelector(createSelector((state) => state.auth));
 
   const form = useForm({
     validateInputOnChange: true,

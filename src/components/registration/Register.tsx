@@ -24,7 +24,7 @@ import { uuidv4 } from '../../helpers';
 import { PASSWORD_REQUIREMENTS, getPasswordStatus } from '../../validations';
 import { TbUserHexagon } from 'react-icons/tb';
 import {
-  selectAuth,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../../hooks/useRedux';
@@ -44,7 +44,7 @@ function Register(props: Readonly<JoinUsProps>) {
   const { toggleTap } = props;
 
   const dispatch = useAppDispatch();
-  const authState = useAppSelector(selectAuth);
+  const authState = useAppSelector(createSelector((state) => state.auth));
 
   const form = useForm({
     validateInputOnChange: true,

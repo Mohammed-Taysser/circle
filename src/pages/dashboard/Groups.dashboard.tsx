@@ -25,7 +25,7 @@ import { FiEdit } from 'react-icons/fi';
 import { MdDelete, MdDriveFileRenameOutline } from 'react-icons/md';
 import { getErrorMessage, getImageURL } from '../../helpers';
 import {
-  selectGroup,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../../hooks/useRedux';
@@ -33,7 +33,7 @@ import groupSlice from '../../redux/features/group.slice';
 
 function Groups() {
   const dispatch = useAppDispatch();
-  const groupState = useAppSelector(selectGroup);
+  const groupState = useAppSelector(createSelector((state) => state.group));
 
   const [
     editableModalOpen,

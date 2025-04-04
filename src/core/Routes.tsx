@@ -3,12 +3,12 @@ import { Navigate, createBrowserRouter, useLocation } from 'react-router-dom';
 import SuspenseLoading from '../common/SuspenseLoading';
 import BaseLayout from '../layouts/Base';
 import DashboardLayout from '../layouts/Dashboard';
-import { selectAuth, useAppSelector } from '../hooks/useRedux';
+import { createSelector, useAppSelector } from '../hooks/useRedux';
 
 function RequireAuth({ children }: PropsWithChildren) {
   const location = useLocation();
 
-  const authState = useAppSelector(selectAuth);
+  const authState = useAppSelector(createSelector((state) => state.auth));
 
   if (!authState.data) {
     return <Navigate to={`/join-us?nextUrl=${location.pathname}`} replace />;
@@ -18,7 +18,7 @@ function RequireAuth({ children }: PropsWithChildren) {
 }
 
 function NoRequireAuth({ children }: PropsWithChildren) {
-  const authState = useAppSelector(selectAuth);
+  const authState = useAppSelector(createSelector((state) => state.auth));
 
   if (authState.data) {
     return <Navigate to='/' replace />;
@@ -99,6 +99,9 @@ const Subscriptions = lazy(
 );
 const DashboardGroups = lazy(
   () => import('../pages/dashboard/Groups.dashboard'),
+);
+const DashboardEvents = lazy(
+  () => import('../pages/dashboard/Events.dashboard'),
 );
 
 const routes = createBrowserRouter([
@@ -445,6 +448,14 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <DashboardGroups />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'events',
+        element: (
+          <RequireAuth>
+            <DashboardEvents />
           </RequireAuth>
         ),
       },

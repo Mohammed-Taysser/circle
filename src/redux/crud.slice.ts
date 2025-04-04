@@ -22,6 +22,7 @@ import { RootState } from '../hooks/useRedux';
 interface CRUDState<T> {
   items: T[]; // Array of items fetched from the API
   selectedItem: T | null; // Currently selected item
+  simpleItems: SimpleResponse[]; // Array of items fetched from the API
   loading: {
     // States for loading flags for each action
     fetch: boolean;
@@ -29,6 +30,7 @@ interface CRUDState<T> {
     update: boolean;
     delete: boolean;
     fetchById: boolean;
+    fetchSimple: boolean;
   };
   error: ReactNode | null; // Error message if any
   pagination: TablePagination; // Pagination state for API calls
@@ -59,6 +61,11 @@ interface Actions<T extends BaseEntity, CreatePayload, UpdatePayload> {
     AsyncThunkConfig
   >;
   delete: AsyncThunk<AxiosResponse<T>, T['_id'], AsyncThunkConfig>;
+  fetchSimpleList: AsyncThunk<
+    AxiosResponse<SimpleResponse[]>,
+    void,
+    AsyncThunkConfig
+  >;
   changePage: AsyncThunk<void, number, AsyncThunkConfig>;
   changeLimit: AsyncThunk<void, number, AsyncThunkConfig>;
 }
@@ -89,12 +96,14 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
     return {
       items: [],
       selectedItem: null,
+      simpleItems: [],
       loading: {
         fetch: false,
         create: false,
         update: false,
         delete: false,
         fetchById: false,
+        fetchSimple: false,
         ...initialState.loading,
       },
       error: null,
@@ -115,6 +124,7 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
       create: this.createCreateThunk(),
       update: this.createUpdateThunk(),
       delete: this.createDeleteThunk(),
+      fetchSimpleList: this.createFetchSimpleListThunk(),
       changePage: createAsyncThunk(
         `${this.name}/change-page`,
         async (page: number, thunkApi) => {
@@ -209,6 +219,20 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
     );
   }
 
+  protected createFetchSimpleListThunk() {
+    return createAsyncThunk(
+      `${this.name}/fetch-simple-list`,
+      async (_, thunkApi) => {
+        try {
+          const response = await this.api.getSimpleList();
+          return response.data;
+        } catch (error) {
+          return thunkApi.rejectWithValue(getErrorMessage(error));
+        }
+      },
+    );
+  }
+
   private createSlice() {
     return createSlice({
       name: this.name,
@@ -293,12 +317,8 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
         state.error = null;
       })
       .addCase(this.actions.update.fulfilled, (state, action) => {
-        const index = state.items.findIndex(
-          (item) => item._id === action.payload.data._id,
-        );
-        if (index !== -1) {
-          state.items[index] = action.payload.data as Draft<T>;
-        }
+        state.loading.update = false;
+        this.actions.fetchAll({ page: 1, limit: state.pagination.limit });
       })
       .addCase(this.actions.update.rejected, (state, action) => {
         state.loading.update = false;
@@ -323,6 +343,19 @@ class CRUDSlice<T extends BaseEntity, CreatePayload, UpdatePayload> {
       })
       .addCase(this.actions.delete.rejected, (state, action) => {
         state.loading.delete = false;
+        state.error = action.payload as string;
+      })
+
+      .addCase(this.actions.fetchSimpleList.pending, (state) => {
+        state.loading.fetchSimple = true;
+        state.error = null;
+      })
+      .addCase(this.actions.fetchSimpleList.fulfilled, (state, action) => {
+        state.loading.fetchSimple = false;
+        state.simpleItems = action.payload.data;
+      })
+      .addCase(this.actions.fetchSimpleList.rejected, (state, action) => {
+        state.loading.fetchSimple = false;
         state.error = action.payload as string;
       });
   }

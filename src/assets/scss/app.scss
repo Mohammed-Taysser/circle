@@ -18,3 +18,7 @@ $aurora-color: theme('colors.aurora');
 // styles
 @import './helpers/base';
 @import './helpers/darkmode';
+
+.leaflet-container {
+  height: 600px;
+}

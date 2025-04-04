@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import newsletterImage from '../assets/images/background/newsletter.svg';
 import LocalStorage from '../core/localStorage';
 import {
-  selectSubscribe,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../hooks/useRedux';
@@ -17,7 +17,9 @@ function Newsletter() {
   const [isOpened, setIsOpened] = useState(false);
 
   const dispatch = useAppDispatch();
-  const subscribeState = useAppSelector(selectSubscribe);
+  const subscribeState = useAppSelector(
+    createSelector((state) => state.subscribe),
+  );
 
   const form = useForm({
     initialValues: {

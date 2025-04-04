@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 import { MdDelete, MdOutlineAlternateEmail } from 'react-icons/md';
 import { getErrorMessage } from '../../helpers';
 import {
-  selectSubscribe,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../../hooks/useRedux';
@@ -26,7 +26,9 @@ import subscriptionSlice from '../../redux/features/subscription.slice';
 
 function Subscriptions() {
   const dispatch = useAppDispatch();
-  const subscriptionState = useAppSelector(selectSubscribe);
+  const subscriptionState = useAppSelector(
+    createSelector((state) => state.subscribe),
+  );
 
   const [
     editableModalOpen,

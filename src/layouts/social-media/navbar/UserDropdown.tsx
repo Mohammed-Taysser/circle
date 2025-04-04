@@ -17,7 +17,7 @@ import Avatar from '../../../common/Avatar';
 import { USER_STATUS } from '../../../constants/layout';
 import { getImageURL } from '../../../helpers';
 import {
-  selectAuth,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../../../hooks/useRedux';
@@ -29,7 +29,7 @@ function UserDropdown(props: { className?: string }) {
   const [status, setStatus] = useState(USER_STATUS.online);
 
   const dispatch = useAppDispatch();
-  const authState = useAppSelector(selectAuth);
+  const authState = useAppSelector(createSelector((state) => state.auth));
 
   const onStatusChange = (status: SingleUserStatus) => {
     setStatus(status);

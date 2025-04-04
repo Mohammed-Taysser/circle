@@ -29,7 +29,7 @@ import { TbUserHexagon } from 'react-icons/tb';
 import { TfiLock } from 'react-icons/tfi';
 import { getErrorMessage, getImageURL } from '../../helpers';
 import {
-  selectUser,
+  createSelector,
   useAppDispatch,
   useAppSelector,
 } from '../../hooks/useRedux';
@@ -39,7 +39,7 @@ import { modals } from '@mantine/modals';
 
 function Users() {
   const dispatch = useAppDispatch();
-  const userState = useAppSelector(selectUser);
+  const userState = useAppSelector(createSelector((state) => state.user));
 
   const [
     editableModalOpen,
