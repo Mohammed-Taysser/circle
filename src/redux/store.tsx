@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import React from 'react';
 import { Provider } from 'react-redux';
 import authReducer from './features/auth.slice';
+import badgeReducer from './features/badge.slice';
 import userEventReducer from './features/event.slice';
 import groupReducer from './features/group.slice';
 import profileReducer from './features/profile.slice';
@@ -16,6 +17,7 @@ const store = configureStore({
     user: userReducer.reducer,
     event: userEventReducer.reducer,
     group: groupReducer.reducer,
+    badge: badgeReducer.reducer,
   },
 });
 

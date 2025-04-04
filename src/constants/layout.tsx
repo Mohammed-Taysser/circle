@@ -1,4 +1,4 @@
-import { BsBookmarks } from 'react-icons/bs';
+import { BsBookmarks, BsPersonBadge } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 import { MdEventNote } from 'react-icons/md';
 import { PiNewspaperClippingDuotone } from 'react-icons/pi';
@@ -58,6 +58,12 @@ const DASHBOARD_HEADER_LINKS = [
     color: 'indigo',
     label: 'Events',
     path: '/dashboard/events',
+  },
+  {
+    icon: BsPersonBadge,
+    color: 'green',
+    label: 'Badges',
+    path: '/dashboard/badges',
   },
 ];
 
