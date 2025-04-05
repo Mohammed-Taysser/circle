@@ -1,6 +1,6 @@
 import { BsBookmarks, BsPersonBadge } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
-import { MdEventNote } from 'react-icons/md';
+import { MdEventNote, MdOutlineRateReview } from 'react-icons/md';
 import { PiNewspaperClippingDuotone } from 'react-icons/pi';
 import { TbUserHexagon } from 'react-icons/tb';
 import { VscFeedback } from 'react-icons/vsc';
@@ -58,6 +58,12 @@ const DASHBOARD_HEADER_LINKS = [
     color: 'indigo',
     label: 'Events',
     path: '/dashboard/events',
+  },
+  {
+    icon: MdOutlineRateReview,
+    color: 'gray',
+    label: 'Reviews',
+    path: '/dashboard/reviews',
   },
   {
     icon: BsPersonBadge,

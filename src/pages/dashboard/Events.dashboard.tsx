@@ -20,12 +20,14 @@ import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
 import dayjs, { Dayjs } from 'dayjs';
+import { LatLngLiteral } from 'leaflet';
 import { ChangeEvent, useEffect } from 'react';
 import { BsCalendar2Event } from 'react-icons/bs';
 import { FiEdit } from 'react-icons/fi';
 import { IoMdCheckmark, IoMdClose } from 'react-icons/io';
 import { MdDelete } from 'react-icons/md';
 import { TbMessage2Bolt, TbMessage2Exclamation } from 'react-icons/tb';
+import EventEditableMap from '../../components/event/EventEditableMap';
 import EventLocationPreview from '../../components/event/EventLocationPreview';
 import { getErrorMessage } from '../../helpers';
 import {
@@ -35,13 +37,11 @@ import {
 } from '../../hooks/useRedux';
 import eventSlice from '../../redux/features/event.slice';
 import userSlice from '../../redux/features/user.slice';
-import { LatLngLiteral } from 'leaflet';
-import EventEditableMap from '../../components/event/EventEditableMap';
 
 function Events() {
   const dispatch = useAppDispatch();
-  const eventState = useAppSelector(createSelector((state) => state.event));
-  const userState = useAppSelector(createSelector((state) => state.user));
+  const eventState = useAppSelector(createSelector((state) => state.events));
+  const userState = useAppSelector(createSelector((state) => state.users));
 
   const [
     editableModalOpen,
@@ -105,12 +105,7 @@ function Events() {
 
   const fetchEventsAPI = async () => {
     try {
-      await dispatch(
-        eventSlice.actions.fetchAll({
-          page: eventState.pagination.page,
-          limit: eventState.pagination.limit,
-        }),
-      ).unwrap();
+      await dispatch(eventSlice.actions.fetchAll()).unwrap();
     } catch (error) {
       notifications.show({
         title: 'Error',
@@ -157,7 +152,7 @@ function Events() {
 
     try {
       await dispatch(
-        eventSlice.actions.delete(eventState.selectedItem._id),
+        eventSlice.actions.delete({ id: eventState.selectedItem._id }),
       ).unwrap();
 
       dispatch(eventSlice.slice.actions.setSelectedItem(null));
@@ -202,7 +197,7 @@ function Events() {
           message: `Hey there, Successfully update ${values.title}!`,
         });
       } else {
-        await dispatch(eventSlice.actions.create(payload)).unwrap();
+        await dispatch(eventSlice.actions.create({ payload })).unwrap();
 
         notifications.show({
           title: 'Successfully created',
@@ -403,7 +398,7 @@ function Events() {
             Events
           </h2>
           <h5 className='my-0 text-gray-500'>
-            (Total {eventState.pagination.total})
+            (Total {eventState.filters.total})
           </h5>
         </Group>
 
@@ -434,79 +429,87 @@ function Events() {
             </tr>
           </thead>
           <tbody>
-            {eventState.items.map((event, index) => (
-              <tr key={event._id}>
-                <td>{index + 1}</td>
-
-                <td>{event.title}</td>
-
-                <td>{event.price}</td>
-
-                <td>{dayjs(event.startDate).format('YYYY-MM-DD hh:mm A')}</td>
-
-                <td>{dayjs(event.endDate).format('YYYY-MM-DD hh:mm A')}</td>
-
-                <td>
-                  {event.allDay ? (
-                    <IoMdCheckmark size={20} color='green' />
-                  ) : (
-                    <IoMdClose size={20} color='red' />
-                  )}
-                </td>
-
-                <td>
-                  <ColorSwatch color={event.color} />
-                </td>
-
-                <td>
-                  <Tooltip label='Rate/Rate Count'>
-                    <Badge color={event.rate >= 3 ? 'green' : 'red'}>
-                      {event.rate}/{event.rateCount}
-                    </Badge>
-                  </Tooltip>
-                </td>
-
-                <td>{event.attendees.length}</td>
-
-                <td>
-                  <EventLocationPreview event={event} />
-                </td>
-
-                <td>{dayjs(event.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
-
-                <td>
-                  <Group>
-                    <Button
-                      size='xs'
-                      leftIcon={<FiEdit />}
-                      onClick={() => onEditEventBtnClick(event)}
-                    >
-                      Edit
-                    </Button>
-
-                    <Button
-                      size='xs'
-                      color='red'
-                      leftIcon={<MdDelete />}
-                      onClick={() => onDeleteEventBtnClick(event)}
-                    >
-                      Delete
-                    </Button>
-                  </Group>
+            {eventState.items.length === 0 ? (
+              <tr>
+                <td colSpan={20}>
+                  <div className='text-center py-3 text-gray-600'>
+                    No data found
+                  </div>
                 </td>
               </tr>
-            ))}
+            ) : (
+              eventState.items.map((event, index) => (
+                <tr key={event._id}>
+                  <td>{index + 1}</td>
+
+                  <td>{event.title}</td>
+
+                  <td>{event.price}</td>
+
+                  <td>{dayjs(event.startDate).format('YYYY-MM-DD hh:mm A')}</td>
+
+                  <td>{dayjs(event.endDate).format('YYYY-MM-DD hh:mm A')}</td>
+
+                  <td>
+                    {event.allDay ? (
+                      <IoMdCheckmark size={20} color='green' />
+                    ) : (
+                      <IoMdClose size={20} color='red' />
+                    )}
+                  </td>
+
+                  <td>
+                    <ColorSwatch color={event.color} />
+                  </td>
+
+                  <td>
+                    <Tooltip label='Rate/Rate Count'>
+                      <Badge color={event.rate >= 3 ? 'green' : 'red'}>
+                        {event.rate}/{event.rateCount}
+                      </Badge>
+                    </Tooltip>
+                  </td>
+
+                  <td>{event.attendees.length}</td>
+
+                  <td>
+                    <EventLocationPreview event={event} />
+                  </td>
+
+                  <td>{dayjs(event.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
+
+                  <td>
+                    <Group>
+                      <Button
+                        size='xs'
+                        leftIcon={<FiEdit />}
+                        onClick={() => onEditEventBtnClick(event)}
+                      >
+                        Edit
+                      </Button>
+
+                      <Button
+                        size='xs'
+                        color='red'
+                        leftIcon={<MdDelete />}
+                        onClick={() => onDeleteEventBtnClick(event)}
+                      >
+                        Delete
+                      </Button>
+                    </Group>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </Table>
       </div>
 
       <Pagination
-        value={eventState.pagination.page}
+        value={eventState.filters.page}
         className='mt-6'
         onChange={onPageChange}
-        total={Math.ceil(
-          eventState.pagination.total / eventState.pagination.limit,
-        )}
+        total={Math.ceil(eventState.filters.total / eventState.filters.limit)}
         withEdges
       />
     </div>

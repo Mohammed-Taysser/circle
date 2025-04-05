@@ -4,7 +4,8 @@ import CRUDSlice from '../crud.slice';
 class UserEventSlice extends CRUDSlice<
   UserEvent,
   UserEventEditablePayload,
-  UserEventEditablePayload
+  UserEventEditablePayload,
+  TablePagination
 > {
   constructor() {
     super('events', API.event);

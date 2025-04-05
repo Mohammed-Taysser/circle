@@ -4,10 +4,11 @@ import CRUDSlice from '../crud.slice';
 class SubscriptionSlice extends CRUDSlice<
   Subscription,
   SubscriptionCreatePayload,
-  SubscriptionUpdatePayload
+  SubscriptionUpdatePayload,
+  TablePagination
 > {
   constructor() {
-    super('subscription', API.subscription);
+    super('subscriptions', API.subscription);
   }
 }
 

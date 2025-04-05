@@ -27,7 +27,7 @@ import subscriptionSlice from '../../redux/features/subscription.slice';
 function Subscriptions() {
   const dispatch = useAppDispatch();
   const subscriptionState = useAppSelector(
-    createSelector((state) => state.subscribe),
+    createSelector((state) => state.subscriptions),
   );
 
   const [
@@ -55,12 +55,7 @@ function Subscriptions() {
 
   const fetchSubscriptionsAPI = async () => {
     try {
-      await dispatch(
-        subscriptionSlice.actions.fetchAll({
-          page: subscriptionState.pagination.page,
-          limit: subscriptionState.pagination.limit,
-        }),
-      ).unwrap();
+      await dispatch(subscriptionSlice.actions.fetchAll()).unwrap();
     } catch (error) {
       notifications.show({
         title: 'Error',
@@ -86,7 +81,9 @@ function Subscriptions() {
 
     try {
       await dispatch(
-        subscriptionSlice.actions.delete(subscriptionState.selectedItem._id),
+        subscriptionSlice.actions.delete({
+          id: subscriptionState.selectedItem._id,
+        }),
       ).unwrap();
 
       dispatch(subscriptionSlice.slice.actions.setSelectedItem(null));
@@ -104,7 +101,7 @@ function Subscriptions() {
   const onFormSubmit = async (values: SubscriptionFormFields) => {
     try {
       await dispatch(
-        subscriptionSlice.actions.create({ email: values.email }),
+        subscriptionSlice.actions.create({ payload: { email: values.email } }),
       ).unwrap();
 
       notifications.show({
@@ -217,7 +214,7 @@ function Subscriptions() {
             Subscriptions
           </h2>
           <h5 className='my-0 text-gray-500'>
-            (Total {subscriptionState.pagination.total})
+            (Total {subscriptionState.filters.total})
           </h5>
         </Group>
 
@@ -241,47 +238,58 @@ function Subscriptions() {
             </tr>
           </thead>
           <tbody>
-            {subscriptionState.items.map((subscription, index) => (
-              <tr key={subscription._id}>
-                <td>{index + 1}</td>
-
-                <td>{subscription.email}</td>
-
-                <td>
-                  <Badge color={subscription.isVerified ? 'green' : 'red'}>
-                    {subscription.isVerified ? 'Verified' : 'Unverified'}
-                  </Badge>
-                </td>
-
-                <td>
-                  {dayjs(subscription.createdAt).format('YYYY-MM-DD hh:mm A')}
-                </td>
-
-                <td>
-                  <Group>
-                    <Button
-                      size='xs'
-                      color='red'
-                      leftIcon={<MdDelete />}
-                      onClick={() => onDeleteSubscriptionBtnClick(subscription)}
-                    >
-                      Delete
-                    </Button>
-                  </Group>
+            {subscriptionState.items.length === 0 ? (
+              <tr>
+                <td colSpan={20}>
+                  <div className='text-center py-3 text-gray-600'>
+                    No data found
+                  </div>
                 </td>
               </tr>
-            ))}
+            ) : (
+              subscriptionState.items.map((subscription, index) => (
+                <tr key={subscription._id}>
+                  <td>{index + 1}</td>
+
+                  <td>{subscription.email}</td>
+
+                  <td>
+                    <Badge color={subscription.isVerified ? 'green' : 'red'}>
+                      {subscription.isVerified ? 'Verified' : 'Unverified'}
+                    </Badge>
+                  </td>
+
+                  <td>
+                    {dayjs(subscription.createdAt).format('YYYY-MM-DD hh:mm A')}
+                  </td>
+
+                  <td>
+                    <Group>
+                      <Button
+                        size='xs'
+                        color='red'
+                        leftIcon={<MdDelete />}
+                        onClick={() =>
+                          onDeleteSubscriptionBtnClick(subscription)
+                        }
+                      >
+                        Delete
+                      </Button>
+                    </Group>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </Table>
       </div>
 
       <Pagination
-        value={subscriptionState.pagination.page}
+        value={subscriptionState.filters.page}
         className='mt-6'
         onChange={onPageChange}
         total={Math.ceil(
-          subscriptionState.pagination.total /
-            subscriptionState.pagination.limit,
+          subscriptionState.filters.total / subscriptionState.filters.limit,
         )}
         withEdges
       />

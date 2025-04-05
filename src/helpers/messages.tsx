@@ -11,6 +11,8 @@ interface ResponseError {
 }
 
 function getErrorMessage(err: unknown): string | string[] {
+  console.log(err);
+
   if (!err) {
     return i18n.t('error-has-occurred');
   }

@@ -16,7 +16,9 @@ import {
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useDisclosure } from '@mantine/hooks';
+import { modals } from '@mantine/modals';
 import { notifications } from '@mantine/notifications';
+import { IconUpload } from '@tabler/icons-react';
 import dayjs from 'dayjs';
 import { useEffect } from 'react';
 import { FiEdit } from 'react-icons/fi';
@@ -34,12 +36,10 @@ import {
   useAppSelector,
 } from '../../hooks/useRedux';
 import userSlice from '../../redux/features/user.slice';
-import { IconUpload } from '@tabler/icons-react';
-import { modals } from '@mantine/modals';
 
 function Users() {
   const dispatch = useAppDispatch();
-  const userState = useAppSelector(createSelector((state) => state.user));
+  const userState = useAppSelector(createSelector((state) => state.users));
 
   const [
     editableModalOpen,
@@ -82,12 +82,7 @@ function Users() {
 
   const fetchUsersAPI = async () => {
     try {
-      await dispatch(
-        userSlice.actions.fetchAll({
-          page: userState.pagination.page,
-          limit: userState.pagination.limit,
-        }),
-      ).unwrap();
+      await dispatch(userSlice.actions.fetchAll()).unwrap();
     } catch (error) {
       notifications.show({
         title: 'Error',
@@ -121,7 +116,7 @@ function Users() {
 
     try {
       await dispatch(
-        userSlice.actions.delete(userState.selectedItem._id),
+        userSlice.actions.delete({ id: userState.selectedItem._id }),
       ).unwrap();
 
       dispatch(userSlice.slice.actions.setSelectedItem(null));
@@ -165,7 +160,9 @@ function Users() {
           password: values.password,
         };
 
-        await dispatch(userSlice.actions.create(createUserPayload)).unwrap();
+        await dispatch(
+          userSlice.actions.create({ payload: createUserPayload }),
+        ).unwrap();
 
         notifications.show({
           title: 'Successfully created',
@@ -390,7 +387,7 @@ function Users() {
             Users
           </h2>
           <h5 className='my-0 text-gray-500'>
-            (Total {userState.pagination.total})
+            (Total {userState.filters.total})
           </h5>
         </Group>
 
@@ -418,77 +415,85 @@ function Users() {
             </tr>
           </thead>
           <tbody>
-            {userState.items.map((user, index) => (
-              <tr key={user._id}>
-                <td>{index + 1}</td>
-
-                <td>
-                  <Group>
-                    <Avatar radius='xl' src={getImageURL(user.avatar)} />
-
-                    <div>
-                      {user.firstName} {user.lastName}
-                    </div>
-                  </Group>
-                </td>
-
-                <td>{user.email}</td>
-
-                <td>{user.username}</td>
-
-                <td>
-                  <Badge color={user.isVerified ? 'green' : 'red'}>
-                    {user.isVerified ? 'Verified' : 'Unverified'}
-                  </Badge>
-                </td>
-
-                <td>
-                  <Badge color={user.role === 'user' ? 'yellow' : 'green'}>
-                    {user.role}
-                  </Badge>
-                </td>
-
-                <td>
-                  <Badge color={user.status === 'active' ? 'green' : 'red'}>
-                    {user.status}
-                  </Badge>
-                </td>
-
-                <td>{dayjs(user.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
-
-                <td>
-                  <Group>
-                    <Button
-                      size='xs'
-                      leftIcon={<FiEdit />}
-                      onClick={() => onEditUserBtnClick(user)}
-                    >
-                      Edit
-                    </Button>
-
-                    <Button
-                      size='xs'
-                      color='red'
-                      leftIcon={<MdDelete />}
-                      onClick={() => onDeleteUserBtnClick(user)}
-                    >
-                      Delete
-                    </Button>
-                  </Group>
+            {userState.items.length === 0 ? (
+              <tr>
+                <td colSpan={20}>
+                  <div className='text-center py-3 text-gray-600'>
+                    No data found
+                  </div>
                 </td>
               </tr>
-            ))}
+            ) : (
+              userState.items.map((user, index) => (
+                <tr key={user._id}>
+                  <td>{index + 1}</td>
+
+                  <td>
+                    <Group>
+                      <Avatar radius='xl' src={getImageURL(user.avatar)} />
+
+                      <div>
+                        {user.firstName} {user.lastName}
+                      </div>
+                    </Group>
+                  </td>
+
+                  <td>{user.email}</td>
+
+                  <td>{user.username}</td>
+
+                  <td>
+                    <Badge color={user.isVerified ? 'green' : 'red'}>
+                      {user.isVerified ? 'Verified' : 'Unverified'}
+                    </Badge>
+                  </td>
+
+                  <td>
+                    <Badge color={user.role === 'user' ? 'yellow' : 'green'}>
+                      {user.role}
+                    </Badge>
+                  </td>
+
+                  <td>
+                    <Badge color={user.status === 'active' ? 'green' : 'red'}>
+                      {user.status}
+                    </Badge>
+                  </td>
+
+                  <td>{dayjs(user.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
+
+                  <td>
+                    <Group>
+                      <Button
+                        size='xs'
+                        leftIcon={<FiEdit />}
+                        onClick={() => onEditUserBtnClick(user)}
+                      >
+                        Edit
+                      </Button>
+
+                      <Button
+                        size='xs'
+                        color='red'
+                        leftIcon={<MdDelete />}
+                        onClick={() => onDeleteUserBtnClick(user)}
+                      >
+                        Delete
+                      </Button>
+                    </Group>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </Table>
       </div>
 
       <Pagination
-        value={userState.pagination.page}
+        value={userState.filters.page}
         className='mt-6'
         onChange={onPageChange}
-        total={Math.ceil(
-          userState.pagination.total / userState.pagination.limit,
-        )}
+        total={Math.ceil(userState.filters.total / userState.filters.limit)}
         withEdges
       />
     </div>

@@ -8,16 +8,18 @@ import groupReducer from './features/group.slice';
 import profileReducer from './features/profile.slice';
 import subscriptionSlice from './features/subscription.slice';
 import userReducer from './features/user.slice';
+import reviewReducer from './features/review.slice';
 
 const store = configureStore({
   reducer: {
     profile: profileReducer,
     auth: authReducer,
-    subscribe: subscriptionSlice.reducer,
-    user: userReducer.reducer,
-    event: userEventReducer.reducer,
-    group: groupReducer.reducer,
-    badge: badgeReducer.reducer,
+    subscriptions: subscriptionSlice.reducer,
+    users: userReducer.reducer,
+    events: userEventReducer.reducer,
+    groups: groupReducer.reducer,
+    badges: badgeReducer.reducer,
+    reviews: reviewReducer.reducer,
   },
 });
 

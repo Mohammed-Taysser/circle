@@ -18,7 +18,7 @@ function Newsletter() {
 
   const dispatch = useAppDispatch();
   const subscribeState = useAppSelector(
-    createSelector((state) => state.subscribe),
+    createSelector((state) => state.subscriptions),
   );
 
   const form = useForm({
@@ -45,7 +45,9 @@ function Newsletter() {
   };
 
   const onFormSubmit = (values: { email: string }) => {
-    dispatch(subscriptionSlice.actions.create({ email: values.email }))
+    dispatch(
+      subscriptionSlice.actions.create({ payload: { email: values.email } }),
+    )
       .unwrap()
       .then((response) => {
         notifications.show({

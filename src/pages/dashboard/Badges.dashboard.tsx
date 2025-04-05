@@ -32,7 +32,7 @@ import badgeSlice from '../../redux/features/badge.slice';
 
 function Badges() {
   const dispatch = useAppDispatch();
-  const badgeState = useAppSelector(createSelector((state) => state.badge));
+  const badgeState = useAppSelector(createSelector((state) => state.badges));
 
   const [
     editableModalOpen,
@@ -61,12 +61,7 @@ function Badges() {
 
   const fetchBadgesAPI = async () => {
     try {
-      await dispatch(
-        badgeSlice.actions.fetchAll({
-          page: badgeState.pagination.page,
-          limit: badgeState.pagination.limit,
-        }),
-      ).unwrap();
+      await dispatch(badgeSlice.actions.fetchAll()).unwrap();
     } catch (error) {
       notifications.show({
         title: 'Error',
@@ -102,7 +97,7 @@ function Badges() {
 
     try {
       await dispatch(
-        badgeSlice.actions.delete(badgeState.selectedItem._id),
+        badgeSlice.actions.delete({ id: badgeState.selectedItem._id }),
       ).unwrap();
 
       dispatch(badgeSlice.slice.actions.setSelectedItem(null));
@@ -138,7 +133,7 @@ function Badges() {
           message: `Hey there, Successfully update ${values.label}!`,
         });
       } else {
-        await dispatch(badgeSlice.actions.create(payload)).unwrap();
+        await dispatch(badgeSlice.actions.create({ payload })).unwrap();
 
         notifications.show({
           title: 'Successfully created',
@@ -272,7 +267,7 @@ function Badges() {
             Badges
           </h2>
           <h5 className='my-0 text-gray-500'>
-            (Total {badgeState.pagination.total})
+            (Total {badgeState.filters.total})
           </h5>
         </Group>
 
@@ -296,59 +291,67 @@ function Badges() {
             </tr>
           </thead>
           <tbody>
-            {badgeState.items.map((badge, index) => (
-              <tr key={badge._id}>
-                <td>{index + 1}</td>
-
-                <td>
-                  <Group>
-                    <Avatar radius='xl' src={getImageURL(badge.logo)} />
-
-                    <div>{badge.label}</div>
-                  </Group>
-                </td>
-
-                <td>
-                  <Text className='max-w-[200px]' truncate>
-                    {badge.body}
-                  </Text>
-                </td>
-
-                <td>{dayjs(badge.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
-
-                <td>
-                  <Group>
-                    <Button
-                      size='xs'
-                      leftIcon={<FiEdit />}
-                      onClick={() => onEditBadgeBtnClick(badge)}
-                    >
-                      Edit
-                    </Button>
-
-                    <Button
-                      size='xs'
-                      color='red'
-                      leftIcon={<MdDelete />}
-                      onClick={() => onDeleteBadgeBtnClick(badge)}
-                    >
-                      Delete
-                    </Button>
-                  </Group>
+            {badgeState.items.length === 0 ? (
+              <tr>
+                <td colSpan={20}>
+                  <div className='text-center py-3 text-gray-600'>
+                    No data found
+                  </div>
                 </td>
               </tr>
-            ))}
+            ) : (
+              badgeState.items.map((badge, index) => (
+                <tr key={badge._id}>
+                  <td>{index + 1}</td>
+
+                  <td>
+                    <Group>
+                      <Avatar radius='xl' src={getImageURL(badge.logo)} />
+
+                      <div>{badge.label}</div>
+                    </Group>
+                  </td>
+
+                  <td>
+                    <Text className='max-w-[200px]' truncate>
+                      {badge.body}
+                    </Text>
+                  </td>
+
+                  <td>{dayjs(badge.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
+
+                  <td>
+                    <Group>
+                      <Button
+                        size='xs'
+                        leftIcon={<FiEdit />}
+                        onClick={() => onEditBadgeBtnClick(badge)}
+                      >
+                        Edit
+                      </Button>
+
+                      <Button
+                        size='xs'
+                        color='red'
+                        leftIcon={<MdDelete />}
+                        onClick={() => onDeleteBadgeBtnClick(badge)}
+                      >
+                        Delete
+                      </Button>
+                    </Group>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </Table>
       </div>
 
       <Pagination
-        value={badgeState.pagination.page}
+        value={badgeState.filters.page}
         className='mt-6'
         onChange={onPageChange}
-        total={Math.ceil(
-          badgeState.pagination.total / badgeState.pagination.limit,
-        )}
+        total={Math.ceil(badgeState.filters.total / badgeState.filters.limit)}
         withEdges
       />
     </div>

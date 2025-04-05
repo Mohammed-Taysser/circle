@@ -13,14 +13,14 @@ abstract class CRUDAPI<
     this.endpoint = endpoint;
   }
 
-  getAll(params?: FilterParams) {
+  getAll(params?: Partial<FilterParams>) {
     return this.axiosInstance.get<AxiosPaginatedResponse<T>>(
       `${this.endpoint}/`,
       { params },
     );
   }
 
-  getSimpleList(params?: FilterParams) {
+  getSimpleList(params?: Partial<FilterParams>) {
     return this.axiosInstance.get<AxiosResponse<SimpleResponse[]>>(
       `${this.endpoint}/`,
       {
@@ -32,32 +32,36 @@ abstract class CRUDAPI<
     );
   }
 
-  getById(id: string | number) {
+  getById(id: string | number, params?: Partial<FilterParams>) {
     return this.axiosInstance.get<AxiosResponse<T>>(`${this.endpoint}/${id}/`);
   }
 
-  export(params?: FilterParams) {
+  export(params?: Partial<FilterParams>) {
     return this.axiosInstance.get<Blob>(`${this.endpoint}/export/`, {
       params,
       responseType: 'blob',
     });
   }
 
-  create(payload: CreatePayload) {
+  create(payload: CreatePayload, params?: Partial<FilterParams>) {
     return this.axiosInstance.post<AxiosResponse<T>>(
       `${this.endpoint}/`,
       payload,
     );
   }
 
-  update(id: string | number, payload: UpdatePayload) {
+  update(
+    id: string | number,
+    payload: UpdatePayload,
+    params?: Partial<FilterParams>,
+  ) {
     return this.axiosInstance.patch<AxiosResponse<T>>(
       `${this.endpoint}/${id}/`,
       payload,
     );
   }
 
-  delete(id: string | number) {
+  delete(id: string | number, params?: Partial<FilterParams>) {
     return this.axiosInstance.delete<AxiosResponse<T>>(
       `${this.endpoint}/${id}/`,
     );

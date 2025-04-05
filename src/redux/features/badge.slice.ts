@@ -4,7 +4,8 @@ import CRUDSlice from '../crud.slice';
 class BadgeSlice extends CRUDSlice<
   Badge,
   BadgeEditablePayload,
-  BadgeEditablePayload
+  BadgeEditablePayload,
+  TablePagination
 > {
   constructor() {
     super('badges', API.badge);

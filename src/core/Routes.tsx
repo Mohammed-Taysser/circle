@@ -93,8 +93,8 @@ const MembersGroup = lazy(
 
 // Dashboard
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
-const Users = lazy(() => import('../pages/dashboard/Users.dashboard'));
-const Subscriptions = lazy(
+const DashboardUsers = lazy(() => import('../pages/dashboard/Users.dashboard'));
+const DashboardSubscriptions = lazy(
   () => import('../pages/dashboard/Subscriptions.dashboard'),
 );
 const DashboardGroups = lazy(
@@ -105,6 +105,9 @@ const DashboardEvents = lazy(
 );
 const DashboardBadges = lazy(
   () => import('../pages/dashboard/Badges.dashboard'),
+);
+const DashboardReviews = lazy(
+  () => import('../pages/dashboard/Reviews.dashboard'),
 );
 
 const routes = createBrowserRouter([
@@ -434,7 +437,7 @@ const routes = createBrowserRouter([
         path: 'users',
         element: (
           <RequireAuth>
-            <Users />
+            <DashboardUsers />
           </RequireAuth>
         ),
       },
@@ -442,7 +445,7 @@ const routes = createBrowserRouter([
         path: 'subscriptions',
         element: (
           <RequireAuth>
-            <Subscriptions />
+            <DashboardSubscriptions />
           </RequireAuth>
         ),
       },
@@ -467,6 +470,14 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <DashboardBadges />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'reviews',
+        element: (
+          <RequireAuth>
+            <DashboardReviews />
           </RequireAuth>
         ),
       },

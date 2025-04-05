@@ -4,7 +4,8 @@ import CRUDSlice from '../crud.slice';
 class GroupSlice extends CRUDSlice<
   Group,
   GroupEditablePayload,
-  GroupEditablePayload
+  GroupEditablePayload,
+  TablePagination
 > {
   constructor() {
     super('groups', API.group);

@@ -33,7 +33,7 @@ import groupSlice from '../../redux/features/group.slice';
 
 function Groups() {
   const dispatch = useAppDispatch();
-  const groupState = useAppSelector(createSelector((state) => state.group));
+  const groupState = useAppSelector(createSelector((state) => state.groups));
 
   const [
     editableModalOpen,
@@ -61,12 +61,7 @@ function Groups() {
 
   const fetchGroupsAPI = async () => {
     try {
-      await dispatch(
-        groupSlice.actions.fetchAll({
-          page: groupState.pagination.page,
-          limit: groupState.pagination.limit,
-        }),
-      ).unwrap();
+      await dispatch(groupSlice.actions.fetchAll()).unwrap();
     } catch (error) {
       notifications.show({
         title: 'Error',
@@ -102,7 +97,7 @@ function Groups() {
 
     try {
       await dispatch(
-        groupSlice.actions.delete(groupState.selectedItem._id),
+        groupSlice.actions.delete({ id: groupState.selectedItem._id }),
       ).unwrap();
 
       dispatch(groupSlice.slice.actions.setSelectedItem(null));
@@ -139,7 +134,7 @@ function Groups() {
           message: `Hey there, Successfully update ${values.name}!`,
         });
       } else {
-        await dispatch(groupSlice.actions.create(payload)).unwrap();
+        await dispatch(groupSlice.actions.create({ payload })).unwrap();
 
         notifications.show({
           title: 'Successfully created',
@@ -299,7 +294,7 @@ function Groups() {
             Groups
           </h2>
           <h5 className='my-0 text-gray-500'>
-            (Total {groupState.pagination.total})
+            (Total {groupState.filters.total})
           </h5>
         </Group>
 
@@ -324,112 +319,122 @@ function Groups() {
             </tr>
           </thead>
           <tbody>
-            {groupState.items.map((group, index) => {
-              let visibilityColor;
+            {groupState.items.length === 0 ? (
+              <tr>
+                <td colSpan={20}>
+                  <div className='text-center py-3 text-gray-600'>
+                    No data found
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              groupState.items.map((group, index) => {
+                let visibilityColor;
 
-              switch (group.visibility) {
-                case 'private':
-                  visibilityColor = 'red';
-                  break;
-                case 'friends':
-                  visibilityColor = 'blue';
-                  break;
+                switch (group.visibility) {
+                  case 'private':
+                    visibilityColor = 'red';
+                    break;
+                  case 'friends':
+                    visibilityColor = 'blue';
+                    break;
 
-                default:
-                  visibilityColor = 'green';
-                  break;
-              }
-              return (
-                <tr key={group._id}>
-                  <td>{index + 1}</td>
+                  default:
+                    visibilityColor = 'green';
+                    break;
+                }
+                return (
+                  <tr key={group._id}>
+                    <td>{index + 1}</td>
 
-                  <td>
-                    <Group>
-                      <Avatar radius='xl' src={getImageURL(group.avatar)} />
+                    <td>
+                      <Group>
+                        <Avatar radius='xl' src={getImageURL(group.avatar)} />
 
-                      <div>{group.name}</div>
-                    </Group>
-                  </td>
+                        <div>{group.name}</div>
+                      </Group>
+                    </td>
 
-                  <td>
-                    <Popover
-                      width={300}
-                      position='bottom'
-                      withArrow
-                      shadow='md'
-                    >
-                      <Popover.Target>
-                        <Button
-                          variant='light'
-                          disabled={group.badges.length === 0}
-                          size='xs'
-                          compact
-                        >
-                          Tap to preview
-                        </Button>
-                      </Popover.Target>
+                    <td>
+                      <Popover
+                        width={300}
+                        position='bottom'
+                        withArrow
+                        shadow='md'
+                      >
+                        <Popover.Target>
+                          <Button
+                            variant='light'
+                            disabled={group.badges.length === 0}
+                            size='xs'
+                            compact
+                          >
+                            Tap to preview
+                          </Button>
+                        </Popover.Target>
 
-                      <Popover.Dropdown>
-                        {group.badges.map((badge) => (
-                          <Group key={badge._id}>
-                            <Avatar
-                              src={getImageURL(badge.badge.logo)}
-                              radius='xl'
-                              alt={group.name}
-                            />
+                        <Popover.Dropdown>
+                          {group.badges.map((badge) => (
+                            <Group key={badge._id}>
+                              <Avatar
+                                src={getImageURL(badge.badge.logo)}
+                                radius='xl'
+                                alt={group.name}
+                              />
 
-                            <Group position='apart' mt='md' mb='xs'>
-                              <Text weight={500}>{badge.badge.label}</Text>
-                              <Badge color='pink' variant='light'>
-                                {dayjs(badge.earnAt).format('YYYY-MM-DD')}
-                              </Badge>
+                              <Group position='apart' mt='md' mb='xs'>
+                                <Text weight={500}>{badge.badge.label}</Text>
+                                <Badge color='pink' variant='light'>
+                                  {dayjs(badge.earnAt).format('YYYY-MM-DD')}
+                                </Badge>
+                              </Group>
                             </Group>
-                          </Group>
-                        ))}
-                      </Popover.Dropdown>
-                    </Popover>
-                  </td>
+                          ))}
+                        </Popover.Dropdown>
+                      </Popover>
+                    </td>
 
-                  <td>
-                    <Badge color={visibilityColor}>{group.visibility}</Badge>
-                  </td>
+                    <td>
+                      <Badge color={visibilityColor}>{group.visibility}</Badge>
+                    </td>
 
-                  <td>{dayjs(group.createdAt).format('YYYY-MM-DD hh:mm A')}</td>
+                    <td>
+                      {dayjs(group.createdAt).format('YYYY-MM-DD hh:mm A')}
+                    </td>
 
-                  <td>
-                    <Group>
-                      <Button
-                        size='xs'
-                        leftIcon={<FiEdit />}
-                        onClick={() => onEditGroupBtnClick(group)}
-                      >
-                        Edit
-                      </Button>
+                    <td>
+                      <Group>
+                        <Button
+                          size='xs'
+                          leftIcon={<FiEdit />}
+                          onClick={() => onEditGroupBtnClick(group)}
+                        >
+                          Edit
+                        </Button>
 
-                      <Button
-                        size='xs'
-                        color='red'
-                        leftIcon={<MdDelete />}
-                        onClick={() => onDeleteGroupBtnClick(group)}
-                      >
-                        Delete
-                      </Button>
-                    </Group>
-                  </td>
-                </tr>
-              );
-            })}
+                        <Button
+                          size='xs'
+                          color='red'
+                          leftIcon={<MdDelete />}
+                          onClick={() => onDeleteGroupBtnClick(group)}
+                        >
+                          Delete
+                        </Button>
+                      </Group>
+                    </td>
+                  </tr>
+                );
+              })
+            )}
           </tbody>
         </Table>
       </div>
 
       <Pagination
-        value={groupState.pagination.page}
+        value={groupState.filters.page}
         className='mt-6'
         onChange={onPageChange}
-        total={Math.ceil(
-          groupState.pagination.total / groupState.pagination.limit,
-        )}
+        total={Math.ceil(groupState.filters.total / groupState.filters.limit)}
         withEdges
       />
     </div>
