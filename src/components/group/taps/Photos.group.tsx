@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Gallery from '../../../common/Gallery';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
+import { getPostAssetUrls } from '../../../helpers';
 
 function PhotosGroup() {
   const { groupId = '' } = useParams();
@@ -37,13 +38,7 @@ function PhotosGroup() {
         {posts.length ? (
           <Gallery
             full
-            gallery={posts.reduce(
-              (prev, current) => [
-                ...prev,
-                ...(current.assets.gallery ? current.assets.gallery : []),
-              ],
-              [] as string[],
-            )}
+            gallery={posts.flatMap((post) => getPostAssetUrls(post, 'gallery'))}
             galleryId={groupId} // TODO: replace with userId
           />
         ) : (

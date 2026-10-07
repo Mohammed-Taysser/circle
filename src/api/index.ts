@@ -2,6 +2,7 @@ import AuthAPI from './collections/auth.api';
 import BadgeAPI from './collections/badge.api';
 import UserEventAPI from './collections/event.api';
 import GroupAPI from './collections/group.api';
+import PostAPI from './collections/post.api';
 import ReviewAPI from './collections/review.api';
 import SubscriptionAPI from './collections/subscription.api';
 import UserAPI from './collections/user.api';
@@ -14,6 +15,7 @@ const API = {
   event: new UserEventAPI(),
   badge: new BadgeAPI(),
   review: new ReviewAPI(),
+  post: new PostAPI(),
 };
 
 export default API;

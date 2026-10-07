@@ -14,7 +14,11 @@ import { useMemo, useRef, useState } from 'react';
 import Avatar from '../../common/Avatar';
 import TiptapEditor from '../../common/TiptapEditor';
 import TapsModal from '../../components/createPost/modal/Taps.modal';
-import { POST_VARIANT, POST_VISIBILITY } from '../../constants/post';
+import {
+  CREATE_POST_VARIANTS,
+  POST_VARIANT,
+  POST_VISIBILITY,
+} from '../../constants/post';
 
 function CreatePostModal(props: ContextModalProps<CreatePostModalInnerProps>) {
   const { navigateTo } = props.innerProps;
@@ -168,10 +172,10 @@ function CreatePostModal(props: ContextModalProps<CreatePostModalInnerProps>) {
             size='xs'
             value={form.values.variant}
             icon={<VariantObject.icon />}
-            data={Object.keys(POST_VARIANT).map((key) => {
-              const slug = key as CreatePostVariant;
-              return { value: slug, label: POST_VARIANT[slug].label };
-            })}
+            data={CREATE_POST_VARIANTS.map((slug) => ({
+              value: slug,
+              label: POST_VARIANT[slug].label,
+            }))}
             onChange={onPostVariantChange}
           />
         </Flex>

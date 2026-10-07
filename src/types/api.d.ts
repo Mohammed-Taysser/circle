@@ -20,7 +20,7 @@ interface TablePagination {
 }
 
 interface BaseEntity {
-  _id: string | number;
+  _id: string;
   createdAt: string;
   updatedAt: string;
 }

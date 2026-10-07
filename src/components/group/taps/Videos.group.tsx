@@ -4,17 +4,11 @@ import { BsPersonVideo3 } from 'react-icons/bs';
 import PlyrViewer from '../../../common/plyr';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
-import { uuidv4 } from '../../../helpers';
+import { getPostAssetUrls, uuidv4 } from '../../../helpers';
 
 function VideosGroup() {
-  const videos = POSTS.filter((post) => post.variant === 'video').reduce(
-    (prev, current) => {
-      if (current.assets.video) {
-        return [...prev, current.assets.video];
-      }
-      return prev;
-    },
-    [] as string[],
+  const videos = POSTS.filter((post) => post.variant === 'video').flatMap(
+    (post) => getPostAssetUrls(post, 'video'),
   );
 
   const [state, setState] = useState({

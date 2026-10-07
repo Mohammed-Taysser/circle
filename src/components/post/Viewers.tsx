@@ -3,6 +3,7 @@ import Group from '../../common/Group';
 import Post from '../../common/Post';
 import User from '../../common/User';
 import Plyr from '../../common/plyr';
+import { getPostAsset, getPostAssetUrls } from '../../helpers';
 import Youtube from './body/viewers/Youtube';
 
 function Viewers(props: PostViewersProps) {
@@ -12,23 +13,23 @@ function Viewers(props: PostViewersProps) {
     case 'audio':
       return (
         <div className='shadow-nice'>
-          <Plyr src={post.assets?.audio} MediaType='audio' />
+          <Plyr src={getPostAsset(post, 'audio')?.url} MediaType='audio' />
         </div>
       );
     case 'video':
       return (
         <div className='shadow-nice'>
-          <Plyr src={post.assets?.video} MediaType='video' />
+          <Plyr src={getPostAsset(post, 'video')?.url} MediaType='video' />
         </div>
       );
     case 'youtube':
-      return <Youtube src={post.assets?.embedded ?? ''} />;
+      return <Youtube src={getPostAsset(post, 'youtube')?.url ?? ''} />;
     case 'gallery':
       return (
         <div className='post-thumbs'>
           <GalleryViewer
             galleryId={post._id}
-            gallery={post.assets.gallery ?? []}
+            gallery={getPostAssetUrls(post, 'gallery')}
             full={full}
           />
         </div>
@@ -38,7 +39,7 @@ function Viewers(props: PostViewersProps) {
         <div className='post-thumbs'>
           <GalleryViewer
             galleryId={post._id}
-            gallery={[post.assets.cover ?? '']}
+            gallery={getPostAssetUrls(post, 'cover')}
           />
         </div>
       );
@@ -46,20 +47,34 @@ function Viewers(props: PostViewersProps) {
       return (
         <div className='post-thumbs'>
           <img
-            src={post.assets.avatar}
+            src={getPostAsset(post, 'avatar')?.url}
             alt='user-avatar'
             className='h-[200px] w-[200px] md:h-[300px] md:w-[300px] mx-auto block object-cover rounded-full'
           />
         </div>
       );
-    case 'friend':
+    case 'friend': {
+      const friend = getPostAsset(post, 'friend')?.refId;
+
+      if (!friend || typeof friend === 'string') {
+        return null;
+      }
+
       return (
         <div className='flex justify-center'>
-          <User user={post.assets.friend} />
+          <User user={friend as User} />
         </div>
       );
-    case 'group':
-      return <Group group={post.assets.group} />;
+    }
+    case 'group': {
+      const group = getPostAsset(post, 'group')?.refId;
+
+      if (!group || typeof group === 'string') {
+        return null;
+      }
+
+      return <Group group={group as Group} />;
+    }
     case 'share':
       return (
         <Post

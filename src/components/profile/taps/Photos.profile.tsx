@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Gallery from '../../../common/Gallery';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
+import { getPostAssetUrls } from '../../../helpers';
 
 function PhotosProfile() {
   const { profileId = '' } = useParams();
@@ -37,13 +38,7 @@ function PhotosProfile() {
         {posts.length ? (
           <Gallery
             full
-            gallery={posts.reduce(
-              (prev, current) => [
-                ...prev,
-                ...(current.assets.gallery ? current.assets.gallery : []),
-              ],
-              [] as string[],
-            )}
+            gallery={posts.flatMap((post) => getPostAssetUrls(post, 'gallery'))}
             galleryId={profileId} // TODO: replace with userId
           />
         ) : (

@@ -20,7 +20,6 @@ function BodyPost(props: { post: Post; full?: boolean }) {
 }
 
 BodyPost.defaultProps = {
-  post: null,
   full: false,
 };
 

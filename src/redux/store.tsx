@@ -9,6 +9,7 @@ import profileReducer from './features/profile.slice';
 import subscriptionSlice from './features/subscription.slice';
 import userReducer from './features/user.slice';
 import reviewReducer from './features/review.slice';
+import postReducer from './features/post.slice';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     groups: groupReducer.reducer,
     badges: badgeReducer.reducer,
     reviews: reviewReducer.reducer,
+    posts: postReducer.reducer,
   },
 });
 

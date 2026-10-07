@@ -4,17 +4,11 @@ import { MdOutlineAudiotrack } from 'react-icons/md';
 import PlyrViewer from '../../../common/plyr';
 import { POSTS } from '../../../constants/dummy';
 import Async from '../../../containers/Async';
-import { uuidv4 } from '../../../helpers';
+import { getPostAssetUrls, uuidv4 } from '../../../helpers';
 
 function AudiosProfile() {
-  const audios = POSTS.filter((post) => post.variant === 'audio').reduce(
-    (prev, current) => {
-      if (current.assets.audio) {
-        return [...prev, current.assets.audio];
-      }
-      return prev;
-    },
-    [] as string[],
+  const audios = POSTS.filter((post) => post.variant === 'audio').flatMap(
+    (post) => getPostAssetUrls(post, 'audio'),
   );
 
   const [state, setState] = useState({

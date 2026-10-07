@@ -109,6 +109,7 @@ const DashboardBadges = lazy(
 const DashboardReviews = lazy(
   () => import('../pages/dashboard/Reviews.dashboard'),
 );
+const DashboardPosts = lazy(() => import('../pages/dashboard/Posts.dashboard'));
 
 const routes = createBrowserRouter([
   {
@@ -470,6 +471,14 @@ const routes = createBrowserRouter([
         element: (
           <RequireAuth>
             <DashboardBadges />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'posts',
+        element: (
+          <RequireAuth>
+            <DashboardPosts />
           </RequireAuth>
         ),
       },

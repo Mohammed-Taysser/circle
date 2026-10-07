@@ -3,3 +3,4 @@ export { v4 as uuidv4 } from 'uuid';
 export * from './dayjs';
 export * from './messages';
 export * from './image';
+export * from './post';

@@ -20,14 +20,16 @@ function HeaderPost(props: PostHeaderProps) {
             <Link to={`/profile/${post.user._id}`}>
               <Avatar
                 sm
-                alt={post.user.name + ' avatar'}
+                alt={`${post.user.firstName} ${post.user.lastName} avatar`}
                 // status='' // TODO: replace with socket.io
                 src={post.user.avatar}
               />
             </Link>
             <div className='status-info ml-4'>
               <div className='activity-title'>
-                <Link to={`/profile/${post.user._id}`}>{post.user.name}</Link>
+                <Link to={`/profile/${post.user._id}`}>
+                  {post.user.firstName} {post.user.lastName}
+                </Link>
 
                 {post.user.isVerified && (
                   <VscVerified className='text-lg text-aurora' />
